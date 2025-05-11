@@ -5,10 +5,13 @@ GMFrontEnd is the frontend for the web application Growth Mindset, a website tha
 ### Current Features
 
 1. An animated nav bar
+2. Basic login page with login functionality
 
 ### Upcoming features
 
-1. Login page with login functionality
+1. Hero Section
+2. About Section
+3. Framer Motion animations
 
 ### How to contribute
 

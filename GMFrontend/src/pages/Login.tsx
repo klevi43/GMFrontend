@@ -5,7 +5,6 @@ import { AuthService } from "../services/authService";
 
 const Login = () => {
   const authService: AuthService = new AuthService();
-  const { setAuth } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
