@@ -5,9 +5,9 @@ const NavList = () => {
   return (
     <>
       <ul className="md:flex">
-        <NavListItem text="My Workouts" />
-        <NavListItem text="Login" />
-        <NavListItem text="Logout" />
+        <NavListItem urlPath="/my-workouts" text="My Workouts" />
+        <NavListItem urlPath="/login" text="Login" />
+        <NavListItem urlPath="/logout" text="Logout" />
       </ul>
     </>
   );
