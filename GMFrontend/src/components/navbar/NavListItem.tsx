@@ -6,7 +6,7 @@ interface Props {
 const NavListItem = ({ text }: Props) => {
   return (
     <>
-      <li className="px-2 block text-center">
+      <li className="px-2 block text-center hover:text-white transition">
         <Link to="/">{text}</Link>
       </li>
     </>

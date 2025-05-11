@@ -10,7 +10,7 @@ const Nav = () => {
   return (
     <>
       <nav>
-        <div className="flex justify-between flex-wrap">
+        <div className="flex justify-between flex-wrap sticky">
           <div>
             <Link to="/" className="text-white">
               GM
@@ -21,8 +21,8 @@ const Nav = () => {
           </div>
           <div
             className={`${
-              isNavMenuOpen && "hidden"
-            } w-full md:flex md:items-center md:justify-between md:w-auto`}
+              !isNavMenuOpen ? "h-0 opacity-0" : "h-[8rem] opacity-100"
+            } absolute mt-[3rem] overflow-hidden transition-all duration-300 bg-background w-full md:flex md:items-center md:justify-between md:w-auto`}
           >
             <NavList />
           </div>
