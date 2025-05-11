@@ -21,8 +21,8 @@ const Nav = () => {
           </div>
           <div
             className={`${
-              !isNavMenuOpen ? "h-0 opacity-0" : "h-[8rem] opacity-100"
-            } absolute mt-[3rem] overflow-hidden transition-all duration-300 bg-background w-full md:flex md:items-center md:justify-between md:w-auto`}
+              !isNavMenuOpen ? "h-0 opacity-0" : "h-auto opacity-100"
+            }  absolute mt-[2.5rem] overflow-hidden transition-all duration-300 bg-gray-900 w-full md:relative md:flex md:items-center md:justify-between md:w-auto md:mt-auto md:h-auto md:opacity-100`}
           >
             <NavList />
           </div>

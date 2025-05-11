@@ -1,14 +1,11 @@
 import React from "react";
 import Nav from "../components/navbar/Nav";
+import Hero from "../components/hero/Hero";
 const Home = () => {
   return (
     <div className="text-text">
       <Nav />
-      <ul>
-        <li>create navbar</li>
-        <li>create hero</li>
-        <li>create about</li>
-      </ul>
+      <Hero />
     </div>
   );
 };
