@@ -1,25 +1,39 @@
 import React from "react";
-
+import { motion } from "motion/react";
+import HeroText from "./HeroText";
 const Hero = () => {
   return (
     <>
       <div className="flex flex-wrap justify-center md:flex-nowrap">
-        <div className="border-2 border-pink-400 h-auto w-[95%]">
-          <h2 className="text-white text-[3rem] font-bold pl-[1rem]">
-            Track your progress. <br />
-            See results.
-          </h2>
-          <h3 className="pl-[1rem] mb-[1rem] text-[1.5rem]">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            asperiores
-          </h3>
-          <div className="flex justify-end mb-[1rem]">
-            <button className="bg-primary rounded-full text-background mr-[1rem] py-2 px-2 text-[1.8rem] font-semibold">
-              Get Started
-            </button>
-          </div>
-        </div>
-        <div className="bg-blue-400 h-[20rem] w-[95%]">picture</div>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 75 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          initial="hidden"
+          animate="visible"
+          transition={{
+            duration: 1,
+            delay: 0.15,
+          }}
+        >
+          <HeroText />
+        </motion.div>
+        <motion.div
+          className="w-[100%] flex justify-center"
+          variants={{
+            hidden: { opacity: 0, y: 75 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          initial="hidden"
+          animate="visible"
+          transition={{
+            duration: 1,
+            delay: 1,
+          }}
+        >
+          <div className="bg-blue-400 h-[20rem] w-[95%]">picture</div>
+        </motion.div>
       </div>
     </>
   );
