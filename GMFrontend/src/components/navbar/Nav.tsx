@@ -20,7 +20,7 @@ const Nav = () => {
             <Link to="/" className="text-white">
               <img
                 className="h-[4rem] mb-[1rem] pl-[0.5rem]"
-                src="../../../public/leaf-svgrepo-com.svg"
+                src="/leaf-svgrepo-com.svg"
                 alt=""
               />
             </Link>

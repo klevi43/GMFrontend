@@ -1,5 +1,3 @@
-import React from "react";
-import { motion } from "motion/react";
 import HeroText from "./HeroText";
 import FadeIn from "../animations/FadeIn";
 import heroImg from "../../assets/pictures/pexels-marcuschanmedia-18060023.jpg";
