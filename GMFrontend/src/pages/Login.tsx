@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
 import AuthContext from "../contexts/AuthProvider";
 import { useAsyncError } from "react-router";
-import { AuthService } from "../services/authService";
+import { AuthService } from "../services/AuthService";
 
 const Login = () => {
   const authService: AuthService = new AuthService();

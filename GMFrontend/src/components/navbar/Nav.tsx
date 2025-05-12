@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import NavToggle from "../icons/NavToggle";
 import NavList from "./NavList";
-import Logo from "../../../public/leaf-svgrepo-com.svg";
+
 const Nav = () => {
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const toggleNavMenu = () => {
