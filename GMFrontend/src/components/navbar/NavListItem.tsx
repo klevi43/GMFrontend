@@ -7,7 +7,7 @@ interface Props {
 const NavListItem = ({ text, urlPath }: Props) => {
   return (
     <>
-      <li className="px-2 block text-center hover:text-white transition">
+      <li className="text-[2rem] px-2 block text-center hover:text-white transition">
         <Link to={urlPath}>{text}</Link>
       </li>
     </>

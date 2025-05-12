@@ -10,7 +10,7 @@ const NavToggle = ({ toggleNavMenu }: Props) => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            className="md:hidden w-[40px] h-[40px] fill-text hover:fill-white hover:text-white transition "
+            className="md:hidden h-[4.5rem] pr-[0.5rem] fill-text hover:fill-white hover:text-white transition "
             fill="none"
             stroke="currentColor"
           >

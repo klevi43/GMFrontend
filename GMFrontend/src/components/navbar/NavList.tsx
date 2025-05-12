@@ -4,7 +4,7 @@ import NavListItem from "./NavListItem";
 const NavList = () => {
   return (
     <>
-      <ul className="md:flex">
+      <ul className="md:flex h-max-content">
         <NavListItem urlPath="/my-workouts" text="My Workouts" />
         <NavListItem urlPath="/login" text="Login" />
         <NavListItem urlPath="/logout" text="Logout" />
