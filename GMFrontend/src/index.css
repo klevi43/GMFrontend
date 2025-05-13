@@ -6,4 +6,21 @@
   --color-primary: #99ff00;
   --color-text: #acacac;
   --color-box-outline: #353535;
+  --font-Jost: "Jost", "sans-serif";
+  --font-Frank: "Franklin Gothic Medium", "sans serif";
+  --font-Noto: "Noto", "sans serif";
+  --font-Lucida: "Verdana", "sans serif";
+}
+@font-face {
+  font-family: Jost;
+  src: url("./fonts/Jost.ttf");
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+@font-face {
+  font-family: Noto;
+  src: url("./fonts/NotoSans_Condensed-Regular.ttf");
+}
+@font-face {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
