@@ -14,7 +14,7 @@ const Nav = () => {
         <div
           className={`${
             !isNavMenuOpen ? "border-b-0 border-b-box-outline" : "border-0"
-          } flex justify-between flex-wrap sticky `}
+          } flex justify-between flex-wrap align-baseline mx-auto max-w-[1150px] sticky `}
         >
           <div>
             <Link to="/" className="text-white">
@@ -33,7 +33,7 @@ const Nav = () => {
               !isNavMenuOpen
                 ? "h-0 opacity-0"
                 : "h-auto opacity-100 border-b-1 border-b-box-outline"
-            }  absolute mt-[4.5rem] overflow-hidden transition-all duration-300 bg-background w-full md:relative md:flex md:items-center md:justify-between md:w-auto md:mt-auto md:h-auto md:opacity-100`}
+            }  absolute mt-[4.5rem] overflow-hidden transition-all duration-300 bg-background w-full md:relative md:flex md:items-center md:justify-between md:w-auto md:mt-0 md:h-auto md:opacity-100`}
           >
             <NavList />
           </div>

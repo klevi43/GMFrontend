@@ -6,7 +6,10 @@ const Home = () => {
   return (
     <div className="text-text bg-background">
       <Nav />
-      <Hero />
+      <div className="place-items-center">
+        <Hero />
+      </div>
+
       <div className="py-[1rem]">
         <About />
       </div>

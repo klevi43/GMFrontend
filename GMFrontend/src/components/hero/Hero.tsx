@@ -5,7 +5,7 @@ import HeroPicture from "./HeroPicture";
 const Hero = () => {
   return (
     <>
-      <div className="flex flex-wrap justify-center md:flex-nowrap">
+      <div className=" grid grid-cols-1 place-items-center md:grid-cols-2 max-w-[1150px]">
         <HeroText />
         <HeroPicture />
       </div>
