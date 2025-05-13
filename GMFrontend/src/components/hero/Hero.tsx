@@ -5,7 +5,7 @@ import HeroPicture from "./HeroPicture";
 const Hero = () => {
   return (
     <>
-      <div className=" grid grid-cols-1 place-items-center md:grid-cols-2 max-w-[1150px]">
+      <div className=" grid grid-cols-1 md:grid-cols-2 md:mt-[3rem]">
         <HeroText />
         <HeroPicture />
       </div>

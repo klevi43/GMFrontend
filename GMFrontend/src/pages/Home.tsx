@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="text-text bg-background">
       <Nav />
-      <div className="place-items-center">
+      <div className="place-items-center mx-auto max-w-[1150px]">
         <Hero />
       </div>
 
