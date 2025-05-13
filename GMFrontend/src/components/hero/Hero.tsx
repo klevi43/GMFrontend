@@ -1,16 +1,13 @@
 import HeroText from "./HeroText";
 import FadeIn from "../animations/FadeIn";
-import heroImg from "../../assets/pictures/pexels-marcuschanmedia-18060023.jpg";
+
+import HeroPicture from "./HeroPicture";
 const Hero = () => {
   return (
     <>
       <div className="flex flex-wrap justify-center md:flex-nowrap">
         <HeroText />
-        <FadeIn delay={0.95} duration={0.95} from={75}>
-          <div>
-            <img className="w-fit px-[1rem]" src={heroImg} alt="" />
-          </div>
-        </FadeIn>
+        <HeroPicture />
       </div>
     </>
   );
