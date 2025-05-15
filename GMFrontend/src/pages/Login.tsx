@@ -1,13 +1,18 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
-import AuthContext from "../contexts/AuthProvider";
-import { useAsyncError } from "react-router";
 import { AuthService } from "../services/AuthService";
-import useLoginForm from "../hooks/useLoginForm";
-import { Form } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form, useForm } from "react-hook-form";
+import { LoginFormSchema } from "../schemas/LoginFormSchema";
 //import { useLoginForm } from "../hooks/useLoginForm";
 const Login = () => {
   const authService: AuthService = new AuthService();
-  const form = useLoginForm();
+  const form = useForm<LoginFormSchema>({
+    resolver: zodResolver(LoginFormSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     //authService.login(email, password);
