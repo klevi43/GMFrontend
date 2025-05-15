@@ -5,7 +5,7 @@ import About from "../components/About/About";
 import Footer from "../components/footer/Footer";
 const Home = () => {
   return (
-    <div className="text-text bg-background">
+    <div className="text-text">
       <Nav />
       <div className="place-items-center mx-auto max-w-[1150px]">
         <Hero />

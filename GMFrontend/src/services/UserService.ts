@@ -1,13 +1,15 @@
-import axios from "axios";
 import axiosInstance from "./axiosInstance";
-import { LOGIN_ENDPOINT } from "../constants/constants";
-export class AuthService {
-  constructor() {}
-  login = async (email: string, password: string) => {
+import { REGISTER_ENDPOINT } from "../constants/constants";
+export class UserService {
+  register = async (
+    email: string,
+    password: string,
+    confirmPassword: string
+  ) => {
     try {
       const response = await axiosInstance.post(
-        LOGIN_ENDPOINT,
-        JSON.stringify({ email, password }),
+        REGISTER_ENDPOINT,
+        JSON.stringify({ email, password, confirmPassword }),
         {
           headers: {
             "Content-Type": "application/json",

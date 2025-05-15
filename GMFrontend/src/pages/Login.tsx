@@ -2,22 +2,27 @@ import React, { useContext, useRef, useState, useEffect } from "react";
 import AuthContext from "../contexts/AuthProvider";
 import { useAsyncError } from "react-router";
 import { AuthService } from "../services/AuthService";
-
+import useLoginForm from "../hooks/useLoginForm";
+import { Form } from "react-hook-form";
+//import { useLoginForm } from "../hooks/useLoginForm";
 const Login = () => {
   const authService: AuthService = new AuthService();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
-
+  const form = useLoginForm();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    authService.login(email, password);
+    //authService.login(email, password);
   };
   return (
     <div>
-      <h1 className="text-white">Login</h1>
+      {/* <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <FormField
+            control= {form.control}
+
+        </form>
+        
+      </Form> */}
+      {/* <h1 className="text-white">Login</h1>
       <form onSubmit={handleSubmit}>
         <label className="text-white" htmlFor="email">
           Email
@@ -44,7 +49,7 @@ const Login = () => {
         <button className="text-white border-white border-2" type="submit">
           Submit
         </button>
-      </form>
+      </form> */}
     </div>
   );
 };
