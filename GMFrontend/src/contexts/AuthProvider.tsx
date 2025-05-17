@@ -1,19 +1,19 @@
 import { createContext, useState } from "react";
 import axiosInstance from "../services/axiosInstance";
 
-interface AuthProviderProps {
+interface Props {
   children: React.ReactNode;
 }
+interface AuthContextType {
+  isAuthenticated: boolean;
+}
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const AuthContext = createContext({});
-
-export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [auth, setAuth] = useState({});
+export const AuthProvider = ({ children }: Props) => {
+  const [auth, setAuth] = useState(false);
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={undefined}>{children}</AuthContext.Provider>
   );
 };
 

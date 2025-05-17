@@ -8,12 +8,16 @@ import { Link } from "react-router";
 import Footer from "../components/footer/Footer";
 import Home from "./Home";
 import Nav from "../components/navbar/Nav";
+import FormInputItem from "../components/form/FormInputItem";
+import FormInputLabel from "../components/form/FormInputLabel";
+import FormSubmitButton from "../components/form/FormSubmitButton";
+import FormTitle from "../components/form/FormTitle";
 //import { useLoginForm } from "../hooks/useLoginForm";
 const Login = () => {
   const authService: AuthService = new AuthService();
   const {
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
   } = useForm<LoginFormSchema>({
     resolver: zodResolver(LoginFormSchema),
@@ -23,35 +27,32 @@ const Login = () => {
     },
   });
   const onSubmit: SubmitHandler<LoginFormSchema> = (data) => {
-    console.log(data);
+    console.log(JSON.stringify(data));
+    authService.login(data.email, data.password);
   };
   return (
     <>
       <Nav />
       <div className="h-auto flex flex-col items-center justify-center">
-        <div className="flex justify-center px-6 py-8 mx-auto mt-20 mb-40 max-w-[75%] md:max-w-[50%] md:mt-10 md:mb-15 bg-modal border-1 rounded-sm border-modal-outline">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <h2 className="font-bold text-[2rem] text-white text-center">
-              Login
-            </h2>
-            <label className="block mb-2 font-medium text-white">Email</label>
-            <input
-              className=" mb-3 p-2.5 w-full  bg-input rounded-lg "
-              {...register("email")}
-            />
-            <label className="block mb-2 font-medium text-white">
-              Password
-            </label>
-            <input
-              className="mb-9 p-2.5 w-full bg-input rounded-lg "
-              type="password"
-              {...register("password")}
+        <div className="flex justify-center px-6 py-8 mx-auto mt-20 mb-40 max-w-[75%] md:max-w-[50%] md:mt-10 md:mb-15 md:w-100 bg-modal border-1 rounded-sm border-modal-outline">
+          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+            <FormTitle title="Login" />
+            <FormInputLabel name="Email" />
+            <FormInputItem
+              type="text"
+              register={register}
+              name="email"
+              errorMsg={errors?.email?.message}
             />
 
-            <input
-              className="p-2.5 w-full text-[1.5rem] bg-primary border-2 rounded-2xl"
-              type="submit"
+            <FormInputLabel name="Password" />
+            <FormInputItem
+              type="password"
+              register={register}
+              name="password"
+              errorMsg={errors.password?.message}
             />
+            {!isSubmitting && <FormSubmitButton />}
             <div className="mt-6 text-center">
               <p className="text-text">
                 Don't have an account yet?{" "}
