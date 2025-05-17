@@ -1,7 +1,7 @@
 import React from "react";
 import ScrollFadeIn from "../animations/ScrollFadeIn";
 const Footer = () => {
-  console.log("Render");
+  console.log("Footer rendered");
   return (
     <>
       <ScrollFadeIn>

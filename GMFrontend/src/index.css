@@ -5,7 +5,10 @@
 @theme {
   --color-primary: #99ff00;
   --color-text: #acacac;
-  --color-box-outline: #353535;
+  --color-modal-outline: #353535;
+  --color-modal: #141414;
+  --color-background: #030303;
+  --color-input: #f2f2f2;
   --font-Jost: "Jost", "sans-serif";
   --font-Frank: "Franklin Gothic Medium", "sans serif";
   --font-Noto: "Noto", "sans serif";
