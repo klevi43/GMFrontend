@@ -39,7 +39,7 @@ const Nav = () => {
               !isNavMenuOpen
                 ? "h-0 opacity-0"
                 : "h-auto opacity-100 border-b-1 border-modal-outline"
-            }  absolute top-full overflow-hidden transition-all duration-300 bg-background w-full pb-6 md:relative md:flex  md:justify-between md:p-0 md:w-auto md:mt-[6px] md:h-auto md:opacity-100`}
+            }  absolute top-full overflow-hidden bg-background w-full pb-6 md:relative md:flex  md:justify-between md:p-0 md:w-auto md:mt-[6px] md:h-auto md:opacity-100`}
           >
             <NavList />
           </div>
