@@ -5,6 +5,7 @@ import Nav from "../components/navbar/Nav";
 import { useAuth } from "../hooks/useAuth";
 import { useServerError } from "../hooks/useServerError";
 import Form from "../components/form/Form";
+import FormContainer from "../components/containers/FormContainer";
 import authService from "../services/authService";
 import { Link, useNavigate } from "react-router";
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
     <>
       <Nav />
       <div className="h-auto flex flex-col items-center justify-center">
-        <div className="flex flex-col justify-center px-6 py-8 mx-auto mt-20 mb-40 max-w-[75%] md:max-w-[50%] md:mt-10 md:mb-15 md:w-100 bg-modal border-1 rounded-sm border-modal-outline">
+        <FormContainer>
           <Form
             schema={LoginFormSchema}
             onSubmit={onSubmit}
@@ -37,7 +38,7 @@ const Login = () => {
               Register here
             </Link>
           </span>
-        </div>
+        </FormContainer>
 
         <Footer />
       </div>
