@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
 import NavListItem from "./NavListItem";
-import { AuthService } from "../../services/AuthService";
+import authService from "../../services/authService";
 const NavList = () => {
   const handleLogout = () => {
-    const authService: AuthService = new AuthService();
     authService.logout();
   };
   return (

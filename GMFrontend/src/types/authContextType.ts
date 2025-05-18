@@ -5,6 +5,6 @@ export interface AuthUser {
 }
 
 export type AuthContextType = {
-  user: AuthUser;
-  setUser: React.Dispatch<React.SetStateAction<AuthUser>>;
+  authUser: AuthUser;
+  setAuthUser: React.Dispatch<React.SetStateAction<AuthUser>>;
 };

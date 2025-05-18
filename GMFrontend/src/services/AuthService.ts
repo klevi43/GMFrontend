@@ -1,23 +1,26 @@
 import axios from "axios";
 import axiosInstance from "./axiosInstance";
 import { LOGIN_ENDPOINT } from "../constants/constants";
-import { useContext } from "react";
-import { useAuth } from "../hooks/useAuth";
+
 import type { AuthUser } from "../types/authContextType";
 import type { ServerError } from "../types/serverErrorContextType";
-import { s } from "motion/react-m";
-export class AuthService {
+import type User from "../models/user";
+class AuthService {
   constructor() {}
   login = async (
     email: string,
     password: string,
-    setUser: React.Dispatch<React.SetStateAction<AuthUser>>,
+    setAuthUser: React.Dispatch<React.SetStateAction<AuthUser>>,
     setServerError: React.Dispatch<React.SetStateAction<ServerError>>
   ) => {
     try {
+      const user: User = {
+        email: email,
+        password: password,
+      };
       const response = await axiosInstance.post(
         LOGIN_ENDPOINT,
-        JSON.stringify({ email, password }),
+        JSON.stringify(user),
         {
           headers: {
             "Content-Type": "application/json",
@@ -34,7 +37,7 @@ export class AuthService {
         role: response.data.role,
         isAuthenticated: true,
       };
-      setUser(authenticatedUser);
+      setAuthUser(authenticatedUser);
     } catch (error: any) {
       const serverError: ServerError = {
         status: error.response.data.status,
@@ -60,3 +63,5 @@ export class AuthService {
     }
   };
 }
+const authService = new AuthService();
+export default authService;
