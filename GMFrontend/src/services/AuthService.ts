@@ -37,15 +37,25 @@ class AuthService {
         role: response.data.role,
         isAuthenticated: true,
       };
+      console.log("setAuthUser is ", setAuthUser);
       setAuthUser(authenticatedUser);
     } catch (error: any) {
-      const serverError: ServerError = {
-        status: error.response.data.status,
-        msg: error.response.data.message,
-        timestamp: error.response.data.timestamp,
-      };
-
-      setServerError(serverError);
+      if (error.response && error.response.data) {
+        const serverError: ServerError = {
+          status: error.response.data.status,
+          msg: error.response.data.message,
+          timestamp: error.response.data.timestamp,
+        };
+        setServerError(serverError);
+      } else {
+        // fallback for unexpected error shape
+        setServerError({
+          status: 500,
+          msg: "An unexpected error occurred.",
+          timestamp: new Date().toISOString(),
+        });
+        console.error("Login error:", error);
+      }
     }
   };
   logout = async () => {

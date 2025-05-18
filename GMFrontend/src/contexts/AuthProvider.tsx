@@ -4,21 +4,21 @@ import type { AuthContextType, AuthUser } from "../types/authContextType";
 interface Props {
   children: React.ReactNode;
 }
-const authUser: AuthUser = {
+const authUserObj: AuthUser = {
   email: "",
   role: "ROLE_USER",
   isAuthenticated: false,
 };
 const AuthContext = createContext<AuthContextType>({
-  user: authUser,
-  setUser: () => {},
+  authUser: authUserObj,
+  setAuthUser: () => {},
 });
 
 export const AuthProvider = ({ children }: Props) => {
-  const [user, setUser] = useState<AuthUser>(authUser);
+  const [authUser, setAuthUser] = useState<AuthUser>(authUserObj);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ authUser, setAuthUser }}>
       {children}
     </AuthContext.Provider>
   );

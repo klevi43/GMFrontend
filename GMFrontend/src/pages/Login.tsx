@@ -14,7 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<LoginFormSchema> = (data) => {
     authService.login(data.email, data.password, setAuthUser, setServerError);
-    navigate("/workouts");
+    //navigate("/workouts");
   };
   return (
     <>
