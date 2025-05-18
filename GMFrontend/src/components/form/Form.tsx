@@ -5,6 +5,7 @@ import FormInputItem from "./FormInputItem";
 import FormInputLabel from "./FormInputLabel";
 import FormSubmitButton from "./FormSubmitButton";
 import FormTitle from "./FormTitle";
+import type { ServerError } from "../../types/serverErrorContextType";
 
 type Field = {
   name: "email" | "password";
@@ -18,6 +19,7 @@ type Props<T extends z.ZodType<any, any>> = {
   fields: Field[]; // the fields to render
   title: string; // title of the form
   defaultValues: z.infer<T>; // initial values for the form fields
+  serverError: ServerError;
 };
 
 const Form = <T extends z.ZodType<any, any>>({
@@ -26,6 +28,7 @@ const Form = <T extends z.ZodType<any, any>>({
   fields,
   title,
   defaultValues,
+  serverError,
 }: Props<T>) => {
   const {
     register,
@@ -40,6 +43,9 @@ const Form = <T extends z.ZodType<any, any>>({
     // handleSubmit is from Zod and validates form onSumbit is my function
     <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
       <FormTitle title={title} />
+      {serverError.msg && (
+        <span className="text-red-500">{serverError.msg}</span>
+      )}
       {fields.map((field) => (
         <div key={field.name}>
           <FormInputLabel name={field.label} />
@@ -55,3 +61,5 @@ const Form = <T extends z.ZodType<any, any>>({
     </form>
   );
 };
+
+export default Form;
