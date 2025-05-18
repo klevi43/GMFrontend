@@ -1,10 +1,10 @@
-export type FormFields<Name extends string = string> = {
-  name: Name;
+export type LoginFormFieldsType = {
+  name: "email" | "password";
   label: string;
   type: string;
 };
 
-export type RegisterFormFields = {
+export type RegisterFormFieldsType = {
   name: "email" | "password" | "confirmPassword";
   label: string;
   type: string;

@@ -1,7 +1,8 @@
 import { input } from "motion/react-client";
 import React from "react";
 import type { FieldErrors, UseFormRegister } from "react-hook-form";
-import type { LoginFormSchema } from "../../schemas/loginFormSchema";
+import type { LoginFormSchema } from "../../../schemas/loginFormSchema";
+import type { ZodSchema } from "zod";
 interface Props {
   name: "email" | "password";
   type: string;
@@ -9,7 +10,7 @@ interface Props {
   errorMsg?: string;
 }
 
-const FormInputItem = ({ name, type, register, errorMsg }: Props) => {
+const LoginFormInputItem = ({ name, type, register, errorMsg }: Props) => {
   return (
     <>
       <div className="w-full mb-8">
@@ -24,4 +25,4 @@ const FormInputItem = ({ name, type, register, errorMsg }: Props) => {
   );
 };
 
-export default FormInputItem;
+export default LoginFormInputItem;

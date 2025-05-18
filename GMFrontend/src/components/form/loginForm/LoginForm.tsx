@@ -1,41 +1,40 @@
-import { useForm, type SubmitHandler } from "react-hook-form";
+import {
+  useForm,
+  type UseFormReturn,
+  type SubmitHandler,
+} from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import FormInputItem from "./FormInputItem";
-import FormInputLabel from "./FormInputLabel";
-import FormSubmitButton from "./FormSubmitButton";
-import FormTitle from "./FormTitle";
-import type { ServerError } from "../../types/serverErrorContextType";
+import FormInputItem from "./LoginFormInputItem";
+import FormInputLabel from "../FormInputLabel";
+import FormSubmitButton from "../FormSubmitButton";
+import FormTitle from "../FormTitle";
+import type { ServerError } from "../../../types/serverErrorContextType";
+import { LoginFormSchema } from "../../../schemas/loginFormSchema";
+import type { LoginFormFieldsType } from "../../../types/formFieldsType";
 
-type Field = {
-  name: "email" | "password";
-  label: string;
-  type: string;
-};
-
-type Props<T extends z.ZodType<any, any>> = {
-  schema: T; // zod schema
-  onSubmit: (data: z.infer<T>) => void; // what to do upon successful submission
-  fields: Field[]; // the fields to render
+type Props = {
+  // zod schema
+  onSubmit: (data: LoginFormSchema) => void; // what to do upon successful submission
+  fields: LoginFormFieldsType[]; // the fields to render
   title: string; // title of the form
-  defaultValues: z.infer<T>; // initial values for the form fields
+  defaultValues: { email: ""; password: "" }; // initial values for the form fields
   serverError: ServerError;
 };
 
-const Form = <T extends z.ZodType<any, any>>({
-  schema,
+const LoginForm = ({
   onSubmit,
   fields,
   title,
   defaultValues,
   serverError,
-}: Props<T>) => {
+}: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<z.infer<T>>({
-    resolver: zodResolver(schema), // automatically validates input data according to given schema
+  } = useForm<LoginFormSchema>({
+    resolver: zodResolver(LoginFormSchema), // automatically validates input data according to given schema
     defaultValues,
   });
 
@@ -62,4 +61,4 @@ const Form = <T extends z.ZodType<any, any>>({
   );
 };
 
-export default Form;
+export default LoginForm;

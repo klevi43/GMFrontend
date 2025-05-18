@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "../components/form/Form";
+import RegisterForm from "../components/form/registerForm/RegisterForm";
 import { RegisterFormSchema } from "../schemas/registerFormSchema";
 import type { SubmitHandler } from "react-hook-form";
 import { useServerError } from "../hooks/useServerError";
@@ -14,8 +14,7 @@ const Register = () => {
   return (
     <>
       <FormContainer>
-        <Form
-          schema={RegisterFormSchema}
+        <RegisterForm
           onSubmit={onSubmit}
           title="Create a New Account"
           fields={[

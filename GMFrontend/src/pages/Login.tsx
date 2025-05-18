@@ -4,7 +4,7 @@ import Footer from "../components/footer/Footer";
 import Nav from "../components/navbar/Nav";
 import { useAuth } from "../hooks/useAuth";
 import { useServerError } from "../hooks/useServerError";
-import Form from "../components/form/Form";
+import Form from "../components/form/loginForm/LoginForm";
 import FormContainer from "../components/containers/FormContainer";
 import authService from "../services/authService";
 import { Link, useNavigate } from "react-router";
@@ -22,7 +22,6 @@ const Login = () => {
       <div className="h-auto flex flex-col items-center justify-center">
         <FormContainer>
           <Form
-            schema={LoginFormSchema}
             onSubmit={onSubmit}
             title="Login"
             defaultValues={{ email: "", password: "" }}
