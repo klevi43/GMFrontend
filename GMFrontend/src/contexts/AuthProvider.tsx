@@ -1,12 +1,12 @@
 import { createContext, useState } from "react";
 import axiosInstance from "../services/axiosInstance";
-import type { AuthContextType, AuthUser } from "../types/AuthContextType";
+import type { AuthContextType, AuthUser } from "../types/authContextType";
 interface Props {
   children: React.ReactNode;
 }
 const authUser: AuthUser = {
   email: "",
-  role: "",
+  role: "ROLE_USER",
   isAuthenticated: false,
 };
 const AuthContext = createContext<AuthContextType>({

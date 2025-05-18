@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "../components/navbar/Nav";
 import Hero from "../components/hero/Hero";
-import About from "../components/About/About";
+import About from "../components/about/About";
 import Footer from "../components/footer/Footer";
 const Home = () => {
   return (

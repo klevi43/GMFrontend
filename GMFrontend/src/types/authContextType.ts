@@ -1,6 +1,6 @@
 export interface AuthUser {
   email: string;
-  role: string;
+  role: "ROLE_USER" | "ROLE_ADMIN";
   isAuthenticated: boolean;
 }
 

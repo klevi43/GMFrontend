@@ -3,7 +3,7 @@ import axiosInstance from "./axiosInstance";
 import { LOGIN_ENDPOINT } from "../constants/constants";
 import { useContext } from "react";
 import { useAuth } from "../hooks/useAuth";
-import type { AuthUser } from "../types/AuthContextType";
+import type { AuthUser } from "../types/authContextType";
 export class AuthService {
   constructor() {}
   login = async (
@@ -25,14 +25,13 @@ export class AuthService {
         }
       );
       console.log(JSON.stringify(response?.data));
-      if (response.status === 200) {
-        const authenticatedUser: AuthUser = {
-          email: response.data.email,
-          role: response.data.role,
-          isAuthenticated: true,
-        };
-        setUser(authenticatedUser);
-      }
+
+      const authenticatedUser: AuthUser = {
+        email: response.data.email,
+        role: response.data.role,
+        isAuthenticated: true,
+      };
+      setUser(authenticatedUser);
     } catch (error) {
       console.log(error);
     }

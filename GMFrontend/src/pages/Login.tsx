@@ -16,6 +16,7 @@ import { useAuth } from "../hooks/useAuth";
 //import { useLoginForm } from "../hooks/useLoginForm";
 const Login = () => {
   const authService: AuthService = new AuthService();
+  const { setUser } = useAuth();
   const {
     register,
     formState: { errors, isSubmitting },
@@ -28,7 +29,6 @@ const Login = () => {
     },
   });
   const onSubmit: SubmitHandler<LoginFormSchema> = (data) => {
-    const { setUser } = useAuth();
     console.log(JSON.stringify(data));
     authService.login(data.email, data.password, setUser);
   };
@@ -39,6 +39,7 @@ const Login = () => {
         <div className="flex justify-center px-6 py-8 mx-auto mt-20 mb-40 max-w-[75%] md:max-w-[50%] md:mt-10 md:mb-15 md:w-100 bg-modal border-1 rounded-sm border-modal-outline">
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <FormTitle title="Login" />
+
             <FormInputLabel name="Email" />
             <FormInputItem
               type="text"
