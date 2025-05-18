@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { useAuth } from "../hooks/useAuth";
 import type { AuthUser } from "../types/authContextType";
 import type { ServerError } from "../types/serverErrorContextType";
+import { s } from "motion/react-m";
 export class AuthService {
   constructor() {}
   login = async (
@@ -27,7 +28,7 @@ export class AuthService {
         }
       );
       console.log(JSON.stringify(response?.data));
-
+      setServerError({});
       const authenticatedUser: AuthUser = {
         email: response.data.email,
         role: response.data.role,
