@@ -12,6 +12,7 @@ import FormInputItem from "../components/form/FormInputItem";
 import FormInputLabel from "../components/form/FormInputLabel";
 import FormSubmitButton from "../components/form/FormSubmitButton";
 import FormTitle from "../components/form/FormTitle";
+import { useAuth } from "../hooks/useAuth";
 //import { useLoginForm } from "../hooks/useLoginForm";
 const Login = () => {
   const authService: AuthService = new AuthService();
@@ -27,8 +28,9 @@ const Login = () => {
     },
   });
   const onSubmit: SubmitHandler<LoginFormSchema> = (data) => {
+    const { setUser } = useAuth();
     console.log(JSON.stringify(data));
-    authService.login(data.email, data.password);
+    authService.login(data.email, data.password, setUser);
   };
   return (
     <>

@@ -2,11 +2,15 @@ import axios from "axios";
 import axiosInstance from "./axiosInstance";
 import { LOGIN_ENDPOINT } from "../constants/constants";
 import { useContext } from "react";
-import AuthContext from "../contexts/AuthProvider";
+import { useAuth } from "../hooks/useAuth";
+import type { AuthUser } from "../types/AuthContextType";
 export class AuthService {
   constructor() {}
-  login = async (email: string, password: string) => {
-    const [auth, setAuth] = useContext(AuthContext);
+  login = async (
+    email: string,
+    password: string,
+    setUser: React.Dispatch<React.SetStateAction<AuthUser>>
+  ) => {
     try {
       const response = await axiosInstance.post(
         LOGIN_ENDPOINT,
@@ -21,8 +25,13 @@ export class AuthService {
         }
       );
       console.log(JSON.stringify(response?.data));
-      if (response.status == 200) {
-        authContext;
+      if (response.status === 200) {
+        const authenticatedUser: AuthUser = {
+          email: response.data.email,
+          role: response.data.role,
+          isAuthenticated: true,
+        };
+        setUser(authenticatedUser);
       }
     } catch (error) {
       console.log(error);
