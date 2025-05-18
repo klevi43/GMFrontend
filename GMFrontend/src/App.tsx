@@ -4,17 +4,20 @@ import { Routes, Route, BrowserRouter } from "react-router";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { AuthProvider } from "./contexts/AuthProvider";
+import { ServerErrorProvider } from "./contexts/ServerErrorProvider";
 function App() {
   return (
     <>
-      <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+      <ServerErrorProvider>
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </ServerErrorProvider>
     </>
   );
 }

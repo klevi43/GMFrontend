@@ -4,12 +4,14 @@ import { LOGIN_ENDPOINT } from "../constants/constants";
 import { useContext } from "react";
 import { useAuth } from "../hooks/useAuth";
 import type { AuthUser } from "../types/authContextType";
+import type { ServerError } from "../types/serverErrorContextType";
 export class AuthService {
   constructor() {}
   login = async (
     email: string,
     password: string,
-    setUser: React.Dispatch<React.SetStateAction<AuthUser>>
+    setUser: React.Dispatch<React.SetStateAction<AuthUser>>,
+    setServerError: React.Dispatch<React.SetStateAction<ServerError>>
   ) => {
     try {
       const response = await axiosInstance.post(
@@ -32,8 +34,14 @@ export class AuthService {
         isAuthenticated: true,
       };
       setUser(authenticatedUser);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      const serverError: ServerError = {
+        status: error.response.data.status,
+        msg: error.response.data.message,
+        timestamp: error.response.data.timestamp,
+      };
+
+      setServerError(serverError);
     }
   };
   logout = async () => {

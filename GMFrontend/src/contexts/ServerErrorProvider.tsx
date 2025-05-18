@@ -29,3 +29,5 @@ export const ServerErrorProvider = ({ children }: Props) => {
     </ServerErrorContext.Provider>
   );
 };
+
+export default ServerErrorContext;

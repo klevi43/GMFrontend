@@ -13,10 +13,12 @@ import FormInputLabel from "../components/form/FormInputLabel";
 import FormSubmitButton from "../components/form/FormSubmitButton";
 import FormTitle from "../components/form/FormTitle";
 import { useAuth } from "../hooks/useAuth";
+import { useServerError } from "../hooks/useServerError";
 //import { useLoginForm } from "../hooks/useLoginForm";
 const Login = () => {
   const authService: AuthService = new AuthService();
   const { setUser } = useAuth();
+  const { serverError, setServerError } = useServerError();
   const {
     register,
     formState: { errors, isSubmitting },
@@ -30,8 +32,9 @@ const Login = () => {
   });
   const onSubmit: SubmitHandler<LoginFormSchema> = (data) => {
     console.log(JSON.stringify(data));
-    authService.login(data.email, data.password, setUser);
+    authService.login(data.email, data.password, setUser, setServerError);
   };
+  console.log(serverError);
   return (
     <>
       <Nav />
@@ -39,7 +42,9 @@ const Login = () => {
         <div className="flex justify-center px-6 py-8 mx-auto mt-20 mb-40 max-w-[75%] md:max-w-[50%] md:mt-10 md:mb-15 md:w-100 bg-modal border-1 rounded-sm border-modal-outline">
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <FormTitle title="Login" />
-
+            {serverError.msg && (
+              <span className="text-red-500">{serverError.msg}</span>
+            )}
             <FormInputLabel name="Email" />
             <FormInputItem
               type="text"

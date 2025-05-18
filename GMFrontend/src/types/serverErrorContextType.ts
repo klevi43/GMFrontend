@@ -1,7 +1,7 @@
 export interface ServerError {
   status?: number;
   msg?: string;
-  timestamp?: Date;
+  timestamp?: string;
 }
 
 export type ServerErrorContextType = {
