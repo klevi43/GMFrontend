@@ -3,7 +3,7 @@ import { RegisterFormSchema } from "../schemas/registerFormSchema";
 import type { SubmitHandler } from "react-hook-form";
 import { useServerError } from "../hooks/useServerError";
 import FormContainer from "../components/containers/FormContainer";
-import userService from "../services/UserService";
+import userService from "../services/userService";
 import { useNavigate } from "react-router";
 const Register = () => {
   const { serverError, setServerError } = useServerError();
