@@ -7,19 +7,22 @@ import { AuthProvider } from "./contexts/AuthProvider";
 import { ServerErrorProvider } from "./contexts/ServerErrorProvider";
 import WorkoutDashboard from "./pages/WorkoutDashboard";
 import Register from "./pages/Register";
+import { WorkoutsProvider } from "./contexts/WorkoutProvider";
 function App() {
   return (
     <>
       <ServerErrorProvider>
         <AuthProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/workouts" element={<WorkoutDashboard />} />
-            </Routes>
-          </BrowserRouter>
+          <WorkoutsProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/workouts" element={<WorkoutDashboard />} />
+              </Routes>
+            </BrowserRouter>
+          </WorkoutsProvider>
         </AuthProvider>
       </ServerErrorProvider>
     </>
