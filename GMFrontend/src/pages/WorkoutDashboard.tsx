@@ -1,29 +1,112 @@
 import React, { useEffect } from "react";
 import workoutService from "../services/workoutService";
 import { useQuery } from "@tanstack/react-query";
+import type Workout from "../models/workout";
+import type Exercise from "../models/exercise";
+import type Set from "../models/set";
+import Nav from "../components/navbar/Nav";
 const WorkoutDashboard = () => {
-  const {
-    data: workouts,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["workouts"],
-    queryFn: workoutService.getMostRecentWorkouts,
-  });
+  const set: Set = {
+    id: 20,
+    weight: 20,
+    reps: 5,
+  };
+  const exercise: Exercise = {
+    id: 10,
+    name: "Bench Press",
+    sets: [set, set],
+  };
+  const workout: Workout = {
+    id: 0,
+    name: "Chest Day",
+    date: new Date(2025, 5, 19),
+    exercises: [exercise, exercise],
+  };
+
+  const workouts: Workout[] = [workout, workout, workout];
+
+  // const {
+  //   data: workouts,
+  //   isLoading,
+  //   error,
+  // } = useQuery({
+  //   queryKey: ["workouts"],
+  //   queryFn: workoutService.getMostRecentWorkouts,
+  // });
   return (
     <div>
+      <Nav />
       <h2 className="text-white">Workout Dashboard</h2>
-      {workouts && workouts.length > 0 ? (
+      <div className="max-w-[1150px] mx-auto flex justify-center">
+        <ul className="grid grid-cols-2 place-items-center mb-[4rem] md:w-full">
+          <li>
+            <div className="group relative m-4 border-1 border-modal-outline min-w-[150px] min-h-[150px] max-w-[250px] max-h-[250px] aspect-square rounded-3xl bg-modal text-white bg-gradient-to-br hover:from-[#99ff00] hover:to-[#00cc81] hover:text-background transform hover:scale-130 transition-all duration-400 ">
+              <div className="flex flex-col justify-center items-center h-full w-full ">
+                <h3 className=" p-2 text-[2rem] text-center ">Chest Day</h3>
+                {/* Button appears on hover */}
+                <button className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90%] bg-gradient-to-br from-[#333333] text-white to-[#141414] rounded-full px-4 py-1 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Click to view
+                </button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="group relative m-4 border-1 border-modal-outline min-w-[150px] min-h-[150px] max-w-[250px] max-h-[250px] aspect-square rounded-3xl bg-modal text-white bg-gradient-to-br hover:from-[#99ff00] hover:to-[#00cc81] hover:text-background transform hover:scale-130 transition-all duration-400 ">
+              <div className="flex flex-col justify-center items-center h-full w-full ">
+                <h3 className=" p-2 text-[2rem] text-center ">Chest Day</h3>
+                {/* Button appears on hover */}
+                <button className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90%] bg-gradient-to-br from-[#333333] text-white to-[#141414] rounded-full px-4 py-1 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Click to view
+                </button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="group relative m-4 border-2 border-modal-outline min-w-[150px] min-h-[150px] max-h-[250px]  aspect-square rounded-3xl bg-gradient-to-br from-[#333333] text-white to-[#141414] hover:from-[#99ff00] hover:to-[#00cc81] hover:text-background transform hover:scale-130 md:hover:scale-110 transition-all duration-400 ">
+              <div className="flex flex-col justify-center items-center h-full w-full ">
+                <h3 className=" p-2 text-[2rem] text-center ">Chest Day</h3>
+                {/* Button appears on hover */}
+                <button className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90%] bg-gradient-to-br from-[#333333] text-white to-[#141414] rounded-full px-4 py-1 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Click to view
+                </button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="group relative m-4 border-2 border-modal-outline min-w-[150px] min-h-[150px] max-h-[250px]  aspect-square rounded-3xl bg-gradient-to-br from-[#333333] text-white to-[#141414] hover:from-[#99ff00] hover:to-[#00cc81] hover:text-background transform hover:scale-130 md:hover:scale-110 transition-all duration-400 ">
+              <div className="flex flex-col justify-center items-center h-full w-full ">
+                <h3 className=" p-2 text-[2rem] text-center ">Chest Day</h3>
+                {/* Button appears on hover */}
+                <button className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90%] bg-gradient-to-br from-[#333333] text-white to-[#141414] rounded-full px-4 py-1 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Click to view
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      {/* {workouts && workouts.length > 0 ? (
         <ul>
           {workouts.map((w) => (
-            <li className="text-white" key={w.id}>
-              {w.name}
-            </li>
+            <div>
+              <li className="flex justify-center" key={w.id}>
+                <div className="flex flex-col w-[40%] border-1 border-pink-400 rounded-t-2xl overflow-hidden">
+                  <div className="flex justify-center font-bold text-[2rem] p-5 bg-primary overflow-hidden">
+                    <span>{w.name}</span>
+                  </div>
+                  <div className="flex justify-between text-text">
+                    <span>
+                      Last date completed: {w.date?.toLocaleDateString()}
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </div>
           ))}
         </ul>
       ) : (
         <p>No workouts found.</p>
-      )}
+      )} */}
     </div>
   );
 };
