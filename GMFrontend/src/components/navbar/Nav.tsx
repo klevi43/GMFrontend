@@ -23,7 +23,7 @@ const Nav = () => {
                   className="h-[4rem] mb-[1rem] pl-[0.5rem]"
                   src="/leaf-svgrepo-com.svg"
                   alt=""
-                />{" "}
+                />
                 <h1 className="font-Jost text-[2.1rem] invisible md:visible">
                   Growth Mindset
                 </h1>
