@@ -9,3 +9,8 @@ export type RegisterFormFieldsType = {
   label: string;
   type: string;
 };
+
+export type AddWorkoutFormFieldsType = {
+  name: string;
+  date: Date;
+};
