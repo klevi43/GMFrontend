@@ -6,7 +6,12 @@ import type Exercise from "../models/exercise";
 import type Set from "../models/set";
 import Nav from "../components/navbar/Nav";
 import ModalContainer from "../components/containers/ModalContainer";
-import LoginForm from "../components/form/loginForm/LoginForm";
+import AddWorkoutForm from "../components/form/addWorkoutForm/addWorkoutForm";
+import type { AddWorkoutFormSchema } from "../schemas/addWorkoutFormSchema";
+import type { SubmitHandler } from "react-hook-form";
+import { useServerError } from "../hooks/useServerError";
+import FormContainer from "../components/containers/FormContainer";
+
 const WorkoutDashboard = () => {
   const set: Set = {
     id: 20,
@@ -35,11 +40,28 @@ const WorkoutDashboard = () => {
   //   queryKey: ["workouts"],
   //   queryFn: workoutService.getMostRecentWorkouts,
   // });
+  const { serverError, setServerError } = useServerError();
+  const onSubmit: SubmitHandler<AddWorkoutFormSchema> = (data) => {
+    console.log(JSON.stringify(data));
+  };
   return (
     <div>
       <Nav />
       <h2 className="text-white">Workout Dashboard</h2>
       <ModalContainer></ModalContainer>
+      <FormContainer>
+        <AddWorkoutForm
+          onSubmit={onSubmit}
+          title="Add Workout"
+          defaultValues={{ name: "", date: new Date() }}
+          fields={[
+            { name: "name", label: "Workout Name", type: "text" },
+            { name: "date", label: "Date completed", type: "date" },
+          ]}
+          serverError={serverError}
+        />
+      </FormContainer>
+
       <div className="w-[90%] mx-auto">
         <div className="text-text text-end text-[4rem]">+</div>
       </div>
