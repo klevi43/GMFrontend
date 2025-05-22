@@ -13,6 +13,8 @@ import { useServerError } from "../hooks/useServerError";
 import FormContainer from "../components/containers/FormContainer";
 import TrashcanButton from "../components/icons/TrashcanButton";
 import EditButton from "../components/icons/EditButton";
+import { useAddWorkout } from "../hooks/useAddWorkout";
+import type { WorkoutInput } from "../types/inputTypes";
 const WorkoutDashboard = () => {
   const set: Set = {
     id: 20,
@@ -30,7 +32,7 @@ const WorkoutDashboard = () => {
     date: new Date(2025, 5, 19),
     exercises: [exercise, exercise],
   };
-
+  const { mutate: addWorkout } = useAddWorkout();
   const workouts: Workout[] = [workout, workout, workout];
   const [addWorkoutModalIsVisible, setAddWorkoutModalIsVisible] =
     useState(false);
@@ -48,9 +50,12 @@ const WorkoutDashboard = () => {
   //   queryFn: workoutService.getMostRecentWorkouts,
   // });
   const { serverError, setServerError } = useServerError();
-  const onSubmit: SubmitHandler<AddWorkoutFormSchema> = (data) => {
+  const onSubmit: SubmitHandler<AddWorkoutFormSchema> = (
+    data: WorkoutInput
+  ) => {
     console.log(JSON.stringify(data));
     setAddWorkoutModalIsVisible(!addWorkoutModalIsVisible);
+    return addWorkout(data);
   };
   return (
     <div>
