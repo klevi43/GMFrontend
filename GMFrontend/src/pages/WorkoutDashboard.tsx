@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import workoutService from "../services/workoutService";
 import { useQuery } from "@tanstack/react-query";
 import type Workout from "../models/workout";
@@ -31,7 +31,13 @@ const WorkoutDashboard = () => {
   };
 
   const workouts: Workout[] = [workout, workout, workout];
+  const [addWorkoutModalIsVisible, setAddWorkoutModalIsVisible] =
+    useState(false);
 
+  const showAddWorkoutFormModal = () => {
+    console.log(addWorkoutModalIsVisible);
+    setAddWorkoutModalIsVisible(!addWorkoutModalIsVisible);
+  };
   // const {
   //   data: workouts,
   //   isLoading,
@@ -43,27 +49,39 @@ const WorkoutDashboard = () => {
   const { serverError, setServerError } = useServerError();
   const onSubmit: SubmitHandler<AddWorkoutFormSchema> = (data) => {
     console.log(JSON.stringify(data));
+    setAddWorkoutModalIsVisible(!addWorkoutModalIsVisible);
   };
   return (
     <div>
       <Nav />
       <h2 className="text-white">Workout Dashboard</h2>
-      <ModalContainer></ModalContainer>
-      <FormContainer>
-        <AddWorkoutForm
-          onSubmit={onSubmit}
-          title="Add Workout"
-          defaultValues={{ name: "", date: new Date() }}
-          fields={[
-            { name: "name", label: "Workout Name", type: "text" },
-            { name: "date", label: "Date completed", type: "date" },
-          ]}
-          serverError={serverError}
-        />
-      </FormContainer>
+      {addWorkoutModalIsVisible && (
+        <ModalContainer>
+          <FormContainer>
+            <AddWorkoutForm
+              showForm={showAddWorkoutFormModal}
+              onSubmit={onSubmit}
+              title="Add Workout"
+              defaultValues={{ name: "", date: new Date() }}
+              fields={[
+                { name: "name", label: "Workout Name", type: "text" },
+                { name: "date", label: "Date completed", type: "date" },
+              ]}
+              serverError={serverError}
+            />
+          </FormContainer>
+        </ModalContainer>
+      )}
 
       <div className="w-[90%] mx-auto">
-        <div className="text-text text-end text-[4rem]">+</div>
+        <div className=" text-end">
+          <button
+            className="text-text text-[4rem] hover:text-white transition-all duration-300 cursor-pointer"
+            onClick={showAddWorkoutFormModal}
+          >
+            +
+          </button>
+        </div>
       </div>
       <div>
         <ul className="w-[100%]">
