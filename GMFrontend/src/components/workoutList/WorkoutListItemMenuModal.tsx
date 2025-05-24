@@ -18,7 +18,7 @@ const WorkoutListItemMenuModal = ({ handleOpenDeleteModalClick }: Props) => {
             <li>
               <button
                 onClick={handleOpenDeleteModalClick}
-                className="text-text hover:text-red-500   transition-all duration-300 cursor-pointer"
+                className="text-text hover:text-red-500"
               >
                 Delete
               </button>

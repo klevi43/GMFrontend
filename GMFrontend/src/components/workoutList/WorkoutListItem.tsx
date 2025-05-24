@@ -22,7 +22,9 @@ const WorkoutListItem = ({ workout }: Props) => {
   };
   const { openModal } = useModal();
   const handleOpenDeleteModalClick = () => {
+    console.log("click delete modal");
     setMenuIsVisible(!menuIsVisible);
+    console.log(menuIsVisible);
     openModal(workout);
   };
 
