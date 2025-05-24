@@ -7,6 +7,7 @@ import TrashCanButton from "../icons/TrashcanButton";
 import { div } from "motion/react-client";
 import WorkoutListItemMenuModal from "./WorkoutListItemMenuModal";
 import DeleteItemModal from "../modals/DeleteItemModal";
+import { useModal } from "../../hooks/useModal";
 
 interface Props {
   workout: Workout;
@@ -16,21 +17,13 @@ const WorkoutListItem = ({ workout }: Props) => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
   const [editWorkoutFormIsVisible, setEditWorkoutFormIsVisivle] =
     useState(false);
-  const [deleteWorkoutModalIsVisible, setDeleteWorkoutModalIsVisible] =
-    useState(false);
-
   const showMenu = () => {
-    console.log(menuIsVisible);
     setMenuIsVisible(!menuIsVisible);
   };
-
-  const showEditWorkoutForm = () => {
-    setEditWorkoutFormIsVisivle(!editWorkoutFormIsVisible);
-  };
-
-  const showDeleteWorkoutModal = () => {
-    setDeleteWorkoutModalIsVisible(!deleteWorkoutModalIsVisible);
-    showMenu();
+  const { openModal } = useModal();
+  const handleOpenDeleteModalClick = () => {
+    setMenuIsVisible(!menuIsVisible);
+    openModal(workout);
   };
 
   return (
@@ -42,14 +35,13 @@ const WorkoutListItem = ({ workout }: Props) => {
             <div>
               {menuIsVisible && (
                 <WorkoutListItemMenuModal
-                  showDeleteWorkoutModal={showDeleteWorkoutModal}
+                  handleOpenDeleteModalClick={handleOpenDeleteModalClick}
                 />
               )}
               <WorkoutListItemOptionsButton showMenu={showMenu} />
             </div>
           </div>
         </div>
-        {deleteWorkoutModalIsVisible && <p>text</p>}
       </li>
     </>
   );

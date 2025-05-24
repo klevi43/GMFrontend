@@ -1,7 +1,8 @@
+import { useModal } from "../../hooks/useModal";
 interface Props {
-  showDeleteWorkoutModal: () => void;
+  handleOpenDeleteModalClick: () => void;
 }
-const WorkoutListItemMenuModal = ({ showDeleteWorkoutModal }: Props) => {
+const WorkoutListItemMenuModal = ({ handleOpenDeleteModalClick }: Props) => {
   return (
     <>
       <div className="relative">
@@ -14,11 +15,13 @@ const WorkoutListItemMenuModal = ({ showDeleteWorkoutModal }: Props) => {
             <li className="text-text hover:text-white transition-all duration-300 cursor-pointer">
               Edit
             </li>
-            <li
-              onClick={showDeleteWorkoutModal}
-              className="text-text hover:text-red-500   transition-all duration-300 cursor-pointer"
-            >
-              Delete
+            <li>
+              <button
+                onClick={handleOpenDeleteModalClick}
+                className="text-text hover:text-red-500   transition-all duration-300 cursor-pointer"
+              >
+                Delete
+              </button>
             </li>
           </ul>
         </div>
