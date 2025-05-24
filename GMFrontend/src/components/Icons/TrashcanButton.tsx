@@ -1,6 +1,6 @@
 import React from "react";
 
-const Trashcan = () => {
+const TrashCanButton = () => {
   return (
     <div>
       <svg
@@ -17,4 +17,4 @@ const Trashcan = () => {
   );
 };
 
-export default Trashcan;
+export default TrashCanButton;

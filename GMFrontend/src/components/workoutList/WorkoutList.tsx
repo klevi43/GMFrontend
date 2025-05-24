@@ -5,6 +5,7 @@ import { useGetCurrentWorkouts } from "../../hooks/workoutHooks/useGetCurrentWor
 import WorkoutListItem from "./WorkoutListItem";
 const WorkoutList = () => {
   const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
+  console.log("render");
   return (
     <div>
       {isLoading && (

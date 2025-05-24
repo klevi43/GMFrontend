@@ -1,7 +1,7 @@
 import React from "react";
 import FormContainer from "../containers/FormContainer";
 import ModalContainer from "../containers/ModalContainer";
-import AddWorkoutForm from "../form/addWorkoutForm/addWorkoutForm";
+import AddWorkoutForm from "../form/addWorkoutForm/AddWorkoutForm";
 import { useAddWorkout } from "../../hooks/workoutHooks/useAddWorkout";
 import type { SubmitHandler } from "react-hook-form";
 import type { AddWorkoutFormSchema } from "../../schemas/addWorkoutFormSchema";
