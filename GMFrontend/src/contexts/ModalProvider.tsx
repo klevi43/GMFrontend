@@ -15,7 +15,6 @@ export const ModalProvider = ({ children }: Props) => {
   const [modalState, setModalState] = useState(modalObj);
   const openModal = (data: ModalContextType["data"]) => {
     setModalState({ data, isOpen: true, openModal, closeModal });
-    console.log(modalState);
   };
   const closeModal = () => {
     setModalState({ ...modalState, data: null, isOpen: false });

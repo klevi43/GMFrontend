@@ -40,6 +40,18 @@ class WorkoutService {
       withCredentials: true,
     });
   };
+  deleteWorkout = async (
+    workoutId: number
+  ): Promise<AxiosResponse<any, any>> => {
+    return await axiosInstance.delete("/workouts/delete", {
+      params: { workoutId },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      },
+    });
+  };
 }
 
 const workoutService = new WorkoutService();

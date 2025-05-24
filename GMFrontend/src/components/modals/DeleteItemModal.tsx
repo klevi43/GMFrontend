@@ -1,6 +1,8 @@
 import React from "react";
 import ModalContainer from "../containers/ModalContainer";
 import FormContainer from "../containers/FormContainer";
+import { useModal } from "../../hooks/useModal";
+import { useDeleteWorkout } from "../../hooks/workoutHooks/useDeleteWorkout";
 interface Props {
   title: string;
   deleteItemName: string;
@@ -14,6 +16,13 @@ const DeleteItemModal = ({
   warning,
   handleClose,
 }: Props) => {
+  const { data } = useModal();
+  const { mutate } = useDeleteWorkout();
+  const handleDeleteButtonClick = () => {
+    if (data) {
+      mutate(data.id);
+    }
+  };
   return (
     <>
       <ModalContainer>
@@ -32,7 +41,10 @@ const DeleteItemModal = ({
               >
                 Cancel
               </button>
-              <button className="bg-primary hover:bg-red-500 hover:text-white hover:cursor-pointer transition-all duration-300">
+              <button
+                onClick={handleDeleteButtonClick}
+                className="bg-primary hover:bg-red-500 hover:text-white hover:cursor-pointer transition-all duration-300"
+              >
                 Delete
               </button>
             </div>
