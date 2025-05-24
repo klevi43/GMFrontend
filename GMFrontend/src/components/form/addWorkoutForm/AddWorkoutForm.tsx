@@ -6,6 +6,7 @@ import { AddWorkoutFormSchema } from "../../../schemas/addWorkoutFormSchema";
 import type { AddWorkoutFormFieldsType } from "../../../types/formFieldsType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import ModalCloseButton from "../../modals/ModalCloseButton";
 type Props = {
   showForm: () => void;
   onSubmit: (data: AddWorkoutFormSchema) => void;
@@ -31,19 +32,10 @@ const AddWorkoutForm = ({
   });
   return (
     <div className="relative">
-      <div className="absolute -top-5 right-0">
-        <button
-          onClick={showForm}
-          className="text-[1.4rem]  text-end  text-text hover:text-white transition-all duration-300 cursor-pointer"
-        >
-          X
-        </button>
-      </div>
+      <ModalCloseButton showForm={showForm} />
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <FormTitle title={title} />
-        {/* {serverError.msg && ( */}
-        {/* <span className="text-red-500">{serverError.msg}</span> */}
-        {/* )} */}
+
         {fields.map((field) => (
           <div>
             <FormInputLabel name={field.label} />

@@ -1,4 +1,7 @@
-const WorkoutListItemMenuModal = () => {
+interface Props {
+  showDeleteWorkoutModal: () => void;
+}
+const WorkoutListItemMenuModal = ({ showDeleteWorkoutModal }: Props) => {
   return (
     <>
       <div className="relative">
@@ -11,7 +14,10 @@ const WorkoutListItemMenuModal = () => {
             <li className="text-text hover:text-white transition-all duration-300 cursor-pointer">
               Edit
             </li>
-            <li className="text-text hover:text-red-500   transition-all duration-300 cursor-pointer">
+            <li
+              onClick={showDeleteWorkoutModal}
+              className="text-text hover:text-red-500   transition-all duration-300 cursor-pointer"
+            >
               Delete
             </li>
           </ul>

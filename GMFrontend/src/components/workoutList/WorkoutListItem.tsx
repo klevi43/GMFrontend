@@ -6,6 +6,7 @@ import EditButton from "../icons/EditButton";
 import TrashCanButton from "../icons/TrashcanButton";
 import { div } from "motion/react-client";
 import WorkoutListItemMenuModal from "./WorkoutListItemMenuModal";
+import DeleteItemModal from "../modals/DeleteItemModal";
 
 interface Props {
   workout: Workout;
@@ -29,6 +30,7 @@ const WorkoutListItem = ({ workout }: Props) => {
 
   const showDeleteWorkoutModal = () => {
     setDeleteWorkoutModalIsVisible(!deleteWorkoutModalIsVisible);
+    showMenu();
   };
 
   return (
@@ -38,11 +40,16 @@ const WorkoutListItem = ({ workout }: Props) => {
           <div className="flex justify-between items-center">
             <WorkoutListItemDetails workout={workout} />
             <div>
-              {menuIsVisible && <WorkoutListItemMenuModal />}
+              {menuIsVisible && (
+                <WorkoutListItemMenuModal
+                  showDeleteWorkoutModal={showDeleteWorkoutModal}
+                />
+              )}
               <WorkoutListItemOptionsButton showMenu={showMenu} />
             </div>
           </div>
         </div>
+        {deleteWorkoutModalIsVisible && <p>text</p>}
       </li>
     </>
   );

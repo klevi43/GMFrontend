@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import type Workout from "../../models/workout";
 import { useGetCurrentWorkouts } from "../../hooks/workoutHooks/useGetCurrentWorkouts";
 
 import WorkoutListItem from "./WorkoutListItem";
+import DeleteItemModal from "../modals/DeleteItemModal";
 const WorkoutList = () => {
   const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
   console.log("render");
+  const [deleteWorkoutModalIsVisible, setDeleteWorkoutModalIsVisible] =
+    useState(false);
+  const showDeleteWorkoutModal = () => {
+    setDeleteWorkoutModalIsVisible(!deleteWorkoutModalIsVisible);
+  };
+
   return (
     <div>
       {isLoading && (
@@ -18,6 +25,7 @@ const WorkoutList = () => {
           {(error as Error).message}
         </p>
       )}
+
       <ul className="w-[100%] max-w-[1150px] mx-auto">
         {workouts
           ? workouts?.map((workout) => (
