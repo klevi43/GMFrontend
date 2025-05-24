@@ -16,7 +16,6 @@ class WorkoutService {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
           },
-          withCredentials: true,
         }
       );
       console.log(response.data);
@@ -36,8 +35,6 @@ class WorkoutService {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
-
-      withCredentials: true,
     });
   };
   deleteWorkout = async (
@@ -45,7 +42,10 @@ class WorkoutService {
   ): Promise<AxiosResponse<any, any>> => {
     return await axiosInstance.delete("/workouts/delete", {
       params: { workoutId },
-      withCredentials: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      },
     });
   };
 }
