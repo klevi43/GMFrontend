@@ -2,19 +2,16 @@ import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
 import AddWorkoutFormInputItem from "./AddWorkoutFormInputItem";
 import FormTitle from "../FormTitle";
-import type { ServerError } from "../../../types/serverErrorContextType";
 import { AddWorkoutFormSchema } from "../../../schemas/addWorkoutFormSchema";
 import type { AddWorkoutFormFieldsType } from "../../../types/formFieldsType";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { button, div } from "motion/react-client";
 import { useForm } from "react-hook-form";
 type Props = {
   showForm: () => void;
   onSubmit: (data: AddWorkoutFormSchema) => void;
   fields: AddWorkoutFormFieldsType[];
   title: string;
-  defaultValues: { name: ""; date: Date };
-  serverError: ServerError;
+  defaultValues: { name: ""; date: "" };
 };
 
 const AddWorkoutForm = ({
@@ -23,7 +20,6 @@ const AddWorkoutForm = ({
   fields,
   title,
   defaultValues,
-  serverError,
 }: Props) => {
   const {
     register,
@@ -45,9 +41,9 @@ const AddWorkoutForm = ({
       </div>
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <FormTitle title={title} />
-        {serverError.msg && (
-          <span className="text-red-500">{serverError.msg}</span>
-        )}
+        {/* {serverError.msg && ( */}
+        {/* <span className="text-red-500">{serverError.msg}</span> */}
+        {/* )} */}
         {fields.map((field) => (
           <div>
             <FormInputLabel name={field.label} />

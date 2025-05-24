@@ -18,35 +18,18 @@ import type { WorkoutInput } from "../types/inputTypes";
 import WorkoutList from "../components/workoutList/WorkoutList";
 import WorkoutListItem from "../components/workoutList/WorkoutListItem";
 import { useGetCurrentWorkouts } from "../hooks/workoutHooks/useGetCurrentWorkouts";
+import AddWorkoutFormModal from "../components/modals/AddWorkoutFormModal";
+import ShowElementButton from "../components/buttons/ShowElementButton";
 const WorkoutDashboard = () => {
-  const set: Set = {
-    id: 20,
-    weight: 20,
-    reps: 5,
-  };
-  const exercise: Exercise = {
-    id: 10,
-    name: "Bench Press",
-    sets: [set, set],
-  };
-  const workout: Workout = {
-    id: 0,
-    name: "Chest Day",
-    date: "2025-05-19",
-    exercises: [exercise, exercise],
-  };
-
   const mutation = useAddWorkout();
   // const workouts: Workout[] = [workout, workout, workout];
   const [addWorkoutModalIsVisible, setAddWorkoutModalIsVisible] =
     useState(false);
-
   const showAddWorkoutFormModal = () => {
     console.log(addWorkoutModalIsVisible);
     setAddWorkoutModalIsVisible(!addWorkoutModalIsVisible);
   };
-
-  const { serverError, setServerError } = useServerError();
+  // const { serverError, setServerError } = useServerError();
   const onSubmit: SubmitHandler<AddWorkoutFormSchema> = (
     data: WorkoutInput
   ) => {
@@ -57,60 +40,23 @@ const WorkoutDashboard = () => {
   return (
     <div>
       <Nav />
-      <h2 className="text-white">Workout Dashboard</h2>
+      <h2 className="mx-auto text-white">Workout Dashboard</h2>
       {addWorkoutModalIsVisible && (
-        <ModalContainer>
-          <FormContainer>
-            <AddWorkoutForm
-              showForm={showAddWorkoutFormModal}
-              onSubmit={onSubmit}
-              title="Add Workout"
-              defaultValues={{ name: "", date: new Date() }}
-              fields={[
-                { name: "name", label: "Workout Name", type: "text" },
-                { name: "date", label: "Date completed", type: "date" },
-              ]}
-              serverError={serverError}
-            />
-          </FormContainer>
-        </ModalContainer>
+        <AddWorkoutFormModal
+          showAddWorkoutFormModal={showAddWorkoutFormModal}
+        />
       )}
 
       <div className="w-[90%] mx-auto">
         <div className=" text-end">
-          <button
-            className="text-text text-[4rem] hover:text-white transition-all duration-300 cursor-pointer"
-            onClick={showAddWorkoutFormModal}
-          >
-            +
-          </button>
+          <ShowElementButton
+            styles="text-[4rem]"
+            content="+"
+            showElement={showAddWorkoutFormModal}
+          />
         </div>
       </div>
-
       <WorkoutList />
-
-      {/* {workouts && workouts.length > 0 ? (
-        <ul>
-          {workouts.map((w) => (
-            <div>
-              <li className="flex justify-center" key={w.id}>
-                <div className="flex flex-col w-[40%] border-1 border-pink-400 rounded-t-2xl overflow-hidden">
-                  <div className="flex justify-center font-bold text-[2rem] p-5 bg-primary overflow-hidden">
-                    <span>{w.name}</span>
-                  </div>
-                  <div className="flex justify-between text-text">
-                    <span>
-                      Last date completed: {w.date?.toLocaleDateString()}
-                    </span>
-                  </div>
-                </div>
-              </li>
-            </div>
-          ))}
-        </ul>
-      ) : (
-        <p>No workouts found.</p>
-      )} */}
     </div>
   );
 };
