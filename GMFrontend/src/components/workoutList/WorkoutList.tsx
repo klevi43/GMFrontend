@@ -1,32 +1,32 @@
 import React from "react";
-interface Props {
-  children: React.ReactNode;
-}
-const WorkoutList = ({ children }: Props) => {
+import type Workout from "../../models/workout";
+import { useGetCurrentWorkouts } from "../../hooks/workoutHooks/useGetCurrentWorkouts";
+
+import WorkoutListItem from "./WorkoutListItem";
+const WorkoutList = () => {
+  const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
   return (
     <div>
+      {isLoading && (
+        <p className="text-text text-[2rem] text-center ">
+          Loading workouts...
+        </p>
+      )}
+      {error && (
+        <p className="text-red-500 text-[2rem] text-center">
+          {(error as Error).message}
+        </p>
+      )}
       <ul className="w-[100%] max-w-[1150px] mx-auto">
-        {children}
-        {/* <li className="w-[100%] pb-2">
-          <div className=" border-l-8 border-[#99ff00] text-text  bg-background hover:shadow-lg hover:scale-96 transition-all duration-300 hover:text-primary">
-            <div className="flex justify-between items-baseline">
-              <div className="flex items-baseline px-3 py-[1.5rem]">
-                <div className="">
-                  <span className="font-bold  text-[2rem]">Chest Day</span>
-                </div>
-                <div className="text-[2rem] px-2"> | </div>
-                <div>
-                  <div className=" text-end text-[1.2rem]">05/20/2025</div>
-                </div>
-              </div>
-              <div className="pr-[1.5rem] ">
-                <button className="text-text text-[3rem] hover:text-white transition duration-300 cursor-pointer">
-                  ...
-                </button>
-              </div>
-            </div>
-          </div>
-        </li> */}
+        {workouts
+          ? workouts?.map((workout) => (
+              <WorkoutListItem key={workout.id} workout={workout} />
+            ))
+          : !isLoading && (
+              <p className="text-text  text-center text-[2rem]">
+                No workouts to show
+              </p>
+            )}
       </ul>
     </div>
   );

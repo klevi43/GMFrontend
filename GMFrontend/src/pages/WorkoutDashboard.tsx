@@ -17,6 +17,7 @@ import { useAddWorkout } from "../hooks/workoutHooks/useAddWorkout";
 import type { WorkoutInput } from "../types/inputTypes";
 import WorkoutList from "../components/workoutList/WorkoutList";
 import WorkoutListItem from "../components/workoutList/WorkoutListItem";
+import { useGetCurrentWorkouts } from "../hooks/workoutHooks/useGetCurrentWorkouts";
 const WorkoutDashboard = () => {
   const set: Set = {
     id: 20,
@@ -34,8 +35,9 @@ const WorkoutDashboard = () => {
     date: "2025-05-19",
     exercises: [exercise, exercise],
   };
+
   const mutation = useAddWorkout();
-  const workouts: Workout[] = [workout, workout, workout];
+  // const workouts: Workout[] = [workout, workout, workout];
   const [addWorkoutModalIsVisible, setAddWorkoutModalIsVisible] =
     useState(false);
 
@@ -85,11 +87,7 @@ const WorkoutDashboard = () => {
         </div>
       </div>
 
-      <WorkoutList>
-        {workouts.map((w) => (
-          <WorkoutListItem workout={w} />
-        ))}
-      </WorkoutList>
+      <WorkoutList />
 
       {/* {workouts && workouts.length > 0 ? (
         <ul>
