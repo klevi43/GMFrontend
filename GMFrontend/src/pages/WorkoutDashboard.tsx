@@ -13,8 +13,10 @@ import { useServerError } from "../hooks/useServerError";
 import FormContainer from "../components/containers/FormContainer";
 import TrashcanButton from "../components/icons/TrashcanButton";
 import EditButton from "../components/icons/EditButton";
-import { useAddWorkout } from "../hooks/useAddWorkout";
+import { useAddWorkout } from "../hooks/workoutHooks/useAddWorkout";
 import type { WorkoutInput } from "../types/inputTypes";
+import WorkoutList from "../components/workoutList/WorkoutList";
+import WorkoutListItem from "../components/workoutList/WorkoutListItem";
 const WorkoutDashboard = () => {
   const set: Set = {
     id: 20,
@@ -29,10 +31,10 @@ const WorkoutDashboard = () => {
   const workout: Workout = {
     id: 0,
     name: "Chest Day",
-    date: new Date(2025, 5, 19),
+    date: "2025-05-19",
     exercises: [exercise, exercise],
   };
-  const { mutate: addWorkout } = useAddWorkout();
+  const mutation = useAddWorkout();
   const workouts: Workout[] = [workout, workout, workout];
   const [addWorkoutModalIsVisible, setAddWorkoutModalIsVisible] =
     useState(false);
@@ -41,21 +43,14 @@ const WorkoutDashboard = () => {
     console.log(addWorkoutModalIsVisible);
     setAddWorkoutModalIsVisible(!addWorkoutModalIsVisible);
   };
-  // const {
-  //   data: workouts,
-  //   isLoading,
-  //   error,
-  // } = useQuery({
-  //   queryKey: ["workouts"],
-  //   queryFn: workoutService.getMostRecentWorkouts,
-  // });
+
   const { serverError, setServerError } = useServerError();
   const onSubmit: SubmitHandler<AddWorkoutFormSchema> = (
     data: WorkoutInput
   ) => {
-    console.log(JSON.stringify(data));
+    //console.log(JSON.stringify(data));
     setAddWorkoutModalIsVisible(!addWorkoutModalIsVisible);
-    return addWorkout(data);
+    mutation.mutate(data);
   };
   return (
     <div>
@@ -89,71 +84,12 @@ const WorkoutDashboard = () => {
           </button>
         </div>
       </div>
-      <div className="mx-auto">
-        {/* TODO: MAKE THIS INTO SEPARATE COMPONENTS */}
-        <ul className="w-[100%] max-w-[1150px] mx-auto">
-          <li className="w-[100%] pb-2">
-            <div className=" border-l-8 border-[#99ff00] text-text  bg-background hover:shadow-lg hover:scale-105 transition-all duration-300 hover:text-primary">
-              <div className="flex justify-between items-baseline">
-                <div className="flex items-baseline px-3 py-[1.5rem]">
-                  <div className="">
-                    <span className="font-bold  text-[2rem]">Chest Day</span>
-                  </div>
-                  <div className="text-[2rem] px-2"> | </div>
-                  <div>
-                    <div className=" text-end text-[1.2rem]">05/20/2025</div>
-                  </div>
-                </div>
-                <div className="pr-[1.5rem] ">
-                  <button className="text-text text-[3rem] hover:text-white transition duration-300 cursor-pointer">
-                    ...
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li className="w-[100%] pb-2">
-            <div className=" border-l-8 border-[#99ff00] text-text  bg-background hover:shadow-lg hover:scale-105 transition-all duration-300 hover:text-primary">
-              <div className="flex justify-between items-baseline">
-                <div className="flex items-baseline px-3 py-[1.5rem]">
-                  <div className="">
-                    <span className="font-bold  text-[2rem]">Chest Day</span>
-                  </div>
-                  <div className="text-[2rem] px-2"> | </div>
-                  <div>
-                    <div className=" text-end text-[1.2rem]">05/20/2025</div>
-                  </div>
-                </div>
-                <div className="pr-[1.5rem] ">
-                  <button className="text-text text-[3rem] hover:text-white transition duration-300 cursor-pointer">
-                    ...
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li className="w-[100%] pb-2">
-            <div className=" border-l-8 border-[#99ff00] text-text  bg-background hover:shadow-lg hover:scale-105 transition-all duration-300 hover:text-primary">
-              <div className="flex justify-between items-baseline">
-                <div className="flex items-baseline px-3 py-[1.5rem]">
-                  <div className="">
-                    <span className="font-bold  text-[2rem]">Chest Day</span>
-                  </div>
-                  <div className="text-[2rem] px-2"> | </div>
-                  <div>
-                    <div className=" text-end text-[1.2rem]">05/20/2025</div>
-                  </div>
-                </div>
-                <div className="pr-[1.5rem] ">
-                  <button className="text-text text-[3rem] hover:text-white transition duration-300 cursor-pointer">
-                    ...
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
+
+      <WorkoutList>
+        {workouts.map((w) => (
+          <WorkoutListItem workout={w} />
+        ))}
+      </WorkoutList>
 
       {/* {workouts && workouts.length > 0 ? (
         <ul>

@@ -1,4 +1,4 @@
 export type WorkoutInput = {
   name: string;
-  date: Date;
+  date: string;
 };

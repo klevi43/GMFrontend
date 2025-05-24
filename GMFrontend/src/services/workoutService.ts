@@ -4,6 +4,7 @@ import type Workout from "../models/workout";
 import axiosInstance from "./axiosInstance";
 import type { AddWorkoutFormFieldsType } from "../types/formFieldsType";
 import type { WorkoutInput } from "../types/inputTypes";
+import { header } from "motion/react-client";
 class WorkoutService {
   getMostRecentWorkouts = async (): Promise<Workout[]> => {
     try {
@@ -29,7 +30,15 @@ class WorkoutService {
   addWorkout = async (
     WorkoutInput: WorkoutInput
   ): Promise<AxiosResponse<Workout, any>> => {
-    return await axiosInstance.post("/workouts/create", WorkoutInput);
+    return await axiosInstance.post("/workouts/create", WorkoutInput, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      },
+
+      withCredentials: true,
+    });
   };
 }
 
