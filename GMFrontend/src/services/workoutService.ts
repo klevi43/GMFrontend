@@ -2,9 +2,7 @@ import type { AxiosResponse } from "axios";
 import { GET_CURRENT_WORKOUTS } from "../constants/workoutEndpoints";
 import type Workout from "../models/workout";
 import axiosInstance from "./axiosInstance";
-import type { AddWorkoutFormFieldsType } from "../types/formFieldsType";
 import type { WorkoutInput } from "../types/inputTypes";
-import { header } from "motion/react-client";
 class WorkoutService {
   getMostRecentWorkouts = async (): Promise<Workout[]> => {
     try {

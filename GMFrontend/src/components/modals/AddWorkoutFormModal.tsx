@@ -4,15 +4,13 @@ import ModalContainer from "../containers/ModalContainer";
 import AddWorkoutForm from "../form/addWorkoutForm/AddWorkoutForm";
 import { useAddWorkout } from "../../hooks/workoutHooks/useAddWorkout";
 import type { SubmitHandler } from "react-hook-form";
-import type { AddWorkoutFormSchema } from "../../schemas/addWorkoutFormSchema";
+import type { WorkoutFormSchema } from "../../schemas/WorkoutFormSchema";
 import type { WorkoutInput } from "../../types/inputTypes";
 interface Props {
   showAddWorkoutFormModal: () => void;
 }
 const AddWorkoutFormModal = ({ showAddWorkoutFormModal }: Props) => {
-  const onSubmit: SubmitHandler<AddWorkoutFormSchema> = (
-    data: WorkoutInput
-  ) => {
+  const onSubmit: SubmitHandler<WorkoutFormSchema> = (data: WorkoutInput) => {
     //console.log(JSON.stringify(data));
 
     mutation.mutate(data);

@@ -1,4 +1,4 @@
-import type { AddWorkoutFormSchema } from "../schemas/addWorkoutFormSchema";
+import type { WorkoutFormSchema } from "../schemas/WorkoutFormSchema";
 
 export type LoginFormFieldsType = {
   name: "email" | "password";
@@ -12,8 +12,8 @@ export type RegisterFormFieldsType = {
   type: string;
 };
 
-export type AddWorkoutFormFieldsType = {
-  name: keyof AddWorkoutFormSchema;
+export type WorkoutFormFieldsType = {
+  name: keyof WorkoutFormSchema;
   label: string;
   type: string;
 };

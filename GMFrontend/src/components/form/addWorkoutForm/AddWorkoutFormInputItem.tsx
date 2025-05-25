@@ -3,7 +3,7 @@ import React from "react";
 import type { FieldErrors, UseFormRegister } from "react-hook-form";
 import type { LoginFormSchema } from "../../../schemas/loginFormSchema";
 import type { ZodSchema } from "zod";
-import { AddWorkoutFormSchema } from "../../../schemas/addWorkoutFormSchema";
+import { AddWorkoutFormSchema } from "../../../schemas/WorkoutFormSchema";
 interface Props {
   name: keyof AddWorkoutFormSchema;
   type: string;

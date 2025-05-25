@@ -1,7 +1,7 @@
 import * as z from "zod";
 import { FIELD_NOT_EMPTY_MSG } from "../constants/formErrorMsgs";
 
-export const AddWorkoutFormSchema = z.object({
+export const WorkoutFormSchema = z.object({
   name: z.string().nonempty(FIELD_NOT_EMPTY_MSG),
   date: z
     .string()
@@ -24,4 +24,4 @@ export const AddWorkoutFormSchema = z.object({
     ),
 });
 
-export type AddWorkoutFormSchema = z.infer<typeof AddWorkoutFormSchema>;
+export type WorkoutFormSchema = z.infer<typeof WorkoutFormSchema>;

@@ -2,15 +2,15 @@ import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
 import AddWorkoutFormInputItem from "./AddWorkoutFormInputItem";
 import FormTitle from "../FormTitle";
-import { AddWorkoutFormSchema } from "../../../schemas/addWorkoutFormSchema";
-import type { AddWorkoutFormFieldsType } from "../../../types/formFieldsType";
+import { WorkoutFormSchema } from "../../../schemas/WorkoutFormSchema";
+import type { WorkoutFormFieldsType } from "../../../types/formFieldsType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import ModalCloseButton from "../../modals/ModalCloseButton";
 type Props = {
   showForm: () => void;
-  onSubmit: (data: AddWorkoutFormSchema) => void;
-  fields: AddWorkoutFormFieldsType[];
+  onSubmit: (data: WorkoutFormSchema) => void;
+  fields: WorkoutFormFieldsType[];
   title: string;
   defaultValues: { name: ""; date: "" };
 };
@@ -26,8 +26,8 @@ const AddWorkoutForm = ({
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<AddWorkoutFormSchema>({
-    resolver: zodResolver(AddWorkoutFormSchema),
+  } = useForm<WorkoutFormSchema>({
+    resolver: zodResolver(WorkoutFormSchema),
     defaultValues,
   });
   return (
