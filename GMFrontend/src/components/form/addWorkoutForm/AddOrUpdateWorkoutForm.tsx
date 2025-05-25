@@ -1,7 +1,7 @@
 import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
 import WorkoutFormInputItem from "./WorkoutFormInputItem";
-import FormTitle from "../FormTitle";
+import Title from "../Title";
 import { WorkoutFormSchema } from "../../../schemas/WorkoutFormSchema";
 import type { WorkoutFormFieldsType } from "../../../types/formFieldsType";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,7 +38,7 @@ const AddOrUpdateWorkoutForm = ({
     <div className="relative">
       <ModalCloseButton closeModal={closeModal} />
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-        <FormTitle title={title} />
+        <Title title={title} />
         {error instanceof Error && (
           <ErrorMessage fontSize="1rem" message={error.message} />
         )}

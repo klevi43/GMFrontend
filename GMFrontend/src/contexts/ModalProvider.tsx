@@ -50,6 +50,7 @@ export const ModalProvider = ({ children }: Props) => {
           <DeleteItemModal
             title="Workout"
             deleteItemName={modalState.data.name}
+            warning="This will delete all exercises and sets in this workout."
             handleClose={closeModal}
           />
         )}

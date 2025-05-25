@@ -2,7 +2,7 @@ import React from "react";
 interface Props {
   title: string;
 }
-const FormTitle = ({ title }: Props) => {
+const Title = ({ title }: Props) => {
   return (
     <>
       <h2 className="font-bold text-[2rem] text-white text-center mb-[1rem]">
@@ -12,4 +12,4 @@ const FormTitle = ({ title }: Props) => {
   );
 };
 
-export default FormTitle;
+export default Title;

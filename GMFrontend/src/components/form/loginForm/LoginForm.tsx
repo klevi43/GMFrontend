@@ -8,7 +8,7 @@ import { z } from "zod";
 import FormInputItem from "./LoginFormInputItem";
 import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
-import FormTitle from "../FormTitle";
+import Title from "../Title";
 import type { ServerError } from "../../../types/serverErrorContextType";
 import { LoginFormSchema } from "../../../schemas/loginFormSchema";
 import type { LoginFormFieldsType } from "../../../types/formFieldsType";
@@ -41,7 +41,7 @@ const LoginForm = ({
   return (
     // handleSubmit is from Zod and validates form onSumbit is my function
     <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-      <FormTitle title={title} />
+      <Title title={title} />
       {serverError.msg && (
         <span className="text-red-500">{serverError.msg}</span>
       )}

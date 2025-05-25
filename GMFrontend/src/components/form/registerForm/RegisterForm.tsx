@@ -8,7 +8,7 @@ import { z } from "zod";
 import RegisterFormInputItem from "../registerForm/RegisterFormInputItem";
 import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
-import FormTitle from "../FormTitle";
+import Title from "../Title";
 import type { ServerError } from "../../../types/serverErrorContextType";
 
 import type { RegisterFormFieldsType } from "../../../types/formFieldsType";
@@ -42,7 +42,7 @@ const RegisterForm = ({
   return (
     // handleSubmit is from Zod and validates form onSumbit is my function
     <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-      <FormTitle title={title} />
+      <Title title={title} />
       {serverError.msg && (
         <span className="text-red-500">{serverError.msg}</span>
       )}
