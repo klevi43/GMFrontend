@@ -2,8 +2,13 @@ import React, { createContext, useState } from "react";
 import type ModalContextType from "../types/modalContextType";
 import DeleteItemModal from "../components/modals/DeleteItemModal";
 import { p } from "motion/react-client";
-import { ADD_TYPE, DELETE_TYPE } from "../constants/modalConstants";
+import {
+  ADD_TYPE,
+  DELETE_TYPE,
+  UPDATE_TYPE,
+} from "../constants/modalConstants";
 import AddWorkoutFormModal from "../components/modals/AddWorkoutFormModal";
+import UpdateWorkoutFormModal from "../components/modals/UpdateWorkoutFormModal";
 interface Props {
   children: React.ReactNode;
 }
@@ -15,6 +20,7 @@ const modalObj: ModalContextType = {
   closeModal: () => {},
 };
 const ModalContext = createContext<ModalContextType>(modalObj);
+
 export const ModalProvider = ({ children }: Props) => {
   const [modalState, setModalState] = useState(modalObj);
   const openModal = (
@@ -32,6 +38,9 @@ export const ModalProvider = ({ children }: Props) => {
   return (
     <ModalContext.Provider value={{ ...modalState, openModal, closeModal }}>
       {children}
+      {modalState.type === UPDATE_TYPE &&
+        modalState.isOpen &&
+        modalState.data && <UpdateWorkoutFormModal />}
       {modalState.type === ADD_TYPE && modalState.isOpen && (
         <AddWorkoutFormModal />
       )}

@@ -12,7 +12,7 @@ type Props = {
   onSubmit: (data: WorkoutFormSchema) => void;
   fields: WorkoutFormFieldsType[];
   title: string;
-  defaultValues: { name: ""; date: "" };
+  defaultValues: { name: string; date: string };
 };
 
 const AddOrUpdateWorkoutForm = ({

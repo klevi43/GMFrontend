@@ -7,11 +7,6 @@ import DeleteItemModal from "../modals/DeleteItemModal";
 const WorkoutList = () => {
   const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
   console.log("render");
-  const [deleteWorkoutModalIsVisible, setDeleteWorkoutModalIsVisible] =
-    useState(false);
-  const showDeleteWorkoutModal = () => {
-    setDeleteWorkoutModalIsVisible(!deleteWorkoutModalIsVisible);
-  };
 
   return (
     <div>

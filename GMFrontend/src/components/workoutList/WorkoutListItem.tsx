@@ -6,6 +6,8 @@ import WorkoutListItemOptionsButton from "./WorkoutListItemOptionsButton";
 import WorkoutListItemMenuModal from "./WorkoutListItemMenuModal";
 import DeleteItemModal from "../modals/DeleteItemModal";
 import { useModal } from "../../hooks/useModal";
+import { UPDATE } from "../../constants/workoutEndpoints";
+import { DELETE_TYPE, UPDATE_TYPE } from "../../constants/modalConstants";
 
 interface Props {
   workout: Workout;
@@ -20,10 +22,13 @@ const WorkoutListItem = ({ workout }: Props) => {
   };
   const { openModal } = useModal();
   const handleOpenDeleteModalClick = () => {
-    console.log("click delete modal");
     setMenuIsVisible(!menuIsVisible);
-    console.log(menuIsVisible);
-    openModal("delete", workout);
+
+    openModal(DELETE_TYPE, workout);
+  };
+  const handleOpenUpdateModalClick = () => {
+    setMenuIsVisible(!menuIsVisible);
+    openModal(UPDATE_TYPE, workout);
   };
 
   return (
@@ -35,6 +40,7 @@ const WorkoutListItem = ({ workout }: Props) => {
             <div>
               {menuIsVisible && (
                 <WorkoutListItemMenuModal
+                  handleOpenUpdateModalClick={handleOpenUpdateModalClick}
                   handleOpenDeleteModalClick={handleOpenDeleteModalClick}
                 />
               )}
