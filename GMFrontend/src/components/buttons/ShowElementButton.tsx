@@ -9,7 +9,7 @@ const ShowElementButton = ({ styles, content, showElement }: Props) => {
   return (
     <>
       <button
-        className={`text-text ${styles} hover:text-white transition-all duration-300 cursor-pointer`}
+        className={` ${styles}  transition-all duration-300 cursor-pointer`}
         onClick={showElement}
       >
         {content}

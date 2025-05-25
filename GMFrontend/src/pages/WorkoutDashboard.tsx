@@ -14,11 +14,11 @@ const WorkoutDashboard = () => {
       <Nav />
       <h2 className="mx-auto text-white">Workout Dashboard</h2>
 
-      <div className="w-[90%] mx-auto">
+      <div className="max-w-{1000px] w-[90%] mx-auto">
         <div className=" flex justify-between items-baseline">
           <Title title="Workout Dashboard" styles="text-[3rem]" />
           <ShowElementButton
-            styles="text-[3.5rem]"
+            styles="text-[3.5rem] text-text hover:text-white"
             content="+"
             showElement={() => openModal(ADD_TYPE, null)}
           />
