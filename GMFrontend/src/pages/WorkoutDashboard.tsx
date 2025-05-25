@@ -5,6 +5,7 @@ import AddWorkoutFormModal from "../components/modals/AddWorkoutFormModal";
 import ShowElementButton from "../components/buttons/ShowElementButton";
 import { useModal } from "../hooks/useModal";
 import { ADD_TYPE } from "../constants/modalConstants";
+import Title from "../components/form/Title";
 const WorkoutDashboard = () => {
   const { openModal } = useModal();
 
@@ -14,9 +15,10 @@ const WorkoutDashboard = () => {
       <h2 className="mx-auto text-white">Workout Dashboard</h2>
 
       <div className="w-[90%] mx-auto">
-        <div className=" text-end">
+        <div className=" flex justify-between items-baseline">
+          <Title title="Workout Dashboard" styles="text-[3rem]" />
           <ShowElementButton
-            styles="text-[4rem]"
+            styles="text-[3.5rem]"
             content="+"
             showElement={() => openModal(ADD_TYPE, null)}
           />

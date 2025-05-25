@@ -7,6 +7,8 @@ import WorkoutListItemMenuModal from "./WorkoutListItemMenuModal";
 import { useModal } from "../../hooks/useModal";
 
 import { DELETE_TYPE, UPDATE_TYPE } from "../../constants/modalConstants";
+import { Link } from "react-router";
+import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/workoutEndpoints";
 
 interface Props {
   workout: Workout;
@@ -34,7 +36,9 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
       <li className="w-[100%] pb-2 hover:pl-4 transition-all duration-300">
         <div className=" border-l-8 border-primary text-text  bg-background  transition-all duration-300  hover:text-primary">
           <div className="flex justify-between items-center">
-            <WorkoutListItemDetails workout={workout} />
+            <Link to={WORKOUTS_ENDPOINT + WORKOUT}>
+              <WorkoutListItemDetails workout={workout} />
+            </Link>
             <div>
               {menuIsVisible && (
                 <WorkoutListItemMenuModal

@@ -1,11 +1,16 @@
 import React from "react";
 interface Props {
   title: string;
+  styles?: string;
 }
-const Title = ({ title }: Props) => {
+const Title = ({ title, styles }: Props) => {
   return (
     <>
-      <h2 className="font-bold text-[2rem] text-white text-center mb-[1rem]">
+      <h2
+        className={`font-bold text-white ${
+          styles ? styles : "text-center text-[2rem] mb-4"
+        }`}
+      >
         {title}
       </h2>
     </>
