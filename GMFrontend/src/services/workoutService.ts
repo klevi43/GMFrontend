@@ -3,6 +3,7 @@ import {
   CREATE,
   DELETE,
   UPDATE,
+  WORKOUT,
   WORKOUTS_ENDPOINT,
 } from "../constants/workoutEndpoints";
 import type Workout from "../models/workout";
@@ -24,6 +25,16 @@ class WorkoutService {
       console.log(error);
       throw error;
     }
+  };
+
+  getWorkout = async (workoutId: number): Promise<Workout> => {
+    return await axiosInstance.get(WORKOUTS_ENDPOINT + WORKOUT, {
+      params: { workoutId },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      },
+    });
   };
 
   addWorkout = async (
