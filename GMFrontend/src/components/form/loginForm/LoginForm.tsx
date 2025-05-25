@@ -56,7 +56,7 @@ const LoginForm = ({
           />
         </div>
       ))}
-      {!isSubmitting && <FormSubmitButton />}
+      <FormSubmitButton isSubmitting={isSubmitting} />
     </form>
   );
 };

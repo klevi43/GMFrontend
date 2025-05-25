@@ -4,7 +4,6 @@ import {
   type SubmitHandler,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import RegisterFormInputItem from "../registerForm/RegisterFormInputItem";
 import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
@@ -57,7 +56,7 @@ const RegisterForm = ({
           />
         </div>
       ))}
-      {!isSubmitting && <FormSubmitButton />}
+      <FormSubmitButton isSubmitting={isSubmitting} />
     </form>
   );
 };
