@@ -42,7 +42,7 @@ export const useAddWorkout = (
       closeModal();
     },
     onError: (error, variables, context) => {
-      console.log(error);
+      options?.onError?.(error, variables, context);
     },
   });
 };

@@ -1,6 +1,4 @@
-import { input } from "motion/react-client";
-import React from "react";
-import type { FieldErrors, UseFormRegister } from "react-hook-form";
+import type { UseFormRegister } from "react-hook-form";
 
 import { WorkoutFormSchema } from "../../../schemas/WorkoutFormSchema";
 interface Props {

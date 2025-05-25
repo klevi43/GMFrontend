@@ -29,6 +29,7 @@ const UpdateWorkoutFormModal = () => {
               { name: "name", label: "Workout Name", type: "text" },
               { name: "date", label: "Date completed", type: "date" },
             ]}
+            error={mutation.error}
           />
         </FormContainer>
       </ModalContainer>

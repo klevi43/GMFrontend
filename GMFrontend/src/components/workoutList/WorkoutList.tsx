@@ -2,7 +2,7 @@ import { useGetCurrentWorkouts } from "../../hooks/workoutHooks/useGetCurrentWor
 import React from "react";
 import WorkoutListItem from "./WorkoutListItem";
 
-const WorkoutList = () => {
+const WorkoutList = React.memo(() => {
   const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
   console.log("render");
 
@@ -32,6 +32,6 @@ const WorkoutList = () => {
       </ul>
     </div>
   );
-};
+});
 
 export default WorkoutList;

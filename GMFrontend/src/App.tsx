@@ -8,7 +8,6 @@ import { ServerErrorProvider } from "./contexts/ServerErrorProvider";
 import WorkoutDashboard from "./pages/WorkoutDashboard";
 import Register from "./pages/Register";
 import { WorkoutsProvider } from "./contexts/WorkoutProvider";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ModalProvider } from "./contexts/ModalProvider";
 
 function App() {

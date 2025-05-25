@@ -1,6 +1,6 @@
 import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
-import WorkoutFormInputItem from "./AddWorkoutFormInputItem";
+import WorkoutFormInputItem from "./WorkoutFormInputItem";
 import FormTitle from "../FormTitle";
 import { WorkoutFormSchema } from "../../../schemas/WorkoutFormSchema";
 import type { WorkoutFormFieldsType } from "../../../types/formFieldsType";
@@ -8,11 +8,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import ModalCloseButton from "../../modals/ModalCloseButton";
 import { useModal } from "../../../hooks/useModal";
+import ErrorMessage from "../../messages/ErrorMessage";
 type Props = {
   onSubmit: (data: WorkoutFormSchema) => void;
   fields: WorkoutFormFieldsType[];
   title: string;
   defaultValues: { name: string; date: string };
+  error: unknown;
 };
 
 const AddOrUpdateWorkoutForm = ({
@@ -20,6 +22,7 @@ const AddOrUpdateWorkoutForm = ({
   fields,
   title,
   defaultValues,
+  error,
 }: Props) => {
   const {
     register,
@@ -36,9 +39,14 @@ const AddOrUpdateWorkoutForm = ({
       <ModalCloseButton closeModal={closeModal} />
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <FormTitle title={title} />
-
+        {error instanceof Error && (
+          <ErrorMessage
+            fontSize="1rem"
+            message="Unable to add workout. Please try again later."
+          />
+        )}
         {fields.map((field) => (
-          <div>
+          <div key={field.name}>
             <FormInputLabel name={field.label} />
             <WorkoutFormInputItem
               type={field.type}
@@ -48,7 +56,7 @@ const AddOrUpdateWorkoutForm = ({
             />
           </div>
         ))}
-        {!isSubmitting && <FormSubmitButton />}
+        {<FormSubmitButton isSubmitting={isSubmitting} />}
       </form>
     </div>
   );
