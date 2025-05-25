@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import type Workout from "../../models/workout";
 import WorkoutListItemDetails from "./WorkoutListItemDetails";
 import WorkoutListItemOptionsButton from "./WorkoutListItemOptionsButton";
-import EditButton from "../icons/EditButton";
-import TrashCanButton from "../icons/TrashcanButton";
-import { div } from "motion/react-client";
+
 import WorkoutListItemMenuModal from "./WorkoutListItemMenuModal";
 import DeleteItemModal from "../modals/DeleteItemModal";
 import { useModal } from "../../hooks/useModal";
@@ -25,7 +23,7 @@ const WorkoutListItem = ({ workout }: Props) => {
     console.log("click delete modal");
     setMenuIsVisible(!menuIsVisible);
     console.log(menuIsVisible);
-    openModal(workout);
+    openModal("delete", workout);
   };
 
   return (

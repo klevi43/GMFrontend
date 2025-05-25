@@ -2,23 +2,25 @@ import React from "react";
 import FormContainer from "../containers/FormContainer";
 import ModalContainer from "../containers/ModalContainer";
 import AddOrUpdateWorkoutForm from "../form/addWorkoutForm/AddOrUpdateWorkoutForm";
-import { useAddWorkout } from "../../hooks/workoutHooks/useAddWorkout";
 import type { SubmitHandler } from "react-hook-form";
 import type { WorkoutFormSchema } from "../../schemas/WorkoutFormSchema";
 import type { WorkoutInput } from "../../types/inputTypes";
-
-const AddWorkoutFormModal = () => {
+import { useUpdateWorkout } from "../../hooks/workoutHooks/useUpdateWorkout";
+interface Props {
+  showUpdateWorkoutFormModal: () => void;
+}
+const UpdateWorkoutFormModal = ({ showUpdateWorkoutFormModal }: Props) => {
   const onSubmit: SubmitHandler<WorkoutFormSchema> = (data: WorkoutInput) => {
-    //console.log(JSON.stringify(data));
-
     mutation.mutate(data);
   };
-  const mutation = useAddWorkout();
+
+  const mutation = useUpdateWorkout();
   return (
     <>
       <ModalContainer>
         <FormContainer>
           <AddOrUpdateWorkoutForm
+            showForm={showUpdateWorkoutFormModal}
             onSubmit={onSubmit}
             title="Add Workout"
             defaultValues={{ name: "", date: "" }}
@@ -33,4 +35,4 @@ const AddWorkoutFormModal = () => {
   );
 };
 
-export default AddWorkoutFormModal;
+export default UpdateWorkoutFormModal;

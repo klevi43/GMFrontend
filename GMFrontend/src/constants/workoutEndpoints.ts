@@ -1,1 +1,4 @@
-export const GET_CURRENT_WORKOUTS = "/workouts";
+export const WORKOUTS_ENDPOINT = "/workouts";
+export const CREATE = "/create";
+export const UPDATE = "/update";
+export const DELETE = "/delete";

@@ -1,13 +1,13 @@
 import React from "react";
 interface Props {
-  showForm: () => void;
+  closeModal: () => void;
 }
-const ModalCloseButton = ({ showForm }: Props) => {
+const ModalCloseButton = ({ closeModal }: Props) => {
   return (
     <>
       <div className="absolute -top-5 right-0">
         <button
-          onClick={showForm}
+          onClick={closeModal}
           className="text-[1.4rem]  text-end  text-text hover:text-white transition-all duration-300 cursor-pointer"
         >
           X

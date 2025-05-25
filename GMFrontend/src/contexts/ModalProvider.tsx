@@ -2,10 +2,13 @@ import React, { createContext, useState } from "react";
 import type ModalContextType from "../types/modalContextType";
 import DeleteItemModal from "../components/modals/DeleteItemModal";
 import { p } from "motion/react-client";
+import { ADD_TYPE, DELETE_TYPE } from "../constants/modalConstants";
+import AddWorkoutFormModal from "../components/modals/AddWorkoutFormModal";
 interface Props {
   children: React.ReactNode;
 }
 const modalObj: ModalContextType = {
+  type: null,
   data: null,
   isOpen: false,
   openModal: () => {},
@@ -14,8 +17,11 @@ const modalObj: ModalContextType = {
 const ModalContext = createContext<ModalContextType>(modalObj);
 export const ModalProvider = ({ children }: Props) => {
   const [modalState, setModalState] = useState(modalObj);
-  const openModal = (data: ModalContextType["data"]) => {
-    setModalState({ data, isOpen: true, openModal, closeModal });
+  const openModal = (
+    type: ModalContextType["type"],
+    data: ModalContextType["data"]
+  ) => {
+    setModalState({ type, data, isOpen: true, openModal, closeModal });
     console.log(data);
   };
   const closeModal = () => {
@@ -26,22 +32,18 @@ export const ModalProvider = ({ children }: Props) => {
   return (
     <ModalContext.Provider value={{ ...modalState, openModal, closeModal }}>
       {children}
-      {/* {modalState.isOpen && modalState.data ? (
-        <DeleteItemModal
-          title="Workout"
-          deleteItemName={modalState.data.name}
-          handleClose={closeModal}
-        />
-      ) : (
-        <p className="text-red-500 text-[5rem]">Modal not loading </p>
-      )} */}
-      {modalState.isOpen && modalState.data && (
-        <DeleteItemModal
-          title="Workout"
-          deleteItemName={modalState.data.name}
-          handleClose={closeModal}
-        />
+      {modalState.type === ADD_TYPE && modalState.isOpen && (
+        <AddWorkoutFormModal />
       )}
+      {modalState.type === DELETE_TYPE &&
+        modalState.isOpen &&
+        modalState.data && (
+          <DeleteItemModal
+            title="Workout"
+            deleteItemName={modalState.data.name}
+            handleClose={closeModal}
+          />
+        )}
     </ModalContext.Provider>
   );
 };

@@ -1,17 +1,16 @@
 import { input } from "motion/react-client";
 import React from "react";
 import type { FieldErrors, UseFormRegister } from "react-hook-form";
-import type { LoginFormSchema } from "../../../schemas/loginFormSchema";
-import type { ZodSchema } from "zod";
-import { AddWorkoutFormSchema } from "../../../schemas/WorkoutFormSchema";
+
+import { WorkoutFormSchema } from "../../../schemas/WorkoutFormSchema";
 interface Props {
-  name: keyof AddWorkoutFormSchema;
+  name: keyof WorkoutFormSchema;
   type: string;
-  register: UseFormRegister<AddWorkoutFormSchema>;
+  register: UseFormRegister<WorkoutFormSchema>;
   errorMsg?: string;
 }
 
-const AddWorkoutFormInputItem = ({ name, type, register, errorMsg }: Props) => {
+const WorkoutFormInputItem = ({ name, type, register, errorMsg }: Props) => {
   return (
     <>
       <div className="w-full mb-8">
@@ -26,4 +25,4 @@ const AddWorkoutFormInputItem = ({ name, type, register, errorMsg }: Props) => {
   );
 };
 
-export default AddWorkoutFormInputItem;
+export default WorkoutFormInputItem;
