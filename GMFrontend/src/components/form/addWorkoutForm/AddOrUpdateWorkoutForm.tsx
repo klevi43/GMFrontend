@@ -40,10 +40,7 @@ const AddOrUpdateWorkoutForm = ({
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <FormTitle title={title} />
         {error instanceof Error && (
-          <ErrorMessage
-            fontSize="1rem"
-            message="Unable to add workout. Please try again later."
-          />
+          <ErrorMessage fontSize="1rem" message={error.message} />
         )}
         {fields.map((field) => (
           <div key={field.name}>
@@ -56,7 +53,7 @@ const AddOrUpdateWorkoutForm = ({
             />
           </div>
         ))}
-        {<FormSubmitButton isSubmitting={isSubmitting} />}
+        <FormSubmitButton isSubmitting={isSubmitting} />
       </form>
     </div>
   );

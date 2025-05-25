@@ -8,10 +8,13 @@ import type { WorkoutFormSchema } from "../../schemas/WorkoutFormSchema";
 import type { WorkoutInput } from "../../types/inputTypes";
 
 const AddWorkoutFormModal = () => {
-  const onSubmit: SubmitHandler<WorkoutFormSchema> = (data: WorkoutInput) => {
+  const onSubmit: SubmitHandler<WorkoutFormSchema> = async (
+    data: WorkoutInput
+  ) => {
     //console.log(JSON.stringify(data));
-
-    mutation.mutate(data);
+    try {
+      await mutation.mutateAsync(data);
+    } catch (error) {}
   };
   const mutation = useAddWorkout();
   return (

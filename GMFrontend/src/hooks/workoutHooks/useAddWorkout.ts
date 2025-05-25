@@ -9,6 +9,7 @@ import type Workout from "../../models/workout";
 import type { WorkoutInput } from "../../types/inputTypes";
 import workoutService from "../../services/workoutService";
 import { useModal } from "../useModal";
+import axios from "axios";
 // AxiosResponse<Workout, any> = the expected response from the server.
 // unknown = the error type (you can specify a custom one).
 // WorkoutInput = the input you pass to the mutation (what you want to send to the backend).
@@ -42,7 +43,12 @@ export const useAddWorkout = (
       closeModal();
     },
     onError: (error, variables, context) => {
-      options?.onError?.(error, variables, context);
+      let message = "Unable to add workout. Please try again later.";
+      if (axios.isAxiosError(error) && error.response) {
+        message = error.response?.data?.message;
+      }
+      const customError = new Error(message);
+      options?.onError?.(customError, variables, context);
     },
   });
 };
