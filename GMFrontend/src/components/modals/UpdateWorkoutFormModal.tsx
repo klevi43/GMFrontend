@@ -9,8 +9,12 @@ import { useUpdateWorkout } from "../../hooks/workoutHooks/useUpdateWorkout";
 import { useModal } from "../../hooks/useModal";
 
 const UpdateWorkoutFormModal = () => {
-  const onSubmit: SubmitHandler<WorkoutFormSchema> = (data: WorkoutInput) => {
-    mutation.mutate(data);
+  const onSubmit: SubmitHandler<WorkoutFormSchema> = async (
+    data: WorkoutInput
+  ) => {
+    try {
+      await mutation.mutateAsync(data);
+    } catch (error) {}
   };
   const { data } = useModal();
   const mutation = useUpdateWorkout();
