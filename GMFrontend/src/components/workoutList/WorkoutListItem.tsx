@@ -1,35 +1,33 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import type Workout from "../../models/workout";
 import WorkoutListItemDetails from "./WorkoutListItemDetails";
 import WorkoutListItemOptionsButton from "./WorkoutListItemOptionsButton";
 
 import WorkoutListItemMenuModal from "./WorkoutListItemMenuModal";
-import DeleteItemModal from "../modals/DeleteItemModal";
 import { useModal } from "../../hooks/useModal";
-import { UPDATE } from "../../constants/workoutEndpoints";
+
 import { DELETE_TYPE, UPDATE_TYPE } from "../../constants/modalConstants";
 
 interface Props {
   workout: Workout;
 }
 
-const WorkoutListItem = ({ workout }: Props) => {
+const WorkoutListItem = React.memo(({ workout }: Props) => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
-  const [editWorkoutFormIsVisible, setEditWorkoutFormIsVisivle] =
-    useState(false);
   const showMenu = () => {
     setMenuIsVisible(!menuIsVisible);
   };
   const { openModal } = useModal();
-  const handleOpenDeleteModalClick = () => {
-    setMenuIsVisible(!menuIsVisible);
+  const handleOpenDeleteModalClick = useCallback(() => {
+    setMenuIsVisible(false);
 
     openModal(DELETE_TYPE, workout);
-  };
-  const handleOpenUpdateModalClick = () => {
-    setMenuIsVisible(!menuIsVisible);
+  }, [openModal, workout]);
+
+  const handleOpenUpdateModalClick = useCallback(() => {
+    setMenuIsVisible(false);
     openModal(UPDATE_TYPE, workout);
-  };
+  }, [openModal, workout]);
 
   return (
     <>
@@ -51,6 +49,6 @@ const WorkoutListItem = ({ workout }: Props) => {
       </li>
     </>
   );
-};
+});
 
 export default WorkoutListItem;

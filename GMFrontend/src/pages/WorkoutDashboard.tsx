@@ -6,12 +6,6 @@ import ShowElementButton from "../components/buttons/ShowElementButton";
 import { useModal } from "../hooks/useModal";
 import { ADD_TYPE } from "../constants/modalConstants";
 const WorkoutDashboard = () => {
-  const [addWorkoutModalIsVisible, setAddWorkoutModalIsVisible] =
-    useState(false);
-  const showAddWorkoutFormModal = () => {
-    console.log(addWorkoutModalIsVisible);
-    setAddWorkoutModalIsVisible(!addWorkoutModalIsVisible);
-  };
   const { openModal } = useModal();
 
   return (

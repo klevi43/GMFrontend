@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import type Workout from "../../models/workout";
 import { useGetCurrentWorkouts } from "../../hooks/workoutHooks/useGetCurrentWorkouts";
-
+import React from "react";
 import WorkoutListItem from "./WorkoutListItem";
-import DeleteItemModal from "../modals/DeleteItemModal";
+
 const WorkoutList = () => {
   const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
   console.log("render");

@@ -1,4 +1,3 @@
-import { useModal } from "../../hooks/useModal";
 interface Props {
   handleOpenUpdateModalClick: () => void;
   handleOpenDeleteModalClick: () => void;
