@@ -8,6 +8,7 @@ import type { AxiosResponse } from "axios";
 import type Workout from "../../models/workout";
 import type { WorkoutInput } from "../../types/inputTypes";
 import workoutService from "../../services/workoutService";
+import { useModal } from "../useModal";
 // AxiosResponse<Workout, any> = the expected response from the server.
 // unknown = the error type (you can specify a custom one).
 // WorkoutInput = the input you pass to the mutation (what you want to send to the backend).
@@ -25,6 +26,7 @@ export const useAddWorkout = (
   WorkoutInput,
   unknown
 > => {
+  const { closeModal } = useModal();
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (
@@ -37,6 +39,7 @@ export const useAddWorkout = (
       queryClient.invalidateQueries({ queryKey: ["workouts"] });
       // pass to user defined handler
       options?.onSuccess?.(data, variables, context);
+      closeModal();
     },
     onError: (error, variables, context) => {
       console.log(error);
