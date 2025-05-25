@@ -30,9 +30,20 @@ export const useAddWorkout = (
   const { closeModal } = useModal();
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (
+    mutationFn: async (
       workoutInput: WorkoutInput // pass in workoutInput to addWorkout fn
-    ) => workoutService.addWorkout(workoutInput),
+    ) => {
+      try {
+        return await workoutService.addWorkout(workoutInput);
+      } catch (error) {
+        let message = "Unable to add workout. Please try again later.";
+        if (axios.isAxiosError(error) && error.response) {
+          message = error.response?.data?.message;
+        }
+        throw new Error(message);
+      }
+    },
+
     onSuccess: (data, variables, context) => {
       // data: the Axios response
       // variable: the input (workoutInput)
@@ -43,12 +54,7 @@ export const useAddWorkout = (
       closeModal();
     },
     onError: (error, variables, context) => {
-      let message = "Unable to add workout. Please try again later.";
-      if (axios.isAxiosError(error) && error.response) {
-        message = error.response?.data?.message;
-      }
-      const customError = new Error(message);
-      options?.onError?.(customError, variables, context);
+      options?.onError?.(error, variables, context);
     },
   });
 };
