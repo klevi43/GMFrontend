@@ -37,12 +37,25 @@ class WorkoutService {
       },
     });
   };
+
+  editWorkout = async (
+    workoutInput: WorkoutInput
+  ): Promise<AxiosResponse<Workout, any>> => {
+    return await axiosInstance.put("/workouts/update", workoutInput, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      },
+    });
+  };
   deleteWorkout = async (
     workoutId: number
   ): Promise<AxiosResponse<any, any>> => {
     return await axiosInstance.delete("/workouts/delete", {
       params: { workoutId },
       headers: {
+        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
