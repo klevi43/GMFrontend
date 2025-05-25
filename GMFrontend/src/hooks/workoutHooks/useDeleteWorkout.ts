@@ -2,13 +2,10 @@ import {
   useMutation,
   useQueryClient,
   type UseBaseMutationResult,
-  type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
 import workoutService from "../../services/workoutService";
 import axios from "axios";
-import type Workout from "../../models/workout";
-import type { WorkoutInput } from "../../types/inputTypes";
 import { useModal } from "../useModal";
 
 export const useDeleteWorkout = (): UseBaseMutationResult<

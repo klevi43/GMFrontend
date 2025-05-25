@@ -10,6 +10,7 @@ import type Workout from "../models/workout";
 import axiosInstance from "./axiosInstance";
 import type { WorkoutInput } from "../types/inputTypes";
 class WorkoutService {
+  // TODO: unwrap response in methods
   getMostRecentWorkouts = async (): Promise<Workout[]> => {
     try {
       const response = await axiosInstance.get<Workout[]>(WORKOUTS_ENDPOINT, {
@@ -28,13 +29,14 @@ class WorkoutService {
   };
 
   getWorkout = async (workoutId: number): Promise<Workout> => {
-    return await axiosInstance.get(WORKOUTS_ENDPOINT + WORKOUT, {
+    const response = await axiosInstance.get(WORKOUTS_ENDPOINT + WORKOUT, {
       params: { workoutId },
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
     });
+    return response.data;
   };
 
   addWorkout = async (

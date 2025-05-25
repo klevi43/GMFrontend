@@ -7,8 +7,10 @@ import WorkoutListItemMenuModal from "./WorkoutListItemMenuModal";
 import { useModal } from "../../hooks/useModal";
 
 import { DELETE_TYPE, UPDATE_TYPE } from "../../constants/modalConstants";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/workoutEndpoints";
+import { useGetWorkout } from "../../hooks/workoutHooks/useGetWorkout";
+import workoutService from "../../services/workoutService";
 
 interface Props {
   workout: Workout;
@@ -20,6 +22,8 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
     setMenuIsVisible(!menuIsVisible);
   };
   const { openModal } = useModal();
+  const navigate = useNavigate();
+
   const handleOpenDeleteModalClick = useCallback(() => {
     setMenuIsVisible(false);
 
@@ -30,15 +34,19 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
     setMenuIsVisible(false);
     openModal(UPDATE_TYPE, workout);
   }, [openModal, workout]);
+  const handleWorkoutItemClick = (workoutId: number) => {
+    navigate(WORKOUTS_ENDPOINT + WORKOUT + `?workoutId=${workoutId}`);
+  };
 
   return (
     <>
       <li className="w-[100%] pb-2 hover:pl-4 transition-all duration-300">
         <div className=" border-l-8 border-primary text-text  bg-background  transition-all duration-300  hover:text-primary">
           <div className="flex justify-between items-center">
-            <Link to={WORKOUTS_ENDPOINT + WORKOUT}>
+            <button onClick={() => handleWorkoutItemClick(workout.id)}>
               <WorkoutListItemDetails workout={workout} />
-            </Link>
+            </button>
+
             <div>
               {menuIsVisible && (
                 <WorkoutListItemMenuModal
