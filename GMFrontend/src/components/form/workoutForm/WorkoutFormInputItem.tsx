@@ -1,6 +1,7 @@
 import type { UseFormRegister } from "react-hook-form";
 
 import { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
+import ErrorMessage from "../../messages/ErrorMessage";
 interface Props {
   name: keyof WorkoutFormSchema;
   type: string;
@@ -13,11 +14,11 @@ const WorkoutFormInputItem = ({ name, type, register, errorMsg }: Props) => {
     <>
       <div className="w-full mb-8">
         <input
-          className=" p-2.5 w-full bg-input rounded-lg "
+          className=" p-2.5 w-full bg-input rounded-lg"
           type={type}
           {...register(name)}
         />
-        {errorMsg && <span className="text-red-500">{errorMsg}</span>}
+        {errorMsg && <ErrorMessage fontSize="1rem" message={errorMsg} />}
       </div>
     </>
   );
