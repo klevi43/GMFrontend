@@ -10,7 +10,7 @@ import {
 } from "../constants/endpoints";
 class ExerciseService {
   addExercise = async (
-    exerciseInput: ExerciseInput
+    exerciseInput: ExerciseInput,
     workoutId: number
   ): Promise<AxiosResponse<Exercise, any>> => {
     const response = await axiosInstance.post(
