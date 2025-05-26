@@ -5,7 +5,7 @@ import {
   UPDATE,
   WORKOUT,
   WORKOUTS_ENDPOINT,
-} from "../constants/Endpoints";
+} from "../constants/endpoints";
 import type Workout from "../models/workout";
 import axiosInstance from "./axiosInstance";
 import type { WorkoutInput } from "../types/inputTypes";

@@ -8,7 +8,7 @@ import { useModal } from "../../hooks/useModal";
 
 import { DELETE_TYPE, UPDATE_TYPE } from "../../constants/modalConstants";
 import { Link, useNavigate } from "react-router";
-import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/Endpoints";
+import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/endpoints";
 import { useGetWorkout } from "../../hooks/workoutHooks/useGetWorkout";
 import workoutService from "../../services/workoutService";
 

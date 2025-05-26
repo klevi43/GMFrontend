@@ -7,15 +7,17 @@ import {
   DELETE,
   EXERCISES_ENDPOINT,
   UPDATE,
-} from "../constants/Endpoints";
+} from "../constants/endpoints";
 class ExerciseService {
   addExercise = async (
     exerciseInput: ExerciseInput
+    workoutId: number
   ): Promise<AxiosResponse<Exercise, any>> => {
     const response = await axiosInstance.post(
       EXERCISES_ENDPOINT + CREATE,
       exerciseInput,
       {
+        params: { workoutId },
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
@@ -27,12 +29,15 @@ class ExerciseService {
   };
 
   updateExercise = async (
-    exerciseInput: Exercise
+    exerciseInput: Exercise,
+    workoutId: number,
+    exerciseId: number
   ): Promise<AxiosResponse<Exercise, any>> => {
     const response = await axiosInstance.put(
       EXERCISES_ENDPOINT + UPDATE,
       exerciseInput,
       {
+        params: { workoutId, exerciseId },
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
