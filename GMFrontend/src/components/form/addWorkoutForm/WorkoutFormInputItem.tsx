@@ -1,6 +1,6 @@
 import type { UseFormRegister } from "react-hook-form";
 
-import { WorkoutFormSchema } from "../../../schemas/WorkoutFormSchema";
+import { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
 interface Props {
   name: keyof WorkoutFormSchema;
   type: string;

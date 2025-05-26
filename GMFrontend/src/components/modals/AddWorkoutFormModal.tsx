@@ -4,7 +4,7 @@ import ModalContainer from "../containers/ModalContainer";
 import AddOrUpdateWorkoutForm from "../form/addWorkoutForm/AddOrUpdateWorkoutForm";
 import { useAddWorkout } from "../../hooks/workoutHooks/useAddWorkout";
 import type { SubmitHandler } from "react-hook-form";
-import type { WorkoutFormSchema } from "../../schemas/WorkoutFormSchema";
+import type { WorkoutFormSchema } from "../../schemas/workoutFormSchema";
 import type { WorkoutInput } from "../../types/inputTypes";
 
 const AddWorkoutFormModal = () => {

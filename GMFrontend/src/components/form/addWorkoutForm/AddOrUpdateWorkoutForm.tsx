@@ -2,7 +2,7 @@ import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
 import WorkoutFormInputItem from "./WorkoutFormInputItem";
 import Title from "../Title";
-import { WorkoutFormSchema } from "../../../schemas/WorkoutFormSchema";
+import { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
 import type { WorkoutFormFieldsType } from "../../../types/formFieldsType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
