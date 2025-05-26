@@ -9,7 +9,7 @@ import workoutService from "../../services/workoutService";
 import axios from "axios";
 import type Workout from "../../models/workout";
 import { useNavigate } from "react-router";
-import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/workoutEndpoints";
+import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/Endpoints";
 
 export const useGetWorkout = (workoutId: number) => {
   const nav = useNavigate();

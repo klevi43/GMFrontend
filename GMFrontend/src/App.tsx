@@ -10,7 +10,7 @@ import Register from "./pages/Register";
 import SingleWorkout from "./pages/SingleWorkout";
 import { WorkoutsProvider } from "./contexts/WorkoutProvider";
 import { ModalProvider } from "./contexts/ModalProvider";
-import { WORKOUT, WORKOUTS_ENDPOINT } from "./constants/workoutEndpoints";
+import { WORKOUT, WORKOUTS_ENDPOINT } from "./constants/Endpoints";
 
 function App() {
   return (

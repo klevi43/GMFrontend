@@ -5,7 +5,7 @@ import {
   UPDATE,
   WORKOUT,
   WORKOUTS_ENDPOINT,
-} from "../constants/workoutEndpoints";
+} from "../constants/Endpoints";
 import type Workout from "../models/workout";
 import axiosInstance from "./axiosInstance";
 import type { WorkoutInput } from "../types/inputTypes";
@@ -40,9 +40,9 @@ class WorkoutService {
   };
 
   addWorkout = async (
-    WorkoutInput: WorkoutInput
+    workoutInput: WorkoutInput
   ): Promise<AxiosResponse<Workout, any>> => {
-    return await axiosInstance.post(WORKOUTS_ENDPOINT + CREATE, WorkoutInput, {
+    return await axiosInstance.post(WORKOUTS_ENDPOINT + CREATE, workoutInput, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -68,7 +68,6 @@ class WorkoutService {
     return await axiosInstance.delete(WORKOUTS_ENDPOINT + DELETE, {
       params: { workoutId },
       headers: {
-        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
