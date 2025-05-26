@@ -5,7 +5,7 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import type Exercise from "../../models/exercise";
+import type ExerciseDto from "../../dtos/exerciseDto";
 import type { ExerciseInput, WorkoutInput } from "../../types/inputTypes";
 import { useModal } from "../useModal";
 import exerciseService from "../../services/exerciseService";
@@ -13,13 +13,13 @@ import axios from "axios";
 
 export const useAddExercise = (
   options?: UseMutationOptions<
-    AxiosResponse<Exercise>,
+    AxiosResponse<ExerciseDto>,
     unknown,
     ExerciseInput,
     unknown
   >
 ): UseBaseMutationResult<
-  AxiosResponse<Exercise, any>,
+  AxiosResponse<ExerciseDto, any>,
   unknown,
   ExerciseInput,
   unknown

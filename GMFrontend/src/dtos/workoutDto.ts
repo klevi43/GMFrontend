@@ -1,8 +1,8 @@
-import type Exercise from "./exercise";
+import type ExerciseDto from "./exerciseDto";
 
 export default interface WorkoutDto {
   id: number;
   name: string;
   date: string;
-  exerciseDtos: Exercise[];
+  exerciseDtos: ExerciseDto[];
 }

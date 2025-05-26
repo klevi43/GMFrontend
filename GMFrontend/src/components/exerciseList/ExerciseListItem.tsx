@@ -1,10 +1,10 @@
 import React from "react";
-import type Exercise from "../../models/exercise";
+import type ExerciseDto from "../../dtos/exerciseDto";
 import SetListItem from "../setList/setListItem";
 import ShowElementButton from "../buttons/ShowElementButton";
 import SetList from "../setList/SetList";
 interface Props {
-  exercise: Exercise;
+  exercise: ExerciseDto;
 }
 const ExerciseListItem = ({ exercise }: Props) => {
   return (

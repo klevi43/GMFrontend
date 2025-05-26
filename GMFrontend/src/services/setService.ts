@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 import type { SetInput } from "../types/inputTypes";
-import type Set from "../models/set";
+import type SetDto from "../dtos/setDto";
 import type { Axios, AxiosResponse } from "axios";
 import { CREATE, DELETE, SETS_ENDPOINT, UPDATE } from "../constants/endpoints";
 import { set } from "react-hook-form";
@@ -9,7 +9,7 @@ class SetService {
     setInput: SetInput,
     workoutId: number,
     exerciseId: number
-  ): Promise<AxiosResponse<Set, any>> => {
+  ): Promise<AxiosResponse<SetDto, any>> => {
     const response = await axiosInstance.post(
       SETS_ENDPOINT + CREATE,
       setInput,
@@ -30,7 +30,7 @@ class SetService {
     workoutId: number,
     exerciseId: number,
     setId: number
-  ): Promise<AxiosResponse<Set, any>> => {
+  ): Promise<AxiosResponse<SetDto, any>> => {
     const response = await axiosInstance.put(SETS_ENDPOINT + UPDATE, setInput, {
       params: { workoutId, exerciseId, setId },
       headers: {

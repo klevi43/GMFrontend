@@ -1,7 +1,7 @@
 import axiosInstance from "./axiosInstance";
 import type { ExerciseInput } from "../types/inputTypes";
 import type { Axios, AxiosResponse } from "axios";
-import type Exercise from "../models/exercise";
+import type ExerciseDto from "../dtos/exerciseDto";
 import {
   CREATE,
   DELETE,
@@ -12,7 +12,7 @@ class ExerciseService {
   addExercise = async (
     exerciseInput: ExerciseInput,
     workoutId: number
-  ): Promise<AxiosResponse<Exercise, any>> => {
+  ): Promise<AxiosResponse<ExerciseDto, any>> => {
     const response = await axiosInstance.post(
       EXERCISES_ENDPOINT + CREATE,
       exerciseInput,
@@ -29,10 +29,10 @@ class ExerciseService {
   };
 
   updateExercise = async (
-    exerciseInput: Exercise,
+    exerciseInput: ExerciseDto,
     workoutId: number,
     exerciseId: number
-  ): Promise<AxiosResponse<Exercise, any>> => {
+  ): Promise<AxiosResponse<ExerciseDto, any>> => {
     const response = await axiosInstance.put(
       EXERCISES_ENDPOINT + UPDATE,
       exerciseInput,

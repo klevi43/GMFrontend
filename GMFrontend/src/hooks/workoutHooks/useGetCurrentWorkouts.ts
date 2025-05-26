@@ -1,5 +1,5 @@
 import { useQuery, type QueryObserverResult } from "@tanstack/react-query";
-import type WorkoutDto from "../../models/workout";
+import type WorkoutDto from "../../dtos/workoutDto";
 import workoutService from "../../services/workoutService";
 export const useGetCurrentWorkouts = () => {
   return useQuery<WorkoutDto[], any>({

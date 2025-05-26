@@ -1,4 +1,4 @@
-import type WorkoutDto from "../models/workout";
+import type WorkoutDto from "../dtos/workoutDto";
 
 export type WorkoutContextType = {
   workouts: WorkoutDto[];

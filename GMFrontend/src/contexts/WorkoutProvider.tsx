@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import type WorkoutDto from "../models/workout";
+import type WorkoutDto from "../dtos/workoutDto";
 import type { WorkoutContextType } from "../types/workoutContextType";
 
 interface Props {

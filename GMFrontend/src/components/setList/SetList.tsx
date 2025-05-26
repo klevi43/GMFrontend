@@ -1,9 +1,9 @@
 import React from "react";
-import type Set from "../../models/set";
+import type SetDto from "../../dtos/setDto";
 import SetListItem from "./setListItem";
 import ShowElementButton from "../buttons/ShowElementButton";
 interface Props {
-  sets: Set[];
+  sets: SetDto[];
 }
 const SetList = ({ sets }: Props) => {
   return (

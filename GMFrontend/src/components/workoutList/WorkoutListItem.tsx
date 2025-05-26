@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import type WorkoutDto from "../../models/workout";
+import type WorkoutDto from "../../dtos/workoutDto";
 import WorkoutListItemDetails from "./WorkoutListItemDetails";
 import WorkoutListItemOptionsButton from "./WorkoutListItemOptionsButton";
 

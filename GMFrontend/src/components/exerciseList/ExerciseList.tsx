@@ -1,8 +1,8 @@
 import React from "react";
-import type Exercise from "../../models/exercise";
+import type ExerciseDto from "../../dtos/exerciseDto";
 import ExerciseListItem from "./ExerciseListItem";
 interface Props {
-  exercises: Exercise[];
+  exercises: ExerciseDto[];
 }
 const ExerciseList = ({ exercises }: Props) => {
   if (exercises.length == 0)

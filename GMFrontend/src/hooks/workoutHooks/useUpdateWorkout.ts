@@ -7,7 +7,7 @@ import {
 import type { AxiosResponse } from "axios";
 import type { WorkoutInput } from "../../types/inputTypes";
 import workoutService from "../../services/workoutService";
-import type WorkoutDto from "../../models/workout";
+import type WorkoutDto from "../../dtos/workoutDto";
 import axios from "axios";
 import { useModal } from "../useModal";
 export const useUpdateWorkout = (

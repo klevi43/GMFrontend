@@ -4,7 +4,7 @@ import { LOGIN_ENDPOINT } from "../constants/constants";
 
 import type { AuthUser } from "../types/authContextType";
 import type { ServerError } from "../types/serverErrorContextType";
-import type User from "../models/user";
+import type User from "../dtos/user";
 class AuthService {
   constructor() {}
   login = async (

@@ -5,7 +5,7 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import type WorkoutDto from "../../models/workout";
+import type WorkoutDto from "../../dtos/workoutDto";
 import type { WorkoutInput } from "../../types/inputTypes";
 import workoutService from "../../services/workoutService";
 import { useModal } from "../useModal";

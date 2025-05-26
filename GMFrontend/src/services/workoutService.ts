@@ -6,7 +6,7 @@ import {
   WORKOUT,
   WORKOUTS_ENDPOINT,
 } from "../constants/endpoints";
-import type WorkoutDto from "../models/workout";
+import type WorkoutDto from "../dtos/workoutDto";
 import axiosInstance from "./axiosInstance";
 import type { WorkoutInput } from "../types/inputTypes";
 class WorkoutService {
