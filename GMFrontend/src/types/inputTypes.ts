@@ -5,6 +5,7 @@ export type WorkoutInput = {
 
 export type ExerciseInput = {
   name: string;
+  workoutId: number;
 };
 
 export type SetInput = {

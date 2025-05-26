@@ -6,20 +6,23 @@ import {
   WORKOUT,
   WORKOUTS_ENDPOINT,
 } from "../constants/endpoints";
-import type Workout from "../models/workout";
+import type WorkoutDto from "../models/workout";
 import axiosInstance from "./axiosInstance";
 import type { WorkoutInput } from "../types/inputTypes";
 class WorkoutService {
   // TODO: unwrap response in methods
-  getMostRecentWorkouts = async (): Promise<Workout[]> => {
+  getMostRecentWorkouts = async (): Promise<WorkoutDto[]> => {
     try {
-      const response = await axiosInstance.get<Workout[]>(WORKOUTS_ENDPOINT, {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-        },
-      });
+      const response = await axiosInstance.get<WorkoutDto[]>(
+        WORKOUTS_ENDPOINT,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          },
+        }
+      );
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -28,7 +31,7 @@ class WorkoutService {
     }
   };
 
-  getWorkout = async (workoutId: number): Promise<Workout> => {
+  getWorkout = async (workoutId: number): Promise<WorkoutDto> => {
     const response = await axiosInstance.get(WORKOUTS_ENDPOINT + WORKOUT, {
       params: { workoutId },
       headers: {
@@ -41,7 +44,7 @@ class WorkoutService {
 
   addWorkout = async (
     workoutInput: WorkoutInput
-  ): Promise<AxiosResponse<Workout, any>> => {
+  ): Promise<AxiosResponse<WorkoutDto, any>> => {
     return await axiosInstance.post(WORKOUTS_ENDPOINT + CREATE, workoutInput, {
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +56,7 @@ class WorkoutService {
 
   updateWorkout = async (
     workoutInput: WorkoutInput
-  ): Promise<AxiosResponse<Workout, any>> => {
+  ): Promise<AxiosResponse<WorkoutDto, any>> => {
     return await axiosInstance.put(WORKOUTS_ENDPOINT + UPDATE, workoutInput, {
       headers: {
         "Content-Type": "application/json",

@@ -5,41 +5,46 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import type { WorkoutInput } from "../../types/inputTypes";
-import workoutService from "../../services/workoutService";
-import type WorkoutDto from "../../models/workout";
-import axios from "axios";
+import type Exercise from "../../models/exercise";
+import type { ExerciseInput, WorkoutInput } from "../../types/inputTypes";
 import { useModal } from "../useModal";
-export const useUpdateWorkout = (
+import exerciseService from "../../services/exerciseService";
+import axios from "axios";
+
+export const useAddExercise = (
   options?: UseMutationOptions<
-    AxiosResponse<WorkoutDto>,
+    AxiosResponse<Exercise>,
     unknown,
-    WorkoutInput,
+    ExerciseInput,
     unknown
   >
 ): UseBaseMutationResult<
-  AxiosResponse<WorkoutDto, any>,
+  AxiosResponse<Exercise, any>,
   unknown,
-  WorkoutInput,
+  ExerciseInput,
   unknown
 > => {
   const { closeModal } = useModal();
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (workoutInput: WorkoutInput) => {
+    mutationFn: async (exerciseInput: ExerciseInput) => {
       try {
-        return await workoutService.updateWorkout(workoutInput);
+        return await exerciseService.addExercise(
+          exerciseInput,
+          exerciseInput.workoutId
+        );
       } catch (error) {
-        let message = "Unable to update workout. Please try again later.";
+        let message = "Unable to add exercise. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
           message = error.response?.data?.message;
         }
         throw new Error(message);
       }
     },
-    onSuccess: (data, variables, context) => {
-      queryClient.invalidateQueries({ queryKey: ["workouts"] });
-      options?.onSuccess?.(data, variables, context);
+    onSuccess: (data, variables, conext) => {
+      queryClient.invalidateQueries({ queryKey: ["exercises"] });
+
+      options?.onSuccess?.(data, variables, conext);
       closeModal();
     },
     onError: (error, variables, context) => {

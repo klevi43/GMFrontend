@@ -5,7 +5,7 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import type Workout from "../../models/workout";
+import type WorkoutDto from "../../models/workout";
 import type { WorkoutInput } from "../../types/inputTypes";
 import workoutService from "../../services/workoutService";
 import { useModal } from "../useModal";
@@ -16,13 +16,13 @@ import axios from "axios";
 // unknown = context type (advanced feature; often unused).
 export const useAddWorkout = (
   options?: UseMutationOptions<
-    AxiosResponse<Workout>, // Type returned by mutationFn
+    AxiosResponse<WorkoutDto>, // Type returned by mutationFn
     unknown, // Type of error (usually use `unknown`)
     WorkoutInput, // Type of data passed into mutate()
     unknown // Type of context (for rollback, rarely used)
   >
 ): UseBaseMutationResult<
-  AxiosResponse<Workout, any>,
+  AxiosResponse<WorkoutDto, any>,
   unknown,
   WorkoutInput,
   unknown

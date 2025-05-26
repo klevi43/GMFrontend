@@ -1,12 +1,12 @@
 import { createContext, useState } from "react";
-import type Workout from "../models/workout";
+import type WorkoutDto from "../models/workout";
 import type { WorkoutContextType } from "../types/workoutContextType";
 
 interface Props {
   children: React.ReactNode;
 }
 
-const workoutArr: Workout[] = [];
+const workoutArr: WorkoutDto[] = [];
 
 const WorkoutsContext = createContext<WorkoutContextType>({
   workouts: workoutArr,
@@ -14,7 +14,7 @@ const WorkoutsContext = createContext<WorkoutContextType>({
 });
 
 export const WorkoutsProvider = ({ children }: Props) => {
-  const [workouts, setWorkouts] = useState<Workout[]>(workoutArr);
+  const [workouts, setWorkouts] = useState<WorkoutDto[]>(workoutArr);
   return (
     <WorkoutsContext.Provider value={{ workouts, setWorkouts }}>
       {children}

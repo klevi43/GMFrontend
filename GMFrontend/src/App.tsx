@@ -15,29 +15,27 @@ import { WORKOUT, WORKOUTS_ENDPOINT } from "./constants/endpoints";
 function App() {
   return (
     <>
-      <ServerErrorProvider>
+      <BrowserRouter>
         <AuthProvider>
           <WorkoutsProvider>
             <ModalProvider>
-              <BrowserRouter>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route
-                    path={WORKOUTS_ENDPOINT}
-                    element={<WorkoutDashboard />}
-                  />
-                  <Route
-                    path={WORKOUTS_ENDPOINT + WORKOUT}
-                    element={<SingleWorkout />}
-                  />
-                </Routes>
-              </BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route
+                  path={WORKOUTS_ENDPOINT}
+                  element={<WorkoutDashboard />}
+                />
+                <Route
+                  path={WORKOUTS_ENDPOINT + WORKOUT}
+                  element={<SingleWorkout />}
+                />
+              </Routes>
             </ModalProvider>
           </WorkoutsProvider>
         </AuthProvider>
-      </ServerErrorProvider>
+      </BrowserRouter>
     </>
   );
 }

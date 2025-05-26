@@ -1,11 +1,11 @@
 import React from "react";
-import FormContainer from "../containers/FormContainer";
-import ModalContainer from "../containers/ModalContainer";
-import AddOrUpdateWorkoutForm from "../form/workoutForm/AddOrUpdateWorkoutForm";
-import { useAddWorkout } from "../../hooks/workoutHooks/useAddWorkout";
+import FormContainer from "../../containers/FormContainer";
+import ModalContainer from "../../containers/ModalContainer";
+import AddOrUpdateWorkoutForm from "../../form/workoutForm/AddOrUpdateWorkoutForm";
+import { useAddWorkout } from "../../../hooks/workoutHooks/useAddWorkout";
 import type { SubmitHandler } from "react-hook-form";
-import type { WorkoutFormSchema } from "../../schemas/workoutFormSchema";
-import type { WorkoutInput } from "../../types/inputTypes";
+import type { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
+import type { WorkoutInput } from "../../../types/inputTypes";
 
 const AddWorkoutFormModal = () => {
   const onSubmit: SubmitHandler<WorkoutFormSchema> = async (

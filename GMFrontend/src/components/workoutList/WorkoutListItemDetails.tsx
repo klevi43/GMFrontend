@@ -1,7 +1,7 @@
 import React from "react";
-import type Workout from "../../models/workout";
+import type WorkoutDto from "../../models/workout";
 interface Props {
-  workout: Workout;
+  workout: WorkoutDto;
 }
 const WorkoutListItemDetails = ({ workout }: Props) => {
   return (

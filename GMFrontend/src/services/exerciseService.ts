@@ -62,3 +62,5 @@ class ExerciseService {
     return response;
   };
 }
+const exerciseService = new ExerciseService();
+export default exerciseService;

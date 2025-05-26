@@ -1,6 +1,6 @@
-import type Workout from "../models/workout";
+import type WorkoutDto from "../models/workout";
 
 export type WorkoutContextType = {
-  workouts: Workout[];
-  setWorkouts: React.Dispatch<React.SetStateAction<Workout[]>>;
+  workouts: WorkoutDto[];
+  setWorkouts: React.Dispatch<React.SetStateAction<WorkoutDto[]>>;
 };

@@ -4,7 +4,7 @@ import FormContainer from "../containers/FormContainer";
 import { useModal } from "../../hooks/useModal";
 import { useDeleteWorkout } from "../../hooks/workoutHooks/useDeleteWorkout";
 import Title from "../form/Title";
-import ModalCloseButton from "./ModalCloseButton";
+import ModalCloseButton from "./workoutModals/ModalCloseButton";
 interface Props {
   title: string;
   deleteItemName: string;

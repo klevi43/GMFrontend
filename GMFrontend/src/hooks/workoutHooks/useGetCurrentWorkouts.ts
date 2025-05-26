@@ -1,8 +1,8 @@
 import { useQuery, type QueryObserverResult } from "@tanstack/react-query";
-import type Workout from "../../models/workout";
+import type WorkoutDto from "../../models/workout";
 import workoutService from "../../services/workoutService";
 export const useGetCurrentWorkouts = () => {
-  return useQuery<Workout[], any>({
+  return useQuery<WorkoutDto[], any>({
     queryKey: ["workouts"],
     queryFn: async () => await workoutService.getMostRecentWorkouts(),
   });

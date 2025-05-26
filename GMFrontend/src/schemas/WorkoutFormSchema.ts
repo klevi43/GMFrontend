@@ -1,5 +1,6 @@
 import * as z from "zod";
 import { FIELD_NOT_EMPTY_MSG } from "../constants/formErrorMsgs";
+import type { WorkoutInput } from "../types/inputTypes";
 
 export const WorkoutFormSchema = z.object({
   name: z.string().nonempty(FIELD_NOT_EMPTY_MSG),
@@ -23,5 +24,10 @@ export const WorkoutFormSchema = z.object({
       }
     ),
 });
+
+export function isWorkoutInput(data: unknown): data is WorkoutInput {
+  console.log(WorkoutFormSchema.safeParse(data).success);
+  return WorkoutFormSchema.safeParse(data).success;
+}
 
 export type WorkoutFormSchema = z.infer<typeof WorkoutFormSchema>;

@@ -1,7 +1,7 @@
-import type Workout from "../models/workout";
+import type { ExerciseInput, WorkoutInput } from "./inputTypes";
 export default interface ModalContextType {
   type: "add" | "update" | "delete" | null;
-  data: Workout | null;
+  data: WorkoutInput | ExerciseInput | null;
   isOpen: boolean;
   openModal: (
     type: ModalContextType["type"],

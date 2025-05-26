@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import type Workout from "../../models/workout";
+import type WorkoutDto from "../../models/workout";
 import WorkoutListItemDetails from "./WorkoutListItemDetails";
 import WorkoutListItemOptionsButton from "./WorkoutListItemOptionsButton";
 
@@ -13,7 +13,7 @@ import { useGetWorkout } from "../../hooks/workoutHooks/useGetWorkout";
 import workoutService from "../../services/workoutService";
 
 interface Props {
-  workout: Workout;
+  workout: WorkoutDto;
 }
 
 const WorkoutListItem = React.memo(({ workout }: Props) => {

@@ -1,8 +1,8 @@
 import type Exercise from "./exercise";
 
-export default interface Workout {
+export default interface WorkoutDto {
   id: number;
   name: string;
   date: string;
-  exercises: Exercise[];
+  exerciseDtos: Exercise[];
 }

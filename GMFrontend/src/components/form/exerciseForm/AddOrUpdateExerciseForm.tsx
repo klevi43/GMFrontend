@@ -8,9 +8,10 @@ import FormSubmitButton from "../FormSubmitButton";
 import ExerciseFormInputItem from "./ExerciseFormInputItem";
 import FormInputLabel from "../FormInputLabel";
 import ErrorMessage from "../../messages/ErrorMessage";
-import ModalCloseButton from "../../modals/ModalCloseButton";
+import ModalCloseButton from "../../modals/workoutModals/ModalCloseButton";
 import Title from "../Title";
 import { useModal } from "../../../hooks/useModal";
+import { useSearchParams } from "react-router";
 interface Props {
   onSubmit: (data: ExerciseFormSchema) => void;
   field: ExerciseFormFieldsType;
@@ -33,6 +34,8 @@ const AddOrUpdateExerciseForm = ({
     resolver: zodResolver(ExerciseFormSchema),
     defaultValues,
   });
+  const [searchParams] = useSearchParams();
+  const workoutId = Number(searchParams.get("workoutId"));
 
   const { closeModal } = useModal();
   return (
