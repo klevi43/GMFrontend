@@ -4,7 +4,7 @@ import ExerciseListItem from "./ExerciseListItem";
 interface Props {
   exercises: ExerciseDto[];
 }
-const ExerciseList = ({ exercises }: Props) => {
+const ExerciseList = React.memo(({ exercises }: Props) => {
   if (exercises.length == 0)
     return <p className="text-text">No exercises yet </p>;
   return (
@@ -16,6 +16,6 @@ const ExerciseList = ({ exercises }: Props) => {
       </ul>
     </>
   );
-};
+});
 
 export default ExerciseList;

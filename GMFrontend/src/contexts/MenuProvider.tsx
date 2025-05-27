@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 import type { MenuContextType } from "../types/menuContextType";
 interface Props {
   children: React.ReactNode;
@@ -12,13 +12,16 @@ const MenuContext = createContext<MenuContextType>({
 export const MenuProvider = ({ children }: Props) => {
   const [openMenuId, setOpenMenuId] = useState<number>(-1);
 
-  const showOpenMenuById = (id: number) => {
-    if (openMenuId === id) {
-      setOpenMenuId(-1);
-    } else {
-      setOpenMenuId(id);
-    }
-  };
+  const showOpenMenuById = useCallback(
+    (id: number) => {
+      if (openMenuId === id) {
+        setOpenMenuId(-1);
+      } else {
+        setOpenMenuId(id);
+      }
+    },
+    [setOpenMenuId, openMenuId]
+  );
   return (
     <MenuContext.Provider value={{ openMenuId, showOpenMenuById }}>
       {children}

@@ -3,25 +3,22 @@ import type ExerciseDto from "../../dtos/exerciseDto";
 
 import SetList from "../setList/SetList";
 import ListItemMenuModal from "../workoutList/ListItemMenuModal";
+import { useMenu } from "../../hooks/useMenu";
+import ListItemOptionsButton from "../workoutList/ListItemOptionsButton";
+import MenuWrapper from "../uiBehaviorWrapper/MenuWrapper";
 interface Props {
   exercise: ExerciseDto;
 }
-const ExerciseListItem = ({ exercise }: Props) => {
-  const open = () => {
-    console.log("clicked");
-  };
-  const close = () => {
-    console.log("clicked");
-  };
+const ExerciseListItem = React.memo(({ exercise }: Props) => {
+  console.log("ExercisePage rerendered");
   return (
     <li className="text-white text-[1.7rem] w-full px-[1rem]">
       <div className="flex justify-between items-center">
         <div>{exercise.name}</div>
-        <div>{}</div>
-        <ListItemMenuModal
-          handleOpenUpdateModalClick={open}
-          handleOpenDeleteModalClick={close}
-        />
+
+        <div>
+          <MenuWrapper id={exercise.id} />
+        </div>
       </div>
 
       {exercise.sets && exercise.sets.length > 0 && (
@@ -29,6 +26,6 @@ const ExerciseListItem = ({ exercise }: Props) => {
       )}
     </li>
   );
-};
+});
 
 export default ExerciseListItem;
