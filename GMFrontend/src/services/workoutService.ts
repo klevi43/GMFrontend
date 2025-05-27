@@ -53,7 +53,7 @@ class WorkoutService {
       },
     });
   };
-
+  // TODO: ADD PARAMS
   updateWorkout = async (
     workoutInput: WorkoutInput
   ): Promise<AxiosResponse<WorkoutDto, any>> => {

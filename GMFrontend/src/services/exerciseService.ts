@@ -29,13 +29,13 @@ class ExerciseService {
   };
 
   updateExercise = async (
-    exerciseInput: ExerciseDto,
-    workoutId: number,
-    exerciseId: number
+    name: string,
+    exerciseId: number,
+    workoutId: number
   ): Promise<AxiosResponse<ExerciseDto, any>> => {
     const response = await axiosInstance.put(
       EXERCISES_ENDPOINT + UPDATE,
-      exerciseInput,
+      { name: name },
       {
         params: { workoutId, exerciseId },
         headers: {
