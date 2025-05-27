@@ -2,7 +2,7 @@ interface Props {
   handleOpenUpdateModalClick: () => void;
   handleOpenDeleteModalClick: () => void;
 }
-const WorkoutListItemMenuModal = ({
+const ListItemMenuModal = ({
   handleOpenUpdateModalClick,
   handleOpenDeleteModalClick,
 }: Props) => {
@@ -38,4 +38,4 @@ const WorkoutListItemMenuModal = ({
   );
 };
 
-export default WorkoutListItemMenuModal;
+export default ListItemMenuModal;

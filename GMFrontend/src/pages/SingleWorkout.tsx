@@ -1,8 +1,7 @@
 import React from "react";
 import Nav from "../components/navbar/Nav";
 import Title from "../components/form/Title";
-import type ExerciseDto from "../dtos/exerciseDto";
-import type SetDto from "../dtos/setDto";
+
 import ShowElementButton from "../components/buttons/ShowElementButton";
 import { useGetWorkout } from "../hooks/workoutHooks/useGetWorkout";
 import { useSearchParams } from "react-router";

@@ -11,14 +11,16 @@ import SingleWorkout from "./pages/SingleWorkout";
 import { WorkoutsProvider } from "./contexts/WorkoutProvider";
 import { ModalProvider } from "./contexts/ModalProvider";
 import { WORKOUT, WORKOUTS_ENDPOINT } from "./constants/endpoints";
+import { MenuProvider } from "./contexts/MenuProvider";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <AuthProvider>
-          <WorkoutsProvider>
-            <ModalProvider>
+          {/* </AuthProvider> */}
+          <ModalProvider>
+            <MenuProvider>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -32,8 +34,9 @@ function App() {
                   element={<SingleWorkout />}
                 />
               </Routes>
-            </ModalProvider>
-          </WorkoutsProvider>
+            </MenuProvider>
+          </ModalProvider>
+          {/* </WorkoutsProvider> */}
         </AuthProvider>
       </BrowserRouter>
     </>

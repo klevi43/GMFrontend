@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import type WorkoutDto from "../../dtos/workoutDto";
 import WorkoutListItemDetails from "./WorkoutListItemDetails";
-import WorkoutListItemOptionsButton from "./WorkoutListItemOptionsButton";
+import ListItemOptionsButton from "./ListItemOptionsButton";
 
-import WorkoutListItemMenuModal from "./WorkoutListItemMenuModal";
+import ListItemMenuModal from "./ListItemMenuModal";
 import { useModal } from "../../hooks/useModal";
 
 import { DELETE_TYPE, UPDATE_TYPE } from "../../constants/modalConstants";
@@ -11,27 +11,27 @@ import { Link, useNavigate } from "react-router";
 import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/endpoints";
 import { useGetWorkout } from "../../hooks/workoutHooks/useGetWorkout";
 import workoutService from "../../services/workoutService";
+import { useMenu } from "../../hooks/useMenu";
 
 interface Props {
   workout: WorkoutDto;
 }
 
 const WorkoutListItem = React.memo(({ workout }: Props) => {
-  const [menuIsVisible, setMenuIsVisible] = useState(false);
-  const showMenu = () => {
-    setMenuIsVisible(!menuIsVisible);
-  };
+  // const [menuIsVisible, setMenuIsVisible] = useState(false);
+
+  const { openMenuId, showOpenMenuById } = useMenu();
+
   const { openModal } = useModal();
   const navigate = useNavigate();
 
   const handleOpenDeleteModalClick = useCallback(() => {
-    setMenuIsVisible(false);
-
+    showOpenMenuById(-1);
     openModal(DELETE_TYPE, workout);
   }, [openModal, workout]);
 
   const handleOpenUpdateModalClick = useCallback(() => {
-    setMenuIsVisible(false);
+    showOpenMenuById(-1);
     openModal(UPDATE_TYPE, workout);
   }, [openModal, workout]);
   const handleWorkoutItemClick = (workoutId: number) => {
@@ -51,13 +51,16 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
             </button>
 
             <div>
-              {menuIsVisible && (
-                <WorkoutListItemMenuModal
+              {openMenuId === workout.id && (
+                <ListItemMenuModal
                   handleOpenUpdateModalClick={handleOpenUpdateModalClick}
                   handleOpenDeleteModalClick={handleOpenDeleteModalClick}
                 />
               )}
-              <WorkoutListItemOptionsButton showMenu={showMenu} />
+              <ListItemOptionsButton
+                showMenu={showOpenMenuById}
+                id={workout.id}
+              />
             </div>
           </div>
         </div>

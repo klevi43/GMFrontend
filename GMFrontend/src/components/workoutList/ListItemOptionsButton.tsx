@@ -1,12 +1,13 @@
 import React from "react";
 interface Props {
-  showMenu: () => void;
+  showMenu: (id: number) => void;
+  id: number;
 }
-const WorkoutListItemOptionsButton = ({ showMenu }: Props) => {
+const ListItemOptionsButton = ({ showMenu, id }: Props) => {
   return (
     <button
       className="align-baseline pr-[1.2rem] text-text  text-[3rem] hover:text-white transition duration-300 cursor-pointer"
-      onClick={showMenu}
+      onClick={() => showMenu(id)}
     >
       <svg
         className="inline-block"
@@ -24,4 +25,4 @@ const WorkoutListItemOptionsButton = ({ showMenu }: Props) => {
   );
 };
 
-export default WorkoutListItemOptionsButton;
+export default ListItemOptionsButton;

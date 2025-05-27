@@ -1,35 +1,32 @@
 import React from "react";
 import type ExerciseDto from "../../dtos/exerciseDto";
-import SetListItem from "../setList/setListItem";
-import ShowElementButton from "../buttons/ShowElementButton";
+
 import SetList from "../setList/SetList";
+import ListItemMenuModal from "../workoutList/ListItemMenuModal";
 interface Props {
   exercise: ExerciseDto;
 }
 const ExerciseListItem = ({ exercise }: Props) => {
+  const open = () => {
+    console.log("clicked");
+  };
+  const close = () => {
+    console.log("clicked");
+  };
   return (
     <li className="text-white text-[1.7rem] w-full px-[1rem]">
-      {exercise.name}
+      <div className="flex justify-between items-center">
+        <div>{exercise.name}</div>
+        <div>{}</div>
+        <ListItemMenuModal
+          handleOpenUpdateModalClick={open}
+          handleOpenDeleteModalClick={close}
+        />
+      </div>
+
       {exercise.sets && exercise.sets.length > 0 && (
         <SetList sets={exercise.sets} />
       )}
-      {/* <ul className="">
-                    <SetListItem col1="No" col2="Weight" col3="Reps" col4="" />
-                    {exercise.sets?.map((set, index) => (
-                      <SetListItem
-                        key={index}
-                        col1={index + 1}
-                        col2={set.weight}
-                        col3={set.reps}
-                        col4="..."
-                      />
-                    ))}
-                    <ShowElementButton
-                      styles="text-primary text-[1.5rem] bg-background border-2 border-primary py-2 w-full rounded-full"
-                      content="Add Set"
-                      showElement={() => {}}
-                    />
-                  </ul> */}
     </li>
   );
 };
