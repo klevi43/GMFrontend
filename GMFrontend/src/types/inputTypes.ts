@@ -8,10 +8,20 @@ export type ExerciseInput = {
   workoutId: number;
 };
 
-export type UpdateExerciseInput = ExerciseInput & QueryParams;
+export type UpdateExerciseInput = ExerciseInput &
+  WorkoutQueryParam &
+  ExerciseQueryParam;
 
 export type QueryParams = {
   workoutId: number;
+  exerciseId: number;
+};
+
+type WorkoutQueryParam = {
+  workoutId: number;
+};
+
+type ExerciseQueryParam = {
   exerciseId: number;
 };
 export type SetInput = {

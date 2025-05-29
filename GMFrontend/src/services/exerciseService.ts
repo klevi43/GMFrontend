@@ -1,5 +1,5 @@
 import axiosInstance from "./axiosInstance";
-import type { ExerciseInput } from "../types/inputTypes";
+import type { ExerciseInput, UpdateExerciseInput } from "../types/inputTypes";
 import type { Axios, AxiosResponse } from "axios";
 import type ExerciseDto from "../dtos/exerciseDto";
 import {
@@ -29,13 +29,13 @@ class ExerciseService {
   };
 
   updateExercise = async (
-    name: string,
+    updatedExercise: UpdateExerciseInput,
     exerciseId: number,
     workoutId: number
   ): Promise<AxiosResponse<ExerciseDto, any>> => {
     const response = await axiosInstance.put(
       EXERCISES_ENDPOINT + UPDATE,
-      { name: name },
+      { name: updatedExercise.name },
       {
         params: { workoutId, exerciseId },
         headers: {

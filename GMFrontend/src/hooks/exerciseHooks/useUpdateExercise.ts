@@ -30,12 +30,12 @@ export const useUpdateExercise = (
   const { closeModal } = useModal();
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async ({ exerciseId, workoutId, name }) => {
+    mutationFn: async (updatedExerise) => {
       try {
         return await exerciseService.updateExercise(
-          name,
-          exerciseId,
-          workoutId
+          updatedExerise,
+          updatedExerise.exerciseId,
+          updatedExerise.workoutId
         );
       } catch (error) {
         let message = "Unable to update exercise. Please try again later.";
@@ -46,7 +46,7 @@ export const useUpdateExercise = (
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["exercises"] });
+      queryClient.invalidateQueries({ queryKey: ["workout"] });
       closeModal();
     },
   });

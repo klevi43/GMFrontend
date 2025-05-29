@@ -21,9 +21,7 @@ const MenuWrapper = React.memo(({ id, dtoObj }: Props) => {
   const { openModal } = useModal();
 
   const handleOpenUpdateModalClick = () => {
-    let input = null;
-
-    openModal(UPDATE_TYPE, input, dtoObj);
+    openModal(UPDATE_TYPE, null, dtoObj);
   };
 
   const handleOpenDeleteModalClick = () => {
