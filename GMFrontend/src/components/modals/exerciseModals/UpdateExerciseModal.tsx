@@ -7,6 +7,7 @@ import { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
 import type { SubmitHandler } from "react-hook-form";
 import type { ExerciseInput } from "../../../types/inputTypes";
 import { useSearchParams } from "react-router";
+import { useModal } from "../../../hooks/useModal";
 interface Props {
   workoutId: number;
   exerciseId: number;
@@ -18,11 +19,12 @@ const UpdateExerciseModal = ({
   exerciseInput,
 }: Props) => {
   const mutation = useUpdateExercise();
+  const { queryParams } = useModal();
   const onSubmit: SubmitHandler<ExerciseFormSchema> = async (
     data: ExerciseInput
   ) => {
     try {
-      await mutation.mutateAsync({ ...data, exerciseId, workoutId });
+      await mutation.mutateAsync({ ...data, ...queryParams });
     } catch (error) {}
   };
   return (

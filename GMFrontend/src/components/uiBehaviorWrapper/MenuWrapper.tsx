@@ -11,21 +11,25 @@ import {
   mapToExerciseInput,
   mapToWorkoutInput,
 } from "../../mappers/dtoToInputMapper";
+import type { QueryParams } from "../../types/inputTypes";
 
 interface Props {
   id: number;
   dtoObj: WorkoutDto | ExerciseDto;
+  queryParams: QueryParams;
 }
-const MenuWrapper = React.memo(({ id, dtoObj }: Props) => {
+const MenuWrapper = React.memo(({ id, dtoObj, queryParams }: Props) => {
   const { openMenuId, showOpenMenuById } = useMenu();
   const { openModal } = useModal();
 
   const handleOpenUpdateModalClick = () => {
-    openModal(UPDATE_TYPE, null, dtoObj);
+    showOpenMenuById(-1);
+    openModal(UPDATE_TYPE, null, dtoObj, queryParams);
   };
 
   const handleOpenDeleteModalClick = () => {
-    openModal(DELETE_TYPE, null, dtoObj);
+    showOpenMenuById(-1);
+    openModal(DELETE_TYPE, null, dtoObj, queryParams);
   };
   return (
     <>

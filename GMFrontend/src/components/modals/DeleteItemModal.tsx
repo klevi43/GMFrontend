@@ -1,29 +1,23 @@
-import React from "react";
 import ModalContainer from "../containers/ModalContainer";
 import FormContainer from "../containers/FormContainer";
 import { useModal } from "../../hooks/useModal";
-import { useDeleteWorkout } from "../../hooks/workoutHooks/useDeleteWorkout";
 import Title from "../form/Title";
 import ModalCloseButton from "./workoutModals/ModalCloseButton";
-interface Props {
+import type { UseMutationResult } from "@tanstack/react-query";
+import type { AxiosResponse } from "axios";
+interface Props<T> {
   title: string;
-  deleteItemName: string;
   warning?: string;
-  handleClose: () => void;
+  mutation: UseMutationResult<AxiosResponse<any>, unknown, T, unknown>;
 }
 
-const DeleteItemModal = ({
-  title,
-  deleteItemName,
-  warning,
-  handleClose,
-}: Props) => {
-  const { data, closeModal } = useModal();
-  const mutation = useDeleteWorkout();
+const DeleteItemModal = <T,>({ title, warning, mutation }: Props<T>) => {
+  const { optionalDto, queryParams, closeModal } = useModal();
+
   const handleDeleteButtonClick = async () => {
     try {
-      if (data) {
-        mutation.mutateAsync(data.id);
+      if (queryParams) {
+        mutation.mutateAsync({ queryParams } as T);
       }
     } catch (error) {}
   };
@@ -40,7 +34,7 @@ const DeleteItemModal = ({
                   Are you sure you want to delete this {title.toLowerCase()}?
                 </p>
                 <h4 className="text-white text-[2rem] font-bold mb-5 ">
-                  {deleteItemName}
+                  {optionalDto?.name}
                 </h4>
                 {warning && (
                   <p className="text-red-500 mb-4 text-center">{warning}</p>

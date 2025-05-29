@@ -49,8 +49,8 @@ class ExerciseService {
   };
 
   deleteExercise = async (
-    workoutId: number,
-    exerciseId: number
+    exerciseId: number,
+    workoutId: number
   ): Promise<AxiosResponse<any, any>> => {
     const response = await axiosInstance.delete(EXERCISES_ENDPOINT + DELETE, {
       params: { workoutId, exerciseId },

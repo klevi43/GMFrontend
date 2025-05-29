@@ -20,6 +20,8 @@ import {
   mapToExerciseInput,
 } from "../mappers/dtoToInputMapper";
 import { isWorkoutDto, isExerciseDto } from "../typeGuards/typeGuards";
+import { useDeleteWorkout } from "../hooks/workoutHooks/useDeleteWorkout";
+import useDeleteExercise from "../hooks/exerciseHooks/useDeleteExercise";
 interface Props {
   children: React.ReactNode;
 }
@@ -27,6 +29,7 @@ const modalObj: ModalContextType = {
   type: null,
   data: null,
   optionalDto: null,
+  queryParams: null,
   isOpen: false,
   openModal: () => {},
   closeModal: () => {},
@@ -39,12 +42,14 @@ export const ModalProvider = ({ children }: Props) => {
   const openModal = (
     type: ModalContextType["type"],
     data: ModalContextType["data"],
-    optionalDto?: ModalContextType["optionalDto"]
+    optionalDto: ModalContextType["optionalDto"],
+    queryParams: ModalContextType["queryParams"]
   ) => {
     setModalState({
       type,
       data,
       optionalDto: optionalDto ?? null,
+      queryParams: queryParams ?? null,
       isOpen: true,
       openModal,
       closeModal,
@@ -72,23 +77,36 @@ export const ModalProvider = ({ children }: Props) => {
         modalState.isOpen &&
         isExerciseInput(modalState.data) && <AddExerciseFormModal />}
       {modalState.type === UPDATE_TYPE &&
+        modalState.queryParams?.workoutId &&
+        modalState.queryParams.exerciseId &&
         modalState.isOpen &&
         isExerciseDto(modalState.optionalDto) && (
           <UpdateExerciseModal
-            workoutId={modalState.optionalDto?.workoutId}
-            exerciseId={modalState.optionalDto.id}
+            workoutId={modalState.queryParams?.workoutId}
+            exerciseId={modalState.queryParams.exerciseId}
             exerciseInput={mapToExerciseInput(modalState.optionalDto)}
           />
         )}
 
       {modalState.type === DELETE_TYPE &&
         modalState.isOpen &&
+        modalState.queryParams?.workoutId &&
+        isWorkoutDto(modalState.optionalDto) &&
         modalState.optionalDto && (
           <DeleteItemModal
             title="Workout"
-            deleteItemName={modalState.optionalDto.name}
             warning="This will delete all exercises and sets in this workout."
-            handleClose={closeModal}
+            mutation={useDeleteWorkout()}
+          />
+        )}
+      {modalState.type === DELETE_TYPE &&
+        modalState.isOpen &&
+        isExerciseDto(modalState.optionalDto) &&
+        modalState.optionalDto && (
+          <DeleteItemModal
+            title="Exercise"
+            warning="This will delete all sets for this exercise."
+            mutation={useDeleteExercise()}
           />
         )}
     </ModalContext.Provider>

@@ -8,21 +8,25 @@ export type ExerciseInput = {
   workoutId: number;
 };
 
-export type UpdateExerciseInput = ExerciseInput &
-  WorkoutQueryParam &
-  ExerciseQueryParam;
+export type UpdateExerciseInput = ExerciseInput & WorkoutQP & ExerciseQP;
+export type WorkoutQueryParam = WorkoutQP;
 
 export type QueryParams = {
-  workoutId: number;
-  exerciseId: number;
+  workoutId?: number;
+  exerciseId?: number;
+  setId?: number;
 };
 
-type WorkoutQueryParam = {
-  workoutId: number;
+type WorkoutQP = {
+  workoutId?: number;
 };
 
-type ExerciseQueryParam = {
-  exerciseId: number;
+type ExerciseQP = {
+  exerciseId?: number;
+};
+
+type SetQP = {
+  setId?: number;
 };
 export type SetInput = {
   weight: number;
