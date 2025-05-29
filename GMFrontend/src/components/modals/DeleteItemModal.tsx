@@ -17,7 +17,7 @@ const DeleteItemModal = <T,>({ title, warning, mutation }: Props<T>) => {
   const handleDeleteButtonClick = async () => {
     try {
       if (queryParams) {
-        mutation.mutateAsync({ queryParams } as T);
+        mutation.mutateAsync(queryParams as T);
       }
     } catch (error) {}
   };
