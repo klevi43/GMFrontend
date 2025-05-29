@@ -43,7 +43,9 @@ const SingleWorkout = () => {
         <ShowElementButton
           styles="text-[2rem] py-2 bg-primary w-full rounded-full"
           content="Add Exercise"
-          showElement={() => openModal(ADD_TYPE, emptyExerciseInput)}
+          showElement={() =>
+            openModal(ADD_TYPE, emptyExerciseInput, null, null)
+          }
         />
       </div>
     </div>

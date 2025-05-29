@@ -7,23 +7,23 @@ import type { AxiosResponse } from "axios";
 import exerciseService from "../../services/exerciseService";
 import axios from "axios";
 import { useModal } from "../useModal";
-import type { QueryParams } from "../../types/inputTypes";
-import type ExerciseDto from "../../dtos/exerciseDto";
-import type WorkoutDto from "../../dtos/workoutDto";
-
+import type {
+  DeleteExerciseQueryParams,
+  QueryParams,
+} from "../../types/inputTypes";
 export const useDeleteExercise = (): UseBaseMutationResult<
   AxiosResponse<any, any>,
   unknown,
-  QueryParams,
+  DeleteExerciseQueryParams,
   unknown
 > => {
   const queryClient = useQueryClient();
   const { closeModal } = useModal();
   return useMutation({
-    mutationFn: async (queryParams: ExerciseDto) => {
+    mutationFn: async (queryParams: DeleteExerciseQueryParams) => {
       try {
         return await exerciseService.deleteExercise(
-          queryParams.id,
+          queryParams.exerciseId,
           queryParams.workoutId
         );
       } catch (error) {

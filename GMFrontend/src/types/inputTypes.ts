@@ -11,6 +11,7 @@ export type ExerciseInput = {
 export type UpdateExerciseInput = ExerciseInput & WorkoutQP & ExerciseQP;
 export type WorkoutQueryParam = WorkoutQP;
 
+export type DeleteExerciseQueryParams = ExerciseQP & WorkoutQP;
 export type QueryParams = {
   workoutId?: number;
   exerciseId?: number;
@@ -18,11 +19,11 @@ export type QueryParams = {
 };
 
 type WorkoutQP = {
-  workoutId?: number;
+  workoutId: number;
 };
 
 type ExerciseQP = {
-  exerciseId?: number;
+  exerciseId: number;
 };
 
 type SetQP = {

@@ -57,10 +57,17 @@ export const ModalProvider = ({ children }: Props) => {
     showOpenMenuById(-1);
   };
   const closeModal = () => {
-    setModalState({ ...modalState, data: null, isOpen: false });
+    setModalState({
+      ...modalState,
+      data: null,
+      isOpen: false,
+      optionalDto: null,
+      queryParams: null,
+    });
   };
   console.log(modalState);
-
+  const deleteWorkoutMutation = useDeleteWorkout();
+  const deleteExerciseMutation = useDeleteExercise();
   return (
     <ModalContext.Provider value={{ ...modalState, openModal, closeModal }}>
       {children}
@@ -96,7 +103,7 @@ export const ModalProvider = ({ children }: Props) => {
           <DeleteItemModal
             title="Workout"
             warning="This will delete all exercises and sets in this workout."
-            mutation={useDeleteWorkout()}
+            mutation={deleteWorkoutMutation}
           />
         )}
       {modalState.type === DELETE_TYPE &&
@@ -106,7 +113,7 @@ export const ModalProvider = ({ children }: Props) => {
           <DeleteItemModal
             title="Exercise"
             warning="This will delete all sets for this exercise."
-            mutation={useDeleteExercise()}
+            mutation={deleteExerciseMutation}
           />
         )}
     </ModalContext.Provider>
