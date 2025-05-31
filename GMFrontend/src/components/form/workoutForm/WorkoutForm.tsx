@@ -17,7 +17,7 @@ type Props = {
   error: unknown;
 };
 
-const AddOrUpdateWorkoutForm = ({
+const WorkoutForm = ({
   onSubmit,
   fields,
   title,
@@ -59,4 +59,4 @@ const AddOrUpdateWorkoutForm = ({
   );
 };
 
-export default AddOrUpdateWorkoutForm;
+export default WorkoutForm;

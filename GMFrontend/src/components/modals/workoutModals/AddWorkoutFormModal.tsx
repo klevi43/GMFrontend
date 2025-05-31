@@ -1,7 +1,7 @@
 import React from "react";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
-import AddOrUpdateWorkoutForm from "../../form/workoutForm/AddOrUpdateWorkoutForm";
+import WorkoutForm from "../../form/workoutForm/WorkoutForm";
 import { useAddWorkout } from "../../../hooks/workoutHooks/useAddWorkout";
 import type { SubmitHandler } from "react-hook-form";
 import type { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
@@ -21,7 +21,7 @@ const AddWorkoutFormModal = () => {
     <>
       <ModalContainer>
         <FormContainer>
-          <AddOrUpdateWorkoutForm
+          <WorkoutForm
             onSubmit={onSubmit}
             title="Add Workout"
             defaultValues={{ name: "", date: "" }}

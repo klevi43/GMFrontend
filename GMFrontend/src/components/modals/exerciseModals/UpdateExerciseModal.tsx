@@ -1,7 +1,7 @@
 import React from "react";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
-import AddOrUpdateExerciseForm from "../../form/exerciseForm/AddOrUpdateExerciseForm";
+import ExerciseForm from "../../form/exerciseForm/ExerciseForm";
 import { useUpdateExercise } from "../../../hooks/exerciseHooks/useUpdateExercise";
 import { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
 import type { SubmitHandler } from "react-hook-form";
@@ -31,7 +31,7 @@ const UpdateExerciseModal = ({
     <>
       <ModalContainer>
         <FormContainer>
-          <AddOrUpdateExerciseForm
+          <ExerciseForm
             onSubmit={onSubmit}
             title="Update Exercise"
             defaultValues={{ name: exerciseInput.name, workoutId: workoutId }}

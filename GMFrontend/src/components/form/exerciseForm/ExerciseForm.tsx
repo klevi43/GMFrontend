@@ -19,7 +19,7 @@ interface Props {
   defaultValues: ExerciseInput;
   error: unknown;
 }
-const AddOrUpdateExerciseForm = ({
+const ExerciseForm = ({
   onSubmit,
   field,
   title,
@@ -62,4 +62,4 @@ const AddOrUpdateExerciseForm = ({
   );
 };
 
-export default AddOrUpdateExerciseForm;
+export default ExerciseForm;
