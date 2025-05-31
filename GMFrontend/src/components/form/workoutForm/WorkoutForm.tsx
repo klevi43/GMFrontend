@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import ModalCloseButton from "../../modals/workoutModals/ModalCloseButton";
 import { useModal } from "../../../hooks/useModal";
 import ErrorMessage from "../../messages/ErrorMessage";
+import { useMod } from "../../../hooks/useMod";
 type Props = {
   onSubmit: (data: WorkoutFormSchema) => void;
   fields: WorkoutFormFieldsType[];
@@ -33,7 +34,7 @@ const WorkoutForm = ({
     defaultValues,
   });
 
-  const { closeModal } = useModal();
+  const { closeModal } = useMod();
   return (
     <div className="relative">
       <ModalCloseButton closeModal={closeModal} />

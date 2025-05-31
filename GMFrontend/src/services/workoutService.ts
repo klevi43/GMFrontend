@@ -50,12 +50,14 @@ class WorkoutService {
     });
   };
   // TODO: ADD PARAMS
-  updateWorkout = async (workoutInput: WorkoutInput): Promise<WorkoutDto> => {
+  updateWorkout = async (
+    workoutInput: WorkoutInput,
+    workoutId: number
+  ): Promise<WorkoutDto> => {
     return await axiosInstance.put(WORKOUTS_ENDPOINT + UPDATE, workoutInput, {
+      params: { workoutId },
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
     });
   };

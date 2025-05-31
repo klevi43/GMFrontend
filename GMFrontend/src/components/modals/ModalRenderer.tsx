@@ -1,13 +1,21 @@
 import React from "react";
-import type { ModType } from "../../types/modContextType";
+import type { InputDtoTypes, ModType } from "../../types/modContextType";
 import AddWorkoutFormModal from "./workoutModals/AddWorkoutFormModal";
+import UpdateWorkoutFormModal from "./workoutModals/UpdateWorkoutFormModal";
+import { INITIAL_DATA_NOT_SET_MSG } from "../../constants/errorMsgs";
 interface Props {
   type: ModType | null;
+  initialData: InputDtoTypes | null;
 }
-const ModalRenderer = ({ type }: Props) => {
+const ModalRenderer = ({ type, initialData }: Props) => {
   switch (type) {
     case "ADD_WORKOUT":
       return <AddWorkoutFormModal />;
+    case "UPDATE_WORKOUT":
+      if (!initialData) {
+        throw new Error(INITIAL_DATA_NOT_SET_MSG);
+      }
+      return <UpdateWorkoutFormModal initialData={initialData} />;
     default:
       return <></>;
   }

@@ -4,7 +4,7 @@ import {
   VALID_EMAIL_MSG,
   MIN_LEN_8_MSG,
   PASSWORD_MUST_MATCH_MSG,
-} from "../constants/formErrorMsgs";
+} from "../constants/errorMsgs";
 export const RegisterFormSchema = z
   .object({
     email: z.string().nonempty(FIELD_NOT_EMPTY_MSG).email(VALID_EMAIL_MSG),

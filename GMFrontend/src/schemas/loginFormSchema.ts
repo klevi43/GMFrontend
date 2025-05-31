@@ -3,7 +3,7 @@ import {
   FIELD_NOT_EMPTY_MSG,
   VALID_EMAIL_MSG,
   MIN_LEN_8_MSG,
-} from "../constants/formErrorMsgs";
+} from "../constants/errorMsgs";
 export const LoginFormSchema = z.object({
   email: z.string().nonempty(FIELD_NOT_EMPTY_MSG).email(VALID_EMAIL_MSG),
   password: z.string().nonempty(FIELD_NOT_EMPTY_MSG).min(8, {

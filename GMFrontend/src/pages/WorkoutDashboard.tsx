@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
 import Nav from "../components/navbar/Nav";
 import WorkoutList from "../components/workoutList/WorkoutList";
-import AddWorkoutFormModal from "../components/modals/workoutModals/AddWorkoutFormModal";
 import ShowElementButton from "../components/buttons/ShowElementButton";
-import { useModal } from "../hooks/useModal";
-import { ADD_TYPE } from "../constants/modalConstants";
 import Title from "../components/form/Title";
-import type { WorkoutInput } from "../types/inputTypes";
 import { useMod } from "../hooks/useMod";
-const WorkoutDashboard = () => {
-  const obj = useMod();
 
-  const emptyWorkoutInput: WorkoutInput = {
-    name: "Untitled Workout",
-    date: new Date().toISOString().split("T")[0],
-  };
+const WorkoutDashboard = () => {
+  const { openModal } = useMod();
+
   return (
     <div>
       <Nav />
@@ -26,9 +18,7 @@ const WorkoutDashboard = () => {
           <ShowElementButton
             styles="text-[3.5rem] text-text hover:text-white"
             content="+"
-            showElement={() =>
-              openModal(ADD_TYPE, emptyWorkoutInput, null, null)
-            }
+            showElement={() => openModal("ADD_WORKOUT")}
           />
         </div>
       </div>

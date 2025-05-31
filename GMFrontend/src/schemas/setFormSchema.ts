@@ -2,7 +2,7 @@ import * as z from "zod";
 import {
   FIELD_NOT_EMPTY_MSG,
   MUST_BE_NUMBER_MSG,
-} from "../constants/formErrorMsgs";
+} from "../constants/errorMsgs";
 import type { SetInput } from "../types/inputTypes";
 export const SetFormSchema = z.object({
   weight: z.number({

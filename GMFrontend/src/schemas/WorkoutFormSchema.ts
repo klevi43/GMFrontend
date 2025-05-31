@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { FIELD_NOT_EMPTY_MSG } from "../constants/formErrorMsgs";
+import { FIELD_NOT_EMPTY_MSG } from "../constants/errorMsgs";
 import type { WorkoutInput } from "../types/inputTypes";
 
 export const WorkoutFormSchema = z.object({

@@ -10,6 +10,7 @@ import type { WorkoutInput } from "../../types/inputTypes";
 import workoutService from "../../services/workoutService";
 import { useModal } from "../useModal";
 import axios from "axios";
+import { useMod } from "../useMod";
 // AxiosResponse<Workout, any> = the expected response from the server.
 // unknown = the error type (you can specify a custom one).
 // WorkoutInput = the input you pass to the mutation (what you want to send to the backend).
@@ -22,7 +23,7 @@ export const useAddWorkout = (
     unknown // Type of context (for rollback, rarely used)
   >
 ): UseBaseMutationResult<WorkoutDto, unknown, WorkoutInput, unknown> => {
-  const { closeModal } = useModal();
+  const { closeModal } = useMod();
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (

@@ -1,8 +1,10 @@
+import { useMod } from "../hooks/useMod";
 import { useModal } from "../hooks/useModal";
+import { useQueryParams } from "../hooks/useQueryParams";
 import type { QueryParams } from "../types/inputTypes";
 
 const getQueryParams = (): QueryParams => {
-  const { queryParams } = useModal();
+  const { queryParams } = useQueryParams();
   if (!queryParams) {
     throw new Error("Query Params not set in context");
   }

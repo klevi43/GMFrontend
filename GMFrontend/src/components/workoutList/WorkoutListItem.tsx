@@ -12,6 +12,7 @@ import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/endpoints";
 import { useGetWorkout } from "../../hooks/workoutHooks/useGetWorkout";
 import workoutService from "../../services/workoutService";
 import { useMenu } from "../../hooks/useMenu";
+import { useMod } from "../../hooks/useMod";
 
 interface Props {
   workout: WorkoutDto;
@@ -22,17 +23,17 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
 
   const { openMenuId, showOpenMenuById } = useMenu();
 
-  const { openModal } = useModal();
+  //const { openModal } = useModal();
   const navigate = useNavigate();
-
+  const { openModal } = useMod();
   const handleOpenDeleteModalClick = useCallback(() => {
     showOpenMenuById(-1);
-    openModal(DELETE_TYPE, workout, null, null);
+    //openModal(DELETE_TYPE);
   }, [openModal, workout]);
 
   const handleOpenUpdateModalClick = useCallback(() => {
     showOpenMenuById(-1);
-    openModal(UPDATE_TYPE, workout, null, null);
+    openModal("UPDATE_WORKOUT", workout);
   }, [openModal, workout]);
   const handleWorkoutItemClick = (workoutId: number) => {
     navigate(WORKOUTS_ENDPOINT + WORKOUT + `?workoutId=${workoutId}`);

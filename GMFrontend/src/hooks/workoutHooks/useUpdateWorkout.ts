@@ -10,25 +10,19 @@ import workoutService from "../../services/workoutService";
 import type WorkoutDto from "../../dtos/workoutDto";
 import axios from "axios";
 import { useModal } from "../useModal";
+import { useMod } from "../useMod";
+import { useQueryParams } from "../useQueryParams";
+import { getWorkoutId } from "../../utils/QueryParamHelpers";
 export const useUpdateWorkout = (
-  options?: UseMutationOptions<
-    AxiosResponse<WorkoutDto>,
-    unknown,
-    WorkoutInput,
-    unknown
-  >
-): UseBaseMutationResult<
-  AxiosResponse<WorkoutDto, any>,
-  unknown,
-  WorkoutInput,
-  unknown
-> => {
-  const { closeModal } = useModal();
+  options?: UseMutationOptions<WorkoutDto, unknown, WorkoutInput, unknown>
+): UseBaseMutationResult<WorkoutDto, unknown, WorkoutInput, unknown> => {
+  const { closeModal } = useMod();
+  const workoutId = getWorkoutId();
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (workoutInput: WorkoutInput) => {
       try {
-        return await workoutService.updateWorkout(workoutInput);
+        return await workoutService.updateWorkout(workoutInput, workoutId);
       } catch (error) {
         let message = "Unable to update workout. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {

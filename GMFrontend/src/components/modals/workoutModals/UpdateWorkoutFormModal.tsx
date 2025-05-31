@@ -6,9 +6,12 @@ import type { SubmitHandler } from "react-hook-form";
 import type { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
 import type { WorkoutInput } from "../../../types/inputTypes";
 import { useUpdateWorkout } from "../../../hooks/workoutHooks/useUpdateWorkout";
-import { useModal } from "../../../hooks/useModal";
-
-const UpdateWorkoutFormModal = () => {
+import type WorkoutDto from "../../../dtos/workoutDto";
+import { useQueryParams } from "../../../hooks/useQueryParams";
+interface Props {
+  initialData: WorkoutDto;
+}
+const UpdateWorkoutFormModal = ({ initialData }: Props) => {
   const onSubmit: SubmitHandler<WorkoutFormSchema> = async (
     data: WorkoutInput
   ) => {
@@ -16,8 +19,10 @@ const UpdateWorkoutFormModal = () => {
       await mutation.mutateAsync(data);
     } catch (error) {}
   };
-  const { data } = useModal();
+
   const mutation = useUpdateWorkout();
+  const { setQueryParams } = useQueryParams();
+  setQueryParams({ workoutId: initialData.id });
   return (
     <>
       <ModalContainer>
@@ -26,8 +31,8 @@ const UpdateWorkoutFormModal = () => {
             onSubmit={onSubmit}
             title="Edit Workout"
             defaultValues={{
-              name: data ? data.name : "",
-              date: data ? data.date : "",
+              name: initialData.name,
+              date: initialData.date,
             }}
             fields={[
               { name: "name", label: "Workout Name", type: "text" },

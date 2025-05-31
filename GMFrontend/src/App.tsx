@@ -13,7 +13,7 @@ import { ModalProvider } from "./contexts/ModalProvider";
 import { WORKOUT, WORKOUTS_ENDPOINT } from "./constants/endpoints";
 import { MenuProvider } from "./contexts/MenuProvider";
 import { QueryParamsProvider } from "./contexts/QueryParamProvider";
-import ModProvider from "./contexts/ModProvider";
+import { ModProvider } from "./contexts/ModProvider";
 
 function App() {
   return (
