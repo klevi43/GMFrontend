@@ -10,8 +10,9 @@ import ModalCloseButton from "../../modals/workoutModals/ModalCloseButton";
 import Title from "../Title";
 import ErrorMessage from "../../messages/ErrorMessage";
 import FormInputLabel from "../FormInputLabel";
-import SetFormInputItem from "./setFormInputItem";
+import SetFormInputItem from "./SetFormInputItem";
 import FormSubmitButton from "../FormSubmitButton";
+import { useMod } from "../../../hooks/useMod";
 interface Props {
   onSubmit: (data: SetFormSchema) => void;
   fields: SetFormFieldsType[];
@@ -28,7 +29,7 @@ const SetForm = ({ onSubmit, fields, title, defaultValues, error }: Props) => {
     resolver: zodResolver(SetFormSchema),
     defaultValues,
   });
-  const { closeModal } = useModal();
+  const { closeModal } = useMod();
   return (
     <div>
       <ModalCloseButton closeModal={closeModal} />

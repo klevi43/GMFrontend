@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import Nav from "../components/navbar/Nav";
 import Title from "../components/form/Title";
 
@@ -16,9 +16,13 @@ import { useQueryParams } from "../hooks/useQueryParams";
 import { getWorkoutId } from "../utils/QueryParamHelpers";
 
 const SingleWorkout = () => {
-  const workoutId = getWorkoutId();
+  const { queryParams, setQueryParams } = useQueryParams();
+  const [searchParams] = useSearchParams();
+  const workoutId = Number(searchParams.get("workoutId"));
   const { data: workoutDto, error, isLoading } = useGetWorkout(workoutId);
-
+  useEffect(() => {
+    setQueryParams({ workoutId: workoutId });
+  }, []);
   const { openModal } = useMod();
   if (!workoutDto)
     return <ErrorMessage fontSize="text-[4rem]" message="No workout found" />;
@@ -39,7 +43,7 @@ const SingleWorkout = () => {
           </p>
         )}
         <ShowElementButton
-          styles="text-[2rem] py-2 bg-primary w-full rounded-full"
+          styles="text-[2rem] py-2 bg-primary w-full rounded-full hover:scale-102"
           content="Add Exercise"
           showElement={() => openModal("ADD_EXERCISE")}
         />

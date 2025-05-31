@@ -9,6 +9,7 @@ import AddExerciseFormModal from "./exerciseModals/AddExerciseFormModal";
 import { isExerciseDto, isWorkoutDto } from "../../typeGuards/typeGuards";
 import UpdateExerciseFormModal from "./exerciseModals/UpdateExerciseFormModal";
 import DeleteExerciseFormModal from "./exerciseModals/DeleteExerciseFormModal";
+import AddSetFormModal from "./setModals/AddSetModal";
 interface Props {
   type: ModType | null;
   initialData: DtoTypes | null;
@@ -40,7 +41,8 @@ const ModalRenderer = ({ type, initialData }: Props) => {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);
       }
       return <DeleteExerciseFormModal initialData={initialData} />;
-
+    case "ADD_SET":
+      return <AddSetFormModal />;
     default:
       return <></>;
   }

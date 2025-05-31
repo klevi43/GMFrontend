@@ -5,11 +5,11 @@ import {
 } from "../constants/errorMsgs";
 import type { SetInput } from "../types/inputTypes";
 export const SetFormSchema = z.object({
-  weight: z.number({
+  weight: z.coerce.number({
     required_error: FIELD_NOT_EMPTY_MSG,
     invalid_type_error: MUST_BE_NUMBER_MSG,
   }),
-  reps: z.number({
+  reps: z.coerce.number({
     required_error: FIELD_NOT_EMPTY_MSG,
     invalid_type_error: MUST_BE_NUMBER_MSG,
   }),

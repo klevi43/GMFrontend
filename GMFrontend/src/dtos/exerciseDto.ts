@@ -3,6 +3,6 @@ import type SetDto from "./setDto";
 export default interface ExerciseDto {
   id: number;
   name: string;
-  sets: SetDto[];
+  setDtos: SetDto[];
   workoutId: number;
 }

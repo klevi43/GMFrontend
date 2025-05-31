@@ -1,27 +1,25 @@
 import axiosInstance from "./axiosInstance";
-import type { QueryParams, SetInput } from "../types/inputTypes";
+import type { SetInput } from "../types/inputTypes";
 import type SetDto from "../dtos/setDto";
 import type { Axios, AxiosResponse } from "axios";
 import { CREATE, DELETE, SETS_ENDPOINT, UPDATE } from "../constants/endpoints";
-import { set } from "react-hook-form";
-import { useModal } from "../hooks/useModal";
+
 class SetService {
   addSet = async (
     setInput: SetInput,
-    queryParams: QueryParams
-  ): Promise<AxiosResponse<SetDto, any>> => {
+    exerciseId: number,
+    workoutId: number
+  ): Promise<SetDto> => {
     const response = await axiosInstance.post(
       SETS_ENDPOINT + CREATE,
       setInput,
       {
         params: {
-          workoutId: queryParams.workoutId,
-          exerciseId: queryParams.exerciseId,
+          workoutId: workoutId,
+          exerciseId: exerciseId,
         },
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
         },
       }
     );
@@ -60,3 +58,6 @@ class SetService {
     return response;
   };
 }
+
+const setService = new SetService();
+export default setService;

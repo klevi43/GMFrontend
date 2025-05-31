@@ -32,6 +32,11 @@ const ExerciseListItem = ({ exerciseDto, isMenuOpen }: Props) => {
     openModal("UPDATE_EXERCISE", exerciseDto);
   };
 
+  const handleAddSetButtonClick = () => {
+    setQueryParams({ exerciseId: exerciseDto.id });
+    openModal("ADD_SET");
+  };
+
   return (
     <li className="text-white text-[1.7rem] w-full px-[1rem]">
       <div className="flex justify-between items-center">
@@ -51,15 +56,15 @@ const ExerciseListItem = ({ exerciseDto, isMenuOpen }: Props) => {
         </div>
       </div>
 
-      {exerciseDto.sets ? (
-        <SetList sets={exerciseDto.sets} />
+      {exerciseDto.setDtos ? (
+        <SetList sets={exerciseDto.setDtos} />
       ) : (
         <p className="text-text text-center">No sets to show</p>
       )}
       <ShowElementButton
         styles="text-primary text-[1.5rem] bg-background border-2 border-primary py-2 w-full rounded-full hover:scale-102"
         content="Add Set"
-        showElement={() => openModal("ADD_SET")}
+        showElement={handleAddSetButtonClick}
       />
     </li>
   );
