@@ -1,37 +1,55 @@
-import React from "react";
+import React, { useCallback } from "react";
 import type ExerciseDto from "../../dtos/exerciseDto";
 
 import SetList from "../setList/SetList";
+import { useMod } from "../../hooks/useMod";
+import { useQueryParams } from "../../hooks/useQueryParams";
+
 import ListItemMenuModal from "../workoutList/ListItemMenuModal";
-import { useMenu } from "../../hooks/useMenu";
 import ListItemOptionsButton from "../workoutList/ListItemOptionsButton";
-import MenuWrapper from "../uiBehaviorWrapper/MenuWrapper";
-import type { QueryParams } from "../../types/inputTypes";
+import { useMenu } from "../../hooks/useMenu";
 interface Props {
-  exercise: ExerciseDto;
+  exerciseDto: ExerciseDto;
 }
-const ExerciseListItem = React.memo(({ exercise }: Props) => {
+const ExerciseListItem = React.memo(({ exerciseDto }: Props) => {
   console.log("ExercisePage rerendered");
-  const queryParams: QueryParams = {
-    workoutId: exercise.workoutId,
-    exerciseId: exercise.id,
-  };
+  const { openMenuId, showOpenMenuById } = useMenu();
+  const { openModal } = useMod();
+  const { setQueryParams } = useQueryParams();
+
+  const handleOpenDeleteModalClick = useCallback(() => {
+    showOpenMenuById(-1);
+    setQueryParams({ exerciseId: exerciseDto.id });
+    openModal("DELETE_EXERCISE", exerciseDto);
+  }, [openModal, showOpenMenuById, setQueryParams, exerciseDto]);
+
+  const handleOpenUpdateModalClick = useCallback(() => {
+    //showOpenMenuById(-1);
+    //setQueryParams({ exerciseId: exerciseDto.id });
+    //openModal("UPDATE_EXERCISE", exerciseDto);
+  }, [openModal, showOpenMenuById, setQueryParams, exerciseDto]);
+
   return (
     <li className="text-white text-[1.7rem] w-full px-[1rem]">
       <div className="flex justify-between items-center">
-        <div>{exercise.name}</div>
+        <div>{exerciseDto.name}</div>
 
         <div>
-          <MenuWrapper
-            id={exercise.id}
-            dtoObj={exercise}
-            queryParams={queryParams}
+          {openMenuId === exerciseDto.id && (
+            <ListItemMenuModal
+              handleOpenUpdateModalClick={handleOpenUpdateModalClick}
+              handleOpenDeleteModalClick={handleOpenDeleteModalClick}
+            />
+          )}
+          <ListItemOptionsButton
+            showMenu={showOpenMenuById}
+            id={exerciseDto.id}
           />
         </div>
       </div>
 
-      {exercise.sets && exercise.sets.length > 0 && (
-        <SetList sets={exercise.sets} />
+      {exerciseDto.sets && exerciseDto.sets.length > 0 && (
+        <SetList sets={exerciseDto.sets} />
       )}
     </li>
   );

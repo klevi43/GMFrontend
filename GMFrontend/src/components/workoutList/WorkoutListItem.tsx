@@ -32,13 +32,13 @@ const WorkoutListItem = React.memo(({ workoutDto }: Props) => {
     showOpenMenuById(-1);
     setQueryParams({ workoutId: workoutDto.id });
     openModal("DELETE_WORKOUT", workoutDto);
-  }, [openModal, workoutDto]);
+  }, [showOpenMenuById, setQueryParams, openModal, workoutDto]);
 
   const handleOpenUpdateModalClick = useCallback(() => {
     showOpenMenuById(-1);
     setQueryParams({ workoutId: workoutDto.id });
     openModal("UPDATE_WORKOUT", workoutDto);
-  }, [openModal, workoutDto]);
+  }, [showOpenMenuById, setQueryParams, openModal, workoutDto]);
   const handleWorkoutItemClick = (workoutId: number) => {
     setQueryParams({ workoutId: workoutDto.id });
     navigate(WORKOUTS_ENDPOINT + WORKOUT + `?workoutId=${workoutId}`);

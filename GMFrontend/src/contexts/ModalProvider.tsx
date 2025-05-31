@@ -14,7 +14,7 @@ import { isWorkoutInput } from "../schemas/workoutFormSchema";
 import { isExerciseInput } from "../schemas/exerciseFormSchema";
 import AddExerciseFormModal from "../components/modals/exerciseModals/AddExerciseFormModal";
 import { useMenu } from "../hooks/useMenu";
-import UpdateExerciseModal from "../components/modals/exerciseModals/UpdateExerciseModal";
+import UpdateExerciseModal from "../components/modals/exerciseModals/UpdateExerciseFormModal";
 import {
   mapToWorkoutInput,
   mapToExerciseInput,

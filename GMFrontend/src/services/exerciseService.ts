@@ -1,9 +1,5 @@
 import axiosInstance from "./axiosInstance";
-import type {
-  ExerciseInput,
-  QueryParams,
-  UpdateExerciseInput,
-} from "../types/inputTypes";
+import type { ExerciseInput } from "../types/inputTypes";
 import type { Axios, AxiosResponse } from "axios";
 import type ExerciseDto from "../dtos/exerciseDto";
 import {
@@ -12,7 +8,6 @@ import {
   EXERCISES_ENDPOINT,
   UPDATE,
 } from "../constants/endpoints";
-import { getExerciseId, getWorkoutId } from "../utils/QueryParamHelpers";
 class ExerciseService {
   addExercise = async (
     exerciseInput: ExerciseInput,

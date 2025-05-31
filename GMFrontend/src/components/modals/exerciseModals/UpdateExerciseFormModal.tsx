@@ -1,30 +1,27 @@
-import React from "react";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import ExerciseForm from "../../form/exerciseForm/ExerciseForm";
 import { useUpdateExercise } from "../../../hooks/exerciseHooks/useUpdateExercise";
 import { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
 import type { SubmitHandler } from "react-hook-form";
-import type { ExerciseInput, QueryParams } from "../../../types/inputTypes";
-import { useSearchParams } from "react-router";
-import { useModal } from "../../../hooks/useModal";
+import type { ExerciseInput } from "../../../types/inputTypes";
+
+import type ExerciseDto from "../../../dtos/exerciseDto";
+import { useQueryParams } from "../../../hooks/useQueryParams";
+import { getWorkoutId } from "../../../utils/QueryParamHelpers";
 interface Props {
-  workoutId: number;
-  exerciseId: number;
-  exerciseInput: ExerciseInput;
+  initialData: ExerciseDto;
 }
-const UpdateExerciseModal = ({
-  workoutId,
-  exerciseId,
-  exerciseInput,
-}: Props) => {
+const UpdateExerciseFormModal = ({ initialData }: Props) => {
   const mutation = useUpdateExercise();
-  const { queryParams } = useModal();
+  const { setQueryParams } = useQueryParams();
+  setQueryParams({ exerciseId: initialData.id });
+  const workoutId = getWorkoutId();
   const onSubmit: SubmitHandler<ExerciseFormSchema> = async (
     data: ExerciseInput
   ) => {
     try {
-      await mutation.mutateAsync({ ...data, ...queryParams });
+      await mutation.mutateAsync(data);
     } catch (error) {}
   };
   return (
@@ -34,7 +31,7 @@ const UpdateExerciseModal = ({
           <ExerciseForm
             onSubmit={onSubmit}
             title="Update Exercise"
-            defaultValues={{ name: exerciseInput.name, workoutId: workoutId }}
+            defaultValues={{ name: initialData.name, workoutId: workoutId }}
             field={{ name: "name", label: "Exercise Name", type: "text" }}
             error={mutation.error}
           />
@@ -44,4 +41,4 @@ const UpdateExerciseModal = ({
   );
 };
 
-export default UpdateExerciseModal;
+export default UpdateExerciseFormModal;

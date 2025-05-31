@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 import type {
   QueryParamsContextType,
   QueryParamsType,
@@ -14,9 +14,9 @@ interface Props {
 export const QueryParamsProvider = ({ children }: Props) => {
   const [queryParams, setQueryParamsState] = useState<QueryParamsType>({});
 
-  const setQueryParams = (params: Partial<QueryParamsType>) => {
+  const setQueryParams = useCallback((params: Partial<QueryParamsType>) => {
     setQueryParamsState((prev) => ({ ...prev, ...params }));
-  };
+  }, []);
 
   const clearQueryParams = () => {
     setQueryParamsState({});

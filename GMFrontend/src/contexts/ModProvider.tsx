@@ -1,8 +1,8 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useCallback, useState } from "react";
 import {
   type ModType,
   type ModContextType,
-  type InputDtoTypes,
+  type DtoTypes,
 } from "../types/modContextType";
 import type WorkoutDto from "../dtos/workoutDto";
 import ModalRenderer from "../components/modals/ModalRenderer";
@@ -15,14 +15,14 @@ interface Props {
 export const ModProvider = ({ children }: Props) => {
   const [modType, setModType] = useState<ModType | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [initialData, setInitialData] = useState<InputDtoTypes | null>(null);
+  const [initialData, setInitialData] = useState<DtoTypes | null>(null);
 
-  const openModal = (type: ModType, initialData?: InputDtoTypes) => {
+  const openModal = useCallback((type: ModType, initialData?: DtoTypes) => {
     console.log(initialData);
     setModType(type);
     setIsOpen(true);
     setInitialData(initialData ?? null);
-  };
+  }, []);
 
   const closeModal = () => {
     setModType(null);

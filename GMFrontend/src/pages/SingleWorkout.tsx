@@ -34,7 +34,7 @@ const SingleWorkout = () => {
       </div>
       <div className="w-[98%] mx-auto max-w-[1150px] px-[1rem]">
         {workout.exerciseDtos && workout.exerciseDtos.length > 0 ? (
-          <ExerciseList exercises={workout.exerciseDtos} />
+          <ExerciseList exerciseDtos={workout.exerciseDtos} />
         ) : (
           <p className="text-text text-center text-[2rem]">
             No Exercises to show
