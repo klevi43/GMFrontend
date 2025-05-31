@@ -7,7 +7,7 @@ interface Props {
   register: UseFormRegister<SetFormSchema>;
   errorMsg?: string;
 }
-const setFormInputItem = ({ name, register, errorMsg }: Props) => {
+const SetFormInputItem = ({ name, register, errorMsg }: Props) => {
   return (
     <>
       <div className="w-full mb-8">
@@ -24,4 +24,4 @@ const setFormInputItem = ({ name, register, errorMsg }: Props) => {
   );
 };
 
-export default setFormInputItem;
+export default SetFormInputItem;

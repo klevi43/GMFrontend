@@ -1,4 +1,5 @@
 import type { ExerciseFormSchema } from "../schemas/exerciseFormSchema";
+import type { SetFormSchema } from "../schemas/setFormSchema";
 import type { WorkoutFormSchema } from "../schemas/workoutFormSchema";
 
 export type LoginFormFieldsType = {
@@ -23,4 +24,9 @@ export type ExerciseFormFieldsType = {
   name: keyof ExerciseFormSchema;
   label: string;
   type: string;
+};
+
+export type SetFormFieldsType = {
+  name: keyof SetFormSchema;
+  label: string;
 };
