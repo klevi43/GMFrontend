@@ -6,7 +6,7 @@ import {
 import type { AxiosResponse } from "axios";
 import workoutService from "../../services/workoutService";
 import axios from "axios";
-import { useModal } from "../useModal";
+import { useMod } from "../useMod";
 
 export const useDeleteWorkout = (): UseBaseMutationResult<
   AxiosResponse<any, any>,
@@ -15,7 +15,7 @@ export const useDeleteWorkout = (): UseBaseMutationResult<
   unknown
 > => {
   const queryClient = useQueryClient();
-  const { closeModal } = useModal();
+  const { closeModal } = useMod();
   return useMutation({
     mutationFn: async (workoutId: number) => {
       try {

@@ -10,7 +10,6 @@ import type WorkoutDto from "../dtos/workoutDto";
 import axiosInstance from "./axiosInstance";
 import type { WorkoutInput } from "../types/inputTypes";
 class WorkoutService {
-  // TODO: unwrap response in methods
   getMostRecentWorkouts = async (): Promise<WorkoutDto[]> => {
     try {
       const response = await axiosInstance.get<WorkoutDto[]>(
@@ -18,8 +17,6 @@ class WorkoutService {
         {
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
           },
         }
       );
@@ -49,7 +46,7 @@ class WorkoutService {
       },
     });
   };
-  // TODO: ADD PARAMS
+
   updateWorkout = async (
     workoutInput: WorkoutInput,
     workoutId: number
@@ -66,10 +63,6 @@ class WorkoutService {
   ): Promise<AxiosResponse<any, any>> => {
     return await axiosInstance.delete(WORKOUTS_ENDPOINT + DELETE, {
       params: { workoutId },
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-      },
     });
   };
 }

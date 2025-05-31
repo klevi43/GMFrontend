@@ -15,14 +15,7 @@ import exerciseService from "../../services/exerciseService";
 import axios from "axios";
 import { getExerciseId, getWorkoutId } from "../../utils/QueryParamHelpers";
 
-export const useUpdateExercise = (
-  options?: UseMutationOptions<
-    ExerciseDto,
-    unknown,
-    UpdateExerciseInput,
-    unknown
-  >
-): UseBaseMutationResult<
+export const useUpdateExercise = (): UseBaseMutationResult<
   ExerciseDto,
   unknown,
   UpdateExerciseInput,

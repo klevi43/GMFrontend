@@ -16,10 +16,10 @@ import { useMod } from "../../hooks/useMod";
 import { useQueryParams } from "../../hooks/useQueryParams";
 
 interface Props {
-  workout: WorkoutDto;
+  workoutDto: WorkoutDto;
 }
 
-const WorkoutListItem = React.memo(({ workout }: Props) => {
+const WorkoutListItem = React.memo(({ workoutDto }: Props) => {
   // const [menuIsVisible, setMenuIsVisible] = useState(false);
 
   const { openMenuId, showOpenMenuById } = useMenu();
@@ -30,14 +30,15 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
   const { setQueryParams } = useQueryParams();
   const handleOpenDeleteModalClick = useCallback(() => {
     showOpenMenuById(-1);
-    //openModal(DELETE_TYPE);
-  }, [openModal, workout]);
+    setQueryParams({ workoutId: workoutDto.id });
+    openModal("DELETE_WORKOUT", workoutDto);
+  }, [openModal, workoutDto]);
 
   const handleOpenUpdateModalClick = useCallback(() => {
     showOpenMenuById(-1);
-    setQueryParams({ workoutId: workout.id });
-    openModal("UPDATE_WORKOUT", workout);
-  }, [openModal, workout]);
+    setQueryParams({ workoutId: workoutDto.id });
+    openModal("UPDATE_WORKOUT", workoutDto);
+  }, [openModal, workoutDto]);
   const handleWorkoutItemClick = (workoutId: number) => {
     navigate(WORKOUTS_ENDPOINT + WORKOUT + `?workoutId=${workoutId}`);
   };
@@ -49,13 +50,13 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
           <div className="flex justify-between items-center">
             <button
               className="cursor-pointer"
-              onClick={() => handleWorkoutItemClick(workout.id)}
+              onClick={() => handleWorkoutItemClick(workoutDto.id)}
             >
-              <WorkoutListItemDetails workout={workout} />
+              <WorkoutListItemDetails workoutDto={workoutDto} />
             </button>
 
             <div>
-              {openMenuId === workout.id && (
+              {openMenuId === workoutDto.id && (
                 <ListItemMenuModal
                   handleOpenUpdateModalClick={handleOpenUpdateModalClick}
                   handleOpenDeleteModalClick={handleOpenDeleteModalClick}
@@ -63,7 +64,7 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
               )}
               <ListItemOptionsButton
                 showMenu={showOpenMenuById}
-                id={workout.id}
+                id={workoutDto.id}
               />
             </div>
           </div>

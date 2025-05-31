@@ -22,7 +22,7 @@ const WorkoutList = React.memo(() => {
       <ul className="w-[100%] max-w-[1150px] mx-auto">
         {workouts
           ? workouts?.map((workout) => (
-              <WorkoutListItem key={workout.id} workout={workout} />
+              <WorkoutListItem key={workout.id} workoutDto={workout} />
             ))
           : !isLoading && (
               <p className="text-text  text-center text-[2rem]">
