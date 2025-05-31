@@ -22,23 +22,23 @@ function App() {
         <AuthProvider>
           <QueryParamsProvider>
             <ModProvider>
-              <ModalProvider>
-                <MenuProvider>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route
-                      path={WORKOUTS_ENDPOINT}
-                      element={<WorkoutDashboard />}
-                    />
-                    <Route
-                      path={WORKOUTS_ENDPOINT + WORKOUT}
-                      element={<SingleWorkout />}
-                    />
-                  </Routes>
-                </MenuProvider>
-              </ModalProvider>
+              {/* <ModalProvider> */}
+              <MenuProvider>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route
+                    path={WORKOUTS_ENDPOINT}
+                    element={<WorkoutDashboard />}
+                  />
+                  <Route
+                    path={WORKOUTS_ENDPOINT + WORKOUT}
+                    element={<SingleWorkout />}
+                  />
+                </Routes>
+              </MenuProvider>
+              {/* </ModalProvider> */}
             </ModProvider>
           </QueryParamsProvider>
         </AuthProvider>

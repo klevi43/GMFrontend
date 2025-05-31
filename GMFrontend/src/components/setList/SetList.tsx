@@ -20,11 +20,6 @@ const SetList = ({ sets }: Props) => {
             col4="..."
           />
         ))}
-        <ShowElementButton
-          styles="text-primary text-[1.5rem] bg-background border-2 border-primary py-2 w-full rounded-full"
-          content="Add Set"
-          showElement={() => {}}
-        />
       </ul>
     </>
   );

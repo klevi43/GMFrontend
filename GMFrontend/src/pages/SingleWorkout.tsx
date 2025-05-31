@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Nav from "../components/navbar/Nav";
 import Title from "../components/form/Title";
 
@@ -12,29 +12,27 @@ import { ADD_TYPE } from "../constants/modalConstants";
 import type { ExerciseInput } from "../types/inputTypes";
 import { Query } from "@tanstack/react-query";
 import { useMod } from "../hooks/useMod";
+import { useQueryParams } from "../hooks/useQueryParams";
+import { getWorkoutId } from "../utils/QueryParamHelpers";
 
 const SingleWorkout = () => {
-  const [searchParams] = useSearchParams();
-  const workoutId = Number(searchParams.get("workoutId"));
-  const { data: workout, error, isLoading } = useGetWorkout(workoutId);
-  const emptyExerciseInput: ExerciseInput = {
-    name: "Untitled Exercise",
-    workoutId: -1,
-  };
+  const workoutId = getWorkoutId();
+  const { data: workoutDto, error, isLoading } = useGetWorkout(workoutId);
+
   const { openModal } = useMod();
-  if (!workout)
+  if (!workoutDto)
     return <ErrorMessage fontSize="text-[4rem]" message="No workout found" />;
   return (
     <div className="max-w-[1150px] mx-auto">
       <Nav />
       <div className="w-[90%] mx-auto max-w-[1000px] px-[1rem]">
-        {workout && (
-          <Title title={workout.name} styles="text-start text-[3rem]" />
+        {workoutDto && (
+          <Title title={workoutDto.name} styles="text-start text-[3rem]" />
         )}
       </div>
       <div className="w-[98%] mx-auto max-w-[1150px] px-[1rem]">
-        {workout.exerciseDtos && workout.exerciseDtos.length > 0 ? (
-          <ExerciseList exerciseDtos={workout.exerciseDtos} />
+        {workoutDto.exerciseDtos && workoutDto.exerciseDtos.length > 0 ? (
+          <ExerciseList exerciseDtos={workoutDto.exerciseDtos} />
         ) : (
           <p className="text-text text-center text-[2rem]">
             No Exercises to show

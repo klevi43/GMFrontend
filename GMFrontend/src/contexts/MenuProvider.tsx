@@ -12,9 +12,9 @@ const MenuContext = createContext<MenuContextType>({
 export const MenuProvider = ({ children }: Props) => {
   const [openMenuId, setOpenMenuId] = useState<number>(-1);
 
-  const showOpenMenuById = useCallback((id: number) => {
+  const showOpenMenuById = (id: number) => {
     setOpenMenuId((prevId) => (prevId === id ? -1 : id));
-  }, []);
+  };
   return (
     <MenuContext.Provider value={{ openMenuId, showOpenMenuById }}>
       {children}

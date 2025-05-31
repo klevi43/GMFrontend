@@ -17,12 +17,12 @@ export const ModProvider = ({ children }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [initialData, setInitialData] = useState<DtoTypes | null>(null);
 
-  const openModal = useCallback((type: ModType, initialData?: DtoTypes) => {
+  const openModal = (type: ModType, initialData?: DtoTypes) => {
     console.log(initialData);
     setModType(type);
     setIsOpen(true);
     setInitialData(initialData ?? null);
-  }, []);
+  };
 
   const closeModal = () => {
     setModType(null);

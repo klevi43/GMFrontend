@@ -8,26 +8,29 @@ import { useQueryParams } from "../../hooks/useQueryParams";
 import ListItemMenuModal from "../workoutList/ListItemMenuModal";
 import ListItemOptionsButton from "../workoutList/ListItemOptionsButton";
 import { useMenu } from "../../hooks/useMenu";
+import { p } from "motion/react-client";
+import ShowElementButton from "../buttons/ShowElementButton";
 interface Props {
   exerciseDto: ExerciseDto;
+  isMenuOpen: boolean;
 }
-const ExerciseListItem = React.memo(({ exerciseDto }: Props) => {
-  console.log("ExercisePage rerendered");
-  const { openMenuId, showOpenMenuById } = useMenu();
+const ExerciseListItem = ({ exerciseDto, isMenuOpen }: Props) => {
+  console.log("ExerciseListItem rerendered: " + exerciseDto.name);
+  const { showOpenMenuById } = useMenu();
   const { openModal } = useMod();
   const { setQueryParams } = useQueryParams();
 
-  const handleOpenDeleteModalClick = useCallback(() => {
+  const handleOpenDeleteModalClick = () => {
     showOpenMenuById(-1);
     setQueryParams({ exerciseId: exerciseDto.id });
     openModal("DELETE_EXERCISE", exerciseDto);
-  }, [openModal, showOpenMenuById, setQueryParams, exerciseDto]);
+  };
 
-  const handleOpenUpdateModalClick = useCallback(() => {
-    //showOpenMenuById(-1);
-    //setQueryParams({ exerciseId: exerciseDto.id });
-    //openModal("UPDATE_EXERCISE", exerciseDto);
-  }, [openModal, showOpenMenuById, setQueryParams, exerciseDto]);
+  const handleOpenUpdateModalClick = () => {
+    showOpenMenuById(-1);
+    setQueryParams({ exerciseId: exerciseDto.id });
+    openModal("UPDATE_EXERCISE", exerciseDto);
+  };
 
   return (
     <li className="text-white text-[1.7rem] w-full px-[1rem]">
@@ -35,7 +38,7 @@ const ExerciseListItem = React.memo(({ exerciseDto }: Props) => {
         <div>{exerciseDto.name}</div>
 
         <div>
-          {openMenuId === exerciseDto.id && (
+          {isMenuOpen && (
             <ListItemMenuModal
               handleOpenUpdateModalClick={handleOpenUpdateModalClick}
               handleOpenDeleteModalClick={handleOpenDeleteModalClick}
@@ -48,11 +51,18 @@ const ExerciseListItem = React.memo(({ exerciseDto }: Props) => {
         </div>
       </div>
 
-      {exerciseDto.sets && exerciseDto.sets.length > 0 && (
+      {exerciseDto.sets ? (
         <SetList sets={exerciseDto.sets} />
+      ) : (
+        <p className="text-text text-center">No sets to show</p>
       )}
+      <ShowElementButton
+        styles="text-primary text-[1.5rem] bg-background border-2 border-primary py-2 w-full rounded-full hover:scale-102"
+        content="Add Set"
+        showElement={() => openModal("ADD_SET")}
+      />
     </li>
   );
-});
+};
 
 export default ExerciseListItem;

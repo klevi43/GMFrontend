@@ -7,25 +7,22 @@ import type { AxiosResponse } from "axios";
 import exerciseService from "../../services/exerciseService";
 import axios from "axios";
 import { useModal } from "../useModal";
-import type {
-  DeleteExerciseQueryParams,
-  QueryParams,
-} from "../../types/inputTypes";
+import { getWorkoutId } from "../../utils/QueryParamHelpers";
+import { useMod } from "../useMod";
+
 export const useDeleteExercise = (): UseBaseMutationResult<
   AxiosResponse<any, any>,
   unknown,
-  DeleteExerciseQueryParams,
+  number,
   unknown
 > => {
   const queryClient = useQueryClient();
-  const { closeModal } = useModal();
+  const workoutId = getWorkoutId();
+  const { closeModal } = useMod();
   return useMutation({
-    mutationFn: async (queryParams: DeleteExerciseQueryParams) => {
+    mutationFn: async (exerciseId: number) => {
       try {
-        return await exerciseService.deleteExercise(
-          queryParams.exerciseId,
-          queryParams.workoutId
-        );
+        return await exerciseService.deleteExercise(exerciseId, workoutId);
       } catch (error) {
         let message = "Unable to delete exercise. Please try again later.";
         if (axios.isAxiosError(error) && error.message) {

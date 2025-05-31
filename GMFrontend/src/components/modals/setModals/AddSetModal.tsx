@@ -2,21 +2,30 @@ import type { UseMutationResult } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
 import React from "react";
 import { useModal } from "../../../hooks/useModal";
+import FormContainer from "../../containers/FormContainer";
+import ModalContainer from "../../containers/ModalContainer";
+import ExerciseForm from "../../form/exerciseForm/ExerciseForm";
+import { getExerciseId } from "../../../utils/QueryParamHelpers";
 
-interface Props {
-  title: string;
-  mutation: UseMutationResult<AxiosResponse<any>, unknown, T, unknown>;
-}
-const AddSetModal = <T,>({ title, mutation }: Props) => {
-  const { queryParams, closeModal } = useModal();
-  const handleSubmit = async () => {
-    try {
-      if (queryParams) {
-        mutation.mutateAsync();
-      }
-    } catch (error) {}
-  };
-  return <div>AddSetModal</div>;
+const AddSetFormModal = () => {
+  const mutation = useAddSet();
+  const exerciseId = getExerciseId();
+  const onSubmit = async () => {};
+  return (
+    <>
+      <ModalContainer>
+        <FormContainer>
+          <ExerciseForm
+            onSubmit={onSubmit}
+            title="Add Exercise"
+            defaultValues={{ name: "", exerciseId: exerciseId }}
+            field={{ name: "name", label: "Exercise Name", type: "text" }}
+            error={mutation.error}
+          />
+        </FormContainer>
+      </ModalContainer>
+    </>
+  );
 };
 
-export default AddSetModal;
+export default AddSetFormModal;

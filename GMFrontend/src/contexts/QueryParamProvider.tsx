@@ -14,9 +14,9 @@ interface Props {
 export const QueryParamsProvider = ({ children }: Props) => {
   const [queryParams, setQueryParamsState] = useState<QueryParamsType>({});
 
-  const setQueryParams = useCallback((params: Partial<QueryParamsType>) => {
+  const setQueryParams = (params: Partial<QueryParamsType>) => {
     setQueryParamsState((prev) => ({ ...prev, ...params }));
-  }, []);
+  };
 
   const clearQueryParams = () => {
     setQueryParamsState({});

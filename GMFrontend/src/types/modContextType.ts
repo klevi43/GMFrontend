@@ -9,7 +9,8 @@ export interface ModContextType {
   closeModal: () => void;
 }
 
-export type ModType = WorkoutTypes | ExerciseTypes;
+export type ModType = WorkoutTypes | ExerciseTypes | SetTypes;
 type WorkoutTypes = "ADD_WORKOUT" | "UPDATE_WORKOUT" | "DELETE_WORKOUT";
 type ExerciseTypes = "ADD_EXERCISE" | "UPDATE_EXERCISE" | "DELETE_EXERCISE";
+type SetTypes = "ADD_SET" | "UPDATE_SET" | "DELETE_SET";
 export type DtoTypes = WorkoutDto | ExerciseDto;
