@@ -10,6 +10,7 @@ import ErrorMessage from "../components/messages/ErrorMessage";
 import { useModal } from "../hooks/useModal";
 import { ADD_TYPE } from "../constants/modalConstants";
 import type { ExerciseInput } from "../types/inputTypes";
+import { Query } from "@tanstack/react-query";
 
 const SingleWorkout = () => {
   const [searchParams] = useSearchParams();
@@ -44,7 +45,9 @@ const SingleWorkout = () => {
           styles="text-[2rem] py-2 bg-primary w-full rounded-full"
           content="Add Exercise"
           showElement={() =>
-            openModal(ADD_TYPE, emptyExerciseInput, null, null)
+            openModal(ADD_TYPE, emptyExerciseInput, null, {
+              workoutId: workout.id,
+            })
           }
         />
       </div>

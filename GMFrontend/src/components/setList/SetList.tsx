@@ -1,7 +1,8 @@
 import React from "react";
 import type SetDto from "../../dtos/setDto";
-import SetListItem from "./setListItem";
+import SetListItem from "./SetListItem";
 import ShowElementButton from "../buttons/ShowElementButton";
+import type ExerciseDto from "../../dtos/exerciseDto";
 interface Props {
   sets: SetDto[];
 }

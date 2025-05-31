@@ -1,20 +1,23 @@
 import axiosInstance from "./axiosInstance";
-import type { SetInput } from "../types/inputTypes";
+import type { QueryParams, SetInput } from "../types/inputTypes";
 import type SetDto from "../dtos/setDto";
 import type { Axios, AxiosResponse } from "axios";
 import { CREATE, DELETE, SETS_ENDPOINT, UPDATE } from "../constants/endpoints";
 import { set } from "react-hook-form";
+import { useModal } from "../hooks/useModal";
 class SetService {
   addSet = async (
     setInput: SetInput,
-    workoutId: number,
-    exerciseId: number
+    queryParams: QueryParams
   ): Promise<AxiosResponse<SetDto, any>> => {
     const response = await axiosInstance.post(
       SETS_ENDPOINT + CREATE,
       setInput,
       {
-        params: { workoutId, exerciseId },
+        params: {
+          workoutId: queryParams.workoutId,
+          exerciseId: queryParams.exerciseId,
+        },
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",

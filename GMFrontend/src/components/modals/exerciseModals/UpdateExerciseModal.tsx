@@ -5,7 +5,7 @@ import ExerciseForm from "../../form/exerciseForm/ExerciseForm";
 import { useUpdateExercise } from "../../../hooks/exerciseHooks/useUpdateExercise";
 import { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
 import type { SubmitHandler } from "react-hook-form";
-import type { ExerciseInput } from "../../../types/inputTypes";
+import type { ExerciseInput, QueryParams } from "../../../types/inputTypes";
 import { useSearchParams } from "react-router";
 import { useModal } from "../../../hooks/useModal";
 interface Props {

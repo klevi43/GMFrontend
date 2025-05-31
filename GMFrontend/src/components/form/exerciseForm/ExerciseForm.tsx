@@ -34,8 +34,6 @@ const ExerciseForm = ({
     resolver: zodResolver(ExerciseFormSchema),
     defaultValues,
   });
-  const [searchParams] = useSearchParams();
-  const workoutId = Number(searchParams.get("workoutId"));
 
   const { closeModal } = useModal();
   return (

@@ -45,6 +45,7 @@ export const ModalProvider = ({ children }: Props) => {
     optionalDto: ModalContextType["optionalDto"],
     queryParams: ModalContextType["queryParams"]
   ) => {
+    console.log(modalState);
     setModalState({
       type,
       data,

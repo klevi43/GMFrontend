@@ -18,16 +18,8 @@ interface Props {
   title: string;
   defaultValues: SetInput;
   error: unknown;
-  parentExerciseDto: ExerciseDto;
 }
-const SetForm = ({
-  onSubmit,
-  fields,
-  title,
-  defaultValues,
-  error,
-  parentExerciseDto,
-}: Props) => {
+const SetForm = ({ onSubmit, fields, title, defaultValues, error }: Props) => {
   const {
     register,
     handleSubmit,

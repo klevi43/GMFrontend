@@ -1,5 +1,9 @@
 import axiosInstance from "./axiosInstance";
-import type { ExerciseInput, UpdateExerciseInput } from "../types/inputTypes";
+import type {
+  ExerciseInput,
+  QueryParams,
+  UpdateExerciseInput,
+} from "../types/inputTypes";
 import type { Axios, AxiosResponse } from "axios";
 import type ExerciseDto from "../dtos/exerciseDto";
 import {
@@ -8,11 +12,12 @@ import {
   EXERCISES_ENDPOINT,
   UPDATE,
 } from "../constants/endpoints";
+import { getExerciseId, getWorkoutId } from "../utils/QueryParamHelpers";
 class ExerciseService {
   addExercise = async (
     exerciseInput: ExerciseInput,
     workoutId: number
-  ): Promise<AxiosResponse<ExerciseDto, any>> => {
+  ): Promise<ExerciseDto> => {
     const response = await axiosInstance.post(
       EXERCISES_ENDPOINT + CREATE,
       exerciseInput,
@@ -29,15 +34,13 @@ class ExerciseService {
   };
 
   updateExercise = async (
-    updatedExercise: UpdateExerciseInput,
-    exerciseId: number,
-    workoutId: number
-  ): Promise<AxiosResponse<ExerciseDto, any>> => {
+    updatedExercise: ExerciseInput
+  ): Promise<ExerciseDto> => {
     const response = await axiosInstance.put(
       EXERCISES_ENDPOINT + UPDATE,
       { name: updatedExercise.name },
       {
-        params: { workoutId, exerciseId },
+        params: { workoutId: getWorkoutId(), exerciseId: getExerciseId() },
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
