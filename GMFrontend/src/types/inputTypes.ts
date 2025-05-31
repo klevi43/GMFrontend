@@ -32,4 +32,5 @@ type SetQP = {
 export type SetInput = {
   weight: number;
   reps: number;
+  exerciseId: number;
 };
