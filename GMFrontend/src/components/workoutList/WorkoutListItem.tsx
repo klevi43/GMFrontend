@@ -13,6 +13,7 @@ import { useGetWorkout } from "../../hooks/workoutHooks/useGetWorkout";
 import workoutService from "../../services/workoutService";
 import { useMenu } from "../../hooks/useMenu";
 import { useMod } from "../../hooks/useMod";
+import { useQueryParams } from "../../hooks/useQueryParams";
 
 interface Props {
   workout: WorkoutDto;
@@ -26,6 +27,7 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
   //const { openModal } = useModal();
   const navigate = useNavigate();
   const { openModal } = useMod();
+  const { setQueryParams } = useQueryParams();
   const handleOpenDeleteModalClick = useCallback(() => {
     showOpenMenuById(-1);
     //openModal(DELETE_TYPE);
@@ -33,6 +35,7 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
 
   const handleOpenUpdateModalClick = useCallback(() => {
     showOpenMenuById(-1);
+    setQueryParams({ workoutId: workout.id });
     openModal("UPDATE_WORKOUT", workout);
   }, [openModal, workout]);
   const handleWorkoutItemClick = (workoutId: number) => {
