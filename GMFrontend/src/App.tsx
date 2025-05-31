@@ -12,6 +12,7 @@ import { WorkoutsProvider } from "./contexts/WorkoutProvider";
 import { ModalProvider } from "./contexts/ModalProvider";
 import { WORKOUT, WORKOUTS_ENDPOINT } from "./constants/endpoints";
 import { MenuProvider } from "./contexts/MenuProvider";
+import { QueryParamsProvider } from "./contexts/QueryParamProvider";
 
 function App() {
   return (
@@ -19,23 +20,25 @@ function App() {
       <BrowserRouter>
         <AuthProvider>
           {/* </AuthProvider> */}
-          <ModalProvider>
-            <MenuProvider>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route
-                  path={WORKOUTS_ENDPOINT}
-                  element={<WorkoutDashboard />}
-                />
-                <Route
-                  path={WORKOUTS_ENDPOINT + WORKOUT}
-                  element={<SingleWorkout />}
-                />
-              </Routes>
-            </MenuProvider>
-          </ModalProvider>
+          <QueryParamsProvider>
+            <ModalProvider>
+              <MenuProvider>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route
+                    path={WORKOUTS_ENDPOINT}
+                    element={<WorkoutDashboard />}
+                  />
+                  <Route
+                    path={WORKOUTS_ENDPOINT + WORKOUT}
+                    element={<SingleWorkout />}
+                  />
+                </Routes>
+              </MenuProvider>
+            </ModalProvider>
+          </QueryParamsProvider>
           {/* </WorkoutsProvider> */}
         </AuthProvider>
       </BrowserRouter>

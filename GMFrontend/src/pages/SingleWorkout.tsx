@@ -16,8 +16,6 @@ const SingleWorkout = () => {
   const [searchParams] = useSearchParams();
   const workoutId = Number(searchParams.get("workoutId"));
   const { data: workout, error, isLoading } = useGetWorkout(workoutId);
-  console.log(workoutId);
-  console.log(workout);
   const emptyExerciseInput: ExerciseInput = {
     name: "Untitled Exercise",
     workoutId: -1,

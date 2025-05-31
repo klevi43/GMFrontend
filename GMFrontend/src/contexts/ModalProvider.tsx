@@ -22,6 +22,7 @@ import {
 import { isWorkoutDto, isExerciseDto } from "../typeGuards/typeGuards";
 import { useDeleteWorkout } from "../hooks/workoutHooks/useDeleteWorkout";
 import useDeleteExercise from "../hooks/exerciseHooks/useDeleteExercise";
+import { useAddExercise } from "../hooks/exerciseHooks/useAddExercise";
 interface Props {
   children: React.ReactNode;
 }
@@ -67,6 +68,7 @@ export const ModalProvider = ({ children }: Props) => {
     });
   };
   console.log(modalState);
+  const addExerciseMutation = useAddExercise();
   const deleteWorkoutMutation = useDeleteWorkout();
   const deleteExerciseMutation = useDeleteExercise();
   return (

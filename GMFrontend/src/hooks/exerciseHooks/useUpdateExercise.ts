@@ -13,29 +13,32 @@ import type {
 import { useModal } from "../useModal";
 import exerciseService from "../../services/exerciseService";
 import axios from "axios";
+import { getExerciseId, getWorkoutId } from "../../utils/QueryParamHelpers";
 
 export const useUpdateExercise = (
   options?: UseMutationOptions<
-    AxiosResponse<ExerciseDto>,
+    ExerciseDto,
     unknown,
     UpdateExerciseInput,
     unknown
   >
 ): UseBaseMutationResult<
-  AxiosResponse<ExerciseDto, any>,
+  ExerciseDto,
   unknown,
   UpdateExerciseInput,
   unknown
 > => {
   const { closeModal } = useModal();
+  const workoutId = getWorkoutId();
+  const exerciseId = getExerciseId();
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (updatedExerise) => {
       try {
         return await exerciseService.updateExercise(
           updatedExerise,
-          updatedExerise.exerciseId,
-          updatedExerise.workoutId
+          exerciseId,
+          workoutId
         );
       } catch (error) {
         let message = "Unable to update exercise. Please try again later.";

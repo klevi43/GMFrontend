@@ -24,7 +24,9 @@ const WorkoutDashboard = () => {
           <ShowElementButton
             styles="text-[3.5rem] text-text hover:text-white"
             content="+"
-            showElement={() => openModal(ADD_TYPE, emptyWorkoutInput)}
+            showElement={() =>
+              openModal(ADD_TYPE, emptyWorkoutInput, null, null)
+            }
           />
         </div>
       </div>

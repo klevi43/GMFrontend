@@ -34,13 +34,15 @@ class ExerciseService {
   };
 
   updateExercise = async (
-    updatedExercise: ExerciseInput
+    updatedExercise: ExerciseInput,
+    exerciseId: number,
+    workoutId: number
   ): Promise<ExerciseDto> => {
     const response = await axiosInstance.put(
       EXERCISES_ENDPOINT + UPDATE,
       { name: updatedExercise.name },
       {
-        params: { workoutId: getWorkoutId(), exerciseId: getExerciseId() },
+        params: { workoutId, exerciseId },
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",

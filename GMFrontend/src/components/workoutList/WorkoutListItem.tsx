@@ -22,20 +22,21 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
 
   const { openMenuId, showOpenMenuById } = useMenu();
 
-  const { openModal } = useModal();
+  const { openModal, setModalState } = useModal();
   const navigate = useNavigate();
 
   const handleOpenDeleteModalClick = useCallback(() => {
     showOpenMenuById(-1);
-    openModal(DELETE_TYPE, workout);
+    openModal(DELETE_TYPE, workout, null, null);
   }, [openModal, workout]);
 
   const handleOpenUpdateModalClick = useCallback(() => {
     showOpenMenuById(-1);
-    openModal(UPDATE_TYPE, workout);
+    openModal(UPDATE_TYPE, workout, null, null);
   }, [openModal, workout]);
   const handleWorkoutItemClick = (workoutId: number) => {
     navigate(WORKOUTS_ENDPOINT + WORKOUT + `?workoutId=${workoutId}`);
+    setModalState();
   };
 
   return (
