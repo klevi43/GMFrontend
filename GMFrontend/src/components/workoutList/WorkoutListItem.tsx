@@ -22,7 +22,7 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
 
   const { openMenuId, showOpenMenuById } = useMenu();
 
-  const { openModal, setModalState } = useModal();
+  const { openModal } = useModal();
   const navigate = useNavigate();
 
   const handleOpenDeleteModalClick = useCallback(() => {
@@ -36,7 +36,6 @@ const WorkoutListItem = React.memo(({ workout }: Props) => {
   }, [openModal, workout]);
   const handleWorkoutItemClick = (workoutId: number) => {
     navigate(WORKOUTS_ENDPOINT + WORKOUT + `?workoutId=${workoutId}`);
-    setModalState();
   };
 
   return (

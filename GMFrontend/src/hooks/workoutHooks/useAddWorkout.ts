@@ -16,17 +16,12 @@ import axios from "axios";
 // unknown = context type (advanced feature; often unused).
 export const useAddWorkout = (
   options?: UseMutationOptions<
-    AxiosResponse<WorkoutDto>, // Type returned by mutationFn
+    WorkoutDto, // Type returned by mutationFn
     unknown, // Type of error (usually use `unknown`)
     WorkoutInput, // Type of data passed into mutate()
     unknown // Type of context (for rollback, rarely used)
   >
-): UseBaseMutationResult<
-  AxiosResponse<WorkoutDto, any>,
-  unknown,
-  WorkoutInput,
-  unknown
-> => {
+): UseBaseMutationResult<WorkoutDto, unknown, WorkoutInput, unknown> => {
   const { closeModal } = useModal();
   const queryClient = useQueryClient();
   return useMutation({

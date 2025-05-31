@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
-import type { QueryParamsContextType } from "../types/queryParamContextType";
-import type { QueryParams } from "../types/queryParamsType";
+import type {
+  QueryParamsContextType,
+  QueryParamsType,
+} from "../types/queryParamContextType";
 
 const QueryParamsContext = createContext<QueryParamsContextType | undefined>(
   undefined
@@ -10,9 +12,9 @@ interface Props {
 }
 
 export const QueryParamsProvider = ({ children }: Props) => {
-  const [queryParams, setQueryParamsState] = useState<QueryParams>({});
+  const [queryParams, setQueryParamsState] = useState<QueryParamsType>({});
 
-  const setQueryParams = (params: Partial<QueryParams>) => {
+  const setQueryParams = (params: Partial<QueryParamsType>) => {
     setQueryParamsState((prev) => ({ ...prev, ...params }));
   };
 

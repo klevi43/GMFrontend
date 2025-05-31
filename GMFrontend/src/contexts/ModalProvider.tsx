@@ -68,7 +68,7 @@ export const ModalProvider = ({ children }: Props) => {
     });
   };
   console.log(modalState);
-  const addExerciseMutation = useAddExercise();
+
   const deleteWorkoutMutation = useDeleteWorkout();
   const deleteExerciseMutation = useDeleteExercise();
   return (

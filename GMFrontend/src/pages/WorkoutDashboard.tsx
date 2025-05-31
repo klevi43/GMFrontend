@@ -7,8 +7,10 @@ import { useModal } from "../hooks/useModal";
 import { ADD_TYPE } from "../constants/modalConstants";
 import Title from "../components/form/Title";
 import type { WorkoutInput } from "../types/inputTypes";
+import { useMod } from "../hooks/useMod";
 const WorkoutDashboard = () => {
-  const { openModal } = useModal();
+  const obj = useMod();
+
   const emptyWorkoutInput: WorkoutInput = {
     name: "Untitled Workout",
     date: new Date().toISOString().split("T")[0],

@@ -1,12 +1,13 @@
 import type WorkoutDto from "../dtos/workoutDto";
 
-interface ModContextType {
-  modalType: ModalType;
+export interface ModContextType {
+  modType: ModType | null;
   isOpen: boolean;
-  openModal: (type: ModalType, payload?: WorkoutDto) => void;
+  initialData: InputDtoTypes | null;
+  openModal: (type: ModType, initialData?: InputDtoTypes) => void;
   closeModal: () => void;
 }
 
-type ModalType = {
-  type: "ADD_WORKOUT" | "UPDATE_WORKOUT" | "DELETE_WORKOUT";
-};
+export type ModType = "ADD_WORKOUT" | "UPDATE_WORKOUT" | "DELETE_WORKOUT";
+
+export type InputDtoTypes = WorkoutDto;

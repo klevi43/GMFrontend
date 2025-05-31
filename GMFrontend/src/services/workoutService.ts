@@ -42,21 +42,15 @@ class WorkoutService {
     return response.data;
   };
 
-  addWorkout = async (
-    workoutInput: WorkoutInput
-  ): Promise<AxiosResponse<WorkoutDto, any>> => {
+  addWorkout = async (workoutInput: WorkoutInput): Promise<WorkoutDto> => {
     return await axiosInstance.post(WORKOUTS_ENDPOINT + CREATE, workoutInput, {
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
     });
   };
   // TODO: ADD PARAMS
-  updateWorkout = async (
-    workoutInput: WorkoutInput
-  ): Promise<AxiosResponse<WorkoutDto, any>> => {
+  updateWorkout = async (workoutInput: WorkoutInput): Promise<WorkoutDto> => {
     return await axiosInstance.put(WORKOUTS_ENDPOINT + UPDATE, workoutInput, {
       headers: {
         "Content-Type": "application/json",

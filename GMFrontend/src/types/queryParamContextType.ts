@@ -1,7 +1,10 @@
-import type { QueryParams } from "./queryParamsType";
-
 export interface QueryParamsContextType {
-  queryParams: QueryParams;
-  setQueryParams: (params: Partial<QueryParams>) => void;
+  queryParams: QueryParamsType;
+  setQueryParams: (params: Partial<QueryParamsType>) => void;
   clearQueryParams: () => void;
+}
+export interface QueryParamsType {
+  workoutId?: number;
+  exerciseId?: number;
+  setId?: number;
 }
