@@ -7,10 +7,11 @@ import { useGetWorkout } from "../hooks/workoutHooks/useGetWorkout";
 import { useSearchParams } from "react-router";
 import ExerciseList from "../components/exerciseList/ExerciseList";
 import ErrorMessage from "../components/messages/ErrorMessage";
-import { useModal } from "../hooks/useModal";
+
 import { ADD_TYPE } from "../constants/modalConstants";
 import type { ExerciseInput } from "../types/inputTypes";
 import { Query } from "@tanstack/react-query";
+import { useMod } from "../hooks/useMod";
 
 const SingleWorkout = () => {
   const [searchParams] = useSearchParams();
@@ -20,7 +21,7 @@ const SingleWorkout = () => {
     name: "Untitled Exercise",
     workoutId: -1,
   };
-  const { openModal } = useModal();
+  const { openModal } = useMod();
   if (!workout)
     return <ErrorMessage fontSize="text-[4rem]" message="No workout found" />;
   return (
@@ -42,11 +43,7 @@ const SingleWorkout = () => {
         <ShowElementButton
           styles="text-[2rem] py-2 bg-primary w-full rounded-full"
           content="Add Exercise"
-          showElement={() =>
-            openModal(ADD_TYPE, emptyExerciseInput, null, {
-              workoutId: workout.id,
-            })
-          }
+          showElement={() => openModal("ADD_EXERCISE")}
         />
       </div>
     </div>

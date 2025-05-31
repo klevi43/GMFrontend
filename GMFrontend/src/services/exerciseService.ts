@@ -25,8 +25,6 @@ class ExerciseService {
         params: { workoutId },
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
         },
       }
     );
@@ -45,8 +43,6 @@ class ExerciseService {
         params: { workoutId, exerciseId },
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
         },
       }
     );
@@ -59,10 +55,6 @@ class ExerciseService {
   ): Promise<AxiosResponse<any, any>> => {
     const response = await axiosInstance.delete(EXERCISES_ENDPOINT + DELETE, {
       params: { workoutId, exerciseId },
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-      },
     });
     return response;
   };

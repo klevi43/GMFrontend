@@ -10,15 +10,9 @@ import type { ExerciseInput } from "../../../types/inputTypes";
 import type { UseMutationResult } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
 import { getWorkoutId } from "../../../utils/QueryParamHelpers";
-interface Props {
-  mutation: UseMutationResult<
-    AxiosResponse<any>,
-    unknown,
-    ExerciseInput,
-    unknown
-  >;
-}
-const AddExerciseFormModal = ({ mutation }: Props) => {
+
+const AddExerciseFormModal = () => {
+  const mutation = useAddExercise();
   const workoutId = getWorkoutId();
   const onSubmit: SubmitHandler<ExerciseFormSchema> = async (
     data: ExerciseInput
@@ -27,6 +21,7 @@ const AddExerciseFormModal = ({ mutation }: Props) => {
       await mutation.mutateAsync(data);
     } catch (error) {}
   };
+
   return (
     <>
       <ModalContainer>

@@ -5,6 +5,7 @@ import UpdateWorkoutFormModal from "./workoutModals/UpdateWorkoutFormModal";
 import { INITIAL_DATA_NOT_SET_MSG } from "../../constants/errorMsgs";
 import DeleteItemModal from "./DeleteItemModal";
 import DeleteWorkoutModal from "./workoutModals/DeleteWorkoutModal";
+import AddExerciseFormModal from "./exerciseModals/AddExerciseFormModal";
 interface Props {
   type: ModType | null;
   initialData: InputDtoTypes | null;
@@ -23,6 +24,8 @@ const ModalRenderer = ({ type, initialData }: Props) => {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);
       }
       return <DeleteWorkoutModal initialData={initialData} />;
+    case "ADD_EXERCISE":
+      return <AddExerciseFormModal />;
     default:
       return <></>;
   }

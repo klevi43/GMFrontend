@@ -40,6 +40,7 @@ const WorkoutListItem = React.memo(({ workoutDto }: Props) => {
     openModal("UPDATE_WORKOUT", workoutDto);
   }, [openModal, workoutDto]);
   const handleWorkoutItemClick = (workoutId: number) => {
+    setQueryParams({ workoutId: workoutDto.id });
     navigate(WORKOUTS_ENDPOINT + WORKOUT + `?workoutId=${workoutId}`);
   };
 

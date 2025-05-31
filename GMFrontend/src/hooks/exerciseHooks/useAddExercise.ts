@@ -11,11 +11,12 @@ import { useModal } from "../useModal";
 import exerciseService from "../../services/exerciseService";
 import axios from "axios";
 import { getWorkoutId } from "../../utils/QueryParamHelpers";
+import { useMod } from "../useMod";
 
 export const useAddExercise = (
   options?: UseMutationOptions<ExerciseDto, unknown, ExerciseInput, unknown>
 ): UseBaseMutationResult<ExerciseDto, unknown, ExerciseInput, unknown> => {
-  const { closeModal } = useModal();
+  const { closeModal } = useMod();
   const workoutId = getWorkoutId();
   const queryClient = useQueryClient();
   return useMutation({
