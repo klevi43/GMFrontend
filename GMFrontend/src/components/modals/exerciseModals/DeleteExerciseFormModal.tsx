@@ -7,7 +7,7 @@ import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
 import ErrorMessage from "../../messages/ErrorMessage";
-import ModalCloseButton from "../workoutModals/ModalCloseButton";
+import ModalCloseButton from "../ModalCloseButton";
 
 interface Props {
   initialData: ExerciseDto;

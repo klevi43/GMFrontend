@@ -4,7 +4,7 @@ import type { SetFormFieldsType } from "../../../types/formFieldsType";
 import type { SetInput } from "../../../types/inputTypes";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ModalCloseButton from "../../modals/workoutModals/ModalCloseButton";
+import ModalCloseButton from "../../modals/ModalCloseButton";
 import Title from "../Title";
 import ErrorMessage from "../../messages/ErrorMessage";
 import FormInputLabel from "../FormInputLabel";

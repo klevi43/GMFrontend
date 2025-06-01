@@ -2,7 +2,7 @@ import React from "react";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
-import ModalCloseButton from "../workoutModals/ModalCloseButton";
+import ModalCloseButton from "../ModalCloseButton";
 import { useMod } from "../../../hooks/useMod";
 import type SetDto from "../../../dtos/setDto";
 import { useDeleteSet } from "../../../hooks/setHooks/useDeleteSet";

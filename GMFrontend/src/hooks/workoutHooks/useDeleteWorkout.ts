@@ -2,18 +2,21 @@ import {
   useMutation,
   useQueryClient,
   type UseBaseMutationResult,
+  type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
 import workoutService from "../../services/workoutService";
 import axios from "axios";
 import { useMod } from "../useMod";
 
-export const useDeleteWorkout = (): UseBaseMutationResult<
-  AxiosResponse<any, any>,
-  unknown,
-  number,
-  unknown
-> => {
+export const useDeleteWorkout = (
+  options?: UseMutationOptions<
+    AxiosResponse<any, any>,
+    unknown,
+    number,
+    unknown
+  >
+): UseBaseMutationResult<AxiosResponse<any, any>, unknown, number, unknown> => {
   const queryClient = useQueryClient();
   const { closeModal } = useMod();
   return useMutation({
@@ -28,9 +31,13 @@ export const useDeleteWorkout = (): UseBaseMutationResult<
         throw new Error(message);
       }
     },
-    onSuccess: () => {
+    onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["workouts"] });
+      options?.onSuccess?.(data, variables, context);
       closeModal();
+    },
+    onError: (error, variables, context) => {
+      options?.onError?.(error, variables, context);
     },
   });
 };
