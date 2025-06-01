@@ -32,7 +32,6 @@ export const useAddExercise = (
     },
     onSuccess: (data, variables, conext) => {
       queryClient.invalidateQueries({ queryKey: ["workout"] });
-
       options?.onSuccess?.(data, variables, conext);
       closeModal();
     },

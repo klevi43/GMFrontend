@@ -6,6 +6,7 @@ import { useDeleteWorkout } from "../../../hooks/workoutHooks/useDeleteWorkout";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
+import ErrorMessage from "../../messages/ErrorMessage";
 import ModalCloseButton from "../workoutModals/ModalCloseButton";
 
 interface Props {
@@ -29,6 +30,12 @@ const DeleteExerciseFormModal = ({ initialData }: Props) => {
             <div className="w-full">
               <div className="flex flex-col justify-center items-center mx-auto">
                 <Title title={`Delete Exercise`} />
+                {mutation.error instanceof Error && (
+                  <ErrorMessage
+                    fontSize="1rem"
+                    message={mutation.error.message}
+                  />
+                )}
                 <p className="text-text text-[1.2rem] mb-2 text-center">
                   Are you sure you want to delete this exercise?
                 </p>
