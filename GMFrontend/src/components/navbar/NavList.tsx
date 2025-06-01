@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
-import type AuthUserDto from "../../dtos/authUserDto";
+import { useState } from "react";
 import { useLogout } from "../../hooks/useLogout";
 import NavListItem from "./NavListItem";
-import { useLoadAuthUser } from "../../hooks/useLoadAuthUser";
 const NavList = () => {
   const mutation = useLogout();
   const [currentUser, setCurrentUser] = useState(null);
   const handleLogout = () => {
     mutation.mutateAsync({});
   };
-  useEffect(() => {
-    useLoadAuthUser();
-  });
+
   return (
     <>
       <ul className="md:flex h-max-content">
