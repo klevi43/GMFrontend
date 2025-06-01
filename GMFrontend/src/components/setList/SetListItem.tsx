@@ -18,11 +18,15 @@ const SetListItem = ({ col1, col2, col3, setDto, styles }: Props) => {
   const { setQueryParams } = useQueryParams();
   const { openModal } = useMod();
 
-  const handleOpenUpdateModalClick = () => {};
+  const handleOpenUpdateModalClick = () => {
+    if (!setDto) throw new Error("No set data");
+    showOpenMenuById(-1);
+    setQueryParams({ exerciseId: setDto.exerciseId, setId: setDto.id });
+    openModal("UPDATE_SET", setDto);
+  };
   const handleOpenDeleteModalClick = () => {
     if (!setDto) throw new Error("No set data");
     showOpenMenuById(-1);
-
     setQueryParams({ exerciseId: setDto.exerciseId, setId: setDto.id });
     openModal("DELETE_SET", setDto);
   };

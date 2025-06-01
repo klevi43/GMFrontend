@@ -21,7 +21,7 @@ const AddSetFormModal = () => {
         <FormContainer>
           <SetForm
             onSubmit={onSubmit}
-            title="Add Exercise"
+            title="Add Set"
             defaultValues={{ weight: 0, reps: 0, exerciseId: exerciseId }}
             fields={[
               { name: "weight", label: "Weight (Kg)" },

@@ -10,8 +10,8 @@ import FormInputLabel from "../FormInputLabel";
 import ErrorMessage from "../../messages/ErrorMessage";
 import ModalCloseButton from "../../modals/workoutModals/ModalCloseButton";
 import Title from "../Title";
-import { useModal } from "../../../hooks/useModal";
-import { useSearchParams } from "react-router";
+
+import { useMod } from "../../../hooks/useMod";
 interface Props {
   onSubmit: (data: ExerciseFormSchema) => void;
   field: ExerciseFormFieldsType;
@@ -35,7 +35,7 @@ const ExerciseForm = ({
     defaultValues,
   });
 
-  const { closeModal } = useModal();
+  const { closeModal } = useMod();
   return (
     <div className="relative">
       <ModalCloseButton closeModal={closeModal} />

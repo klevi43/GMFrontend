@@ -33,18 +33,14 @@ const DeleteSetFormModal = ({ initialData }: Props) => {
             <ModalCloseButton closeModal={closeModal} />
             <div className="w-full">
               <div className="flex flex-col justify-center items-center mx-auto">
-                <Title title={`Delete Workout`} />
+                <Title title={`Delete Set`} />
                 <p className="text-text text-[1.2rem] mb-2 text-center">
-                  Are you sure you want to delete this workout?
+                  Are you sure you want to delete this set?
                 </p>
-                <h4 className="flex justify-evenly text-white text-[2rem] font-bold mb-5 ">
+                <h4 className="flex justify-between w-[80%] text-white text-[2rem] font-bold mb-5 ">
                   <div>{`Weight: ${initialData.weight}`}</div>
                   <div>{`Reps: ${initialData.reps}`}</div>
                 </h4>
-
-                <p className="text-red-500 mb-4 text-center">
-                  This will delete all exercises and sets in this workout
-                </p>
 
                 <div className="w-full">
                   <button

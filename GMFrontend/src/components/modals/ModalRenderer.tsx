@@ -15,6 +15,7 @@ import UpdateExerciseFormModal from "./exerciseModals/UpdateExerciseFormModal";
 import DeleteExerciseFormModal from "./exerciseModals/DeleteExerciseFormModal";
 import AddSetFormModal from "./setModals/AddSetFormModal";
 import DeleteSetFormModal from "./setModals/DeleteSetFormModal";
+import UpdateSetFormModal from "./setModals/UpdateSetFormModal";
 interface Props {
   type: ModType | null;
   initialData: DtoTypes | null;
@@ -48,6 +49,11 @@ const ModalRenderer = ({ type, initialData }: Props) => {
       return <DeleteExerciseFormModal initialData={initialData} />;
     case "ADD_SET":
       return <AddSetFormModal />;
+    case "UPDATE_SET":
+      if (!initialData || !isSetDto(initialData)) {
+        throw new Error(INITIAL_DATA_NOT_SET_MSG);
+      }
+      return <UpdateSetFormModal initialData={initialData} />;
     case "DELETE_SET":
       if (!initialData || !isSetDto(initialData)) {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);

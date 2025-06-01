@@ -4,8 +4,6 @@ import type { SetFormFieldsType } from "../../../types/formFieldsType";
 import type { SetInput } from "../../../types/inputTypes";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type ExerciseDto from "../../../dtos/exerciseDto";
-import { useModal } from "../../../hooks/useModal";
 import ModalCloseButton from "../../modals/workoutModals/ModalCloseButton";
 import Title from "../Title";
 import ErrorMessage from "../../messages/ErrorMessage";
@@ -31,7 +29,7 @@ const SetForm = ({ onSubmit, fields, title, defaultValues, error }: Props) => {
   });
   const { closeModal } = useMod();
   return (
-    <div>
+    <div className="relative">
       <ModalCloseButton closeModal={closeModal} />
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <Title title={title} />

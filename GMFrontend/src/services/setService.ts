@@ -28,16 +28,14 @@ class SetService {
 
   updateSet = async (
     setInput: SetInput,
-    workoutId: number,
+    setId: number,
     exerciseId: number,
-    setId: number
+    workoutId: number
   ): Promise<AxiosResponse<SetDto, any>> => {
     const response = await axiosInstance.put(SETS_ENDPOINT + UPDATE, setInput, {
       params: { workoutId, exerciseId, setId },
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       },
     });
     return response.data;
@@ -50,10 +48,6 @@ class SetService {
   ): Promise<AxiosResponse<any, any>> => {
     const response = await axiosInstance.delete(SETS_ENDPOINT + DELETE, {
       params: { workoutId, exerciseId, setId },
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-      },
     });
     return response;
   };
