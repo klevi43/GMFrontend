@@ -1,12 +1,11 @@
 import RegisterForm from "../components/form/registerForm/RegisterForm";
 import { RegisterFormSchema } from "../schemas/registerFormSchema";
 import type { SubmitHandler } from "react-hook-form";
-import { useServerError } from "../hooks/useServerError";
+
 import FormContainer from "../components/containers/FormContainer";
 import userService from "../services/userService";
 import { useNavigate } from "react-router";
 const Register = () => {
-  const { serverError, setServerError } = useServerError();
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<RegisterFormSchema> = (data) => {
     console.log(data);
