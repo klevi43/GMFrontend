@@ -50,7 +50,7 @@ const WorkoutListItem = React.memo(({ workoutDto }: Props) => {
               <WorkoutListItemDetails workoutDto={workoutDto} />
             </button>
 
-            <div>
+            <div className="relative">
               {openMenuId === workoutDto.id && (
                 <ListItemMenuModal
                   handleOpenUpdateModalClick={handleOpenUpdateModalClick}

@@ -40,8 +40,7 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
     <li className="text-white  w-full px-[1rem]">
       <div className="flex justify-between items-center">
         <div className="text-[1.7rem]">{exerciseDto.name}</div>
-
-        <div>
+        <div className="relative inline-block">
           {openMenuId === exerciseDto.id && (
             <ListItemMenuModal
               handleOpenUpdateModalClick={handleOpenUpdateModalClick}

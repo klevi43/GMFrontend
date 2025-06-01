@@ -36,22 +36,24 @@ const SetListItem = ({ col1, col2, col3, setDto, styles }: Props) => {
         <div className="text-center">{col2 ? col2 : setDto?.weight}</div>
         <div className="text-center">{col3 ? col3 : setDto?.reps}</div>
         {setDto ? (
-          <div className="flex justify-center items-start ">
-            <ListItemOptionsButton id={setDto.id} showMenu={showOpenMenuById} />
+          <div className="flex justify-center">
+            <div className="relative inline-block text-[1rem]">
+              {setDto && openMenuId === setDto?.id && (
+                <ListItemMenuModal
+                  handleOpenUpdateModalClick={handleOpenUpdateModalClick}
+                  handleOpenDeleteModalClick={handleOpenDeleteModalClick}
+                />
+              )}
+              <ListItemOptionsButton
+                id={setDto.id}
+                showMenu={showOpenMenuById}
+              />
+            </div>
           </div>
         ) : (
           <div className=""></div>
         )}
       </div>
-
-      {setDto && openMenuId === setDto?.id && (
-        <div>
-          <ListItemMenuModal
-            handleOpenUpdateModalClick={handleOpenUpdateModalClick}
-            handleOpenDeleteModalClick={handleOpenDeleteModalClick}
-          />
-        </div>
-      )}
     </li>
   );
 };
