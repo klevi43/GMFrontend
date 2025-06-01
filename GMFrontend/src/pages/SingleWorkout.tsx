@@ -14,6 +14,8 @@ import { Query } from "@tanstack/react-query";
 import { useMod } from "../hooks/useMod";
 import { useQueryParams } from "../hooks/useQueryParams";
 import { getWorkoutId } from "../utils/QueryParamHelpers";
+import Footer from "../components/footer/Footer";
+import InfoMessage from "../components/messages/InfoMessage";
 
 const SingleWorkout = () => {
   const { queryParams, setQueryParams } = useQueryParams();
@@ -25,32 +27,41 @@ const SingleWorkout = () => {
   }, []);
   const { openModal } = useMod();
 
-  if (!workoutDto)
-    return <ErrorMessage fontSize="text-[4rem]" message="No workout found" />;
   return (
     <div className="max-w-[1050px] mx-auto">
       <Nav />
-      <div className="w-[90%] pb-[1.5rem] mx-auto border-2 bg-modal border-modal-outline rounded-4xl">
-        <div className="w-[100%]  mx-auto max-w-[1050px] mb-4 pl-[1rem]">
+      <div className="w-[90%]  mx-auto border-2 bg-modal border-modal-outline rounded-4xl">
+        <div className="flex justify-center items-center min-h-[6rem]">
+          {isLoading && (
+            <InfoMessage fontSize="[2rem]" message="Loading workout..." />
+          )}
+          {error && <ErrorMessage message={error.message} fontSize="[2rem]" />}
+        </div>
+        <div className="w-[100%]  mx-auto max-w-[1050px]  pl-[1rem]">
           {workoutDto && (
             <Title title={workoutDto.name} styles="text-start text-[3rem]" />
           )}
         </div>
-        <div className="w-[98%] mx-auto max-w-[800px] px-[1rem]">
-          {workoutDto.exerciseDtos && workoutDto.exerciseDtos.length > 0 ? (
-            <ExerciseList exerciseDtos={workoutDto.exerciseDtos} />
-          ) : (
-            <p className="text-text text-center text-[2rem]">
-              No Exercises to show
-            </p>
-          )}
-          <ShowElementButton
-            styles="text-[2rem] py-2 bg-primary w-full rounded-full hover:scale-102"
-            content="Add Exercise"
-            showElement={() => openModal("ADD_EXERCISE")}
-          />
-        </div>
+        {!isLoading && !error && (
+          <div className="w-[98%] mx-auto max-w-[800px] px-[1rem]">
+            {workoutDto &&
+            workoutDto.exerciseDtos &&
+            workoutDto.exerciseDtos.length > 0 ? (
+              <ExerciseList exerciseDtos={workoutDto.exerciseDtos} />
+            ) : (
+              <p className="text-text text-center text-[2rem]">
+                No Exercises to show
+              </p>
+            )}
+            <ShowElementButton
+              styles="text-[2rem] py-2 bg-primary w-full rounded-full hover:scale-102"
+              content="Add Exercise"
+              showElement={() => openModal("ADD_EXERCISE")}
+            />
+          </div>
+        )}
       </div>
+      <Footer />
     </div>
   );
 };

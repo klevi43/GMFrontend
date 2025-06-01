@@ -12,7 +12,6 @@ GMFrontEnd is the frontend for the web application Growth Mindset, a website tha
 
 ### Upcoming features
 
-1. Cleaner UI design
 2. Protected Routes and conditional rendering based on authentication status
 3. Optimized rendering
 4. Get my workout history

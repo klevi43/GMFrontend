@@ -15,7 +15,7 @@ const Nav = () => {
         <div
           className={`${
             !isNavMenuOpen ? "border-b-0 border-modal-outline" : "border-0"
-          } flex justify-between items-center flex-wrap mx-auto max-w-[1150px] sticky `}
+          } flex justify-between items-center flex-wrap mx-auto max-w-[1150px] sticky z-50 `}
         >
           <div className="">
             <Link to="/">

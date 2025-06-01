@@ -54,13 +54,15 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
         </div>
       </div>
 
-      {exerciseDto.setDtos ? (
+      {exerciseDto.setDtos && exerciseDto.setDtos.length > 0 ? (
         <SetList setDtos={exerciseDto.setDtos} />
       ) : (
-        <p className="text-text text-center">No sets to show</p>
+        <p className="text-text text-center text-[1.7rem] my-[2rem]">
+          No sets to show
+        </p>
       )}
       <ShowElementButton
-        styles="text-primary text-[1.5rem] bg-modal border-2 border-primary py-2 w-full rounded-full hover:bg-background hover:scale-102"
+        styles="text-primary text-[1.5rem] bg-modal border-2 border-primary mt-[0.5rem] mb-[1.5rem] py-2 w-full rounded-full hover:bg-background hover:scale-102"
         content="Add Set"
         showElement={handleAddSetButtonClick}
       />

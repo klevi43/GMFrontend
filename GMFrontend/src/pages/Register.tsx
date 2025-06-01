@@ -7,6 +7,7 @@ import userService from "../services/userService";
 import { useNavigate } from "react-router";
 import { useRegister } from "../hooks/useRegister";
 import type { RegisterInput } from "../types/inputTypes";
+import Footer from "../components/footer/Footer";
 const Register = () => {
   const mutation = useRegister();
   const onSubmit: SubmitHandler<RegisterFormSchema> = (data: RegisterInput) => {
@@ -32,6 +33,7 @@ const Register = () => {
           error={mutation.error}
         />
       </FormContainer>
+      <Footer />
     </>
   );
 };

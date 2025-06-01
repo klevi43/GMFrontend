@@ -3,6 +3,7 @@ import WorkoutList from "../components/workoutList/WorkoutList";
 import ShowElementButton from "../components/buttons/ShowElementButton";
 import Title from "../components/form/Title";
 import { useMod } from "../hooks/useMod";
+import Footer from "../components/footer/Footer";
 
 const WorkoutDashboard = () => {
   const { openModal } = useMod();
@@ -23,6 +24,7 @@ const WorkoutDashboard = () => {
         </div>
       </div>
       <WorkoutList />
+      <Footer />
     </div>
   );
 };

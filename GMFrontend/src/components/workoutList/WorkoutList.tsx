@@ -1,6 +1,8 @@
 import { useGetCurrentWorkouts } from "../../hooks/workoutHooks/useGetCurrentWorkouts";
 import React from "react";
 import WorkoutListItem from "./WorkoutListItem";
+import InfoMessage from "../messages/InfoMessage";
+import ErrorMessage from "../messages/ErrorMessage";
 
 const WorkoutList = React.memo(() => {
   const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
@@ -9,15 +11,9 @@ const WorkoutList = React.memo(() => {
   return (
     <div>
       {isLoading && (
-        <p className="text-text text-[2rem] text-center ">
-          Loading workouts...
-        </p>
+        <InfoMessage fontSize="[2rem]" message="Loading workouts..." />
       )}
-      {error && (
-        <p className="text-red-500 text-[2rem] text-center">
-          {(error as Error).message}
-        </p>
-      )}
+      {error && <ErrorMessage message={error.message} fontSize="[2rem]" />}
 
       <ul className="w-[100%] max-w-[1150px] mx-auto">
         {workouts

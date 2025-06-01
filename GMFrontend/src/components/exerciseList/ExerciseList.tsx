@@ -11,7 +11,7 @@ const ExerciseList = ({ exerciseDtos }: Props) => {
     return <p className="text-text">No exercises yet </p>;
   return (
     <>
-      <ul className="mb-4">
+      <ul className="">
         {exerciseDtos.map((exerciseDto) => (
           <ExerciseListItem key={exerciseDto.id} exerciseDto={exerciseDto} />
         ))}
