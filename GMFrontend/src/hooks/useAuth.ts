@@ -30,7 +30,7 @@ export const useAuth = (
     },
     onSuccess(data, variables, context) {
       console.log(data);
-      queryClient.setQueryData(["authUser"], data);
+      localStorage.setItem("authUser", JSON.stringify(data));
       options?.onSuccess?.(data, variables, context);
       navigate(WORKOUTS_ENDPOINT);
     },

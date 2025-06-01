@@ -1,19 +1,25 @@
-import React from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import type AuthUserDto from "../../dtos/authUserDto";
+import { useLogout } from "../../hooks/useLogout";
 import NavListItem from "./NavListItem";
-import authService from "../../services/authService";
+import { useLoadAuthUser } from "../../hooks/useLoadAuthUser";
 const NavList = () => {
+  const mutation = useLogout();
+  const [currentUser, setCurrentUser] = useState(null);
   const handleLogout = () => {
-    authService.logout();
+    mutation.mutateAsync({});
   };
+  useEffect(() => {
+    useLoadAuthUser();
+  });
   return (
     <>
       <ul className="md:flex h-max-content">
         <NavListItem urlPath="/workouts" text="My Workouts" />
         <NavListItem urlPath="/login" text="Login" />
-        <button onClick={handleLogout} className="text-white">
-          Logout
-        </button>
+        <li className="text-[2rem] md:text-[1.2rem] px-2 block text-center text-text hover:text-white transition">
+          <button onClick={handleLogout}>Logout</button>
+        </li>
       </ul>
     </>
   );
