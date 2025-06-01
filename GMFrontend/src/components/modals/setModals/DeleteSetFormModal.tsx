@@ -7,6 +7,7 @@ import { useMod } from "../../../hooks/useMod";
 import type SetDto from "../../../dtos/setDto";
 import { useDeleteSet } from "../../../hooks/setHooks/useDeleteSet";
 import { useQueryParams } from "../../../hooks/useQueryParams";
+import ErrorMessage from "../../messages/ErrorMessage";
 
 interface Props {
   initialData: SetDto;
@@ -34,6 +35,12 @@ const DeleteSetFormModal = ({ initialData }: Props) => {
             <div className="w-full">
               <div className="flex flex-col justify-center items-center mx-auto">
                 <Title title={`Delete Set`} />
+                {mutation.error instanceof Error && (
+                  <ErrorMessage
+                    fontSize="1rem"
+                    message={mutation.error.message}
+                  />
+                )}
                 <p className="text-text text-[1.2rem] mb-2 text-center">
                   Are you sure you want to delete this set?
                 </p>

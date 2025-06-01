@@ -2,6 +2,7 @@ import {
   useMutation,
   useQueryClient,
   type UseBaseMutationResult,
+  type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { SetInput } from "../../types/inputTypes";
 import { useMod } from "../useMod";
@@ -10,12 +11,14 @@ import type SetDto from "../../dtos/setDto";
 import setService from "../../services/setService";
 import axios from "axios";
 
-export const useAddSet = (): UseBaseMutationResult<
-  SetDto,
-  unknown,
-  SetInput,
-  unknown
-> => {
+export const useAddSet = (
+  options?: UseMutationOptions<
+    SetDto,
+    unknown, // Type of error (usually use `unknown`)
+    SetInput, // Type of data passed into mutate()
+    unknown // Type of context (for rollback, rarely used)
+  >
+): UseBaseMutationResult<SetDto, unknown, SetInput, unknown> => {
   const { closeModal } = useMod();
   const workoutId = getWorkoutId();
   const exerciseId = getExerciseId();
@@ -32,9 +35,13 @@ export const useAddSet = (): UseBaseMutationResult<
         throw new Error(message);
       }
     },
-    onSuccess: () => {
+    onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["workout"] });
+      options?.onSuccess?.(data, variables, context);
       closeModal();
+    },
+    onError: (error, variables, context) => {
+      options?.onError?.(error, variables, context);
     },
   });
 };
