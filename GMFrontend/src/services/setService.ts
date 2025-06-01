@@ -44,9 +44,9 @@ class SetService {
   };
 
   deleteSet = async (
-    workoutId: number,
+    setId: number,
     exerciseId: number,
-    setId: number
+    workoutId: number
   ): Promise<AxiosResponse<any, any>> => {
     const response = await axiosInstance.delete(SETS_ENDPOINT + DELETE, {
       params: { workoutId, exerciseId, setId },

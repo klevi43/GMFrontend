@@ -12,11 +12,10 @@ import { p } from "motion/react-client";
 import ShowElementButton from "../buttons/ShowElementButton";
 interface Props {
   exerciseDto: ExerciseDto;
-  isMenuOpen: boolean;
 }
-const ExerciseListItem = ({ exerciseDto, isMenuOpen }: Props) => {
+const ExerciseListItem = ({ exerciseDto }: Props) => {
   console.log("ExerciseListItem rerendered: " + exerciseDto.name);
-  const { showOpenMenuById } = useMenu();
+  const { openMenuId, showOpenMenuById } = useMenu();
   const { openModal } = useMod();
   const { setQueryParams } = useQueryParams();
 
@@ -42,8 +41,8 @@ const ExerciseListItem = ({ exerciseDto, isMenuOpen }: Props) => {
       <div className="flex justify-between items-center">
         <div>{exerciseDto.name}</div>
 
-        <div>
-          {isMenuOpen && (
+        <div className="relative">
+          {openMenuId === exerciseDto.id && (
             <ListItemMenuModal
               handleOpenUpdateModalClick={handleOpenUpdateModalClick}
               handleOpenDeleteModalClick={handleOpenDeleteModalClick}
@@ -57,7 +56,7 @@ const ExerciseListItem = ({ exerciseDto, isMenuOpen }: Props) => {
       </div>
 
       {exerciseDto.setDtos ? (
-        <SetList sets={exerciseDto.setDtos} />
+        <SetList setDtos={exerciseDto.setDtos} />
       ) : (
         <p className="text-text text-center">No sets to show</p>
       )}

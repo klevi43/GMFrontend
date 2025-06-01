@@ -3,13 +3,18 @@ import type { DtoTypes, ModType } from "../../types/modContextType";
 import AddWorkoutFormModal from "./workoutModals/AddWorkoutFormModal";
 import UpdateWorkoutFormModal from "./workoutModals/UpdateWorkoutFormModal";
 import { INITIAL_DATA_NOT_SET_MSG } from "../../constants/errorMsgs";
-import DeleteItemModal from "./DeleteItemModal";
+
 import DeleteWorkoutModal from "./workoutModals/DeleteWorkoutModal";
 import AddExerciseFormModal from "./exerciseModals/AddExerciseFormModal";
-import { isExerciseDto, isWorkoutDto } from "../../typeGuards/typeGuards";
+import {
+  isExerciseDto,
+  isSetDto,
+  isWorkoutDto,
+} from "../../typeGuards/typeGuards";
 import UpdateExerciseFormModal from "./exerciseModals/UpdateExerciseFormModal";
 import DeleteExerciseFormModal from "./exerciseModals/DeleteExerciseFormModal";
-import AddSetFormModal from "./setModals/AddSetModal";
+import AddSetFormModal from "./setModals/AddSetFormModal";
+import DeleteSetFormModal from "./setModals/DeleteSetFormModal";
 interface Props {
   type: ModType | null;
   initialData: DtoTypes | null;
@@ -43,6 +48,11 @@ const ModalRenderer = ({ type, initialData }: Props) => {
       return <DeleteExerciseFormModal initialData={initialData} />;
     case "ADD_SET":
       return <AddSetFormModal />;
+    case "DELETE_SET":
+      if (!initialData || !isSetDto(initialData)) {
+        throw new Error(INITIAL_DATA_NOT_SET_MSG);
+      }
+      return <DeleteSetFormModal initialData={initialData} />;
     default:
       return <></>;
   }

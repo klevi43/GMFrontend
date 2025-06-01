@@ -13,11 +13,7 @@ const ExerciseList = ({ exerciseDtos }: Props) => {
     <>
       <ul className="mb-4">
         {exerciseDtos.map((exerciseDto) => (
-          <ExerciseListItem
-            key={exerciseDto.id}
-            exerciseDto={exerciseDto}
-            isMenuOpen={openMenuId === exerciseDto.id}
-          />
+          <ExerciseListItem key={exerciseDto.id} exerciseDto={exerciseDto} />
         ))}
       </ul>
     </>

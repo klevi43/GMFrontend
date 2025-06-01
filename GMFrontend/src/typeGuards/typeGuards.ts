@@ -5,3 +5,7 @@ export const isWorkoutDto = (data: unknown) => {
 export const isExerciseDto = (data: unknown) => {
   return typeof data === "object" && data !== null && "workoutId" in data;
 };
+
+export const isSetDto = (data: unknown) => {
+  return typeof data === "object" && data !== null && "exerciseId" in data;
+};
