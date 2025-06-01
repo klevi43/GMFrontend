@@ -7,7 +7,7 @@ import type { WorkoutFormFieldsType } from "../../../types/formFieldsType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import ModalCloseButton from "../../modals/workoutModals/ModalCloseButton";
-import { useModal } from "../../../hooks/useModal";
+
 import ErrorMessage from "../../messages/ErrorMessage";
 import { useMod } from "../../../hooks/useMod";
 type Props = {

@@ -4,9 +4,8 @@ import {
   type UseBaseMutationResult,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import exerciseService from "../../services/exerciseService";
 import axios from "axios";
-import { useModal } from "../useModal";
+import exerciseService from "../../services/exerciseService";
 import { getWorkoutId } from "../../utils/QueryParamHelpers";
 import { useMod } from "../useMod";
 

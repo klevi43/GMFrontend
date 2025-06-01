@@ -18,27 +18,27 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <AuthProvider>
-          <QueryParamsProvider>
-            <ModProvider>
-              <MenuProvider>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route
-                    path={WORKOUTS_ENDPOINT}
-                    element={<WorkoutDashboard />}
-                  />
-                  <Route
-                    path={WORKOUTS_ENDPOINT + WORKOUT}
-                    element={<SingleWorkout />}
-                  />
-                </Routes>
-              </MenuProvider>
-            </ModProvider>
-          </QueryParamsProvider>
-        </AuthProvider>
+        {/* <AuthProvider> */}
+        <QueryParamsProvider>
+          <ModProvider>
+            <MenuProvider>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route
+                  path={WORKOUTS_ENDPOINT}
+                  element={<WorkoutDashboard />}
+                />
+                <Route
+                  path={WORKOUTS_ENDPOINT + WORKOUT}
+                  element={<SingleWorkout />}
+                />
+              </Routes>
+            </MenuProvider>
+          </ModProvider>
+        </QueryParamsProvider>
+        {/* </AuthProvider> */}
       </BrowserRouter>
     </>
   );

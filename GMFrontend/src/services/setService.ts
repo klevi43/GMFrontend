@@ -1,8 +1,8 @@
-import axiosInstance from "./axiosInstance";
-import type { SetInput } from "../types/inputTypes";
-import type SetDto from "../dtos/setDto";
-import type { Axios, AxiosResponse } from "axios";
+import type { AxiosResponse } from "axios";
 import { CREATE, DELETE, SETS_ENDPOINT, UPDATE } from "../constants/endpoints";
+import type SetDto from "../dtos/setDto";
+import type { SetInput } from "../types/inputTypes";
+import axiosInstance from "./axiosInstance";
 
 class SetService {
   addSet = async (

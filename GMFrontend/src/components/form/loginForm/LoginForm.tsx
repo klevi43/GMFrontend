@@ -12,6 +12,7 @@ import Title from "../Title";
 import type { ServerError } from "../../../types/serverErrorContextType";
 import { LoginFormSchema } from "../../../schemas/loginFormSchema";
 import type { LoginFormFieldsType } from "../../../types/formFieldsType";
+import ErrorMessage from "../../messages/ErrorMessage";
 
 type Props = {
   // zod schema
@@ -19,7 +20,7 @@ type Props = {
   fields: LoginFormFieldsType[]; // the fields to render
   title: string; // title of the form
   defaultValues: { email: ""; password: "" }; // initial values for the form fields
-  serverError: ServerError;
+  error: unknown;
 };
 
 const LoginForm = ({
@@ -27,7 +28,7 @@ const LoginForm = ({
   fields,
   title,
   defaultValues,
-  serverError,
+  error,
 }: Props) => {
   const {
     register,
@@ -42,8 +43,8 @@ const LoginForm = ({
     // handleSubmit is from Zod and validates form onSumbit is my function
     <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
       <Title title={title} />
-      {serverError.msg && (
-        <span className="text-red-500">{serverError.msg}</span>
+      {error instanceof Error && (
+        <ErrorMessage fontSize="1rem" message={error.message} />
       )}
       {fields.map((field) => (
         <div key={field.name}>

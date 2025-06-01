@@ -4,12 +4,10 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type { AxiosResponse } from "axios";
-import type ExerciseDto from "../../dtos/exerciseDto";
-import type { ExerciseInput, WorkoutInput } from "../../types/inputTypes";
-import { useModal } from "../useModal";
-import exerciseService from "../../services/exerciseService";
 import axios from "axios";
+import type ExerciseDto from "../../dtos/exerciseDto";
+import exerciseService from "../../services/exerciseService";
+import type { ExerciseInput } from "../../types/inputTypes";
 import { getWorkoutId } from "../../utils/QueryParamHelpers";
 import { useMod } from "../useMod";
 

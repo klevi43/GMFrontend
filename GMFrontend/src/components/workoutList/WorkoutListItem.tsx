@@ -1,16 +1,10 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import type WorkoutDto from "../../dtos/workoutDto";
-import WorkoutListItemDetails from "./WorkoutListItemDetails";
 import ListItemOptionsButton from "./ListItemOptionsButton";
-
+import WorkoutListItemDetails from "./WorkoutListItemDetails";
 import ListItemMenuModal from "./ListItemMenuModal";
-import { useModal } from "../../hooks/useModal";
-
-import { DELETE_TYPE, UPDATE_TYPE } from "../../constants/modalConstants";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/endpoints";
-import { useGetWorkout } from "../../hooks/workoutHooks/useGetWorkout";
-import workoutService from "../../services/workoutService";
 import { useMenu } from "../../hooks/useMenu";
 import { useMod } from "../../hooks/useMod";
 import { useQueryParams } from "../../hooks/useQueryParams";

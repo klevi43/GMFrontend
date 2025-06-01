@@ -1,14 +1,12 @@
-import React from "react";
 import FormContainer from "../../containers/FormContainer";
-import type { warning } from "motion/react";
-import type { title } from "motion/react-client";
+
 import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
 import ModalCloseButton from "./ModalCloseButton";
 import { useMod } from "../../../hooks/useMod";
 import type WorkoutDto from "../../../dtos/workoutDto";
 import { useDeleteWorkout } from "../../../hooks/workoutHooks/useDeleteWorkout";
-import { useQueryParams } from "../../../hooks/useQueryParams";
+
 interface Props {
   initialData: WorkoutDto;
 }
