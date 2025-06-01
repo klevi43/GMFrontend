@@ -20,7 +20,8 @@ const WorkoutList = React.memo(() => {
           ? workouts?.map((workout) => (
               <WorkoutListItem key={workout.id} workoutDto={workout} />
             ))
-          : !isLoading && (
+          : !isLoading &&
+            !error && (
               <p className="text-text  text-center text-[2rem]">
                 No workouts to show
               </p>

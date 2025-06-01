@@ -11,7 +11,6 @@ const WorkoutDashboard = () => {
   return (
     <div>
       <Nav />
-      <h2 className="mx-auto text-white">Workout Dashboard</h2>
 
       <div className="max-w-{1000px] w-[90%] mx-auto">
         <div className=" flex justify-between items-baseline">
