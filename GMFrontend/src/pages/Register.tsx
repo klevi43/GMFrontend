@@ -5,17 +5,13 @@ import type { SubmitHandler } from "react-hook-form";
 import FormContainer from "../components/containers/FormContainer";
 import userService from "../services/userService";
 import { useNavigate } from "react-router";
+import { useRegister } from "../hooks/useRegister";
+import type { RegisterInput } from "../types/inputTypes";
 const Register = () => {
-  const navigate = useNavigate();
-  const onSubmit: SubmitHandler<RegisterFormSchema> = (data) => {
+  const mutation = useRegister();
+  const onSubmit: SubmitHandler<RegisterFormSchema> = (data: RegisterInput) => {
     console.log(data);
-    userService.register(
-      data.email,
-      data.password,
-      data.confirmPassword,
-      setServerError
-    );
-    navigate("/login");
+    mutation.mutateAsync(data);
   };
   return (
     <>
@@ -33,7 +29,7 @@ const Register = () => {
             },
           ]}
           defaultValues={{ email: "", password: "", confirmPassword: "" }}
-          serverError={serverError}
+          error={mutation.error}
         />
       </FormContainer>
     </>

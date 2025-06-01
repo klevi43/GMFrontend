@@ -1,30 +1,19 @@
 import axiosInstance from "./axiosInstance";
 import { REGISTER_ENDPOINT } from "../constants/constants";
 import type RegisterUser from "../types/registerUserType";
+import type { RegisterInput } from "../types/inputTypes";
 export class UserService {
-  register = async (
-    email: string,
-    password: string,
-    confirmPassword: string
-  ) => {
-    try {
-      const newUser: RegisterUser = {
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword,
-      };
-      const response = await axiosInstance.post(
-        REGISTER_ENDPOINT,
-
-        JSON.stringify(newUser),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(JSON.stringify(response?.data));
-    } catch (error: any) {}
+  register = async (registerInput: RegisterInput) => {
+    const response = await axiosInstance.post(
+      REGISTER_ENDPOINT,
+      registerInput,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
   };
 }
 

@@ -3,6 +3,12 @@ export type LoginInput = {
   password: string;
 };
 
+export type RegisterInput = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
 export type WorkoutInput = {
   name: string;
   date: string;

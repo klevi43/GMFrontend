@@ -10,6 +10,7 @@ import { WORKOUT, WORKOUTS_ENDPOINT } from "./constants/endpoints";
 import { MenuProvider } from "./contexts/MenuProvider";
 import { ModProvider } from "./contexts/ModProvider";
 import { QueryParamsProvider } from "./contexts/QueryParamProvider";
+import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "./constants/constants";
 
 function App() {
   return (
@@ -20,8 +21,8 @@ function App() {
             <MenuProvider>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path={LOGIN_ENDPOINT} element={<Login />} />
+                <Route path={REGISTER_ENDPOINT} element={<Register />} />
                 <Route
                   path={WORKOUTS_ENDPOINT}
                   element={<WorkoutDashboard />}
