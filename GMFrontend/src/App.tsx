@@ -9,7 +9,6 @@ import WorkoutDashboard from "./pages/WorkoutDashboard";
 import Register from "./pages/Register";
 import SingleWorkout from "./pages/SingleWorkout";
 
-import { ModalProvider } from "./contexts/ModalProvider";
 import { WORKOUT, WORKOUTS_ENDPOINT } from "./constants/endpoints";
 import { MenuProvider } from "./contexts/MenuProvider";
 import { QueryParamsProvider } from "./contexts/QueryParamProvider";
@@ -22,7 +21,6 @@ function App() {
         <AuthProvider>
           <QueryParamsProvider>
             <ModProvider>
-              {/* <ModalProvider> */}
               <MenuProvider>
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -38,7 +36,6 @@ function App() {
                   />
                 </Routes>
               </MenuProvider>
-              {/* </ModalProvider> */}
             </ModProvider>
           </QueryParamsProvider>
         </AuthProvider>
