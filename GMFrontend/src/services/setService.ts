@@ -31,7 +31,7 @@ class SetService {
     setId: number,
     exerciseId: number,
     workoutId: number
-  ): Promise<AxiosResponse<SetDto, any>> => {
+  ): Promise<SetDto> => {
     const response = await axiosInstance.put(SETS_ENDPOINT + UPDATE, setInput, {
       params: { workoutId, exerciseId, setId },
       headers: {

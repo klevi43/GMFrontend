@@ -13,9 +13,10 @@ import {
 import { useMod } from "../useMod";
 import setService from "../../services/setService";
 import axios from "axios";
+import type SetDto from "../../dtos/setDto";
 
 export const useUpdateSet = (): UseBaseMutationResult<
-  AxiosResponse<any, any>,
+  SetDto,
   unknown,
   SetInput,
   unknown

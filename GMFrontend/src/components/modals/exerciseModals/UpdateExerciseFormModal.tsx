@@ -1,7 +1,6 @@
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import ExerciseForm from "../../form/exerciseForm/ExerciseForm";
-import { useUpdateExercise } from "../../../hooks/exerciseHooks/useUpdateExercise";
 import { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
 import type { SubmitHandler } from "react-hook-form";
 import type { ExerciseInput } from "../../../types/inputTypes";
@@ -9,13 +8,12 @@ import type { ExerciseInput } from "../../../types/inputTypes";
 import type ExerciseDto from "../../../dtos/exerciseDto";
 import { useQueryParams } from "../../../hooks/useQueryParams";
 import { getWorkoutId } from "../../../utils/QueryParamHelpers";
+import { useUpdateExercise } from "../../../hooks/exerciseHooks/useUpdateExercise";
 interface Props {
   initialData: ExerciseDto;
 }
 const UpdateExerciseFormModal = ({ initialData }: Props) => {
   const mutation = useUpdateExercise();
-  const { setQueryParams } = useQueryParams();
-  setQueryParams({ exerciseId: initialData.id });
   const workoutId = getWorkoutId();
   const onSubmit: SubmitHandler<ExerciseFormSchema> = async (
     data: ExerciseInput

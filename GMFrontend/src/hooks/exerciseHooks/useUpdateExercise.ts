@@ -2,16 +2,13 @@ import {
   useMutation,
   useQueryClient,
   type UseBaseMutationResult,
-  type UseMutationOptions,
 } from "@tanstack/react-query";
-import type { AxiosResponse } from "axios";
 import type ExerciseDto from "../../dtos/exerciseDto";
 import type { ExerciseInput } from "../../types/inputTypes";
-import { useModal } from "../useModal";
-import exerciseService from "../../services/exerciseService";
-import axios from "axios";
 import { getExerciseId, getWorkoutId } from "../../utils/QueryParamHelpers";
 import { useMod } from "../useMod";
+import exerciseService from "../../services/exerciseService";
+import axios from "axios";
 
 export const useUpdateExercise = (): UseBaseMutationResult<
   ExerciseDto,
@@ -24,14 +21,15 @@ export const useUpdateExercise = (): UseBaseMutationResult<
   const exerciseId = getExerciseId();
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (updatedExerise: ExerciseInput) => {
+    mutationFn: async (exerciseInput: ExerciseInput) => {
       try {
         return await exerciseService.updateExercise(
-          updatedExerise,
+          exerciseInput,
           exerciseId,
           workoutId
         );
       } catch (error) {
+        console.log(error);
         let message = "Unable to update exercise. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
           message = error.response?.data?.message;
