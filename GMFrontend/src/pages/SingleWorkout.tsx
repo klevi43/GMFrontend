@@ -39,7 +39,10 @@ const SingleWorkout = () => {
         </div>
         <div className="w-[100%]  mx-auto max-w-[1050px]  pl-[1rem]">
           {workoutDto && (
-            <Title title={workoutDto.name} styles="text-start text-[3rem]" />
+            <Title
+              title={workoutDto.name}
+              styles="text-start mb-4 text-[3rem]"
+            />
           )}
         </div>
         {!isLoading && !error && (
