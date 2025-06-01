@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import NavToggle from "../icons/NavToggle";
 import NavList from "./NavList";
-import { useLoadAuthUser } from "../../hooks/useLoadAuthUser";
 
 const Nav = () => {
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
@@ -35,7 +34,7 @@ const Nav = () => {
           <div>
             <NavToggle toggleNavMenu={toggleNavMenu} />
           </div>
-          {/* TODO: fix opacity animation */}
+
           <div
             className={`${
               !isNavMenuOpen

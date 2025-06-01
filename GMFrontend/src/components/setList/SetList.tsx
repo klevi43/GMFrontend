@@ -1,4 +1,3 @@
-import React from "react";
 import type SetDto from "../../dtos/setDto";
 import SetListItem from "./SetListItem";
 

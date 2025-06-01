@@ -3,7 +3,7 @@ import {
   useQueryClient,
   type UseBaseMutationResult,
 } from "@tanstack/react-query";
-import type { AxiosResponse } from "axios";
+
 import type { SetInput } from "../../types/inputTypes";
 import {
   getExerciseId,
