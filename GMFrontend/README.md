@@ -1,17 +1,20 @@
 # Welcome to GMFrontEnd
 
-GMFrontEnd is the frontend for the web application Growth Mindset, a website that allows users to log their workouts.
+GMFrontEnd is the frontend for the web application Growth Mindset, a website that allows users to log their workouts and track their progress in the gym.
 
 ### Current Features
 
-1. An animated nav bar
-2. Basic login page with login functionality
+1. Secure login process with an http only cookie
+2. Account creation
+3. Get all my most recently completed workouts
+4. Get a selected workout
+5. Add, update, delete a workout, an exercise, or a set
 
 ### Upcoming features
 
-1. Hero Section
-2. About Section
-3. Framer Motion animations
+1. Cleaner UI design
+2. Protected Routes and conditional rendering based on authentication status
+3. Get my workout history
 
 ### How to contribute
 
