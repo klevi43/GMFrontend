@@ -37,11 +37,11 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
   };
 
   return (
-    <li className="text-white text-[1.7rem] w-full px-[1rem]">
+    <li className="text-white  w-full px-[1rem]">
       <div className="flex justify-between items-center">
-        <div>{exerciseDto.name}</div>
+        <div className="text-[1.7rem]">{exerciseDto.name}</div>
 
-        <div className="relative">
+        <div>
           {openMenuId === exerciseDto.id && (
             <ListItemMenuModal
               handleOpenUpdateModalClick={handleOpenUpdateModalClick}
@@ -61,7 +61,7 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
         <p className="text-text text-center">No sets to show</p>
       )}
       <ShowElementButton
-        styles="text-primary text-[1.5rem] bg-background border-2 border-primary py-2 w-full rounded-full hover:scale-102"
+        styles="text-primary text-[1.5rem] bg-modal border-2 border-primary py-2 w-full rounded-full hover:bg-background hover:scale-102"
         content="Add Set"
         showElement={handleAddSetButtonClick}
       />

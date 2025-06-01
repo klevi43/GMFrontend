@@ -1,3 +1,4 @@
+import { div } from "motion/react-client";
 import type SetDto from "../../dtos/setDto";
 import { useMenu } from "../../hooks/useMenu";
 import { useMod } from "../../hooks/useMod";
@@ -29,10 +30,20 @@ const SetListItem = ({ col1, col2, col3, setDto, styles }: Props) => {
     openModal("DELETE_SET", setDto);
   };
   return (
-    <li className="flex justify-between items-center text-text">
-      <div className="text-center">{col1}</div>
-      <div className="text-center">{col2 ? col2 : setDto?.weight}</div>
-      <div className="text-center">{col3 ? col3 : setDto?.reps}</div>
+    <li className="  w-full text-text ">
+      <div className="grid grid-cols-4 items-center w-full text-[1.5rem] min-h-[3.5rem]">
+        <div className="text-center">{col1}</div>
+        <div className="text-center">{col2 ? col2 : setDto?.weight}</div>
+        <div className="text-center">{col3 ? col3 : setDto?.reps}</div>
+        {setDto ? (
+          <div className="flex justify-center items-start ">
+            <ListItemOptionsButton id={setDto.id} showMenu={showOpenMenuById} />
+          </div>
+        ) : (
+          <div className=""></div>
+        )}
+      </div>
+
       {setDto && openMenuId === setDto?.id && (
         <div>
           <ListItemMenuModal
@@ -40,11 +51,6 @@ const SetListItem = ({ col1, col2, col3, setDto, styles }: Props) => {
             handleOpenDeleteModalClick={handleOpenDeleteModalClick}
           />
         </div>
-      )}
-      {setDto ? (
-        <ListItemOptionsButton id={setDto.id} showMenu={showOpenMenuById} />
-      ) : (
-        <div></div>
       )}
     </li>
   );

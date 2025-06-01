@@ -7,7 +7,7 @@ const ListItemOptionsButton = ({ showMenu, id }: Props) => {
   console.log("ListItemOptionsButton: " + id);
   return (
     <button
-      className="align-baseline pr-[1.2rem] text-text  text-[3rem] hover:text-white transition duration-300 cursor-pointer"
+      className=" text-text hover:text-white transition duration-300 cursor-pointer"
       onClick={() => showMenu(id)}
     >
       <svg
