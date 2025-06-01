@@ -2,6 +2,7 @@ import {
   useMutation,
   useQueryClient,
   type UseBaseMutationResult,
+  type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
 import axios from "axios";
@@ -9,12 +10,10 @@ import authService from "../services/authService";
 import type { LoginInput } from "../types/inputTypes";
 import { useNavigate } from "react-router";
 import { WORKOUTS_ENDPOINT } from "../constants/endpoints";
-export const useAuth = (): UseBaseMutationResult<
-  AxiosResponse<any, any>,
-  unknown,
-  LoginInput,
-  unknown
-> => {
+import type AuthUserDto from "../dtos/authUserDto";
+export const useAuth = (
+  options?: UseMutationOptions<AuthUserDto, unknown, LoginInput, unknown>
+): UseBaseMutationResult<AuthUserDto, unknown, LoginInput, unknown> => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation({
@@ -32,7 +31,11 @@ export const useAuth = (): UseBaseMutationResult<
     onSuccess(data, variables, context) {
       console.log(data);
       queryClient.setQueryData(["authUser"], data);
+      options?.onSuccess?.(data, variables, context);
       navigate(WORKOUTS_ENDPOINT);
+    },
+    onError: (error, variables, context) => {
+      options?.onError?.(error, variables, context);
     },
   });
 };

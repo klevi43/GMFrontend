@@ -1,16 +1,14 @@
 import type { SubmitHandler } from "react-hook-form";
-import { LoginFormSchema } from "../schemas/loginFormSchema";
 import Footer from "../components/footer/Footer";
 import Nav from "../components/navbar/Nav";
 import { useAuth } from "../hooks/useAuth";
-
-import LoginForm from "../components/form/loginForm/LoginForm";
+import { LoginFormSchema } from "../schemas/loginFormSchema";
+import { Link } from "react-router";
 import FormContainer from "../components/containers/FormContainer";
-import authService from "../services/authService";
-import { Link, useNavigate } from "react-router";
+import LoginForm from "../components/form/loginForm/LoginForm";
 import type { LoginInput } from "../types/inputTypes";
+
 const Login = () => {
-  const navigate = useNavigate();
   const onSubmit: SubmitHandler<LoginFormSchema> = (data: LoginInput) => {
     try {
       mutation.mutateAsync(data);

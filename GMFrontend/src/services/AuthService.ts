@@ -1,11 +1,11 @@
-import axios from "axios";
-import axiosInstance from "./axiosInstance";
 import { LOGIN_ENDPOINT } from "../constants/constants";
-
+import axiosInstance from "./axiosInstance";
+import type AuthUserDto from "../dtos/authUserDto";
 import type { LoginInput } from "../types/inputTypes";
+
 class AuthService {
   constructor() {}
-  login = async (loginInput: LoginInput) => {
+  login = async (loginInput: LoginInput): Promise<AuthUserDto> => {
     const response = await axiosInstance.post(LOGIN_ENDPOINT, loginInput, {
       headers: {
         "Content-Type": "application/json",
