@@ -14,7 +14,7 @@ const ScrollFadeIn = ({ children }: ScrollFadeInProps) => {
         initial={{ opacity: 0, y: 75 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{
-          duration: 1.2,
+          duration: 0.6,
           delay: 0.15,
         }}
       >

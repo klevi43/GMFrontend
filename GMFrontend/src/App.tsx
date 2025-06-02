@@ -6,11 +6,16 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SingleWorkout from "./pages/SingleWorkout";
 import WorkoutDashboard from "./pages/WorkoutDashboard";
-import { WORKOUT, WORKOUTS_ENDPOINT } from "./constants/endpoints";
+import {
+  NOT_FOUND_ENDPOINT,
+  WORKOUT,
+  WORKOUTS_ENDPOINT,
+} from "./constants/endpoints";
 import { MenuProvider } from "./contexts/MenuProvider";
 import { ModProvider } from "./contexts/ModProvider";
 import { QueryParamsProvider } from "./contexts/QueryParamProvider";
 import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "./constants/constants";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -31,6 +36,8 @@ function App() {
                   path={WORKOUTS_ENDPOINT + WORKOUT}
                   element={<SingleWorkout />}
                 />
+
+                <Route path={NOT_FOUND_ENDPOINT} element={<NotFound />} />
               </Routes>
             </MenuProvider>
           </ModProvider>
