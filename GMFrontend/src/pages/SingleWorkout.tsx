@@ -51,7 +51,7 @@ const SingleWorkout = () => {
           )}
         </div>
         {!isLoading && !error && (
-          <div className="w-[98%] mx-auto max-w-[800px] px-[1rem]">
+          <div className="w-[98%] mx-auto max-w-[800px] px-[1rem] pb-[1rem]">
             {workoutDto &&
             workoutDto.exerciseDtos &&
             workoutDto.exerciseDtos.length > 0 ? (
