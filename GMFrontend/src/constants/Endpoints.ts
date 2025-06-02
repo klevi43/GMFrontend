@@ -5,4 +5,4 @@ export const CREATE = "/create";
 export const UPDATE = "/update";
 export const DELETE = "/delete";
 export const WORKOUT = "/workout";
-export const NOT_FOUND_ENDPOINT = "/not-found";
+export const NOT_FOUND_ENDPOINT = "*";
