@@ -31,12 +31,17 @@ const SingleWorkout = () => {
     <div className="max-w-[1050px] mx-auto">
       <Nav />
       <div className="w-[90%]  mx-auto border-2 bg-modal border-modal-outline rounded-4xl">
-        <div className="flex justify-center items-center min-h-[6rem]">
-          {isLoading && (
+        {isLoading && (
+          <div className="flex justify-center items-center min-h-[6rem]">
             <InfoMessage fontSize="[2rem]" message="Loading workout..." />
-          )}
-          {error && <ErrorMessage message={error.message} fontSize="[2rem]" />}
-        </div>
+          </div>
+        )}
+        {error && (
+          <div className="flex justify-center items-center min-h-[6rem]">
+            <ErrorMessage message={error.message} fontSize="[2rem]" />
+          </div>
+        )}
+
         <div className="w-[100%]  mx-auto max-w-[1050px]  pl-[1rem]">
           {workoutDto && (
             <Title
