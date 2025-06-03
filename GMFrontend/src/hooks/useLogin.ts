@@ -11,7 +11,7 @@ import type { LoginInput } from "../types/inputTypes";
 import { useNavigate } from "react-router";
 import { WORKOUTS_ENDPOINT } from "../constants/endpoints";
 import type AuthUserDto from "../dtos/authUserDto";
-export const useAuth = (
+export const useLogin = (
   options?: UseMutationOptions<AuthUserDto, unknown, LoginInput, unknown>
 ): UseBaseMutationResult<AuthUserDto, unknown, LoginInput, unknown> => {
   const queryClient = useQueryClient();

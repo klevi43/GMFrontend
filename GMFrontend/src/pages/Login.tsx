@@ -1,7 +1,7 @@
 import type { SubmitHandler } from "react-hook-form";
 import Footer from "../components/footer/Footer";
 import Nav from "../components/navbar/Nav";
-import { useAuth } from "../hooks/useAuth";
+import { useLogin } from "../hooks/useLogin";
 import { LoginFormSchema } from "../schemas/loginFormSchema";
 import { Link } from "react-router";
 import FormContainer from "../components/containers/FormContainer";
@@ -14,7 +14,7 @@ const Login = () => {
       mutation.mutateAsync(data);
     } catch (error) {}
   };
-  const mutation = useAuth();
+  const mutation = useLogin();
   return (
     <>
       <Nav />
