@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import SingleWorkout from "./pages/SingleWorkout";
 import WorkoutDashboard from "./pages/WorkoutDashboard";
 import {
+  HISTORY,
   NOT_FOUND_ENDPOINT,
   WORKOUT,
   WORKOUTS_ENDPOINT,
@@ -16,6 +17,7 @@ import { ModProvider } from "./contexts/ModProvider";
 import { QueryParamsProvider } from "./contexts/QueryParamProvider";
 import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "./constants/constants";
 import NotFound from "./pages/NotFound";
+import WorkoutHistory from "./pages/WorkoutHistory";
 
 function App() {
   return (
@@ -36,7 +38,10 @@ function App() {
                   path={WORKOUTS_ENDPOINT + WORKOUT}
                   element={<SingleWorkout />}
                 />
-
+                <Route
+                  path={WORKOUTS_ENDPOINT + HISTORY}
+                  element={<WorkoutHistory />}
+                />
                 <Route path={NOT_FOUND_ENDPOINT} element={<NotFound />} />
               </Routes>
             </MenuProvider>

@@ -3,9 +3,16 @@ import React from "react";
 import WorkoutListItem from "./WorkoutListItem";
 import InfoMessage from "../messages/InfoMessage";
 import ErrorMessage from "../messages/ErrorMessage";
+import type WorkoutDto from "../../dtos/workoutDto";
+import type { UseQueryResult } from "@tanstack/react-query";
 
-const WorkoutList = React.memo(() => {
-  const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
+interface Props {
+  useWorkoutQuery: () => UseQueryResult<T, any>;
+}
+const WorkoutList = React.memo(<T,>({ useWorkoutQuery }: Props) => {
+  //const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
+  const { data: workouts, error, isLoading } = useWorkoutQuery();
+
   console.log("render");
 
   return (
@@ -15,9 +22,9 @@ const WorkoutList = React.memo(() => {
       )}
       {error && <ErrorMessage message={error.message} fontSize="[2rem]" />}
 
-      <ul className="w-[100%] max-w-[1150px] mx-auto">
+      <ul className="w-[100%] pr-[0.2rem] mx-auto">
         {workouts
-          ? workouts?.map((workout) => (
+          ? workouts?.map((workout: WorkoutDto) => (
               <WorkoutListItem key={workout.id} workoutDto={workout} />
             ))
           : !isLoading &&

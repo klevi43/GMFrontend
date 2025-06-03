@@ -4,27 +4,34 @@ import ShowElementButton from "../components/buttons/ShowElementButton";
 import Title from "../components/form/Title";
 import { useMod } from "../hooks/useMod";
 import Footer from "../components/footer/Footer";
+import { Link } from "react-router";
+import { useGetCurrentWorkouts } from "../hooks/workoutHooks/useGetCurrentWorkouts";
 
 const WorkoutDashboard = () => {
   const { openModal } = useMod();
 
   return (
-    <div>
+    <>
       <Nav />
 
-      <div className="max-w-{1000px] w-[90%] mx-auto">
+      <div className="max-w-[1150px] px-[1rem] mx-auto">
         <div className=" flex justify-between items-baseline">
-          <Title title="Workout Dashboard" styles="text-[3rem]" />
-          <ShowElementButton
-            styles="text-[3.5rem] text-text hover:text-white"
-            content="+"
-            showElement={() => openModal("ADD_WORKOUT")}
-          />
+          <div className="flex items-baseline">
+            <Title title="My Workouts" styles="text-[3rem]" />
+          </div>
+          <div className="flex items-baseline">
+            <ShowElementButton
+              styles="text-[3.5rem] text-text hover:text-white"
+              content="+"
+              showElement={() => openModal("ADD_WORKOUT")}
+            />
+          </div>
         </div>
+
+        <WorkoutList useWorkoutQuery={useGetCurrentWorkouts} />
       </div>
-      <WorkoutList />
       <Footer />
-    </div>
+    </>
   );
 };
 

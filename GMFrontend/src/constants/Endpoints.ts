@@ -6,3 +6,4 @@ export const UPDATE = "/update";
 export const DELETE = "/delete";
 export const WORKOUT = "/workout";
 export const NOT_FOUND_ENDPOINT = "*";
+export const HISTORY = "/history";
