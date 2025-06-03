@@ -2,6 +2,7 @@ import type { AxiosResponse } from "axios";
 import {
   CREATE,
   DELETE,
+  HISTORY,
   UPDATE,
   WORKOUT,
   WORKOUTS_ENDPOINT,
@@ -28,13 +29,17 @@ class WorkoutService {
     }
   };
 
+  getMWorkoutHistory = async (pageNo: number) => {
+    const response = await axiosInstance.get(WORKOUTS_ENDPOINT + HISTORY, {
+      params: { pageNo: pageNo, pageSize: 10 },
+    });
+    console.log(response);
+    return response;
+  };
+
   getWorkout = async (workoutId: number): Promise<WorkoutDto> => {
     const response = await axiosInstance.get(WORKOUTS_ENDPOINT + WORKOUT, {
       params: { workoutId },
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-      },
     });
     return response.data;
   };

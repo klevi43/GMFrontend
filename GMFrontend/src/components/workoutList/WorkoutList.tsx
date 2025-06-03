@@ -7,32 +7,18 @@ import type WorkoutDto from "../../dtos/workoutDto";
 import type { UseQueryResult } from "@tanstack/react-query";
 
 interface Props {
-  useWorkoutQuery: () => UseQueryResult<T, any>;
+  workoutDtos: WorkoutDto[];
 }
-const WorkoutList = React.memo(<T,>({ useWorkoutQuery }: Props) => {
-  //const { data: workouts, error, isLoading } = useGetCurrentWorkouts();
-  const { data: workouts, error, isLoading } = useWorkoutQuery();
-
+const WorkoutList = React.memo(({ workoutDtos }: Props) => {
   console.log("render");
 
   return (
     <div>
-      {isLoading && (
-        <InfoMessage fontSize="[2rem]" message="Loading workouts..." />
-      )}
-      {error && <ErrorMessage message={error.message} fontSize="[2rem]" />}
-
       <ul className="w-[100%] pr-[0.2rem] mx-auto">
-        {workouts
-          ? workouts?.map((workout: WorkoutDto) => (
-              <WorkoutListItem key={workout.id} workoutDto={workout} />
-            ))
-          : !isLoading &&
-            !error && (
-              <p className="text-text  text-center text-[2rem]">
-                No workouts to show
-              </p>
-            )}
+        {workoutDtos &&
+          workoutDtos?.map((workoutDto: WorkoutDto) => (
+            <WorkoutListItem key={workoutDto.id} workoutDto={workoutDto} />
+          ))}
       </ul>
     </div>
   );

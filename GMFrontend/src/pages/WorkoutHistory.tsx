@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ShowElementButton from "../components/buttons/ShowElementButton";
 import Footer from "../components/footer/Footer";
 import Title from "../components/form/Title";
 import Nav from "../components/navbar/Nav";
 import WorkoutList from "../components/workoutList/WorkoutList";
+import workoutService from "../services/workoutService";
+import { useGetWorkoutHistory } from "../hooks/workoutHooks/useGetWorkoutHistory";
 
 const WorkoutHistory = () => {
+  workoutService.getMWorkoutHistory(1);
+  const [pageNo, setPageNo] = useState(1);
+  const { data: workoutDtos, isLoading } = useGetWorkoutHistory(1, 1);
+
+  console.log(hook);
   return (
     <div>
       <Nav />
@@ -17,7 +24,7 @@ const WorkoutHistory = () => {
           </div>
         </div>
 
-        <WorkoutList />
+        {/* <WorkoutList /> */}
       </div>
       <Footer />
     </div>

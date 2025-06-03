@@ -1,15 +1,16 @@
+import ShowElementButton from "../components/buttons/ShowElementButton";
+import Footer from "../components/footer/Footer";
+import Title from "../components/form/Title";
+import ErrorMessage from "../components/messages/ErrorMessage";
+import InfoMessage from "../components/messages/InfoMessage";
 import Nav from "../components/navbar/Nav";
 import WorkoutList from "../components/workoutList/WorkoutList";
-import ShowElementButton from "../components/buttons/ShowElementButton";
-import Title from "../components/form/Title";
 import { useMod } from "../hooks/useMod";
-import Footer from "../components/footer/Footer";
-import { Link } from "react-router";
 import { useGetCurrentWorkouts } from "../hooks/workoutHooks/useGetCurrentWorkouts";
 
 const WorkoutDashboard = () => {
   const { openModal } = useMod();
-
+  const { data: workoutDtos, error, isLoading } = useGetCurrentWorkouts();
   return (
     <>
       <Nav />
@@ -27,8 +28,20 @@ const WorkoutDashboard = () => {
             />
           </div>
         </div>
-
-        <WorkoutList useWorkoutQuery={useGetCurrentWorkouts} />
+        {isLoading && (
+          <InfoMessage fontSize="[2rem]" message="Loading workouts..." />
+        )}
+        {error && <ErrorMessage message={error.message} fontSize="[2rem]" />}
+        {workoutDtos ? (
+          <WorkoutList workoutDtos={workoutDtos} />
+        ) : (
+          !isLoading &&
+          !error && (
+            <p className="text-text  text-center text-[2rem]">
+              No workouts to show
+            </p>
+          )
+        )}
       </div>
       <Footer />
     </>
