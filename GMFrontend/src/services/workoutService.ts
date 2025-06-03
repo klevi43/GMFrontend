@@ -33,7 +33,6 @@ class WorkoutService {
     const response = await axiosInstance.get(WORKOUTS_ENDPOINT + HISTORY, {
       params: { pageNo: pageNo, pageSize: 10 },
     });
-    console.log(response);
     return response;
   };
 

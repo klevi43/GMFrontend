@@ -4,15 +4,17 @@ import Footer from "../components/footer/Footer";
 import Title from "../components/form/Title";
 import Nav from "../components/navbar/Nav";
 import WorkoutList from "../components/workoutList/WorkoutList";
-import workoutService from "../services/workoutService";
+
 import { useGetWorkoutHistory } from "../hooks/workoutHooks/useGetWorkoutHistory";
+import { p } from "motion/react-client";
+import PageSelector from "../components/pageSelector/PageSelector";
+import InfoMessage from "../components/messages/InfoMessage";
 
 const WorkoutHistory = () => {
-  workoutService.getMWorkoutHistory(1);
   const [pageNo, setPageNo] = useState(1);
-  const { data: workoutDtos, isLoading } = useGetWorkoutHistory(1, 1);
+  const { data: workoutDtos } = useGetWorkoutHistory(pageNo - 1);
+  console.log(workoutDtos?.data);
 
-  console.log(hook);
   return (
     <div>
       <Nav />
@@ -23,9 +25,23 @@ const WorkoutHistory = () => {
             <Title title="My Workout History" styles="text-[3rem]" />
           </div>
         </div>
-
-        {/* <WorkoutList /> */}
+        <div className="text-text text-[1.2rem] mt-1 mb-3">
+          <p>Workouts Completed: {workoutDtos?.data.totalElements}</p>
+        </div>
+        {workoutDtos && workoutDtos.data.content ? (
+          <>
+            <WorkoutList workoutDtos={workoutDtos?.data.content} />
+            <PageSelector
+              totalPages={workoutDtos?.data.totalPages}
+              pageNo={pageNo}
+              setPageNo={setPageNo}
+            />
+          </>
+        ) : (
+          <InfoMessage message="No Workouts to show" fontSize="[2rem]" />
+        )}
       </div>
+
       <Footer />
     </div>
   );
