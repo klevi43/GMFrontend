@@ -1,5 +1,5 @@
 export default interface AuthUserDto {
-  email: string;
-  role: string;
+  userEmail: string;
+  userRole: string;
   isAuthenticated: boolean;
 }

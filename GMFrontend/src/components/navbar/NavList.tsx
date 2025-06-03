@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useLogout } from "../../hooks/useLogout";
 import NavListItem from "./NavListItem";
 import { LOGIN_ENDPOINT } from "../../constants/constants";
-import { HISTORY, WORKOUTS_ENDPOINT } from "../../constants/endpoints";
+import {
+  HISTORY,
+  USERS_ENDPOINT,
+  WORKOUTS_ENDPOINT,
+} from "../../constants/endpoints";
 import { useLoadAuthUser } from "../../hooks/useLoadAuthUser";
 const NavList = () => {
   const mutation = useLogout();
@@ -14,6 +18,7 @@ const NavList = () => {
   return (
     <>
       <ul className="md:flex h-max-content">
+        <NavListItem urlPath={USERS_ENDPOINT} text="My Account" />
         <NavListItem urlPath={WORKOUTS_ENDPOINT} text="My Workouts" />
         <NavListItem
           urlPath={WORKOUTS_ENDPOINT + HISTORY}

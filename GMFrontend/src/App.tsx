@@ -9,6 +9,7 @@ import WorkoutDashboard from "./pages/WorkoutDashboard";
 import {
   HISTORY,
   NOT_FOUND_ENDPOINT,
+  USERS_ENDPOINT,
   WORKOUT,
   WORKOUTS_ENDPOINT,
 } from "./constants/endpoints";
@@ -19,6 +20,7 @@ import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "./constants/constants";
 import NotFound from "./pages/NotFound";
 import WorkoutHistory from "./pages/WorkoutHistory";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
+import MyAccount from "./pages/MyAccount";
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
                     element={<WorkoutHistory />}
                   />
                 </Route>
+                <Route path={USERS_ENDPOINT} element={<MyAccount />}></Route>
 
                 <Route path={NOT_FOUND_ENDPOINT} element={<NotFound />} />
               </Routes>

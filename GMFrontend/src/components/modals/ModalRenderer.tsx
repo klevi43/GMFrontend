@@ -9,6 +9,7 @@ import AddExerciseFormModal from "./exerciseModals/AddExerciseFormModal";
 import {
   isExerciseDto,
   isSetDto,
+  isUserResponseDto,
   isWorkoutDto,
 } from "../../typeGuards/typeGuards";
 import UpdateExerciseFormModal from "./exerciseModals/UpdateExerciseFormModal";
@@ -16,12 +17,18 @@ import DeleteExerciseFormModal from "./exerciseModals/DeleteExerciseFormModal";
 import AddSetFormModal from "./setModals/AddSetFormModal";
 import DeleteSetFormModal from "./setModals/DeleteSetFormModal";
 import UpdateSetFormModal from "./setModals/UpdateSetFormModal";
+import UpdateUserInfoModal from "./userModals/UpdateUserInfoModal";
 interface Props {
   type: ModType | null;
   initialData: DtoTypes | null;
 }
 const ModalRenderer = ({ type, initialData }: Props) => {
   switch (type) {
+    case "UPDATE_USER_INFO":
+      if (!initialData || !isUserResponseDto(initialData)) {
+        throw new Error(INITIAL_DATA_NOT_SET_MSG);
+      }
+      return <UpdateUserInfoModal initialData={initialData} />;
     case "ADD_WORKOUT":
       return <AddWorkoutFormModal />;
     case "UPDATE_WORKOUT":

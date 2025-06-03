@@ -1,3 +1,6 @@
+export const isUserResponseDto = (data: unknown) => {
+  return typeof data === "object" && data !== null && "email" in data;
+};
 export const isWorkoutDto = (data: unknown) => {
   return typeof data === "object" && data !== null && "exerciseDtos" in data;
 };

@@ -1,3 +1,4 @@
+export const USERS_ENDPOINT = "/users";
 export const WORKOUTS_ENDPOINT = "/workouts";
 export const EXERCISES_ENDPOINT = WORKOUTS_ENDPOINT + "/exercises";
 export const SETS_ENDPOINT = EXERCISES_ENDPOINT + "/sets";
