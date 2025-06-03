@@ -18,6 +18,7 @@ import AddSetFormModal from "./setModals/AddSetFormModal";
 import DeleteSetFormModal from "./setModals/DeleteSetFormModal";
 import UpdateSetFormModal from "./setModals/UpdateSetFormModal";
 import UpdateUserInfoModal from "./userModals/UpdateUserInfoModal";
+import DeletUserModal from "./userModals/DeletUserModal";
 interface Props {
   type: ModType | null;
   initialData: DtoTypes | null;
@@ -29,6 +30,8 @@ const ModalRenderer = ({ type, initialData }: Props) => {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);
       }
       return <UpdateUserInfoModal initialData={initialData} />;
+    case "DELETE_USER_INFO":
+      return <DeletUserModal />;
     case "ADD_WORKOUT":
       return <AddWorkoutFormModal />;
     case "UPDATE_WORKOUT":

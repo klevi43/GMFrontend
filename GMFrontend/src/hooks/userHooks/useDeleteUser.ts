@@ -4,26 +4,25 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type UserResponseDto from "../../dtos/userResponseDto";
-import type { RegisterInput } from "../../types/inputTypes";
+import type { AxiosResponse } from "axios";
+import { useMod } from "../useMod";
 import userService from "../../services/userService";
 import axios from "axios";
-import { useMod } from "../useMod";
+import { Navigate } from "react-router";
 
-export const useUpdateUserInfo = (
-  options?: UseMutationOptions<UserResponseDto, unknown, RegisterInput, unknown>
-): UseBaseMutationResult<UserResponseDto, unknown, RegisterInput, unknown> => {
+export const useDeleteUser = (
+  options?: UseMutationOptions<AxiosResponse<any, any>, unknown, void, unknown>
+): UseBaseMutationResult<AxiosResponse<any, any>, unknown, void, unknown> => {
   const queryClient = useQueryClient();
   const { closeModal } = useMod();
   return useMutation({
-    mutationFn: async (registerInput: RegisterInput) => {
+    mutationFn: async () => {
       try {
-        return await userService.updateUserInfo(registerInput);
+        return await userService.deleteUser();
       } catch (error) {
-        let message =
-          "Unable to update your information. Please try again later.";
+        let message = "Unable to delete your account. Please try again later";
         if (axios.isAxiosError(error) && error.response) {
-          message = error.response.data.message;
+          message = error.response?.data?.message;
         }
         throw new Error(message);
       }
@@ -31,6 +30,7 @@ export const useUpdateUserInfo = (
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["userInfo"] });
       closeModal();
+      Navigate({ to: "/" });
       options?.onSuccess?.(data, variables, context);
     },
     onError: (error, variables, context) => {

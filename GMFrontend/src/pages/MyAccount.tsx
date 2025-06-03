@@ -50,6 +50,7 @@ const MyAccount = () => {
             <ShowElementButton
               content="Delete Account"
               styles="text-[1.5rem] pt-4 w-fit bg-modal text-text  hover:text-red-500"
+              showElement={() => openModal("DELETE_USER_INFO")}
             />
           </div>
         </FormContainer>

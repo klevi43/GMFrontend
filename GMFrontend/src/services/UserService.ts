@@ -2,7 +2,7 @@ import axiosInstance from "./axiosInstance";
 import { REGISTER_ENDPOINT } from "../constants/constants";
 import type RegisterUser from "../types/registerUserType";
 import type { RegisterInput } from "../types/inputTypes";
-import { UPDATE, USERS_ENDPOINT } from "../constants/endpoints";
+import { DELETE, UPDATE, USERS_ENDPOINT } from "../constants/endpoints";
 export class UserService {
   register = async (registerInput: RegisterInput) => {
     const response = await axiosInstance.post(
@@ -31,6 +31,10 @@ export class UserService {
       }
     );
     return response.data;
+  };
+  deleteUser = async () => {
+    const response = await axiosInstance.delete(USERS_ENDPOINT + DELETE);
+    return response;
   };
 }
 
