@@ -18,6 +18,7 @@ import { QueryParamsProvider } from "./contexts/QueryParamProvider";
 import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "./constants/constants";
 import NotFound from "./pages/NotFound";
 import WorkoutHistory from "./pages/WorkoutHistory";
+import ProtectedRoutes from "./utils/ProtectedRoutes";
 
 function App() {
   return (
@@ -30,18 +31,21 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path={LOGIN_ENDPOINT} element={<Login />} />
                 <Route path={REGISTER_ENDPOINT} element={<Register />} />
-                <Route
-                  path={WORKOUTS_ENDPOINT}
-                  element={<WorkoutDashboard />}
-                />
-                <Route
-                  path={WORKOUTS_ENDPOINT + WORKOUT}
-                  element={<SingleWorkout />}
-                />
-                <Route
-                  path={WORKOUTS_ENDPOINT + HISTORY}
-                  element={<WorkoutHistory />}
-                />
+                <Route element={<ProtectedRoutes />}>
+                  <Route
+                    path={WORKOUTS_ENDPOINT}
+                    element={<WorkoutDashboard />}
+                  />
+                  <Route
+                    path={WORKOUTS_ENDPOINT + WORKOUT}
+                    element={<SingleWorkout />}
+                  />
+                  <Route
+                    path={WORKOUTS_ENDPOINT + HISTORY}
+                    element={<WorkoutHistory />}
+                  />
+                </Route>
+
                 <Route path={NOT_FOUND_ENDPOINT} element={<NotFound />} />
               </Routes>
             </MenuProvider>
