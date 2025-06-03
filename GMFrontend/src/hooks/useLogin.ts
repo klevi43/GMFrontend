@@ -29,10 +29,9 @@ export const useLogin = (
       }
     },
     onSuccess(data, variables, context) {
-      console.log(data);
-      localStorage.setItem("authUser", JSON.stringify(data));
-      options?.onSuccess?.(data, variables, context);
+      queryClient.setQueryData(["authUser"], data);
       navigate(WORKOUTS_ENDPOINT);
+      options?.onSuccess?.(data, variables, context);
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);

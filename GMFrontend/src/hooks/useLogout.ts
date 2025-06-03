@@ -1,6 +1,8 @@
 import {
+  QueryClient,
   queryOptions,
   useMutation,
+  useQueryClient,
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
@@ -22,6 +24,7 @@ export const useLogout = (
   unknown
 > => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async () => {
       try {
@@ -35,7 +38,7 @@ export const useLogout = (
       }
     },
     onSuccess: () => {
-      localStorage.removeItem("authUser");
+      queryClient.setQueryData(["authUser"], null);
       navigate("/");
     },
     onError: (error, variables, context) => {
