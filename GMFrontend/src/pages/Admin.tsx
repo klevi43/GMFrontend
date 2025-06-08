@@ -9,7 +9,7 @@ const Admin = () => {
       <div className="max-w-[1150px] px-[1rem] mx-auto">
         <div className=" flex justify-between items-baseline">
           <div className="flex items-baseline">
-            <Title title="Admin" styles="text-[3rem]" />
+            <Title title="Admin Dashboard" styles="text-[3rem]" />
           </div>
         </div>
       </div>
