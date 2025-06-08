@@ -46,11 +46,13 @@ const WorkoutHistory = () => {
               <p>Workouts Completed: {workoutDtos?.data.totalElements}</p>
             </div>
             <WorkoutList workoutDtos={workoutDtos?.data.content} />
-            <PageSelector
-              totalPages={workoutDtos?.data.totalPages}
-              pageNo={pageNo}
-              setPageNo={setPageNo}
-            />
+            {workoutDtos.data.totalPages > 1 && (
+              <PageSelector
+                totalPages={workoutDtos?.data.totalPages}
+                pageNo={pageNo}
+                setPageNo={setPageNo}
+              />
+            )}
           </>
         ) : (
           <InfoMessage message="No Workouts to show" fontSize="[2rem]" />

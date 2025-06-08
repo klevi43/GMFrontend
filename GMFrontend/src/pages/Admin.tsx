@@ -7,6 +7,7 @@ import Nav from "../components/navbar/Nav";
 import { useGetAllUsers } from "../hooks/adminHooks/useGetAllUsers";
 
 import UserList from "../components/userList/UserList";
+import PageSelector from "../components/pageSelector/PageSelector";
 
 const Admin = () => {
   const [pageNo, setPageNo] = useState(1);
@@ -34,10 +35,15 @@ const Admin = () => {
         )}
         {userDtos && userDtos?.data ? (
           <div className="text-text">
-            <p className="text-text">
-              Total Users: {userDtos?.data.totalElements}
-            </p>
+            <p>Total Users: {userDtos?.data.totalElements}</p>
             <UserList userDtos={userDtos.data.content} />
+            {userDtos.data.totalPages > 1 && (
+              <PageSelector
+                totalPages={userDtos?.data.totalPages}
+                pageNo={pageNo}
+                setPageNo={setPageNo}
+              />
+            )}
           </div>
         ) : (
           !isLoading &&
