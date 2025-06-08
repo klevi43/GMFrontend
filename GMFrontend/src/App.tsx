@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import SingleWorkout from "./pages/SingleWorkout";
 import WorkoutDashboard from "./pages/WorkoutDashboard";
 import {
+  ADMIN_ENDPOINT,
   HISTORY,
   NOT_FOUND_ENDPOINT,
   USERS_ENDPOINT,
@@ -21,6 +22,7 @@ import NotFound from "./pages/NotFound";
 import WorkoutHistory from "./pages/WorkoutHistory";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import MyAccount from "./pages/MyAccount";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -47,8 +49,8 @@ function App() {
                     element={<WorkoutHistory />}
                   />
                 </Route>
-                <Route path={USERS_ENDPOINT} element={<MyAccount />}></Route>
-
+                <Route path={USERS_ENDPOINT} element={<MyAccount />} />
+                <Route path={ADMIN_ENDPOINT} element={<Admin />} />
                 <Route path={NOT_FOUND_ENDPOINT} element={<NotFound />} />
               </Routes>
             </MenuProvider>
