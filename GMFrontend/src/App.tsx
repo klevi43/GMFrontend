@@ -23,6 +23,7 @@ import WorkoutHistory from "./pages/WorkoutHistory";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import MyAccount from "./pages/MyAccount";
 import Admin from "./pages/Admin";
+import AdminRoutes from "./utils/AdminRoutes";
 
 function App() {
   return (
@@ -50,6 +51,9 @@ function App() {
                   />
                 </Route>
                 <Route path={USERS_ENDPOINT} element={<MyAccount />} />
+                <Route element={<AdminRoutes />}>
+                  <Route path={ADMIN_ENDPOINT} element={<Admin />} />
+                </Route>
                 <Route path={ADMIN_ENDPOINT} element={<Admin />} />
                 <Route path={NOT_FOUND_ENDPOINT} element={<NotFound />} />
               </Routes>
