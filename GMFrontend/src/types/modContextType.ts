@@ -22,5 +22,8 @@ type WorkoutTypes = "ADD_WORKOUT" | "UPDATE_WORKOUT" | "DELETE_WORKOUT";
 type ExerciseTypes = "ADD_EXERCISE" | "UPDATE_EXERCISE" | "DELETE_EXERCISE";
 type SetTypes = "ADD_SET" | "UPDATE_SET" | "DELETE_SET";
 type UserTypes = "UPDATE_USER_INFO" | "DELETE_USER_INFO";
-type AdminTypes = "ADMIN_DELETE_USER" | "ADMIN_PROMOTE_USER";
+type AdminTypes =
+  | "ADMIN_DELETE_USER"
+  | "ADMIN_PROMOTE_USER"
+  | "ADMIN_DEMOTE_ADMIN";
 export type DtoTypes = UserDto | WorkoutDto | ExerciseDto | SetDto;

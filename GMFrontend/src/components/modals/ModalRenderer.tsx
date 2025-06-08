@@ -21,6 +21,7 @@ import UpdateUserInfoModal from "./userModals/UpdateUserInfoModal";
 import DeletUserModal from "./userModals/DeleteUserModal";
 import AdminDeleteUserModal from "./adminModals/AdminDeleteUserModal";
 import AdminPromoteUserModal from "./adminModals/AdminPromoteUserModal";
+import AdminDemoteAdminModal from "./adminModals/AdminDemoteAdminModal";
 interface Props {
   type: ModType | null;
   initialData: DtoTypes | null;
@@ -38,6 +39,11 @@ const ModalRenderer = ({ type, initialData }: Props) => {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);
       }
       return <AdminPromoteUserModal initialData={initialData} />;
+    case "ADMIN_DEMOTE_ADMIN":
+      if (!initialData || !isUserResponseDto(initialData)) {
+        throw new Error(INITIAL_DATA_NOT_SET_MSG);
+      }
+      return <AdminDemoteAdminModal initialData={initialData} />;
     case "UPDATE_USER_INFO":
       if (!initialData || !isUserResponseDto(initialData)) {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);

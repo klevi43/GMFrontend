@@ -12,9 +12,14 @@ interface Props {
 const UserListItem = ({ userDto }: Props) => {
   const { openMenuId, showOpenMenuById } = useMenu();
   const { openModal } = useMod();
-  const handleOpenUpdateModalClick = () => {
+  const handleOpenPromoteToAdminModalClick = () => {
     showOpenMenuById(-1);
     openModal("ADMIN_PROMOTE_USER", userDto);
+  };
+
+  const handleOpenDemoteToUserModalClick = () => {
+    showOpenMenuById(-1);
+    openModal("ADMIN_DEMOTE_ADMIN", userDto);
   };
   const handleOpenDeleteModalClick = () => {
     showOpenMenuById(-1);
@@ -27,11 +32,21 @@ const UserListItem = ({ userDto }: Props) => {
           <div className="flex justify-between items-center">
             <UserListItemDetails userDto={userDto} />
             <div className="relative">
-              {openMenuId === userDto.id && (
+              {openMenuId === userDto.id && userDto.role === "ROLE_USER" && (
                 <ListItemMenuModal
                   updateOptionText="Promote to Administrator"
                   deleteOptionText="Delete User"
-                  handleOpenUpdateModalClick={handleOpenUpdateModalClick}
+                  handleOpenUpdateModalClick={
+                    handleOpenPromoteToAdminModalClick
+                  }
+                  handleOpenDeleteModalClick={handleOpenDeleteModalClick}
+                />
+              )}
+              {openMenuId === userDto.id && userDto.role === "ROLE_ADMIN" && (
+                <ListItemMenuModal
+                  updateOptionText="Demote to User"
+                  deleteOptionText="Delete User"
+                  handleOpenUpdateModalClick={handleOpenDemoteToUserModalClick}
                   handleOpenDeleteModalClick={handleOpenDeleteModalClick}
                 />
               )}
