@@ -1,16 +1,20 @@
 interface Props {
   styles?: string;
+  updateOptionText?: string;
+  deleteOptionText?: string;
   handleOpenUpdateModalClick: () => void;
   handleOpenDeleteModalClick: () => void;
 }
 const ListItemMenuModal = ({
   styles,
+  updateOptionText,
+  deleteOptionText,
   handleOpenUpdateModalClick,
   handleOpenDeleteModalClick,
 }: Props) => {
   return (
     <>
-      <div className="absolute top-1/2 right-full -translate-y-1/2 mr-2 w-48 bg-modal border border-modal-outline rounded-lg z-10">
+      <div className="absolute top-1/2 right-full -translate-y-1/2 mr-2 w-55 bg-modal border border-modal-outline rounded-lg z-10">
         {/* Tail */}
         <div className="absolute top-1/2 left-full -translate-y-1/2 -ml-2 w-4 h-4 bg-modal border-l border-modal-outline transform rotate-135 z-0"></div>
 
@@ -21,7 +25,7 @@ const ListItemMenuModal = ({
               onClick={handleOpenUpdateModalClick}
               className="text-text hover:text-white transition-all duration-300 cursor-pointer"
             >
-              Edit
+              {updateOptionText ? updateOptionText : "Edit"}
             </button>
           </li>
           <li>
@@ -29,7 +33,7 @@ const ListItemMenuModal = ({
               onClick={handleOpenDeleteModalClick}
               className="text-text hover:text-red-500 transition-all duration-300 cursor-pointer"
             >
-              Delete
+              {deleteOptionText ? deleteOptionText : "Delete"}
             </button>
           </li>
         </ul>
