@@ -18,13 +18,20 @@ import AddSetFormModal from "./setModals/AddSetFormModal";
 import DeleteSetFormModal from "./setModals/DeleteSetFormModal";
 import UpdateSetFormModal from "./setModals/UpdateSetFormModal";
 import UpdateUserInfoModal from "./userModals/UpdateUserInfoModal";
-import DeletUserModal from "./userModals/DeletUserModal";
+import DeletUserModal from "./userModals/DeleteUserModal";
+import AdminDeleteUserModal from "./adminModals/AdminDeleteUserModal";
 interface Props {
   type: ModType | null;
   initialData: DtoTypes | null;
 }
 const ModalRenderer = ({ type, initialData }: Props) => {
   switch (type) {
+    case "ADMIN_DELETE_USER": {
+      if (!initialData || !isUserResponseDto(initialData)) {
+        throw new Error(INITIAL_DATA_NOT_SET_MSG);
+      }
+      return <AdminDeleteUserModal initialData={initialData} />;
+    }
     case "UPDATE_USER_INFO":
       if (!initialData || !isUserResponseDto(initialData)) {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);

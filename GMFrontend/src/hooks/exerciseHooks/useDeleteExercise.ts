@@ -9,6 +9,7 @@ import axios from "axios";
 import exerciseService from "../../services/exerciseService";
 import { getWorkoutId } from "../../utils/QueryParamHelpers";
 import { useMod } from "../useMod";
+import { formatApiError } from "../../utils/formatApiError";
 
 export const useDeleteExercise = (
   options?: UseMutationOptions<
@@ -28,7 +29,7 @@ export const useDeleteExercise = (
       } catch (error) {
         let message = "Unable to delete exercise. Please try again later.";
         if (axios.isAxiosError(error) && error.message) {
-          message = error.response?.data?.message;
+          message = formatApiError(error.response?.data?.message);
         }
         throw new Error(message);
       }

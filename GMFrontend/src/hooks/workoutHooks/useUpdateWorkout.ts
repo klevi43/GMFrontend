@@ -10,6 +10,7 @@ import type WorkoutDto from "../../dtos/workoutDto";
 import axios from "axios";
 import { useMod } from "../useMod";
 import { getWorkoutId } from "../../utils/QueryParamHelpers";
+import { formatApiError } from "../../utils/formatApiError";
 export const useUpdateWorkout = (
   options?: UseMutationOptions<WorkoutDto, unknown, WorkoutInput, unknown>
 ): UseBaseMutationResult<WorkoutDto, unknown, WorkoutInput, unknown> => {
@@ -23,7 +24,7 @@ export const useUpdateWorkout = (
       } catch (error) {
         let message = "Unable to update workout. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
-          message = error.response?.data?.message;
+          message = formatApiError(error.response?.data?.message);
         }
         throw new Error(message);
       }

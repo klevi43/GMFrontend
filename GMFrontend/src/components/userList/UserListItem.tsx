@@ -1,16 +1,21 @@
 import React from "react";
-import type UserDto from "../../dtos/userDto";
+
 import UserListItemDetails from "./UserListItemDetails";
 import ListItemMenuModal from "../ListItemMenuModal";
 import ListItemOptionsButton from "../ListItemOptionsButton";
 import { useMenu } from "../../hooks/useMenu";
+import type UserDto from "../../dtos/userDto";
+import { useMod } from "../../hooks/useMod";
 interface Props {
   userDto: UserDto;
 }
 const UserListItem = ({ userDto }: Props) => {
   const { openMenuId, showOpenMenuById } = useMenu();
+  const { openModal } = useMod();
   const handleOpenUpdateModalClick = () => {};
-  const handleOpenDeleteModalClick = () => {};
+  const handleOpenDeleteModalClick = () => {
+    openModal("ADMIN_DELETE_USER", userDto);
+  };
   return (
     <>
       <li className="w-[100%] pb-2 hover:pl-4 transition-all duration-300">

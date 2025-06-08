@@ -10,6 +10,7 @@ import exerciseService from "../../services/exerciseService";
 import type { ExerciseInput } from "../../types/inputTypes";
 import { getWorkoutId } from "../../utils/QueryParamHelpers";
 import { useMod } from "../useMod";
+import { formatApiError } from "../../utils/formatApiError";
 
 export const useAddExercise = (
   options?: UseMutationOptions<ExerciseDto, unknown, ExerciseInput, unknown>
@@ -25,7 +26,7 @@ export const useAddExercise = (
         console.log(error);
         let message = "Unable to add exercise. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
-          message = error.response?.data?.message;
+          message = formatApiError(error.response?.data?.message);
         }
         throw new Error(message);
       }

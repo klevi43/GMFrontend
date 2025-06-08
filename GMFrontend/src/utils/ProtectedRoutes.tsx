@@ -2,10 +2,13 @@ import React from "react";
 import { useLoadAuthUser } from "../hooks/useLoadAuthUser";
 import { Navigate, Outlet } from "react-router";
 import { LOGIN_ENDPOINT } from "../constants/constants";
+import axios from "axios";
 
 const ProtectedRoutes = () => {
-  const { data: authUser, isError } = useLoadAuthUser();
-  if (isError || !authUser?.isAuthenticated)
+  const { data: authUser, error, isError } = useLoadAuthUser();
+  const isUnauthorized =
+    isError && axios.isAxiosError(error) && error.response?.status === 401;
+  if (isUnauthorized || (!authUser && !isError))
     return <Navigate to={LOGIN_ENDPOINT} />;
   return <Outlet />; // a placeholder component that renders the shild routes of a parent route
 };

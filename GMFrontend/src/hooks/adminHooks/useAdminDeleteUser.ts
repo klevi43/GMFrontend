@@ -5,12 +5,12 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import workoutService from "../../services/workoutService";
-import axios from "axios";
 import { useMod } from "../useMod";
+import adminService from "../../services/adminService";
+import axios from "axios";
 import { formatApiError } from "../../utils/formatApiError";
 
-export const useDeleteWorkout = (
+export const useAdminDeleteUser = (
   options?: UseMutationOptions<
     AxiosResponse<any, any>,
     unknown,
@@ -21,9 +21,9 @@ export const useDeleteWorkout = (
   const queryClient = useQueryClient();
   const { closeModal } = useMod();
   return useMutation({
-    mutationFn: async (workoutId: number) => {
+    mutationFn: async (userId: number) => {
       try {
-        return await workoutService.deleteWorkout(workoutId);
+        return await adminService.deleteUser(userId);
       } catch (error) {
         let message = "Unable to delete workout. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
@@ -33,7 +33,7 @@ export const useDeleteWorkout = (
       }
     },
     onSuccess: (data, variables, context) => {
-      queryClient.invalidateQueries({ queryKey: ["workouts"] });
+      queryClient.invalidateQueries({ queryKey: ["users"] });
       options?.onSuccess?.(data, variables, context);
       closeModal();
     },

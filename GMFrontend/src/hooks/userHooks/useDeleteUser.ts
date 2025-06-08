@@ -9,6 +9,7 @@ import { useMod } from "../useMod";
 import userService from "../../services/userService";
 import axios from "axios";
 import { Navigate } from "react-router";
+import { formatApiError } from "../../utils/formatApiError";
 
 export const useDeleteUser = (
   options?: UseMutationOptions<AxiosResponse<any, any>, unknown, void, unknown>
@@ -22,7 +23,7 @@ export const useDeleteUser = (
       } catch (error) {
         let message = "Unable to delete your account. Please try again later";
         if (axios.isAxiosError(error) && error.response) {
-          message = error.response?.data?.message;
+          message = formatApiError(error.response?.data?.message);
         }
         throw new Error(message);
       }

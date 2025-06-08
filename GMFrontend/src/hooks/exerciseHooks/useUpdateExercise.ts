@@ -10,6 +10,7 @@ import { getExerciseId, getWorkoutId } from "../../utils/QueryParamHelpers";
 import { useMod } from "../useMod";
 import exerciseService from "../../services/exerciseService";
 import axios from "axios";
+import { formatApiError } from "../../utils/formatApiError";
 
 export const useUpdateExercise = (
   options?: UseMutationOptions<ExerciseDto, unknown, ExerciseInput, unknown>
@@ -27,10 +28,9 @@ export const useUpdateExercise = (
           workoutId
         );
       } catch (error) {
-        console.log(error);
         let message = "Unable to update exercise. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
-          message = error.response?.data?.message;
+          message = formatApiError(error.response.data.message);
         }
         throw new Error(message);
       }

@@ -10,6 +10,7 @@ import type { WorkoutInput } from "../../types/inputTypes";
 import workoutService from "../../services/workoutService";
 import axios from "axios";
 import { useMod } from "../useMod";
+import { formatApiError } from "../../utils/formatApiError";
 // AxiosResponse<Workout, any> = the expected response from the server.
 // unknown = the error type (you can specify a custom one).
 // WorkoutInput = the input you pass to the mutation (what you want to send to the backend).
@@ -33,7 +34,7 @@ export const useAddWorkout = (
       } catch (error) {
         let message = "Unable to add workout. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
-          message = error.response?.data?.message;
+          message = formatApiError(error.response?.data?.message);
         }
         throw new Error(message);
       }

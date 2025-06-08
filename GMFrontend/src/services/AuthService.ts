@@ -3,6 +3,7 @@ import axiosInstance from "./axiosInstance";
 import type AuthUserDto from "../dtos/authUserDto";
 import type { LoginInput } from "../types/inputTypes";
 import type { AxiosResponse } from "axios";
+import axios from "axios";
 
 class AuthService {
   constructor() {}

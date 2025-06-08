@@ -4,11 +4,12 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type UserDto from "../../dtos/userDto";
 import type { RegisterInput } from "../../types/inputTypes";
 import userService from "../../services/userService";
 import axios from "axios";
 import { useMod } from "../useMod";
+import { formatApiError } from "../../utils/formatApiError";
+import type UserDto from "../../dtos/userDto";
 
 export const useUpdateUserInfo = (
   options?: UseMutationOptions<UserDto, unknown, RegisterInput, unknown>
@@ -23,7 +24,7 @@ export const useUpdateUserInfo = (
         let message =
           "Unable to update your information. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
-          message = error.response.data.message;
+          message = formatApiError(error.response.data.message);
         }
         throw new Error(message);
       }

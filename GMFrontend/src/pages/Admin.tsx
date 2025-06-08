@@ -5,14 +5,12 @@ import ErrorMessage from "../components/messages/ErrorMessage";
 import InfoMessage from "../components/messages/InfoMessage";
 import Nav from "../components/navbar/Nav";
 import { useGetAllUsers } from "../hooks/adminHooks/useGetAllUsers";
-import { li } from "motion/react-client";
-import type UserDto from "../dtos/userDto";
+
 import UserList from "../components/userList/UserList";
 
 const Admin = () => {
   const [pageNo, setPageNo] = useState(1);
   const { data: userDtos, error, isLoading } = useGetAllUsers(pageNo - 1);
-  console.log(userDtos?.data);
 
   return (
     <>

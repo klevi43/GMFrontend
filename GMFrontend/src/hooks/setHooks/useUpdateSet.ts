@@ -15,6 +15,7 @@ import { useMod } from "../useMod";
 import setService from "../../services/setService";
 import axios from "axios";
 import type SetDto from "../../dtos/setDto";
+import { formatApiError } from "../../utils/formatApiError";
 
 export const useUpdateSet = (
   options?: UseMutationOptions<SetDto, unknown, SetInput, unknown>
@@ -37,7 +38,7 @@ export const useUpdateSet = (
       } catch (error) {
         let message = "Unable to update workout. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
-          message = error.response?.data?.message;
+          message = formatApiError(error.response?.data?.message);
         }
         throw new Error(message);
       }

@@ -10,6 +10,7 @@ import { getExerciseId, getWorkoutId } from "../../utils/QueryParamHelpers";
 import type SetDto from "../../dtos/setDto";
 import setService from "../../services/setService";
 import axios from "axios";
+import { formatApiError } from "../../utils/formatApiError";
 
 export const useAddSet = (
   options?: UseMutationOptions<
@@ -30,7 +31,7 @@ export const useAddSet = (
       } catch (error) {
         let message = "Unable to add set. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
-          message = error.response?.data?.message;
+          message = formatApiError(error.response?.data?.message);
         }
         throw new Error(message);
       }

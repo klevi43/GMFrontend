@@ -9,6 +9,7 @@ import type { AxiosResponse } from "axios";
 import { useMod } from "../useMod";
 import setService from "../../services/setService";
 import axios from "axios";
+import { formatApiError } from "../../utils/formatApiError";
 
 export const useDeleteSet = (
   options?: UseMutationOptions<
@@ -29,7 +30,7 @@ export const useDeleteSet = (
       } catch (error) {
         let message = "Unable to delete set. Please try again later.";
         if (axios.isAxiosError(error) && error.message) {
-          message = error.response?.data?.message;
+          message = formatApiError(error.response?.data?.message);
         }
         throw new Error(message);
       }
