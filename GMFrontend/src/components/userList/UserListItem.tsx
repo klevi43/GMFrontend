@@ -12,8 +12,12 @@ interface Props {
 const UserListItem = ({ userDto }: Props) => {
   const { openMenuId, showOpenMenuById } = useMenu();
   const { openModal } = useMod();
-  const handleOpenUpdateModalClick = () => {};
+  const handleOpenUpdateModalClick = () => {
+    showOpenMenuById(-1);
+    openModal("ADMIN_PROMOTE_USER", userDto);
+  };
   const handleOpenDeleteModalClick = () => {
+    showOpenMenuById(-1);
     openModal("ADMIN_DELETE_USER", userDto);
   };
   return (

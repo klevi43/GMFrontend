@@ -9,7 +9,7 @@ const UserList = ({ userDtos }: Props) => {
     <>
       <ul>
         {userDtos.map((userDto) => (
-          <UserListItem userDto={userDto} />
+          <UserListItem key={userDto.id} userDto={userDto} />
         ))}
       </ul>
     </>

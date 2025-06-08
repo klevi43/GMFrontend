@@ -1,28 +1,27 @@
 import axiosInstance from "./axiosInstance";
 import { ADMIN_ENDPOINT, DELETE, USERS_ENDPOINT } from "../constants/endpoints";
+import type UserDto from "../dtos/userDto";
 
 export class AdminService {
   getAllUsers = async (pageNo: number) => {
     try {
-      const response = await axiosInstance.get(
-        ADMIN_ENDPOINT + USERS_ENDPOINT,
-        {
-          params: { pageNo: pageNo, pageSize: 50 },
-        }
-      );
+      const response = await axiosInstance.get(ADMIN_ENDPOINT, {
+        params: { pageNo: pageNo, pageSize: 50 },
+      });
       return response;
     } catch (error) {}
   };
 
-  promoteToAdmin = async () => {};
+  promoteToAdmin = async (userId: number): Promise<UserDto> => {
+    return await axiosInstance.patch(ADMIN_ENDPOINT + "/promote", {
+      params: { userId },
+    });
+  };
 
   deleteUser = async (userId: number) => {
-    return await axiosInstance.delete(
-      ADMIN_ENDPOINT + USERS_ENDPOINT + DELETE,
-      {
-        params: { userId },
-      }
-    );
+    return await axiosInstance.delete(ADMIN_ENDPOINT + DELETE, {
+      params: { userId },
+    });
   };
 }
 const adminService = new AdminService();
