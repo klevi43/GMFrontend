@@ -59,6 +59,8 @@ const ModalRenderer = ({ type, initialData }: Props) => {
       }
       return <UpdateWorkoutFormModal initialData={initialData} />;
     case "DELETE_WORKOUT":
+      console.log(initialData);
+      console.log(!isWorkoutDto(initialData));
       if (!initialData || !isWorkoutDto(initialData)) {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);
       }

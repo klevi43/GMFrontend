@@ -25,7 +25,7 @@ export const useAdminDeleteUser = (
       try {
         return await adminService.deleteUser(userId);
       } catch (error) {
-        let message = "Unable to delete workout. Please try again later.";
+        let message = "Unable to delete user. Please try again later.";
         if (axios.isAxiosError(error) && error.response) {
           message = formatApiError(error.response?.data?.message);
         }
@@ -34,8 +34,8 @@ export const useAdminDeleteUser = (
     },
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
+      setTimeout(() => closeModal(), 3000);
       options?.onSuccess?.(data, variables, context);
-      closeModal();
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);

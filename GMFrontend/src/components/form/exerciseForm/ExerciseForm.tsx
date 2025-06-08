@@ -12,12 +12,14 @@ import ModalCloseButton from "../../modals/ModalCloseButton";
 import Title from "../Title";
 
 import { useMod } from "../../../hooks/useMod";
+import SuccessMessage from "../../messages/SuccessMessage";
 interface Props {
   onSubmit: (data: ExerciseFormSchema) => void;
   field: ExerciseFormFieldsType;
   title: string;
   defaultValues: ExerciseInput;
   error: unknown;
+  isSuccess: boolean;
 }
 const ExerciseForm = ({
   onSubmit,
@@ -25,6 +27,7 @@ const ExerciseForm = ({
   title,
   defaultValues,
   error,
+  isSuccess,
 }: Props) => {
   const {
     register,
@@ -44,6 +47,7 @@ const ExerciseForm = ({
         {error instanceof Error && (
           <ErrorMessage fontSize="1rem" message={error.message} />
         )}
+        {isSuccess && <SuccessMessage fontSize="[1rem]" />}
         <div key={field.name}>
           <FormInputLabel name={field.label} />
           <ExerciseFormInputItem
@@ -54,7 +58,15 @@ const ExerciseForm = ({
           />
         </div>
         ))
-        <FormSubmitButton isSubmitting={isSubmitting} />
+        {!isSuccess && <FormSubmitButton isSubmitting={isSubmitting} />}
+        {isSuccess && (
+          <button
+            onClick={closeModal}
+            className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
+          >
+            Close
+          </button>
+        )}
       </form>
     </div>
   );

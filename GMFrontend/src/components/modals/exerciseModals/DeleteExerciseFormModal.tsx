@@ -3,10 +3,12 @@ import type WorkoutDto from "../../../dtos/workoutDto";
 import useDeleteExercise from "../../../hooks/exerciseHooks/useDeleteExercise";
 import { useMod } from "../../../hooks/useMod";
 import { useDeleteWorkout } from "../../../hooks/workoutHooks/useDeleteWorkout";
+import DeleteButton from "../../buttons/DeleteButton";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
 import ErrorMessage from "../../messages/ErrorMessage";
+import SuccessMessage from "../../messages/SuccessMessage";
 import ModalCloseButton from "../ModalCloseButton";
 
 interface Props {
@@ -36,6 +38,7 @@ const DeleteExerciseFormModal = ({ initialData }: Props) => {
                     message={mutation.error.message}
                   />
                 )}
+                {mutation.isSuccess && <SuccessMessage fontSize="[1rem]" />}
                 <p className="text-text text-[1.2rem] mb-2 text-center">
                   Are you sure you want to delete this exercise?
                 </p>
@@ -48,12 +51,11 @@ const DeleteExerciseFormModal = ({ initialData }: Props) => {
                 </p>
 
                 <div className="w-full">
-                  <button
-                    onClick={handleDeleteButtonClick}
-                    className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:bg-red-500 hover:text-white hover:cursor-pointer transition-all duration-300"
-                  >
-                    Delete
-                  </button>
+                  <DeleteButton
+                    isSuccess={mutation.isSuccess}
+                    isPending={mutation.isPending}
+                    handleDeleteButtonClick={handleDeleteButtonClick}
+                  />
                 </div>
               </div>
             </div>

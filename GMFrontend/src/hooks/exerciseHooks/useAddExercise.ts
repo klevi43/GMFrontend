@@ -34,7 +34,7 @@ export const useAddExercise = (
     onSuccess: (data, variables, conext) => {
       queryClient.invalidateQueries({ queryKey: ["workout"] });
       options?.onSuccess?.(data, variables, conext);
-      closeModal();
+      setTimeout(() => closeModal(), 3000);
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);

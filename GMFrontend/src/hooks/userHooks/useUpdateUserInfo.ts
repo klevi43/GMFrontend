@@ -31,7 +31,7 @@ export const useUpdateUserInfo = (
     },
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["userInfo"] });
-      closeModal();
+      setTimeout(() => closeModal(), 3000);
       options?.onSuccess?.(data, variables, context);
     },
     onError: (error, variables, context) => {

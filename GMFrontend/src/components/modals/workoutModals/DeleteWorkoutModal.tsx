@@ -7,6 +7,8 @@ import { useMod } from "../../../hooks/useMod";
 import type WorkoutDto from "../../../dtos/workoutDto";
 import { useDeleteWorkout } from "../../../hooks/workoutHooks/useDeleteWorkout";
 import ErrorMessage from "../../messages/ErrorMessage";
+import DeleteButton from "../../buttons/DeleteButton";
+import SuccessMessage from "../../messages/SuccessMessage";
 
 interface Props {
   initialData: WorkoutDto;
@@ -35,6 +37,7 @@ const DeleteWorkoutModal = ({ initialData }: Props) => {
                     message={mutation.error.message}
                   />
                 )}
+                {mutation.isSuccess && <SuccessMessage fontSize="[1rem]" />}
                 <p className="text-text text-[1.2rem] mb-2 text-center">
                   Are you sure you want to delete this workout?
                 </p>
@@ -47,12 +50,11 @@ const DeleteWorkoutModal = ({ initialData }: Props) => {
                 </p>
 
                 <div className="w-full">
-                  <button
-                    onClick={handleDeleteButtonClick}
-                    className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:bg-red-500 hover:text-white hover:cursor-pointer transition-all duration-300"
-                  >
-                    Delete
-                  </button>
+                  <DeleteButton
+                    isSuccess={mutation.isSuccess}
+                    isPending={mutation.isPending}
+                    handleDeleteButtonClick={handleDeleteButtonClick}
+                  />
                 </div>
               </div>
             </div>

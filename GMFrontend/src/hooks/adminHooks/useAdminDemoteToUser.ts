@@ -29,7 +29,7 @@ export const useAdminDemoteToUser = (
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
-      closeModal();
+      setTimeout(() => closeModal(), 3000);
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);

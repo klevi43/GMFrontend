@@ -7,6 +7,8 @@ import ModalCloseButton from "../ModalCloseButton";
 import { useMod } from "../../../hooks/useMod";
 import type UserDto from "../../../dtos/userDto";
 import { useAdminDemoteToUser } from "../../../hooks/adminHooks/useAdminDemoteToUser";
+import SuccessMessage from "../../messages/SuccessMessage";
+import DeleteButton from "../../buttons/DeleteButton";
 interface Props {
   initialData: UserDto;
 }
@@ -31,6 +33,7 @@ const AdminDemoteAdminModal = ({ initialData }: Props) => {
                     message={mutation.error.message}
                   />
                 )}
+                {mutation.isSuccess && <SuccessMessage fontSize="[1rem]" />}
                 <p className="text-text">
                   Are you sure you want to demote this account to a user?
                 </p>
@@ -42,13 +45,11 @@ const AdminDemoteAdminModal = ({ initialData }: Props) => {
                 </p>
 
                 <div className="w-full">
-                  <button
-                    disabled={mutation.isPending}
-                    onClick={handleUpdateButtonClick}
-                    className="bg-primary text-[1.5rem] rounded-lg w-full py-2 havoer:scale-102 hover:cursor-pointer transition-all duration-300"
-                  >
-                    Submit
-                  </button>
+                  <DeleteButton
+                    isSuccess={mutation.isSuccess}
+                    isPending={mutation.isPending}
+                    handleDeleteButtonClick={handleUpdateButtonClick}
+                  />
                 </div>
               </div>
             </div>

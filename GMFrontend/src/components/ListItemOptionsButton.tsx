@@ -1,4 +1,3 @@
-import React from "react";
 interface Props {
   showMenu: (id: number) => void;
   id: number;

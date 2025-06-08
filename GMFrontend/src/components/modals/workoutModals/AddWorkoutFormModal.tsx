@@ -30,6 +30,7 @@ const AddWorkoutFormModal = () => {
               { name: "date", label: "Date completed", type: "date" },
             ]}
             error={mutation.error}
+            isSuccess={mutation.isSuccess}
           />
         </FormContainer>
       </ModalContainer>

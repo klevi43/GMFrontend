@@ -7,6 +7,7 @@ import ModalCloseButton from "../ModalCloseButton";
 import { useMod } from "../../../hooks/useMod";
 import { useAdminPromoteToAdmin } from "../../../hooks/adminHooks/useAdminPromoteToAdmin";
 import type UserDto from "../../../dtos/userDto";
+import SuccessMessage from "../../messages/SuccessMessage";
 interface Props {
   initialData: UserDto;
 }
@@ -31,6 +32,7 @@ const AdminPromoteUserModal = ({ initialData }: Props) => {
                     message={mutation.error.message}
                   />
                 )}
+                {mutation.isSuccess && <SuccessMessage fontSize="[1rem]" />}
                 <p className="text-text">
                   Are you sure you want to promote this account to an
                   administrator?
@@ -43,13 +45,23 @@ const AdminPromoteUserModal = ({ initialData }: Props) => {
                 </p>
 
                 <div className="w-full">
-                  <button
-                    disabled={mutation.isPending}
-                    onClick={handleUpdateButtonClick}
-                    className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:bg-red-500 hover:text-white hover:cursor-pointer transition-all duration-300"
-                  >
-                    Submit
-                  </button>
+                  {!mutation.isSuccess && (
+                    <button
+                      disabled={mutation.isPending}
+                      onClick={handleUpdateButtonClick}
+                      className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102  hover:cursor-pointer transition-all duration-300"
+                    >
+                      {mutation.isPending ? "Submitting..." : "Submit"}
+                    </button>
+                  )}
+                  {mutation.isSuccess && (
+                    <button
+                      onClick={closeModal}
+                      className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
+                    >
+                      Close
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

@@ -31,6 +31,7 @@ const AddExerciseFormModal = () => {
             defaultValues={{ name: "", workoutId: workoutId }}
             field={{ name: "name", label: "Exercise Name", type: "text" }}
             error={mutation.error}
+            isSuccess={mutation.isSuccess}
           />
         </FormContainer>
       </ModalContainer>

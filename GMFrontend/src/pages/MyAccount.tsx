@@ -10,6 +10,7 @@ import { useMod } from "../hooks/useMod";
 import { useGetUser } from "../hooks/userHooks/useGetUser";
 import InfoMessage from "../components/messages/InfoMessage";
 import ErrorMessage from "../components/messages/ErrorMessage";
+import { formatApiError } from "../utils/formatApiError";
 
 const MyAccount = () => {
   const { openModal } = useMod();
@@ -24,12 +25,18 @@ const MyAccount = () => {
       </div>
       {isLoading && (
         <div className="flex justify-center items-center min-h-[6rem]">
-          <InfoMessage fontSize="[2rem]" message="Loading workout..." />
+          <InfoMessage
+            fontSize="[2rem]"
+            message="Loading your account information..."
+          />
         </div>
       )}
       {error && (
         <div className="flex justify-center items-center min-h-[6rem]">
-          <ErrorMessage message={error.message} fontSize="[2rem]" />
+          <ErrorMessage
+            message={formatApiError(error.message)}
+            fontSize="[2rem]"
+          />
         </div>
       )}
       {userResponseDto && (

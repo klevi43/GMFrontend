@@ -11,13 +11,9 @@ export const isWorkoutDto = (data: unknown): data is WorkoutDto => {
     typeof data === "object" &&
     data !== null &&
     "id" in data &&
-    typeof (data as any).id === "number" &&
     "name" in data &&
-    typeof (data as any).name === "string" &&
     "date" in data &&
-    typeof (data as any).date === "string" &&
-    "exerciseDtos" in data &&
-    Array.isArray((data as any).exerciseDtos)
+    "exerciseDtos" in data
   );
 };
 
