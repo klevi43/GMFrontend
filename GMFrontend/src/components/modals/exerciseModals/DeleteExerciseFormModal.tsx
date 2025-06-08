@@ -1,8 +1,6 @@
 import type ExerciseDto from "../../../dtos/exerciseDto";
-import type WorkoutDto from "../../../dtos/workoutDto";
 import useDeleteExercise from "../../../hooks/exerciseHooks/useDeleteExercise";
 import { useMod } from "../../../hooks/useMod";
-import { useDeleteWorkout } from "../../../hooks/workoutHooks/useDeleteWorkout";
 import DeleteButton from "../../buttons/DeleteButton";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";

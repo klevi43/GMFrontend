@@ -8,6 +8,8 @@ import type SetDto from "../../../dtos/setDto";
 import { useDeleteSet } from "../../../hooks/setHooks/useDeleteSet";
 import { useQueryParams } from "../../../hooks/useQueryParams";
 import ErrorMessage from "../../messages/ErrorMessage";
+import DeleteButton from "../../buttons/DeleteButton";
+import SuccessMessage from "../../messages/SuccessMessage";
 
 interface Props {
   initialData: SetDto;
@@ -41,6 +43,8 @@ const DeleteSetFormModal = ({ initialData }: Props) => {
                     message={mutation.error.message}
                   />
                 )}
+                {mutation.isSuccess && <SuccessMessage fontSize="[1rem]" />}
+
                 <p className="text-text text-[1.2rem] mb-2 text-center">
                   Are you sure you want to delete this set?
                 </p>
@@ -50,12 +54,11 @@ const DeleteSetFormModal = ({ initialData }: Props) => {
                 </h4>
 
                 <div className="w-full">
-                  <button
-                    onClick={handleDeleteButtonClick}
-                    className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:bg-red-500 hover:text-white hover:cursor-pointer transition-all duration-300"
-                  >
-                    Delete
-                  </button>
+                  <DeleteButton
+                    isSuccess={mutation.isSuccess}
+                    isPending={mutation.isPending}
+                    handleDeleteButtonClick={handleDeleteButtonClick}
+                  />
                 </div>
               </div>
             </div>

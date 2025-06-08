@@ -28,6 +28,7 @@ const AddSetFormModal = () => {
               { name: "reps", label: "Reps" },
             ]}
             error={mutation.error}
+            isSuccess={mutation.isSuccess}
           />
         </FormContainer>
       </ModalContainer>

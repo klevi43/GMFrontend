@@ -42,6 +42,7 @@ const UpdateSetFormModal = ({ initialData }: Props) => {
               { name: "reps", label: "Reps" },
             ]}
             error={mutation.error}
+            isSuccess={mutation.isSuccess}
           />
         </FormContainer>
       </ModalContainer>

@@ -11,14 +11,23 @@ import FormInputLabel from "../FormInputLabel";
 import SetFormInputItem from "./SetFormInputItem";
 import FormSubmitButton from "../FormSubmitButton";
 import { useMod } from "../../../hooks/useMod";
+import SuccessMessage from "../../messages/SuccessMessage";
 interface Props {
   onSubmit: (data: SetFormSchema) => void;
   fields: SetFormFieldsType[];
   title: string;
   defaultValues: SetInput;
   error: unknown;
+  isSuccess: boolean;
 }
-const SetForm = ({ onSubmit, fields, title, defaultValues, error }: Props) => {
+const SetForm = ({
+  onSubmit,
+  fields,
+  title,
+  defaultValues,
+  error,
+  isSuccess,
+}: Props) => {
   const {
     register,
     handleSubmit,
@@ -36,6 +45,7 @@ const SetForm = ({ onSubmit, fields, title, defaultValues, error }: Props) => {
         {error instanceof Error && (
           <ErrorMessage fontSize="1rem" message={error.message} />
         )}
+        {isSuccess && <SuccessMessage fontSize="[1rem]" />}
         {fields.map((field) => (
           <div key={field.name}>
             <FormInputLabel name={field.label} />
@@ -46,7 +56,15 @@ const SetForm = ({ onSubmit, fields, title, defaultValues, error }: Props) => {
             />
           </div>
         ))}
-        <FormSubmitButton isSubmitting={isSubmitting} />
+        {!isSuccess && <FormSubmitButton isSubmitting={isSubmitting} />}
+        {isSuccess && (
+          <button
+            onClick={closeModal}
+            className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
+          >
+            Close
+          </button>
+        )}
       </form>
     </div>
   );

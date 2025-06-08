@@ -1,13 +1,12 @@
-import React from "react";
+import type UserDto from "../../../dtos/userDto";
+import { useAdminPromoteToAdmin } from "../../../hooks/adminHooks/useAdminPromoteToAdmin";
+import { useMod } from "../../../hooks/useMod";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
 import ErrorMessage from "../../messages/ErrorMessage";
-import ModalCloseButton from "../ModalCloseButton";
-import { useMod } from "../../../hooks/useMod";
-import { useAdminPromoteToAdmin } from "../../../hooks/adminHooks/useAdminPromoteToAdmin";
-import type UserDto from "../../../dtos/userDto";
 import SuccessMessage from "../../messages/SuccessMessage";
+import ModalCloseButton from "../ModalCloseButton";
 interface Props {
   initialData: UserDto;
 }

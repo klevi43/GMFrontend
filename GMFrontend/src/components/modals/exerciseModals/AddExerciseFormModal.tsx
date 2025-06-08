@@ -1,10 +1,9 @@
-import React from "react";
-import ModalContainer from "../../containers/ModalContainer";
-import FormContainer from "../../containers/FormContainer";
-import ExerciseForm from "../../form/exerciseForm/ExerciseForm";
 import type { SubmitHandler } from "react-hook-form";
-import type { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
 import { useAddExercise } from "../../../hooks/exerciseHooks/useAddExercise";
+import type { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
+import FormContainer from "../../containers/FormContainer";
+import ModalContainer from "../../containers/ModalContainer";
+import ExerciseForm from "../../form/exerciseForm/ExerciseForm";
 
 import type { ExerciseInput } from "../../../types/inputTypes";
 
