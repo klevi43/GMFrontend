@@ -3,8 +3,8 @@ import type SetDto from "../../dtos/setDto";
 import { useMenu } from "../../hooks/useMenu";
 import { useMod } from "../../hooks/useMod";
 import { useQueryParams } from "../../hooks/useQueryParams";
-import ListItemMenuModal from "../workoutList/ListItemMenuModal";
-import ListItemOptionsButton from "../workoutList/ListItemOptionsButton";
+import ListItemMenuModal from "../ListItemMenuModal";
+import ListItemOptionsButton from "../ListItemOptionsButton";
 interface Props {
   col1: string | number;
   col2?: string;

@@ -5,8 +5,8 @@ import SetList from "../setList/SetList";
 import { useMod } from "../../hooks/useMod";
 import { useQueryParams } from "../../hooks/useQueryParams";
 
-import ListItemMenuModal from "../workoutList/ListItemMenuModal";
-import ListItemOptionsButton from "../workoutList/ListItemOptionsButton";
+import ListItemMenuModal from "../ListItemMenuModal";
+import ListItemOptionsButton from "../ListItemOptionsButton";
 import { useMenu } from "../../hooks/useMenu";
 import { p } from "motion/react-client";
 import ShowElementButton from "../buttons/ShowElementButton";

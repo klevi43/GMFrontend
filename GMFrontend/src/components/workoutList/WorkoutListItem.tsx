@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import type WorkoutDto from "../../dtos/workoutDto";
-import ListItemOptionsButton from "./ListItemOptionsButton";
+import ListItemOptionsButton from "../ListItemOptionsButton";
 import WorkoutListItemDetails from "./WorkoutListItemDetails";
-import ListItemMenuModal from "./ListItemMenuModal";
+import ListItemMenuModal from "../ListItemMenuModal";
 import { useNavigate } from "react-router";
 import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/endpoints";
 import { useMenu } from "../../hooks/useMenu";
@@ -14,11 +14,8 @@ interface Props {
 }
 
 const WorkoutListItem = React.memo(({ workoutDto }: Props) => {
-  // const [menuIsVisible, setMenuIsVisible] = useState(false);
-
   const { openMenuId, showOpenMenuById } = useMenu();
 
-  //const { openModal } = useModal();
   const navigate = useNavigate();
   const { openModal } = useMod();
   const { setQueryParams } = useQueryParams();

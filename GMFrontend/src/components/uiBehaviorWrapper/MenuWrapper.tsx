@@ -1,7 +1,7 @@
 import React from "react";
 import { useMenu } from "../../hooks/useMenu";
-import ListItemOptionsButton from "../workoutList/ListItemOptionsButton";
-import ListItemMenuModal from "../workoutList/ListItemMenuModal";
+import ListItemOptionsButton from "../ListItemOptionsButton";
+import ListItemMenuModal from "../ListItemMenuModal";
 
 import { useMod } from "../../hooks/useMod";
 import type { DtoTypes, ModType } from "../../types/modContextType";

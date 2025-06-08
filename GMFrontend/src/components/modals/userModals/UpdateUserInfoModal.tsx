@@ -6,9 +6,9 @@ import type { SubmitHandler } from "react-hook-form";
 import type { RegisterFormSchema } from "../../../schemas/registerFormSchema";
 import { useUpdateUserInfo } from "../../../hooks/userHooks/useUpdateUserInfo";
 import type { RegisterInput } from "../../../types/inputTypes";
-import type UserResponseDto from "../../../dtos/userResponseDto";
+import type UserDto from "../../../dtos/userDto";
 interface Props {
-  initialData: UserResponseDto;
+  initialData: UserDto;
 }
 const UpdateUserInfoModal = ({ initialData }: Props) => {
   const mutation = useUpdateUserInfo();

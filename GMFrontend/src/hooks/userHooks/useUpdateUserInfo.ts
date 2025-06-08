@@ -4,15 +4,15 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type UserResponseDto from "../../dtos/userResponseDto";
+import type UserDto from "../../dtos/userDto";
 import type { RegisterInput } from "../../types/inputTypes";
 import userService from "../../services/userService";
 import axios from "axios";
 import { useMod } from "../useMod";
 
 export const useUpdateUserInfo = (
-  options?: UseMutationOptions<UserResponseDto, unknown, RegisterInput, unknown>
-): UseBaseMutationResult<UserResponseDto, unknown, RegisterInput, unknown> => {
+  options?: UseMutationOptions<UserDto, unknown, RegisterInput, unknown>
+): UseBaseMutationResult<UserDto, unknown, RegisterInput, unknown> => {
   const queryClient = useQueryClient();
   const { closeModal } = useMod();
   return useMutation({

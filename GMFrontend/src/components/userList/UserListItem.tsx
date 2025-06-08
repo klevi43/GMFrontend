@@ -1,0 +1,39 @@
+import React from "react";
+import type UserDto from "../../dtos/userDto";
+import UserListItemDetails from "./UserListItemDetails";
+import ListItemMenuModal from "../ListItemMenuModal";
+import ListItemOptionsButton from "../ListItemOptionsButton";
+import { useMenu } from "../../hooks/useMenu";
+interface Props {
+  userDto: UserDto;
+}
+const UserListItem = ({ userDto }: Props) => {
+  const { openMenuId, showOpenMenuById } = useMenu();
+  const handleOpenUpdateModalClick = () => {};
+  const handleOpenDeleteModalClick = () => {};
+  return (
+    <>
+      <li className="w-[100%] pb-2 hover:pl-4 transition-all duration-300">
+        <div className=" border-l-8 border-primary text-text  bg-background  transition-all duration-300  hover:text-primary">
+          <div className="flex justify-between items-center">
+            <UserListItemDetails userDto={userDto} />
+            <div className="relative">
+              {openMenuId === userDto.id && (
+                <ListItemMenuModal
+                  handleOpenUpdateModalClick={handleOpenUpdateModalClick}
+                  handleOpenDeleteModalClick={handleOpenDeleteModalClick}
+                />
+              )}
+              <ListItemOptionsButton
+                showMenu={showOpenMenuById}
+                id={userDto.id}
+              />
+            </div>
+          </div>
+        </div>
+      </li>
+    </>
+  );
+};
+
+export default UserListItem;
