@@ -1,7 +1,15 @@
+import { useState } from "react";
+import Footer from "../components/footer/Footer";
 import Title from "../components/form/Title";
+import ErrorMessage from "../components/messages/ErrorMessage";
+import InfoMessage from "../components/messages/InfoMessage";
 import Nav from "../components/navbar/Nav";
+import { useGetAllUsers } from "../hooks/adminHooks/useGetAllUsers";
 
 const Admin = () => {
+  const [pageNo, setPageNo] = useState(1);
+  const { data: userDtos, error, isLoading } = useGetAllUsers(pageNo - 1);
+  console.log(userDtos);
   return (
     <>
       <Nav />
@@ -12,7 +20,26 @@ const Admin = () => {
             <Title title="Admin Dashboard" styles="text-[3rem]" />
           </div>
         </div>
+        {isLoading && (
+          <div className="flex justify-center items-center min-h-[6rem]">
+            <InfoMessage fontSize="[2rem]" message="Loading users..." />
+          </div>
+        )}
+        {error && (
+          <div className="flex justify-center items-center min-h-[6rem]">
+            <ErrorMessage message={error.message} fontSize="[2rem]" />
+          </div>
+        )}
+        {userDtos && userDtos.data.content ? (
+          <div>
+            <p>Total Users: {userDtos?.data.totalElements}</p>
+          </div>
+        ) : (
+          !isLoading &&
+          !error && <InfoMessage message="No users to show" fontSize="[2rem]" />
+        )}
       </div>
+      <Footer />
     </>
   );
 };
