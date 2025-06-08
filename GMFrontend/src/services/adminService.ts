@@ -13,9 +13,23 @@ export class AdminService {
   };
 
   promoteToAdmin = async (userId: number): Promise<UserDto> => {
-    return await axiosInstance.patch(ADMIN_ENDPOINT + "/promote", {
-      params: { userId },
-    });
+    return await axiosInstance.put(
+      ADMIN_ENDPOINT + "/promote",
+      {},
+      {
+        params: { userId: userId },
+      }
+    );
+  };
+
+  demoteToUser = async (userId: number): Promise<UserDto> => {
+    return await axiosInstance.put(
+      ADMIN_ENDPOINT + "/demote",
+      {},
+      {
+        params: { userId: userId },
+      }
+    );
   };
 
   deleteUser = async (userId: number) => {
