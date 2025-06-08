@@ -3,6 +3,7 @@ import { useLogout } from "../../hooks/useLogout";
 import NavListItem from "./NavListItem";
 import { LOGIN_ENDPOINT } from "../../constants/constants";
 import {
+  ADMIN_ENDPOINT,
   HISTORY,
   USERS_ENDPOINT,
   WORKOUTS_ENDPOINT,
@@ -18,8 +19,11 @@ const NavList = () => {
   return (
     <>
       <ul className="md:flex h-max-content">
-        <NavListItem urlPath={USERS_ENDPOINT} text="My Account" />
-        <NavListItem urlPath={WORKOUTS_ENDPOINT} text="My Workouts" />
+        {authUser && authUser.userRole === "ROLE_ADMIN" && (
+          <NavListItem urlPath={ADMIN_ENDPOINT} text="Admin" />
+        )}
+        <NavListItem urlPath={USERS_ENDPOINT} text="Account" />
+        <NavListItem urlPath={WORKOUTS_ENDPOINT} text="Workouts" />
         <NavListItem
           urlPath={WORKOUTS_ENDPOINT + HISTORY}
           text="Workout History"
