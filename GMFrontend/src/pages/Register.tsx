@@ -11,7 +11,6 @@ import Footer from "../components/footer/Footer";
 const Register = () => {
   const mutation = useRegister();
   const onSubmit: SubmitHandler<RegisterFormSchema> = (data: RegisterInput) => {
-    console.log(data);
     mutation.mutateAsync(data);
   };
   return (
@@ -30,6 +29,7 @@ const Register = () => {
             },
           ]}
           defaultValues={{ email: "", password: "", confirmPassword: "" }}
+          isSuccess={mutation.isSuccess}
           error={mutation.error}
         />
       </FormContainer>

@@ -18,7 +18,7 @@ import AddSetFormModal from "./setModals/AddSetFormModal";
 import DeleteSetFormModal from "./setModals/DeleteSetFormModal";
 import UpdateSetFormModal from "./setModals/UpdateSetFormModal";
 import UpdateUserInfoModal from "./userModals/UpdateUserInfoModal";
-import DeletUserModal from "./userModals/DeleteUserModal";
+import DeleteUserModal from "./userModals/DeleteUserModal";
 import AdminDeleteUserModal from "./adminModals/AdminDeleteUserModal";
 import AdminPromoteUserModal from "./adminModals/AdminPromoteUserModal";
 import AdminDemoteAdminModal from "./adminModals/AdminDemoteAdminModal";
@@ -50,7 +50,7 @@ const ModalRenderer = ({ type, initialData }: Props) => {
       }
       return <UpdateUserInfoModal initialData={initialData} />;
     case "DELETE_USER_INFO":
-      return <DeletUserModal />;
+      return <DeleteUserModal />;
     case "ADD_WORKOUT":
       return <AddWorkoutFormModal />;
     case "UPDATE_WORKOUT":

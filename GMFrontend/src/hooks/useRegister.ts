@@ -37,7 +37,7 @@ export const useRegister = (
       }
     },
     onSuccess: () => {
-      navigate(LOGIN_ENDPOINT);
+      setTimeout(() => navigate(LOGIN_ENDPOINT), 3000);
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);

@@ -7,6 +7,7 @@ import type { RegisterFormSchema } from "../../../schemas/registerFormSchema";
 import { useUpdateUserInfo } from "../../../hooks/userHooks/useUpdateUserInfo";
 import type { RegisterInput } from "../../../types/inputTypes";
 import type UserDto from "../../../dtos/userDto";
+
 interface Props {
   initialData: UserDto;
 }
@@ -38,6 +39,7 @@ const UpdateUserInfoModal = ({ initialData }: Props) => {
               confirmPassword: "",
             }}
             error={mutation.error}
+            isSuccess={mutation.isSuccess}
             isModal={true}
           />
         </FormContainer>
