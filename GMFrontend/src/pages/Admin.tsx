@@ -12,7 +12,6 @@ import PageSelector from "../components/pageSelector/PageSelector";
 const Admin = () => {
   const [pageNo, setPageNo] = useState(1);
   const { data: userDtos, error, isLoading } = useGetAllUsers(pageNo - 1);
-
   return (
     <>
       <Nav />

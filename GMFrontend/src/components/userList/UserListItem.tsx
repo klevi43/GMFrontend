@@ -26,9 +26,6 @@ const UserListItem = ({ userDto }: Props) => {
     openModal("ADMIN_DELETE_USER", userDto);
   };
 
-  console.log(openMenuId);
-  console.log(userDto);
-  console.log(openMenuId === userDto.id && userDto.role === "ROLE_USER");
   return (
     <>
       <li className="w-[100%] pb-2 hover:pl-4 transition-all duration-300">

@@ -23,7 +23,7 @@ const UpdateUserInfoModal = ({ initialData }: Props) => {
         <FormContainer>
           <RegisterForm
             onSubmit={onSubmit}
-            title="Create a New Account"
+            title="Update Account Information"
             fields={[
               { name: "email", label: "Email", type: "text" },
               { name: "password", label: "Password", type: "password" },
