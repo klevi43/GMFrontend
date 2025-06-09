@@ -1,20 +1,26 @@
 # Welcome to GMFrontEnd
 
-GMFrontEnd is the frontend for the web application Growth Mindset, a website that allows users to log their workouts and track their progress in the gym.
+MFrontEnd is the React-based frontend for **Growth Mindset**, a fitness tracking web app that allows users to manage their workouts, exercises, and sets. Built with TypeScript, React Query, and Axios.
 
-### Current Features
+### Features
 
-1. Secure login process with an http only cookie
-2. Account creation
-3. Get all my most recently completed workouts
-4. Get a selected workout
-5. Add, update, delete a workout, an exercise, or a set
+- User authentication (login/register)
+- Protected routes and role-based access (admin vs. user)
+- User Profile Management (Update email/password, Delete account, ADMIN: Promote user to admin/Demote admin to user)
+- Workout dashboard with history tracking
+- Axios + React Query for efficient data fetching
+- Form validation using react-hook-form + Zod
+- Responsive, accessible UI with modern design
 
-### Upcoming features
+### Tech Stack
 
-2. Protected Routes and conditional rendering based on authentication status
-3. Optimized rendering
-4. Get my workout history
+- React (with Vite)
+- TypeScript
+- React Router
+- React Query
+- Axios
+- react-hook-form + Zod
+- Tailwind CSS
 
 ### How to contribute
 
@@ -48,3 +54,9 @@ https://nodejs.org/
 ```
     npm run dev
 ```
+
+## Backend
+
+- This frontend connects to a Spring Boot
+  backend. You can find the backend repo here:
+  [GMBackend](https://github.com/klevi43/GMBackend)
