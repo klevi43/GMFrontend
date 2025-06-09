@@ -9,12 +9,16 @@ import { useMod } from "../useMod";
 import adminService from "../../services/adminService";
 import { formatApiError } from "../../utils/formatApiError";
 import axios from "axios";
+import { useLoadAuthUser } from "../useLoadAuthUser";
+import { Navigate, useNavigate } from "react-router";
 
 export const useAdminDemoteToUser = (
   options?: UseMutationOptions<UserDto, unknown, number, unknown>
 ): UseBaseMutationResult<UserDto, unknown, number, unknown> => {
   const { closeModal } = useMod();
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const userDto = useLoadAuthUser();
   return useMutation({
     mutationFn: async (userId: number) => {
       try {
@@ -28,6 +32,7 @@ export const useAdminDemoteToUser = (
       }
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["authUser"] });
       queryClient.invalidateQueries({ queryKey: ["users"] });
       setTimeout(() => closeModal(), 3000);
     },
