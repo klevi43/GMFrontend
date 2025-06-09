@@ -5,7 +5,7 @@ import {
   MIN_LEN_8_MSG,
   PASSWORD_MUST_MATCH_MSG,
 } from "../constants/errorMsgs";
-export const RegisterFormSchema = z
+export const UserCredentialsFormSchema = z
   .object({
     email: z.string().nonempty(FIELD_NOT_EMPTY_MSG).email(VALID_EMAIL_MSG),
     password: z.string().nonempty(FIELD_NOT_EMPTY_MSG).min(8, {
@@ -24,4 +24,6 @@ export const RegisterFormSchema = z
     }
   );
 
-export type RegisterFormSchema = z.infer<typeof RegisterFormSchema>;
+export type UserCredentialsFormSchema = z.infer<
+  typeof UserCredentialsFormSchema
+>;

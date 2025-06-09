@@ -4,7 +4,7 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type { RegisterInput } from "../../types/inputTypes";
+import type { UserCredentialsInput } from "../../types/inputTypes";
 import userService from "../../services/userService";
 import axios from "axios";
 import { useMod } from "../useMod";
@@ -12,12 +12,12 @@ import { formatApiError } from "../../utils/formatApiError";
 import type UserDto from "../../dtos/userDto";
 
 export const useUpdateUserInfo = (
-  options?: UseMutationOptions<UserDto, unknown, RegisterInput, unknown>
-): UseBaseMutationResult<UserDto, unknown, RegisterInput, unknown> => {
+  options?: UseMutationOptions<UserDto, unknown, UserCredentialsInput, unknown>
+): UseBaseMutationResult<UserDto, unknown, UserCredentialsInput, unknown> => {
   const queryClient = useQueryClient();
   const { closeModal } = useMod();
   return useMutation({
-    mutationFn: async (registerInput: RegisterInput) => {
+    mutationFn: async (registerInput: UserCredentialsInput) => {
       try {
         return await userService.updateUserInfo(registerInput);
       } catch (error) {

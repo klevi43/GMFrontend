@@ -4,7 +4,7 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import type { RegisterInput } from "../types/inputTypes";
+import type { UserCredentialsInput } from "../types/inputTypes";
 import userService from "../services/userService";
 import axios from "axios";
 import { useNavigate } from "react-router";
@@ -14,18 +14,18 @@ export const useRegister = (
   options?: UseMutationOptions<
     AxiosResponse<any, any>,
     unknown,
-    RegisterInput,
+    UserCredentialsInput,
     unknown
   >
 ): UseBaseMutationResult<
   AxiosResponse<any, any>,
   unknown,
-  RegisterInput,
+  UserCredentialsInput,
   unknown
 > => {
   const navigate = useNavigate();
   return useMutation({
-    mutationFn: async (regiserInput: RegisterInput) => {
+    mutationFn: async (regiserInput: UserCredentialsInput) => {
       try {
         return await userService.register(regiserInput);
       } catch (error) {

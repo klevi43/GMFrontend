@@ -1,10 +1,10 @@
 import axiosInstance from "./axiosInstance";
 import { REGISTER_ENDPOINT } from "../constants/constants";
 import type RegisterUser from "../types/registerUserType";
-import type { RegisterInput } from "../types/inputTypes";
+import type { UserCredentialsInput } from "../types/inputTypes";
 import { DELETE, UPDATE, USERS_ENDPOINT } from "../constants/endpoints";
 export class UserService {
-  register = async (registerInput: RegisterInput) => {
+  register = async (registerInput: UserCredentialsInput) => {
     const response = await axiosInstance.post(
       REGISTER_ENDPOINT,
       registerInput,
@@ -20,7 +20,7 @@ export class UserService {
     const response = await axiosInstance.get(USERS_ENDPOINT);
     return response.data;
   };
-  updateUserInfo = async (registerInput: RegisterInput) => {
+  updateUserInfo = async (registerInput: UserCredentialsInput) => {
     const response = await axiosInstance.put(
       USERS_ENDPOINT + UPDATE,
       registerInput,

@@ -1,7 +1,7 @@
 import { input } from "motion/react-client";
 import React from "react";
 import type { UseFormRegister } from "react-hook-form";
-import type { RegisterFormSchema } from "../../../schemas/registerFormSchema";
+import type { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
 
 interface Props {
   name: "email" | "password" | "confirmPassword";

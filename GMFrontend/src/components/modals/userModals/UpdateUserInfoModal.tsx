@@ -3,9 +3,9 @@ import ModalContainer from "../../containers/ModalContainer";
 import FormContainer from "../../containers/FormContainer";
 import RegisterForm from "../../form/registerForm/RegisterForm";
 import type { SubmitHandler } from "react-hook-form";
-import type { RegisterFormSchema } from "../../../schemas/registerFormSchema";
+import type { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
 import { useUpdateUserInfo } from "../../../hooks/userHooks/useUpdateUserInfo";
-import type { RegisterInput } from "../../../types/inputTypes";
+import type { UserCredentialsInput } from "../../../types/inputTypes";
 import type UserDto from "../../../dtos/userDto";
 
 interface Props {
@@ -14,7 +14,9 @@ interface Props {
 const UpdateUserInfoModal = ({ initialData }: Props) => {
   const mutation = useUpdateUserInfo();
 
-  const onSubmit: SubmitHandler<RegisterFormSchema> = (data: RegisterInput) => {
+  const onSubmit: SubmitHandler<RegisterFormSchema> = (
+    data: UserCredentialsInput
+  ) => {
     mutation.mutateAsync(data);
   };
   return (

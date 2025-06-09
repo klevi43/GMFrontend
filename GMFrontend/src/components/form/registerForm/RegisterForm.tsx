@@ -5,16 +5,16 @@ import FormSubmitButton from "../FormSubmitButton";
 import RegisterFormInputItem from "../registerForm/RegisterFormInputItem";
 import Title from "../Title";
 
-import { RegisterFormSchema } from "../../../schemas/registerFormSchema";
+import { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
 import type { RegisterFormFieldsType } from "../../../types/formFieldsType";
-import type { RegisterInput } from "../../../types/inputTypes";
+import type { UserCredentialsInput } from "../../../types/inputTypes";
 import ModalCloseButton from "../../modals/ModalCloseButton";
 import { useMod } from "../../../hooks/useMod";
 import SuccessMessage from "../../messages/SuccessMessage";
 
 type Props = {
   // zod schema
-  onSubmit: (data: RegisterInput) => void; // what to do upon successful submission
+  onSubmit: (data: UserCredentialsInput) => void; // what to do upon successful submission
   fields: RegisterFormFieldsType[]; // the fields to render
   title: string; // title of the form
   defaultValues: { email: string; password: ""; confirmPassword: "" }; // initial values for the form fields
@@ -38,7 +38,7 @@ const RegisterForm = ({
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormSchema>({
-    resolver: zodResolver(RegisterFormSchema), // automatically validates input data according to given schema
+    resolver: zodResolver(UserCredentialsFormSchema), // automatically validates input data according to given schema
     defaultValues,
   });
 
