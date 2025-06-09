@@ -33,7 +33,7 @@ const Admin = () => {
             <ErrorMessage message={error.message} fontSize="[2rem]" />
           </div>
         )}
-        {userDtos && userDtos?.data ? (
+        {userDtos && userDtos?.data && userDtos.data.content.length > 0 ? (
           <div className="text-text">
             <p>Total Users: {userDtos?.data.totalElements}</p>
             <UserList userDtos={userDtos.data.content} />

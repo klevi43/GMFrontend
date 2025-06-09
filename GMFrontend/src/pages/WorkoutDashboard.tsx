@@ -32,12 +32,12 @@ const WorkoutDashboard = () => {
           <InfoMessage fontSize="[2rem]" message="Loading workouts..." />
         )}
         {error && <ErrorMessage message={error.message} fontSize="[2rem]" />}
-        {workoutDtos ? (
+        {workoutDtos && workoutDtos.length > 0 ? (
           <WorkoutList workoutDtos={workoutDtos} />
         ) : (
           !isLoading &&
           !error && (
-            <p className="text-text  text-center text-[2rem]">
+            <p className="mt-[2rem] text-text  text-center text-[2rem]">
               No workouts to show
             </p>
           )

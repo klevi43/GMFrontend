@@ -57,7 +57,7 @@ const SingleWorkout = () => {
             workoutDto.exerciseDtos.length > 0 ? (
               <ExerciseList exerciseDtos={workoutDto.exerciseDtos} />
             ) : (
-              <p className="text-text text-center text-[2rem]">
+              <p className="mb-[2rem] text-text text-center text-[2rem]">
                 No Exercises to show
               </p>
             )}
