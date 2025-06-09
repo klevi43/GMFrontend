@@ -24,6 +24,7 @@ import ProtectedRoutes from "./utils/ProtectedRoutes";
 import MyAccount from "./pages/MyAccount";
 import Admin from "./pages/Admin";
 import AdminRoutes from "./utils/AdminRoutes";
+import NotLoggedInRoute from "./utils/NotLoggedInRoute";
 
 function App() {
   return (
@@ -34,8 +35,10 @@ function App() {
             <MenuProvider>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path={LOGIN_ENDPOINT} element={<Login />} />
-                <Route path={REGISTER_ENDPOINT} element={<Register />} />
+                <Route element={<NotLoggedInRoute />}>
+                  <Route path={LOGIN_ENDPOINT} element={<Login />} />
+                  <Route path={REGISTER_ENDPOINT} element={<Register />} />
+                </Route>
                 <Route element={<ProtectedRoutes />}>
                   <Route
                     path={WORKOUTS_ENDPOINT}
