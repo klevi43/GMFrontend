@@ -5,7 +5,7 @@ MFrontEnd is the React-based frontend for **Growth Mindset**, a fitness tracking
 ### Features
 
 - User authentication (login/register)
-- Protected routes and role-based access (admin vs. user)
+- Protected routes and role-based access (Admin vs. User)
 - User Profile Management (Update email/password, Delete account, ADMIN: Promote user to admin/Demote admin to user)
 - Workout dashboard with history tracking
 - Axios + React Query for efficient data fetching
