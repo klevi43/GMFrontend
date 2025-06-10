@@ -30,8 +30,6 @@ export const useLogin = (
     },
     onSuccess(data, variables, context) {
       queryClient.setQueryData(["authUser"], data);
-      console.log("In use Login");
-
       options?.onSuccess?.(data, variables, context);
       navigate(WORKOUTS_ENDPOINT);
     },
