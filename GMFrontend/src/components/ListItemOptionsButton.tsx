@@ -3,7 +3,6 @@ interface Props {
   id: number;
 }
 const ListItemOptionsButton = ({ showMenu, id }: Props) => {
-  console.log("ListItemOptionsButton: " + id);
   return (
     <button
       className=" text-text hover:text-white transition duration-300 cursor-pointer"

@@ -16,7 +16,6 @@ const MyAccount = () => {
   const { openModal } = useMod();
 
   const { data: userResponseDto, isLoading, error } = useGetUser();
-  console.log(userResponseDto);
   return (
     <>
       <Nav />

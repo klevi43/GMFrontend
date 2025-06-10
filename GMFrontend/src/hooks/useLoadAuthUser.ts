@@ -8,7 +8,7 @@ export const useLoadAuthUser = () => {
     queryKey: ["authUser"],
     queryFn: async () => {
       const data = await authService.getAuthenticatedUser();
-      console.log(data);
+
       return data;
     },
     retry: false,
