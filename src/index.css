@@ -1,0 +1,29 @@
+@import "tailwindcss";
+:root {
+  background-color: #030303;
+}
+@theme {
+  --color-primary: #99ff00;
+  --color-text: #acacac;
+  --color-modal-outline: #353535;
+  --color-modal: #141414;
+  --color-background: #030303;
+  --color-input: #f2f2f2;
+  --font-Jost: "Jost", "sans-serif";
+  --font-Frank: "Franklin Gothic Medium", "sans serif";
+  --font-Noto: "Noto", "sans serif";
+  --font-Lucida: "Verdana", "sans serif";
+}
+@font-face {
+  font-family: Jost;
+  src: url("./fonts/Jost.ttf");
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+@font-face {
+  font-family: Noto;
+  src: url("./fonts/NotoSans_Condensed-Regular.ttf");
+}
+@font-face {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}

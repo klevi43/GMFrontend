@@ -1,0 +1,33 @@
+import * as z from "zod";
+import { FIELD_NOT_EMPTY_MSG } from "../constants/errorMsgs";
+import type { WorkoutInput } from "../types/inputTypes";
+
+export const WorkoutFormSchema = z.object({
+  name: z.string().nonempty(FIELD_NOT_EMPTY_MSG),
+  date: z
+    .string()
+    .refine((input) => !isNaN(Date.parse(input)), {
+      message: "Invalid date format",
+    })
+    .transform((input) => {
+      const date = new Date(input);
+      return date.toISOString().split("T")[0];
+    })
+    // input fn param. Once it is transformed, it gets passed down to the next
+    .refine(
+      (dateStr) => {
+        const now = new Date();
+        return new Date(dateStr) <= now;
+      },
+      {
+        message: "Date cannot be in the future",
+      }
+    ),
+});
+
+export function isWorkoutInput(data: unknown): data is WorkoutInput {
+  console.log(WorkoutFormSchema.safeParse(data).success);
+  return WorkoutFormSchema.safeParse(data).success;
+}
+
+export type WorkoutFormSchema = z.infer<typeof WorkoutFormSchema>;
