@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "motion/react";
 
 import FadeIn from "../animations/FadeIn";
+import { Link } from "react-router";
+import { REGISTER_ENDPOINT } from "../../constants/constants";
 const HeroText = () => {
   return (
     <>
@@ -14,15 +16,17 @@ const HeroText = () => {
         </FadeIn>
         <FadeIn duration={0.4} delay={0.2} from={75}>
           <h3 className="pl-[1rem] mb-[1rem] text-[1.5rem]">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            asperiores
+            Making the best version of yourself has never been easier.
           </h3>
         </FadeIn>
         <FadeIn duration={0.4} delay={0.3} from={75}>
-          <div className="flex justify-end mb-[1rem] mr-[1rem]">
-            <button className="bg-primary rounded-full text-background mr-[1rem] py-2 px-2 text-[1.8rem] font-semibold">
+          <div className="flex justify-end ">
+            <Link
+              to={REGISTER_ENDPOINT}
+              className="bg-primary rounded-full text-background mr-[1rem] py-2 px-2 text-[1.8rem] font-semibold hover:scale-104 hover:cursor-pointer transition-all duration-300"
+            >
               Get Started
-            </button>
+            </Link>
           </div>
         </FadeIn>
       </div>
