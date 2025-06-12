@@ -1,12 +1,10 @@
 import React, { createContext, useState } from "react";
-import {
-  type ModType,
-  type ModContextType,
-  type DtoTypes,
-} from "../types/modContextType";
-import type WorkoutDto from "../dtos/workoutDto";
 import ModalRenderer from "../components/modals/ModalRenderer";
-import { input } from "motion/react-client";
+import {
+  type DtoTypes,
+  type ModContextType,
+  type ModType,
+} from "../types/modContextType";
 
 const ModContext = createContext<ModContextType | undefined>(undefined);
 interface Props {

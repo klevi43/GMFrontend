@@ -31,7 +31,7 @@ const MenuWrapper = React.memo(({ modalType, initialData }: Props) => {
           handleOpenDeleteModalClick={handleOpenDeleteModalClick}
         />
       )}
-      <ListItemOptionsButton showMenu={showOpenMenuById} id={id} />
+      <ListItemOptionsButton showMenu={showOpenMenuById} id={initialData.id} />
     </>
   );
 });

@@ -47,7 +47,6 @@ export const useAddWorkout = (
       queryClient.invalidateQueries({ queryKey: ["workouts"] });
       // pass to user defined handler
       options?.onSuccess?.(data, variables, context);
-      setTimeout(() => closeModal(), 3000);
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);

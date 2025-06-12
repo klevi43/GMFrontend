@@ -30,7 +30,6 @@ export const useDeleteUser = (
     },
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["userInfo"] });
-      setTimeout(() => closeModal(), 3000);
       Navigate({ to: "/" });
       options?.onSuccess?.(data, variables, context);
     },

@@ -36,7 +36,6 @@ export const useDeleteExercise = (
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["workout"] });
-      setTimeout(() => closeModal(), 3000);
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);

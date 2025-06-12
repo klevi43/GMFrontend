@@ -46,7 +46,6 @@ export const useUpdateSet = (
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["workout"] });
       options?.onSuccess?.(data, variables, context);
-      setTimeout(() => closeModal(), 3000);
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);
