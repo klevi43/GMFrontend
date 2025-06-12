@@ -1,6 +1,6 @@
-# Welcome to GMFrontEnd
+# Welcome to GMFrontend
 
-MFrontEnd is the React-based frontend for **Growth Mindset**, a fitness tracking web app that allows users to manage their workouts, exercises, and sets. Built with TypeScript, React Query, and Axios.
+GMFrontEnd is the React-based frontend for **Growth Mindset**, a fitness tracking web app that allows users to manage their workouts, exercises, and sets. Built with TypeScript, React Query, and Axios.
 
 ### Features
 
