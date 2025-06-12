@@ -15,6 +15,7 @@ type Props = {
   onSubmit: (data: WorkoutFormSchema) => void;
   fields: WorkoutFormFieldsType[];
   title: string;
+  note?: string;
   defaultValues: { name: string; date: string };
   error: unknown;
   isSuccess: boolean;
@@ -24,6 +25,7 @@ const WorkoutForm = ({
   onSubmit,
   fields,
   title,
+  note,
   defaultValues,
   error,
   isSuccess,
@@ -59,6 +61,7 @@ const WorkoutForm = ({
             />
           </div>
         ))}
+        {note && <p className="text-text mb-4">{note}</p>}
         {!isSuccess && <FormSubmitButton isSubmitting={isSubmitting} />}
         {isSuccess && (
           <button
