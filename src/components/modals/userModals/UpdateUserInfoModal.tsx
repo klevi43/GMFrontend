@@ -1,7 +1,7 @@
 import React from "react";
 import ModalContainer from "../../containers/ModalContainer";
 import FormContainer from "../../containers/FormContainer";
-import RegisterForm from "../../form/registerForm/RegisterForm";
+import UserCredentialsForm from "../../form/userCredentialsForm/UserCredentialsForm";
 import type { SubmitHandler } from "react-hook-form";
 import type { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
 import { useUpdateUserInfo } from "../../../hooks/userHooks/useUpdateUserInfo";
@@ -14,7 +14,7 @@ interface Props {
 const UpdateUserInfoModal = ({ initialData }: Props) => {
   const mutation = useUpdateUserInfo();
 
-  const onSubmit: SubmitHandler<RegisterFormSchema> = (
+  const onSubmit: SubmitHandler<UserCredentialsFormSchema> = (
     data: UserCredentialsInput
   ) => {
     mutation.mutateAsync(data);
@@ -23,15 +23,15 @@ const UpdateUserInfoModal = ({ initialData }: Props) => {
     <>
       <ModalContainer>
         <FormContainer>
-          <RegisterForm
+          <UserCredentialsForm
             onSubmit={onSubmit}
             title="Update Account Information"
             fields={[
-              { name: "email", label: "Email", type: "text" },
-              { name: "password", label: "Password", type: "password" },
+              { name: "email", label: "New Email", type: "text" },
+              { name: "password", label: "New Password", type: "password" },
               {
                 name: "confirmPassword",
-                label: "Confirm Password",
+                label: "Confirm New Password",
                 type: "password",
               },
             ]}

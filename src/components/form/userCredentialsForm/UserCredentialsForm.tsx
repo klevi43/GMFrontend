@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
-import RegisterFormInputItem from "../registerForm/RegisterFormInputItem";
+import UserCredentialsFormInputItem from "./UserCredentialsFormInputItem";
 import Title from "../Title";
 
 import { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
@@ -23,7 +23,7 @@ type Props = {
   isModal?: boolean;
 };
 
-const RegisterForm = ({
+const UserCredentialsForm = ({
   onSubmit,
   fields,
   title,
@@ -37,7 +37,7 @@ const RegisterForm = ({
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<RegisterFormSchema>({
+  } = useForm<UserCredentialsFormSchema>({
     resolver: zodResolver(UserCredentialsFormSchema), // automatically validates input data according to given schema
     defaultValues,
   });
@@ -61,7 +61,7 @@ const RegisterForm = ({
         {fields.map((field) => (
           <div key={field.name}>
             <FormInputLabel name={field.label} />
-            <RegisterFormInputItem
+            <UserCredentialsFormInputItem
               type={field.type}
               register={register}
               name={field.name}
@@ -75,4 +75,4 @@ const RegisterForm = ({
   );
 };
 
-export default RegisterForm;
+export default UserCredentialsForm;

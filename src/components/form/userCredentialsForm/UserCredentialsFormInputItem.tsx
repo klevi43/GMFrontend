@@ -1,16 +1,19 @@
-import { input } from "motion/react-client";
-import React from "react";
 import type { UseFormRegister } from "react-hook-form";
 import type { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
 
 interface Props {
   name: "email" | "password" | "confirmPassword";
   type: string;
-  register: UseFormRegister<RegisterFormSchema>;
+  register: UseFormRegister<UserCredentialsFormSchema>;
   errorMsg?: string;
 }
 
-const RegisterFormInputItem = ({ name, type, register, errorMsg }: Props) => {
+const UserCredentialsFormInputItem = ({
+  name,
+  type,
+  register,
+  errorMsg,
+}: Props) => {
   return (
     <>
       <div className="w-full mb-8">
@@ -25,4 +28,4 @@ const RegisterFormInputItem = ({ name, type, register, errorMsg }: Props) => {
   );
 };
 
-export default RegisterFormInputItem;
+export default UserCredentialsFormInputItem;

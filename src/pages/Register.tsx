@@ -1,4 +1,4 @@
-import RegisterForm from "../components/form/registerForm/RegisterForm";
+import UserCredentialsForm from "../components/form/userCredentialsForm/UserCredentialsForm";
 import { UserCredentialsFormSchema } from "../schemas/userCredentialsSchema";
 import type { SubmitHandler } from "react-hook-form";
 
@@ -18,7 +18,7 @@ const Register = () => {
   return (
     <>
       <FormContainer>
-        <RegisterForm
+        <UserCredentialsForm
           onSubmit={onSubmit}
           title="Create a New Account"
           fields={[
