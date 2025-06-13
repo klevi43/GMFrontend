@@ -21,7 +21,7 @@ export type ModType =
 type WorkoutTypes = "ADD_WORKOUT" | "UPDATE_WORKOUT" | "DELETE_WORKOUT";
 type ExerciseTypes = "ADD_EXERCISE" | "UPDATE_EXERCISE" | "DELETE_EXERCISE";
 type SetTypes = "ADD_SET" | "UPDATE_SET" | "DELETE_SET";
-type UserTypes = "UPDATE_USER_INFO" | "DELETE_USER_INFO";
+type UserTypes = "UPDATE_USER_PASSWORD" | "DELETE_USER_INFO";
 type AdminTypes =
   | "ADMIN_DELETE_USER"
   | "ADMIN_PROMOTE_USER"

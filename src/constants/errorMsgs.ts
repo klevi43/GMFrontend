@@ -4,5 +4,6 @@ export const MIN_LEN_8_MSG = "Minimum 8 characters required";
 export const PASSWORD_MUST_MATCH_MSG =
   "Password and confirm password fields must match";
 export const MUST_BE_NUMBER_MSG = "Please enter a number.";
-
+export const PASSWORD_MUST_NOT_MATCH_NEW_PASSWORD =
+  "Your current password cannot match your new password";
 export const INITIAL_DATA_NOT_SET_MSG = "Initial data must be set.";

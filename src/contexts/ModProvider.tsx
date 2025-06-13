@@ -16,7 +16,6 @@ export const ModProvider = ({ children }: Props) => {
   const [initialData, setInitialData] = useState<DtoTypes | null>(null);
 
   const openModal = (type: ModType, initialData?: DtoTypes) => {
-    console.log(initialData);
     setModType(type);
     setIsOpen(true);
     setInitialData(initialData ?? null);

@@ -5,7 +5,7 @@ import FormContainer from "../components/containers/FormContainer";
 import ShowElementButton from "../components/buttons/ShowElementButton";
 import { useLoadAuthUser } from "../hooks/useLoadAuthUser";
 import Footer from "../components/footer/Footer";
-import UpdateUserPasswordModal from "../components/modals/userModals/UpdateUserInfoModal";
+import UpdateUserPasswordModal from "../components/modals/userModals/UpdateUserPasswordModal";
 import { useMod } from "../hooks/useMod";
 import { useGetUser } from "../hooks/userHooks/useGetUser";
 import InfoMessage from "../components/messages/InfoMessage";
@@ -50,7 +50,9 @@ const MyAccount = () => {
           <ShowElementButton
             content="Update Password"
             styles="text-[1.5rem] py-2 bg-primary w-full rounded-lg hover:scale-102"
-            showElement={() => openModal("UPDATE_USER_INFO", userResponseDto)}
+            showElement={() =>
+              openModal("UPDATE_USER_PASSWORD", userResponseDto)
+            }
           />
           <div className="flex justify-center">
             <ShowElementButton

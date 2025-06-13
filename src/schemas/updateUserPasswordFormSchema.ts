@@ -1,9 +1,9 @@
 import * as z from "zod";
 import {
   FIELD_NOT_EMPTY_MSG,
-  VALID_EMAIL_MSG,
   MIN_LEN_8_MSG,
   PASSWORD_MUST_MATCH_MSG,
+  PASSWORD_MUST_NOT_MATCH_NEW_PASSWORD,
 } from "../constants/errorMsgs";
 export const UpdateUserPasswordFormSchema = z
   .object({
@@ -19,10 +19,29 @@ export const UpdateUserPasswordFormSchema = z
   })
   .refine(
     (values) => {
+      return values.currentPassword !== values.newPassword;
+    },
+    {
+      message: PASSWORD_MUST_NOT_MATCH_NEW_PASSWORD,
+      path: ["newPassword"],
+    }
+  )
+  .refine(
+    (values) => {
+      return values.currentPassword !== values.confirmNewPassword;
+    },
+    {
+      message: PASSWORD_MUST_NOT_MATCH_NEW_PASSWORD,
+      path: ["confirmNewPassword"],
+    }
+  )
+  .refine(
+    (values) => {
       return values.newPassword === values.confirmNewPassword;
     },
     {
       message: PASSWORD_MUST_MATCH_MSG,
+      path: ["confirmNewPassword"],
     }
   );
 

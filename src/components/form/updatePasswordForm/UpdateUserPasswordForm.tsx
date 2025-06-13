@@ -55,7 +55,9 @@ const UpdateUserPasswordForm = ({
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <Title title={title} />
         {error instanceof Error && (
-          <span className="text-red-500">{error.message}</span>
+          <div className="text-center">
+            <span className="text-red-500">{error.message}</span>
+          </div>
         )}
         {isSuccess && isModal && <SuccessMessage fontSize="[1rem]" />}
         {isSuccess && !isModal && (

@@ -40,6 +40,7 @@ function App() {
                   <Route path={REGISTER_ENDPOINT} element={<Register />} />
                 </Route>
                 <Route element={<ProtectedRoutes />}>
+                  <Route path={USERS_ENDPOINT} element={<MyAccount />} />
                   <Route
                     path={WORKOUTS_ENDPOINT}
                     element={<WorkoutDashboard />}
@@ -53,7 +54,6 @@ function App() {
                     element={<WorkoutHistory />}
                   />
                 </Route>
-                <Route path={USERS_ENDPOINT} element={<MyAccount />} />
                 <Route element={<AdminRoutes />}>
                   <Route path={ADMIN_ENDPOINT} element={<Admin />} />
                 </Route>

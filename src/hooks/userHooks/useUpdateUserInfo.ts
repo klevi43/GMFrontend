@@ -4,13 +4,9 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type {
-  PasswordInput,
-  UserCredentialsInput,
-} from "../../types/inputTypes";
+import type { PasswordInput } from "../../types/inputTypes";
 import userService from "../../services/userService";
 import axios from "axios";
-import { useMod } from "../useMod";
 import { formatApiError } from "../../utils/formatApiError";
 import type UserDto from "../../dtos/userDto";
 import { useNavigate } from "react-router";
@@ -35,8 +31,9 @@ export const useUpdateUserPassword = (
       }
     },
     onSuccess: (data, variables, context) => {
-      queryClient.invalidateQueries({ queryKey: ["userInfo"] });
+      queryClient.removeQueries({ queryKey: ["authUser"] });
       options?.onSuccess?.(data, variables, context);
+      navigate(LOGIN_ENDPOINT);
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);
