@@ -19,6 +19,8 @@ const UpdateUserInfoModal = ({ initialData }: Props) => {
   ) => {
     mutation.mutateAsync(data);
   };
+  const note =
+    "Note: Updating your email and password information will require you to login again using your new credentials.";
   return (
     <>
       <ModalContainer>
@@ -40,6 +42,7 @@ const UpdateUserInfoModal = ({ initialData }: Props) => {
               password: "",
               confirmPassword: "",
             }}
+            note={note}
             error={mutation.error}
             isSuccess={mutation.isSuccess}
             isModal={true}

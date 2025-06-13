@@ -30,7 +30,6 @@ export const useAdminPromoteToAdmin = (
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
-      setTimeout(() => closeModal(), 3000);
     },
     onError: (error, variables, context) => {
       options?.onError?.(error, variables, context);

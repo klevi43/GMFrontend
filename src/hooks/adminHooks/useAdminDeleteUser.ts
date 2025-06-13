@@ -34,7 +34,6 @@ export const useAdminDeleteUser = (
     },
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
-      setTimeout(() => closeModal(), 3000);
       options?.onSuccess?.(data, variables, context);
     },
     onError: (error, variables, context) => {

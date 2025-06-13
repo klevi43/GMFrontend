@@ -10,12 +10,14 @@ import axios from "axios";
 import { useMod } from "../useMod";
 import { formatApiError } from "../../utils/formatApiError";
 import type UserDto from "../../dtos/userDto";
+import { useNavigate } from "react-router";
+import { LOGIN_ENDPOINT } from "../../constants/constants";
 
 export const useUpdateUserInfo = (
   options?: UseMutationOptions<UserDto, unknown, UserCredentialsInput, unknown>
 ): UseBaseMutationResult<UserDto, unknown, UserCredentialsInput, unknown> => {
   const queryClient = useQueryClient();
-  const { closeModal } = useMod();
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: async (registerInput: UserCredentialsInput) => {
       try {

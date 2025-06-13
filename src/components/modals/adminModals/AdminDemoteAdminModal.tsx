@@ -40,15 +40,27 @@ const AdminDemoteAdminModal = ({ initialData }: Props) => {
                   {initialData.email}
                 </h4>
                 <p className="text-red-500 mb-4 text-center">
-                  Double check the email before clicking submtit.
+                  Double check the email before clicking submit.
                 </p>
 
                 <div className="w-full">
-                  <DeleteButton
-                    isSuccess={mutation.isSuccess}
-                    isPending={mutation.isPending}
-                    handleDeleteButtonClick={handleUpdateButtonClick}
-                  />
+                  {!mutation.isSuccess && (
+                    <button
+                      disabled={mutation.isPending}
+                      onClick={handleUpdateButtonClick}
+                      className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102  hover:cursor-pointer transition-all duration-300"
+                    >
+                      {mutation.isPending ? "Submitting..." : "Submit"}
+                    </button>
+                  )}
+                  {mutation.isSuccess && (
+                    <button
+                      onClick={closeModal}
+                      className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
+                    >
+                      Close
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

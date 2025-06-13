@@ -17,6 +17,7 @@ type Props = {
   onSubmit: (data: UserCredentialsInput) => void; // what to do upon successful submission
   fields: RegisterFormFieldsType[]; // the fields to render
   title: string; // title of the form
+  note?: string;
   defaultValues: { email: string; password: ""; confirmPassword: "" }; // initial values for the form fields
   error: unknown;
   isSuccess: boolean;
@@ -27,6 +28,7 @@ const UserCredentialsForm = ({
   onSubmit,
   fields,
   title,
+  note,
   defaultValues,
   error,
   isSuccess,
@@ -69,6 +71,7 @@ const UserCredentialsForm = ({
             />
           </div>
         ))}
+        {note && <p className="text-text">{note}</p>}
         <FormSubmitButton isSubmitting={isSubmitting} />
       </form>
     </div>
