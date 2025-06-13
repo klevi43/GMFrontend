@@ -4,7 +4,10 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type { UserCredentialsInput } from "../../types/inputTypes";
+import type {
+  PasswordInput,
+  UserCredentialsInput,
+} from "../../types/inputTypes";
 import userService from "../../services/userService";
 import axios from "axios";
 import { useMod } from "../useMod";
@@ -13,15 +16,15 @@ import type UserDto from "../../dtos/userDto";
 import { useNavigate } from "react-router";
 import { LOGIN_ENDPOINT } from "../../constants/constants";
 
-export const useUpdateUserInfo = (
-  options?: UseMutationOptions<UserDto, unknown, UserCredentialsInput, unknown>
-): UseBaseMutationResult<UserDto, unknown, UserCredentialsInput, unknown> => {
+export const useUpdateUserPassword = (
+  options?: UseMutationOptions<UserDto, unknown, PasswordInput, unknown>
+): UseBaseMutationResult<UserDto, unknown, PasswordInput, unknown> => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation({
-    mutationFn: async (registerInput: UserCredentialsInput) => {
+    mutationFn: async (passwordInput: PasswordInput) => {
       try {
-        return await userService.updateUserInfo(registerInput);
+        return await userService.updateUserPassword(passwordInput);
       } catch (error) {
         let message =
           "Unable to update your information. Please try again later.";

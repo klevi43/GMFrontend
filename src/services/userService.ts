@@ -1,8 +1,13 @@
 import axiosInstance from "./axiosInstance";
 import { REGISTER_ENDPOINT } from "../constants/constants";
 import type RegisterUser from "../types/registerUserType";
-import type { UserCredentialsInput } from "../types/inputTypes";
-import { DELETE, UPDATE, USERS_ENDPOINT } from "../constants/endpoints";
+import type { PasswordInput, UserCredentialsInput } from "../types/inputTypes";
+import {
+  DELETE,
+  PASSWORD,
+  UPDATE,
+  USERS_ENDPOINT,
+} from "../constants/endpoints";
 export class UserService {
   register = async (registerInput: UserCredentialsInput) => {
     const response = await axiosInstance.post(
@@ -20,10 +25,10 @@ export class UserService {
     const response = await axiosInstance.get(USERS_ENDPOINT);
     return response.data;
   };
-  updateUserInfo = async (registerInput: UserCredentialsInput) => {
+  updateUserPassword = async (passwordInput: PasswordInput) => {
     const response = await axiosInstance.put(
-      USERS_ENDPOINT + UPDATE,
-      registerInput,
+      USERS_ENDPOINT + PASSWORD + UPDATE,
+      passwordInput,
       {
         headers: {
           "Content-Type": "application/json",

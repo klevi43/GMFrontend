@@ -14,6 +14,11 @@ export type RegisterFormFieldsType = {
   type: string;
 };
 
+export type UpdateUserPasswordFormFieldsType = {
+  name: "currentPassword" | "newPassword" | "confirmNewPassword";
+  label: string;
+  type: string;
+};
 export type WorkoutFormFieldsType = {
   name: keyof WorkoutFormSchema;
   label: string;

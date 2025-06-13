@@ -1,47 +1,42 @@
-import React from "react";
-import ModalContainer from "../../containers/ModalContainer";
-import FormContainer from "../../containers/FormContainer";
-import UserCredentialsForm from "../../form/userCredentialsForm/UserCredentialsForm";
 import type { SubmitHandler } from "react-hook-form";
-import type { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
-import { useUpdateUserInfo } from "../../../hooks/userHooks/useUpdateUserInfo";
-import type { UserCredentialsInput } from "../../../types/inputTypes";
-import type UserDto from "../../../dtos/userDto";
+import FormContainer from "../../containers/FormContainer";
+import ModalContainer from "../../containers/ModalContainer";
 
-interface Props {
-  initialData: UserDto;
-}
-const UpdateUserInfoModal = ({ initialData }: Props) => {
-  const mutation = useUpdateUserInfo();
+import { useUpdateUserPassword } from "../../../hooks/userHooks/useUpdateUserInfo";
+import { UpdateUserPasswordFormSchema } from "../../../schemas/updateUserPasswordFormSchema";
+import type { PasswordInput } from "../../../types/inputTypes";
+import UpdateUserPasswordForm from "../../form/updatePasswordForm/UpdateUserPasswordForm";
 
-  const onSubmit: SubmitHandler<UserCredentialsFormSchema> = (
-    data: UserCredentialsInput
+const UpdateUserPasswordModal = () => {
+  const mutation = useUpdateUserPassword();
+
+  const onSubmit: SubmitHandler<UpdateUserPasswordFormSchema> = (
+    data: PasswordInput
   ) => {
     mutation.mutateAsync(data);
   };
   const note =
-    "Note: Updating your email and password information will require you to login again using your new credentials.";
+    "Note: Updating your password will require you to login again using your new credentials.";
   return (
     <>
       <ModalContainer>
         <FormContainer>
-          <UserCredentialsForm
+          <UpdateUserPasswordForm
             onSubmit={onSubmit}
             title="Update Account Information"
             fields={[
-              { name: "email", label: "New Email", type: "text" },
-              { name: "password", label: "New Password", type: "password" },
               {
-                name: "confirmPassword",
+                name: "currentPassword",
+                label: "Current Password",
+                type: "password",
+              },
+              { name: "newPassword", label: "New Password", type: "password" },
+              {
+                name: "confirmNewPassword",
                 label: "Confirm New Password",
                 type: "password",
               },
             ]}
-            defaultValues={{
-              email: initialData.email,
-              password: "",
-              confirmPassword: "",
-            }}
             note={note}
             error={mutation.error}
             isSuccess={mutation.isSuccess}
@@ -53,4 +48,4 @@ const UpdateUserInfoModal = ({ initialData }: Props) => {
   );
 };
 
-export default UpdateUserInfoModal;
+export default UpdateUserPasswordModal;

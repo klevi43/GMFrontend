@@ -17,7 +17,7 @@ import DeleteExerciseFormModal from "./exerciseModals/DeleteExerciseFormModal";
 import AddSetFormModal from "./setModals/AddSetFormModal";
 import DeleteSetFormModal from "./setModals/DeleteSetFormModal";
 import UpdateSetFormModal from "./setModals/UpdateSetFormModal";
-import UpdateUserInfoModal from "./userModals/UpdateUserInfoModal";
+import UpdateUserPasswordModal from "./userModals/UpdateUserInfoModal";
 import DeleteUserModal from "./userModals/DeleteUserModal";
 import AdminDeleteUserModal from "./adminModals/AdminDeleteUserModal";
 import AdminPromoteUserModal from "./adminModals/AdminPromoteUserModal";
@@ -48,7 +48,7 @@ const ModalRenderer = ({ type, initialData }: Props) => {
       if (!initialData || !isUserResponseDto(initialData)) {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);
       }
-      return <UpdateUserInfoModal initialData={initialData} />;
+      return <UpdateUserPasswordModal initialData={initialData} />;
     case "DELETE_USER_INFO":
       return <DeleteUserModal />;
     case "ADD_WORKOUT":

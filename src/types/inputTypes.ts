@@ -9,6 +9,12 @@ export type UserCredentialsInput = {
   confirmPassword: string;
 };
 
+export type PasswordInput = {
+  currentPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
+};
+
 export type WorkoutInput = {
   name: string;
   date: string;

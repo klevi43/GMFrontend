@@ -2,33 +2,39 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
-import UserCredentialsFormInputItem from "./UserCredentialsFormInputItem";
+import UserCredentialsFormInputItem from "./UpdateUserPasswordFormInputItem";
 import Title from "../Title";
-import type { RegisterFormFieldsType } from "../../../types/formFieldsType";
-import type { UserCredentialsInput } from "../../../types/inputTypes";
+import type {
+  RegisterFormFieldsType,
+  UpdateUserPasswordFormFieldsType,
+} from "../../../types/formFieldsType";
+import type {
+  PasswordInput,
+  UserCredentialsInput,
+} from "../../../types/inputTypes";
 import ModalCloseButton from "../../modals/ModalCloseButton";
 import { useMod } from "../../../hooks/useMod";
 import SuccessMessage from "../../messages/SuccessMessage";
 import { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
+import { UpdateUserPasswordFormSchema } from "../../../schemas/updateUserPasswordFormSchema";
+import UpdateUserPasswordFormInputItem from "./UpdateUserPasswordFormInputItem";
 
 type Props = {
   // zod schema
-  onSubmit: (data: UserCredentialsInput) => void; // what to do upon successful submission
-  fields: RegisterFormFieldsType[]; // the fields to render
+  onSubmit: (data: PasswordInput) => void; // what to do upon successful submission
+  fields: UpdateUserPasswordFormFieldsType[]; // the fields to render
   title: string; // title of the form
   note?: string;
-  defaultValues: { email: string; password: ""; confirmPassword: "" }; // initial values for the form fields
   error: unknown;
   isSuccess: boolean;
   isModal?: boolean;
 };
 
-const UserCredentialsForm = ({
+const UpdateUserPasswordForm = ({
   onSubmit,
   fields,
   title,
   note,
-  defaultValues,
   error,
   isSuccess,
   isModal,
@@ -38,9 +44,8 @@ const UserCredentialsForm = ({
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<UserCredentialsFormSchema>({
-    resolver: zodResolver(UserCredentialsFormSchema), // automatically validates input data according to given schema
-    defaultValues,
+  } = useForm<UpdateUserPasswordFormSchema>({
+    resolver: zodResolver(UpdateUserPasswordFormSchema), // automatically validates input data according to given schema
   });
 
   return (
@@ -62,7 +67,7 @@ const UserCredentialsForm = ({
         {fields.map((field) => (
           <div key={field.name}>
             <FormInputLabel name={field.label} />
-            <UserCredentialsFormInputItem
+            <UpdateUserPasswordFormInputItem
               type={field.type}
               register={register}
               name={field.name}
@@ -77,4 +82,4 @@ const UserCredentialsForm = ({
   );
 };
 
-export default UserCredentialsForm;
+export default UpdateUserPasswordForm;

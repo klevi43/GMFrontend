@@ -1,16 +1,13 @@
 import UserCredentialsForm from "../components/form/userCredentialsForm/UserCredentialsForm";
-import { UserCredentialsFormSchema } from "../schemas/userCredentialsSchema";
 import type { SubmitHandler } from "react-hook-form";
-
 import FormContainer from "../components/containers/FormContainer";
-import userService from "../services/userService";
-import { useNavigate } from "react-router";
 import { useRegister } from "../hooks/useRegister";
 import type { UserCredentialsInput } from "../types/inputTypes";
 import Footer from "../components/footer/Footer";
+import type { UserCredentialsFormSchema } from "../schemas/userCredentialsSchema";
 const Register = () => {
   const mutation = useRegister();
-  const onSubmit: SubmitHandler<RegisterFormSchema> = (
+  const onSubmit: SubmitHandler<UserCredentialsFormSchema> = (
     data: UserCredentialsInput
   ) => {
     mutation.mutateAsync(data);

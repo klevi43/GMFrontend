@@ -5,7 +5,7 @@ import FormContainer from "../components/containers/FormContainer";
 import ShowElementButton from "../components/buttons/ShowElementButton";
 import { useLoadAuthUser } from "../hooks/useLoadAuthUser";
 import Footer from "../components/footer/Footer";
-import UpdateUserInfoModal from "../components/modals/userModals/UpdateUserInfoModal";
+import UpdateUserPasswordModal from "../components/modals/userModals/UpdateUserInfoModal";
 import { useMod } from "../hooks/useMod";
 import { useGetUser } from "../hooks/userHooks/useGetUser";
 import InfoMessage from "../components/messages/InfoMessage";
@@ -48,7 +48,7 @@ const MyAccount = () => {
             <p className="text-white text-[1.1rem]">xxxxxxxxxx</p>
           </div>
           <ShowElementButton
-            content="Update Email/Password"
+            content="Update Password"
             styles="text-[1.5rem] py-2 bg-primary w-full rounded-lg hover:scale-102"
             showElement={() => openModal("UPDATE_USER_INFO", userResponseDto)}
           />

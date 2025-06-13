@@ -1,14 +1,15 @@
 import type { UseFormRegister } from "react-hook-form";
-import type { UpdatePasswordFormSchema } from "../../../schemas/userCredentialsSchema";
+import type { UpdateUserPasswordFormSchema } from "../../../schemas/updateUserPasswordFormSchema";
+import type { UpdateUserPasswordFormFieldsType } from "../../../types/formFieldsType";
 
 interface Props {
-  name: "email" | "password" | "confirmPassword";
+  name: "currentPassword" | "newPassword" | "confirmNewPassword";
   type: string;
-  register: UseFormRegister<UserCredentialsFormSchema>;
+  register: UseFormRegister<UpdateUserPasswordFormSchema>;
   errorMsg?: string;
 }
 
-const UserCredentialsFormInputItem = ({
+const UpdateUserPasswordFormInputItem = ({
   name,
   type,
   register,
@@ -28,4 +29,4 @@ const UserCredentialsFormInputItem = ({
   );
 };
 
-export default UserCredentialsFormInputItem;
+export default UpdateUserPasswordFormInputItem;
