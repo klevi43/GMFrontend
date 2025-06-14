@@ -10,7 +10,7 @@ const NotFound = () => {
       <Nav />
       <FormContainer>
         <Title title="404 Not Found" />
-        <p className="text-text text-[1.1rem]">
+        <p className="text-text text-[1.1rem] text-center">
           It looks like the resource you were trying to access does not exist.
         </p>
       </FormContainer>

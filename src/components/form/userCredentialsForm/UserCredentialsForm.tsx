@@ -46,7 +46,11 @@ const UserCredentialsForm = ({
   return (
     // handleSubmit is from Zod and validates form onSumbit is my function
     <div className="relative">
-      {isModal && <ModalCloseButton closeModal={closeModal} />}
+      {isModal && (
+        <div className="absolute -top-5 right-0">
+          <ModalCloseButton content="X" closeModal={closeModal} />
+        </div>
+      )}
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <Title title={title} />
         {error instanceof Error && (

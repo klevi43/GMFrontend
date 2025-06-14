@@ -41,7 +41,9 @@ const ExerciseForm = ({
   const { closeModal } = useMod();
   return (
     <div className="relative">
-      <ModalCloseButton closeModal={closeModal} />
+      <div className="absolute -top-5 right-0">
+        <ModalCloseButton content="X" closeModal={closeModal} />
+      </div>
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <Title title={title} />
         {error instanceof Error && (
@@ -60,12 +62,11 @@ const ExerciseForm = ({
         ))
         {!isSuccess && <FormSubmitButton isSubmitting={isSubmitting} />}
         {isSuccess && (
-          <button
-            onClick={closeModal}
-            className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
-          >
-            Close
-          </button>
+          <ModalCloseButton
+            closeModal={closeModal}
+            styles="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
+            content="Close"
+          />
         )}
       </form>
     </div>

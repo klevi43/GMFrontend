@@ -21,7 +21,9 @@ const AdminPromoteUserModal = ({ initialData }: Props) => {
       <ModalContainer>
         <FormContainer>
           <div className="relative">
-            <ModalCloseButton closeModal={closeModal} />
+            <div className="absolute -top-5 right-0">
+              <ModalCloseButton content="X" closeModal={closeModal} />
+            </div>
             <div className="w-full">
               <div className="flex flex-col justify-center items-center mx-auto">
                 <Title title={`Promote to Admin`} />
@@ -54,12 +56,11 @@ const AdminPromoteUserModal = ({ initialData }: Props) => {
                     </button>
                   )}
                   {mutation.isSuccess && (
-                    <button
-                      onClick={closeModal}
-                      className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
-                    >
-                      Close
-                    </button>
+                    <ModalCloseButton
+                      closeModal={closeModal}
+                      styles="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
+                      content="Close"
+                    />
                   )}
                 </div>
               </div>

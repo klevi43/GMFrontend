@@ -27,7 +27,9 @@ const DeleteWorkoutModal = ({ initialData }: Props) => {
       <ModalContainer>
         <FormContainer>
           <div className="relative">
-            <ModalCloseButton closeModal={closeModal} />
+            <div className="absolute -top-5 right-0">
+              <ModalCloseButton content="X" closeModal={closeModal} />
+            </div>
             <div className="w-full">
               <div className="flex flex-col justify-center items-center mx-auto">
                 <Title title={`Delete Workout`} />
