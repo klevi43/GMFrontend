@@ -8,10 +8,10 @@ export const useLoadAuthUser = () => {
     queryKey: ["authUser"],
     queryFn: async () => {
       const data = await authService.getAuthenticatedUser();
-
       return data;
     },
+
     retry: false,
-    staleTime: 60 * 1000 * 300, // 3 hours
+    staleTime: 1000 * 60 * 60 * 3, // 3 hours
   });
 };

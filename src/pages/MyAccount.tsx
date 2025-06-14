@@ -19,55 +19,62 @@ const MyAccount = () => {
   return (
     <>
       <Nav />
-      <div className="flex jusitfy-start max-w-[1150px] px-[1rem]">
-        <Title title="My Account" />
-      </div>
-      {isLoading && (
-        <div className="flex justify-center items-center min-h-[6rem]">
-          <InfoMessage
-            fontSize="[2rem]"
-            message="Loading your account information..."
-          />
+      <div className="max-w-[1150px] px-[1rem] mx-auto">
+        <div className="flex items-baseline">
+          <Title title="My Account" styles="text-[3rem]" />
         </div>
-      )}
-      {error && (
-        <div className="flex justify-center items-center min-h-[6rem]">
-          <ErrorMessage
-            message={formatApiError(error.message)}
-            fontSize="[2rem]"
-          />
-        </div>
-      )}
-      {userResponseDto && (
-        <FormContainer>
-          <Title title="Account Details" />
-          <div className="mb-[1.5rem]">
-            <p className="text-text text-[1.3rem]">Email:</p>
-            <p className="text-white text-[1.1rem]">{userResponseDto.email}</p>
-            <p className="text-text text-[1.3rem]">Password:</p>
-            <p className="text-white text-[1.1rem]">xxxxxxxxxx</p>
-          </div>
-          <ShowElementButton
-            content="Update Email"
-            styles="text-[1.5rem] mb-2 py-2 bg-primary w-full rounded-lg hover:scale-102"
-            showElement={() => openModal("UPDATE_USER_EMAIL", userResponseDto)}
-          />
-          <ShowElementButton
-            content="Update Password"
-            styles="text-[1.5rem] py-2 bg-primary w-full rounded-lg hover:scale-102"
-            showElement={() =>
-              openModal("UPDATE_USER_PASSWORD", userResponseDto)
-            }
-          />
-          <div className="flex justify-center">
-            <ShowElementButton
-              content="Delete Account"
-              styles="text-[1.5rem] pt-4 w-fit bg-modal text-text  hover:text-red-500"
-              showElement={() => openModal("DELETE_USER_INFO")}
+        {isLoading && (
+          <div className="flex justify-center items-center min-h-[6rem]">
+            <InfoMessage
+              fontSize="[2rem]"
+              message="Loading your account information..."
             />
           </div>
-        </FormContainer>
-      )}
+        )}
+        {error && (
+          <div className="flex justify-center items-center min-h-[6rem]">
+            <ErrorMessage
+              message={formatApiError(error.message)}
+              fontSize="[2rem]"
+            />
+          </div>
+        )}
+
+        {userResponseDto && (
+          <FormContainer>
+            <Title title="Account Details" />
+            <div className="mb-[1.5rem]">
+              <p className="text-text text-[1.3rem]">Email:</p>
+              <p className="text-white text-[1.1rem]">
+                {userResponseDto.email}
+              </p>
+              <p className="text-text text-[1.3rem]">Password:</p>
+              <p className="text-white text-[1.1rem]">xxxxxxxxxx</p>
+            </div>
+            <ShowElementButton
+              content="Update Email"
+              styles="text-[1.5rem] mb-2 py-2 bg-primary w-full rounded-lg hover:scale-102"
+              showElement={() =>
+                openModal("UPDATE_USER_EMAIL", userResponseDto)
+              }
+            />
+            <ShowElementButton
+              content="Update Password"
+              styles="text-[1.5rem] py-2 bg-primary w-full rounded-lg hover:scale-102"
+              showElement={() =>
+                openModal("UPDATE_USER_PASSWORD", userResponseDto)
+              }
+            />
+            <div className="flex justify-center">
+              <ShowElementButton
+                content="Delete Account"
+                styles="text-[1.5rem] pt-4 w-fit bg-modal text-text  hover:text-red-500"
+                showElement={() => openModal("DELETE_USER_INFO")}
+              />
+            </div>
+          </FormContainer>
+        )}
+      </div>
       <Footer />
     </>
   );
