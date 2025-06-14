@@ -8,14 +8,14 @@ import type { AxiosResponse } from "axios";
 import { useMod } from "../useMod";
 import userService from "../../services/userService";
 import axios from "axios";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router";
 import { formatApiError } from "../../utils/formatApiError";
 
 export const useDeleteUser = (
   options?: UseMutationOptions<AxiosResponse<any, any>, unknown, void, unknown>
 ): UseBaseMutationResult<AxiosResponse<any, any>, unknown, void, unknown> => {
   const queryClient = useQueryClient();
-  const { closeModal } = useMod();
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: async () => {
       try {
@@ -29,8 +29,9 @@ export const useDeleteUser = (
       }
     },
     onSuccess: (data, variables, context) => {
-      queryClient.invalidateQueries({ queryKey: ["userInfo"] });
-      Navigate({ to: "/" });
+      queryClient.removeQueries({ queryKey: ["userInfo"] });
+      queryClient.removeQueries({ queryKey: ["authUser"] });
+      navigate("/");
       options?.onSuccess?.(data, variables, context);
     },
     onError: (error, variables, context) => {

@@ -32,13 +32,14 @@ const LoginForm = ({
     resolver: zodResolver(LoginFormSchema), // automatically validates input data according to given schema
     defaultValues,
   });
+  console.log(error);
 
   return (
     // handleSubmit is from Zod and validates form onSumbit is my function
     <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
       <Title title={title} />
       {error instanceof Error && (
-        <ErrorMessage fontSize="1rem" message={error.message} />
+        <ErrorMessage fontSize="[1rem]" message={error.message} />
       )}
       {fields.map((field) => (
         <div key={field.name}>
