@@ -84,7 +84,7 @@ const UpdateUserPasswordForm = ({
         {isSuccess && (
           <ModalCloseButton
             closeModal={closeModal}
-            styles="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
+            styles="bg-primary text-[1.5rem] rounded-lg w-full mt-4 py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
             content="Close"
           />
         )}
