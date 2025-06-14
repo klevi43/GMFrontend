@@ -38,6 +38,7 @@ const UpdateUserEmailFormModal = ({ initialData }: Props) => {
             note={note}
             error={mutation.error}
             isSuccess={mutation.isSuccess}
+            isModal={true}
           />
         </FormContainer>
       </ModalContainer>

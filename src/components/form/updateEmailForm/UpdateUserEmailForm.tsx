@@ -41,7 +41,7 @@ const UpdateUserEmailForm = ({
   } = useForm<UpdateUserEmailFormSchema>({
     resolver: zodResolver(UpdateUserEmailFormSchema), // automatically validates input data according to given schema
   });
-
+  console.log(isModal);
   return (
     // handleSubmit is from Zod and validates form onSumbit is my function
     <div className="relative">
