@@ -16,6 +16,7 @@ type Props = {
   fields: WorkoutFormFieldsType[];
   title: string;
   note?: string;
+  updateAllPrevious?: boolean;
   defaultValues: { name: string; date: string };
   error: unknown;
   isSuccess: boolean;

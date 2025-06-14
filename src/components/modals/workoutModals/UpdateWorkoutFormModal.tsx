@@ -15,14 +15,12 @@ const UpdateWorkoutFormModal = ({ initialData }: Props) => {
   const onSubmit: SubmitHandler<WorkoutFormSchema> = async (
     data: WorkoutInput
   ) => {
-    console.log("calling on sbmit");
     try {
       await mutation.mutateAsync(data);
     } catch (error) {}
   };
   const mutation = useUpdateWorkout();
   const queryParams = useQueryParams();
-  console.log(queryParams);
   return (
     <>
       <ModalContainer>

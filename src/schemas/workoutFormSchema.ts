@@ -26,7 +26,6 @@ export const WorkoutFormSchema = z.object({
 });
 
 export function isWorkoutInput(data: unknown): data is WorkoutInput {
-  console.log(WorkoutFormSchema.safeParse(data).success);
   return WorkoutFormSchema.safeParse(data).success;
 }
 

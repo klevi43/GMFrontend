@@ -14,7 +14,7 @@ const WorkoutFormInputItem = ({ name, type, register, errorMsg }: Props) => {
     <>
       <div className="w-full mb-8">
         <input
-          className=" p-2.5 w-full bg-input rounded-lg"
+          className="p-2.5 w-full bg-input rounded-lg"
           type={type}
           {...register(name)}
         />

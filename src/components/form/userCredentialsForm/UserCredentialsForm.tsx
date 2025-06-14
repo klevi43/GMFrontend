@@ -4,7 +4,7 @@ import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
 import UserCredentialsFormInputItem from "./UserCredentialsFormInputItem";
 import Title from "../Title";
-import type { RegisterFormFieldsType } from "../../../types/formFieldsType";
+import type { UserCredentialsFormFieldsType } from "../../../types/formFieldsType";
 import type { UserCredentialsInput } from "../../../types/inputTypes";
 import ModalCloseButton from "../../modals/ModalCloseButton";
 import { useMod } from "../../../hooks/useMod";
@@ -14,7 +14,7 @@ import { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchem
 type Props = {
   // zod schema
   onSubmit: (data: UserCredentialsInput) => void; // what to do upon successful submission
-  fields: RegisterFormFieldsType[]; // the fields to render
+  fields: UserCredentialsFormFieldsType[]; // the fields to render
   title: string; // title of the form
   note?: string;
   defaultValues: { email: string; password: ""; confirmPassword: "" }; // initial values for the form fields

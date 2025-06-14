@@ -19,7 +19,6 @@ export const useDeleteWorkout = (
   >
 ): UseBaseMutationResult<AxiosResponse<any, any>, unknown, number, unknown> => {
   const queryClient = useQueryClient();
-  const { closeModal } = useMod();
   return useMutation({
     mutationFn: async (workoutId: number) => {
       try {
@@ -34,7 +33,9 @@ export const useDeleteWorkout = (
     },
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["workouts"] });
-      queryClient.invalidateQueries({ queryKey: ["workoutHistory"] });
+      queryClient.removeQueries({
+        queryKey: ["workoutHistory"],
+      });
       options?.onSuccess?.(data, variables, context);
     },
     onError: (error, variables, context) => {

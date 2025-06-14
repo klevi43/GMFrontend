@@ -5,7 +5,7 @@ import FormSubmitButton from "../FormSubmitButton";
 import UserCredentialsFormInputItem from "./UpdateUserPasswordFormInputItem";
 import Title from "../Title";
 import type {
-  RegisterFormFieldsType,
+  UserCredentialsFormFieldsType,
   UpdateUserPasswordFormFieldsType,
 } from "../../../types/formFieldsType";
 import type {
