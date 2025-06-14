@@ -11,3 +11,4 @@ export const NOT_FOUND_ENDPOINT = "*";
 export const HISTORY = "/history";
 export const PROMOTE = "/promote";
 export const PASSWORD = "/password";
+export const EMAIL = "/email";

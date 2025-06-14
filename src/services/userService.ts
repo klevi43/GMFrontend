@@ -1,9 +1,14 @@
 import axiosInstance from "./axiosInstance";
 import { REGISTER_ENDPOINT } from "../constants/constants";
 import type RegisterUser from "../types/registerUserType";
-import type { PasswordInput, UserCredentialsInput } from "../types/inputTypes";
+import type {
+  EmailInput,
+  PasswordInput,
+  UserCredentialsInput,
+} from "../types/inputTypes";
 import {
   DELETE,
+  EMAIL,
   PASSWORD,
   UPDATE,
   USERS_ENDPOINT,
@@ -23,6 +28,18 @@ export class UserService {
   };
   getUserInfo = async () => {
     const response = await axiosInstance.get(USERS_ENDPOINT);
+    return response.data;
+  };
+  updateUserEmail = async (emailInput: EmailInput) => {
+    const response = await axiosInstance.put(
+      USERS_ENDPOINT + EMAIL + UPDATE,
+      emailInput,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     return response.data;
   };
   updateUserPassword = async (passwordInput: PasswordInput) => {

@@ -48,6 +48,11 @@ const MyAccount = () => {
             <p className="text-white text-[1.1rem]">xxxxxxxxxx</p>
           </div>
           <ShowElementButton
+            content="Update Email"
+            styles="text-[1.5rem] mb-2 py-2 bg-primary w-full rounded-lg hover:scale-102"
+            showElement={() => openModal("UPDATE_USER_EMAIL", userResponseDto)}
+          />
+          <ShowElementButton
             content="Update Password"
             styles="text-[1.5rem] py-2 bg-primary w-full rounded-lg hover:scale-102"
             showElement={() =>

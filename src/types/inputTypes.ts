@@ -15,6 +15,12 @@ export type PasswordInput = {
   confirmNewPassword: string;
 };
 
+export type EmailInput = {
+  currentEmail: string;
+  newEmail: string;
+  password: string;
+};
+
 export type WorkoutInput = {
   name: string;
   date: string;

@@ -13,14 +13,14 @@ import { useNavigate } from "react-router";
 import { LOGIN_ENDPOINT } from "../../constants/constants";
 
 export const useUpdateUserPassword = (
-  options?: UseMutationOptions<UserDto, unknown, PasswordInput, unknown>
-): UseBaseMutationResult<UserDto, unknown, PasswordInput, unknown> => {
+  options?: UseMutationOptions<void, unknown, PasswordInput, unknown>
+): UseBaseMutationResult<void, unknown, PasswordInput, unknown> => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation({
     mutationFn: async (passwordInput: PasswordInput) => {
       try {
-        return await userService.updateUserPassword(passwordInput);
+        await userService.updateUserPassword(passwordInput);
       } catch (error) {
         let message =
           "Unable to update your information. Please try again later.";

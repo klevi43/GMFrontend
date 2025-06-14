@@ -2,7 +2,7 @@ import type { SubmitHandler } from "react-hook-form";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 
-import { useUpdateUserPassword } from "../../../hooks/userHooks/useUpdateUserInfo";
+import { useUpdateUserPassword } from "../../../hooks/userHooks/useUpdateUserPassword";
 import { UpdateUserPasswordFormSchema } from "../../../schemas/updateUserPasswordFormSchema";
 import type { PasswordInput } from "../../../types/inputTypes";
 import UpdateUserPasswordForm from "../../form/updatePasswordForm/UpdateUserPasswordForm";
@@ -13,7 +13,9 @@ const UpdateUserPasswordModal = () => {
   const onSubmit: SubmitHandler<UpdateUserPasswordFormSchema> = (
     data: PasswordInput
   ) => {
-    mutation.mutateAsync(data);
+    try {
+      mutation.mutateAsync(data);
+    } catch (error) {}
   };
   const note =
     "Note: Updating your password will require you to login again using your new credentials.";
@@ -23,7 +25,7 @@ const UpdateUserPasswordModal = () => {
         <FormContainer>
           <UpdateUserPasswordForm
             onSubmit={onSubmit}
-            title="Update Account Information"
+            title="Update Account Password"
             fields={[
               {
                 name: "currentPassword",

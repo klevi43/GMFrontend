@@ -45,6 +45,7 @@ export const useAddWorkout = (
       // variable: the input (workoutInput)
       // context: optional context for optimistic updates
       queryClient.invalidateQueries({ queryKey: ["workouts"] });
+      queryClient.invalidateQueries({ queryKey: ["workoutHistory"] });
       // pass to user defined handler
       options?.onSuccess?.(data, variables, context);
     },

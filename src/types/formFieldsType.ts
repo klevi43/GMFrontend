@@ -19,6 +19,13 @@ export type UpdateUserPasswordFormFieldsType = {
   label: string;
   type: string;
 };
+
+export type UpdateUserEmailFormFieldsType = {
+  name: "currentEmail" | "newEmail" | "password";
+  label: string;
+  type: string;
+};
+
 export type WorkoutFormFieldsType = {
   name: keyof WorkoutFormSchema;
   label: string;
