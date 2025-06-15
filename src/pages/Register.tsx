@@ -5,6 +5,7 @@ import { useRegister } from "../hooks/useRegister";
 import type { UserCredentialsInput } from "../types/inputTypes";
 import Footer from "../components/footer/Footer";
 import type { UserCredentialsFormSchema } from "../schemas/userCredentialsSchema";
+import Nav from "../components/navbar/Nav";
 const Register = () => {
   const mutation = useRegister();
   const onSubmit: SubmitHandler<UserCredentialsFormSchema> = (
@@ -14,6 +15,7 @@ const Register = () => {
   };
   return (
     <>
+      <Nav />
       <FormContainer>
         <UserCredentialsForm
           onSubmit={onSubmit}
