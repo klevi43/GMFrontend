@@ -69,7 +69,7 @@ const WorkoutForm = ({
         {isSuccess && (
           <ModalCloseButton
             closeModal={closeModal}
-            styles="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
+            styles="mt-3 bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300 active:bg-modal active:text-primary active:border-2 active:border:primary"
             content="Close"
           />
         )}

@@ -37,8 +37,8 @@ const WorkoutListItem = React.memo(({ workoutDto }: Props) => {
 
   return (
     <>
-      <li className="w-[100%] pb-2 hover:pl-4 transition-all duration-300">
-        <div className=" border-l-8 border-primary text-text  bg-background  transition-all duration-300  hover:text-primary">
+      <li className="w-[100%] pb-2 hover:pl-4 transition-all duration-300 active:pl-5">
+        <div className="border-l-8 border-primary text-text  bg-background  transition-all duration-300  hover:text-primary active:text-primary">
           <div className="flex justify-between items-center">
             <button
               className="cursor-pointer"

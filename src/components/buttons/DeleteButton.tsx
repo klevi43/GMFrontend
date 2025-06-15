@@ -1,4 +1,3 @@
-import React from "react";
 import { useMod } from "../../hooks/useMod";
 
 interface Props {
@@ -26,7 +25,7 @@ const DeleteButton = ({
       {isSuccess && (
         <button
           onClick={closeModal}
-          className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300"
+          className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300 active:bg-modal active:text-primary active:border-2 active:border:primary"
         >
           Close
         </button>

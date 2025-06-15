@@ -24,7 +24,7 @@ const AddSetFormModal = () => {
             title="Add Set"
             defaultValues={{ weight: 0, reps: 0, exerciseId: exerciseId }}
             fields={[
-              { name: "weight", label: "Weight (Kg)" },
+              { name: "weight", label: "Weight (lbs)" },
               { name: "reps", label: "Reps" },
             ]}
             error={mutation.error}

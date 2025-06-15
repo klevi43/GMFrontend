@@ -7,11 +7,12 @@ interface Props {
 const PageSelectorButton = ({ action, text }: Props) => {
   return (
     <>
-      <span className="hover:text-primary transition-all duration-300">
-        <button onClick={action} className="hover:cursor-pointer">
-          {text}
-        </button>
-      </span>
+      <button
+        onClick={action}
+        className="hover:text-primary transition-all duration-300 active:text-primary active:scale-95 hover:cursor-pointer"
+      >
+        {text}
+      </button>
     </>
   );
 };

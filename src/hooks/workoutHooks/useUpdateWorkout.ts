@@ -31,7 +31,7 @@ export const useUpdateWorkout = (
     },
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["workouts"] });
-      queryClient.removeQueries({
+      queryClient.invalidateQueries({
         queryKey: ["workoutHistory"],
       });
       options?.onSuccess?.(data, variables, context);

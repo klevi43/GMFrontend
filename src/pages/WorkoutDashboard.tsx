@@ -23,7 +23,7 @@ const WorkoutDashboard = () => {
           </div>
           <div className="flex items-baseline">
             <ShowElementButton
-              styles="text-[3.5rem] text-text hover:text-white"
+              styles="text-[3.5rem] text-text hover:text-white active:text-white active:scale-95"
               content="+"
               showElement={() => openModal("ADD_WORKOUT")}
             />
