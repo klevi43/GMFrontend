@@ -1,21 +1,11 @@
 import axios from "axios";
 import { API_URL, LOGIN_ENDPOINT } from "../constants/constants";
+import { NOT_FOUND_ENDPOINT } from "../constants/endpoints";
+import { useNavigate } from "react-router";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
   withCredentials: true,
 });
-
-// Global response interceptor
-axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      // Redirect to login
-      window.location.href = LOGIN_ENDPOINT;
-    }
-    return Promise.reject(error);
-  }
-);
 
 export default axiosInstance;

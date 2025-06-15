@@ -15,11 +15,13 @@ const AdminRoutes = () => {
   const isUnauthorized =
     isError && axios.isAxiosError(error) && error.response?.status === 401;
   const isStillLoading = isLoading || isFetching;
+  if (isStillLoading) {
+    return null;
+  }
   if (
-    !isStillLoading &&
-    (isUnauthorized ||
-      !authUser ||
-      (authUser && authUser.userRole !== "ROLE_ADMIN"))
+    isUnauthorized ||
+    !authUser ||
+    (authUser && authUser.userRole !== "ROLE_ADMIN")
   )
     return <Navigate to={NOT_FOUND_ENDPOINT} />;
   return <Outlet />; // a placeholder component that renders the shild routes of a parent route

@@ -13,7 +13,7 @@ interface Props {
   workoutDto: WorkoutDto;
 }
 
-const WorkoutListItem = React.memo(({ workoutDto }: Props) => {
+const WorkoutListItem = ({ workoutDto }: Props) => {
   const { openMenuId, showOpenMenuById } = useMenu();
 
   const navigate = useNavigate();
@@ -64,6 +64,6 @@ const WorkoutListItem = React.memo(({ workoutDto }: Props) => {
       </li>
     </>
   );
-});
+};
 
 export default WorkoutListItem;

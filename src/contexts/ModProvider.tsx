@@ -5,6 +5,7 @@ import {
   type ModContextType,
   type ModType,
 } from "../types/modContextType";
+import { useMenu } from "../hooks/useMenu";
 
 const ModContext = createContext<ModContextType | undefined>(undefined);
 interface Props {
@@ -14,8 +15,9 @@ export const ModProvider = ({ children }: Props) => {
   const [modType, setModType] = useState<ModType | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [initialData, setInitialData] = useState<DtoTypes | null>(null);
-
+  const { showOpenMenuById } = useMenu();
   const openModal = (type: ModType, initialData?: DtoTypes) => {
+    showOpenMenuById(-1);
     setModType(type);
     setIsOpen(true);
     setInitialData(initialData ?? null);

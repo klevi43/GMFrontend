@@ -29,9 +29,11 @@ export const useDeleteUser = (
       }
     },
     onSuccess: (data, variables, context) => {
+      navigate("/");
       queryClient.removeQueries({ queryKey: ["userInfo"] });
       queryClient.removeQueries({ queryKey: ["authUser"] });
-      navigate("/");
+      queryClient.removeQueries({ queryKey: ["users"] });
+
       options?.onSuccess?.(data, variables, context);
     },
     onError: (error, variables, context) => {

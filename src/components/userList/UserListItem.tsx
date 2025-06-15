@@ -6,12 +6,15 @@ import ListItemOptionsButton from "../ListItemOptionsButton";
 import { useMenu } from "../../hooks/useMenu";
 import type UserDto from "../../dtos/userDto";
 import { useMod } from "../../hooks/useMod";
+import { useLoadAuthUser } from "../../hooks/useLoadAuthUser";
 interface Props {
   userDto: UserDto;
 }
 const UserListItem = ({ userDto }: Props) => {
   const { openMenuId, showOpenMenuById } = useMenu();
   const { openModal } = useMod();
+  const { data } = useLoadAuthUser();
+
   const handleOpenPromoteToAdminModalClick = () => {
     showOpenMenuById(-1);
     openModal("ADMIN_PROMOTE_USER", userDto);
@@ -30,7 +33,7 @@ const UserListItem = ({ userDto }: Props) => {
     <>
       <li className="w-[100%] pb-2 hover:pl-4 transition-all duration-300 active:pl-5">
         <div className=" border-l-8 border-primary text-text my-full bg-background  transition-all duration-300  hover:text-primary active:text-primary">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-baseline">
             <UserListItemDetails userDto={userDto} />
             <div className="relative">
               {openMenuId === userDto.id && userDto.role === "ROLE_USER" && (
@@ -51,10 +54,12 @@ const UserListItem = ({ userDto }: Props) => {
                   handleOpenDeleteModalClick={handleOpenDeleteModalClick}
                 />
               )}
-              <ListItemOptionsButton
-                showMenu={showOpenMenuById}
-                id={userDto.id}
-              />
+              {userDto.email !== data?.userEmail && (
+                <ListItemOptionsButton
+                  showMenu={showOpenMenuById}
+                  id={userDto.id}
+                />
+              )}
             </div>
           </div>
         </div>

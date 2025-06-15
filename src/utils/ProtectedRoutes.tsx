@@ -15,9 +15,10 @@ const ProtectedRoutes = () => {
   const isStillLoading = isLoading || isFetching;
   const isUnauthorized =
     isError && axios.isAxiosError(error) && error.response?.status === 401;
-
-  if (!isStillLoading && (isUnauthorized || !authUser))
-    return <Navigate to={LOGIN_ENDPOINT} />;
+  if (isStillLoading) {
+    return null;
+  }
+  if (isUnauthorized || !authUser) return <Navigate to={LOGIN_ENDPOINT} />;
   return <Outlet />; // a placeholder component that renders the shild routes of a parent route
 };
 

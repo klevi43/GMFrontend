@@ -31,8 +31,8 @@ function App() {
     <>
       <BrowserRouter>
         <QueryParamsProvider>
-          <ModProvider>
-            <MenuProvider>
+          <MenuProvider>
+            <ModProvider>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route element={<NotLoggedInRoute />}>
@@ -57,11 +57,10 @@ function App() {
                 <Route element={<AdminRoutes />}>
                   <Route path={ADMIN_ENDPOINT} element={<Admin />} />
                 </Route>
-                <Route path={ADMIN_ENDPOINT} element={<Admin />} />
                 <Route path={NOT_FOUND_ENDPOINT} element={<NotFound />} />
               </Routes>
-            </MenuProvider>
-          </ModProvider>
+            </ModProvider>
+          </MenuProvider>
         </QueryParamsProvider>
       </BrowserRouter>
     </>
