@@ -12,7 +12,10 @@ const NotLoggedInRoute = () => {
     isFetching,
   } = useLoadAuthUser();
   const isStillLoading = isLoading || isFetching;
-  if (!isStillLoading && authUser) return <Navigate to={WORKOUTS_ENDPOINT} />;
+  if (isStillLoading) {
+    return null;
+  }
+  if (authUser) return <Navigate to={WORKOUTS_ENDPOINT} />;
   return <Outlet />;
 };
 
