@@ -50,7 +50,7 @@ const DeleteSetFormModal = ({ initialData }: Props) => {
                 <p className="text-text text-[1.2rem] mb-2 text-center">
                   Are you sure you want to delete this set?
                 </p>
-                <h4 className="flex justify-between w-[80%] text-white text-[2rem] font-bold mb-5 ">
+                <h4 className="flex justify-between w-[95%] text-white text-[2rem] font-bold mb-5 ">
                   <div>{`Weight: ${initialData.weight}`}</div>
                   <div>{`Reps: ${initialData.reps}`}</div>
                 </h4>

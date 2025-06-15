@@ -5,7 +5,7 @@ interface Props {
 const ListItemOptionsButton = ({ showMenu, id }: Props) => {
   return (
     <button
-      className=" text-text hover:text-white transition duration-300 cursor-pointer"
+      className=" text-text hover:text-white transition duration-300 cursor-pointer active:scale-95 active:text-white"
       onClick={() => showMenu(id)}
     >
       <svg

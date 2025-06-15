@@ -64,7 +64,7 @@ const WorkoutForm = ({
             />
           </div>
         ))}
-        {note && <p className="text-text mb-4">{note}</p>}
+        {note && <p className="text-text">{note}</p>}
         {!isSuccess && <FormSubmitButton isSubmitting={isSubmitting} />}
         {isSuccess && (
           <ModalCloseButton

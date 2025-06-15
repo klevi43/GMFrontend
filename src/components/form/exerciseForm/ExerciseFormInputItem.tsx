@@ -11,7 +11,7 @@ interface Props {
 const ExerciseFormInputItem = ({ name, type, register, errorMsg }: Props) => {
   return (
     <>
-      <div className="w-full mb-8">
+      <div className="w-full">
         <input
           className=" p-2.5 w-full bg-input rounded-lg"
           type={type}

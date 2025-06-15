@@ -23,7 +23,7 @@ const ListItemMenuModal = ({
           <li>
             <button
               onClick={handleOpenUpdateModalClick}
-              className="text-text hover:text-white transition-all duration-300 cursor-pointer"
+              className="text-text hover:text-white transition-all duration-300 cursor-pointer active:scale-95 active:text-white"
             >
               {updateOptionText ? updateOptionText : "Edit"}
             </button>
@@ -31,7 +31,7 @@ const ListItemMenuModal = ({
           <li>
             <button
               onClick={handleOpenDeleteModalClick}
-              className="text-text hover:text-red-500 transition-all duration-300 cursor-pointer"
+              className="text-text hover:text-red-500 transition-all duration-300 cursor-pointer active:scale-95 active:text-red-500"
             >
               {deleteOptionText ? deleteOptionText : "Delete"}
             </button>

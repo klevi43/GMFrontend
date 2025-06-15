@@ -38,7 +38,7 @@ const UpdateSetFormModal = ({ initialData }: Props) => {
               exerciseId: initialData.exerciseId,
             }}
             fields={[
-              { name: "weight", label: "Weight (Kg)" },
+              { name: "weight", label: "Weight (lbs)" },
               { name: "reps", label: "Reps" },
             ]}
             error={mutation.error}

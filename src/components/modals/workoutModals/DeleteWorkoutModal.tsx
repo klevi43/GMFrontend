@@ -47,8 +47,8 @@ const DeleteWorkoutModal = ({ initialData }: Props) => {
                   {initialData.name}
                 </h4>
 
-                <p className="text-red-500 mb-4 text-center">
-                  This will delete all exercises and sets in this workout
+                <p className="text-red-500 mb-3 text-center">
+                  This will delete all exercises and sets in this workout.
                 </p>
 
                 <div className="w-full">

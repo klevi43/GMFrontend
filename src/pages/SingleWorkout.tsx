@@ -30,7 +30,7 @@ const SingleWorkout = () => {
   return (
     <div className="max-w-[1050px] mx-auto">
       <Nav />
-      <div className="w-[90%]  mx-auto border-2 bg-modal border-modal-outline rounded-4xl">
+      <div className="w-[90%] mt-[1rem] mx-auto border-2 bg-modal border-modal-outline rounded-4xl">
         {isLoading && (
           <div className="flex justify-center items-center min-h-[6rem]">
             <InfoMessage fontSize="[2rem]" message="Loading workout..." />
@@ -62,7 +62,7 @@ const SingleWorkout = () => {
               </p>
             )}
             <ShowElementButton
-              styles="text-[2rem] py-2 bg-primary w-full rounded-full hover:scale-102"
+              styles="text-[2rem] py-2 bg-primary w-full rounded-full hover:scale-102 active:bg-modal active:border-2 active:border-primary active:text-primary active:scale-95"
               content="Add Exercise"
               showElement={() => openModal("ADD_EXERCISE")}
             />
