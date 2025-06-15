@@ -60,3 +60,9 @@ https://nodejs.org/
 - This frontend connects to a Spring Boot
   backend. You can find the backend repo here:
   [GMBackend](https://github.com/klevi43/GMBackend)
+
+## Known Issues
+
+- Currently there is no graceful handling of the token expiring after the 3 hour time limit has been reached. To resolve this, simply refresh your page and go to the login screen to login again. Improved handling is planned for a future update.
+- Logging out removes the token from cookies subsequent requests; however, the token is not invalidated by the backend. This is not a security concern because the jwt is stored in an HTTP only cookie and has a short lifespan (3 hours). A refresh token functionality is planned for a future update.
+- Thank you for your patience and understanding.
