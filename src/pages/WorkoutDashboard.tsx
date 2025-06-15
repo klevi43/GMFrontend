@@ -1,4 +1,3 @@
-import { date } from "zod";
 import ShowElementButton from "../components/buttons/ShowElementButton";
 import Footer from "../components/footer/Footer";
 import Title from "../components/form/Title";
@@ -12,6 +11,7 @@ import { useGetCurrentWorkouts } from "../hooks/workoutHooks/useGetCurrentWorkou
 const WorkoutDashboard = () => {
   const { openModal } = useMod();
   const { data: workoutDtos, error, isLoading } = useGetCurrentWorkouts();
+  console.log(workoutDtos);
   return (
     <>
       <Nav />

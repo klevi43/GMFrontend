@@ -20,7 +20,8 @@ const UpdateWorkoutFormModal = ({ initialData }: Props) => {
     } catch (error) {}
   };
   const mutation = useUpdateWorkout();
-  const queryParams = useQueryParams();
+  const note =
+    "Note: Changing the name of a workout will affect all other workouts with the same name.";
   return (
     <>
       <ModalContainer>
@@ -36,6 +37,7 @@ const UpdateWorkoutFormModal = ({ initialData }: Props) => {
               { name: "name", label: "Workout Name", type: "text" },
               { name: "date", label: "Date completed", type: "date" },
             ]}
+            note={note}
             error={mutation.error}
             isSuccess={mutation.isSuccess}
           />

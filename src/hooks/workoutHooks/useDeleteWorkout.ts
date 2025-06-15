@@ -33,9 +33,10 @@ export const useDeleteWorkout = (
     },
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["workouts"] });
-      queryClient.removeQueries({
-        queryKey: ["workoutHistory"],
-      });
+      queryClient.invalidateQueries({ queryKey: ["workoutHistory"] });
+      // queryClient.removeQueries({
+      //   queryKey: ["workoutHistory"],
+      // });
       options?.onSuccess?.(data, variables, context);
     },
     onError: (error, variables, context) => {
