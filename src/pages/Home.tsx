@@ -3,6 +3,8 @@ import Nav from "../components/navbar/Nav";
 import Hero from "../components/hero/Hero";
 import About from "../components/about/About";
 import Footer from "../components/footer/Footer";
+import axios from "axios";
+import axiosInstance from "../services/axiosInstance";
 const Home = () => {
   return (
     <>

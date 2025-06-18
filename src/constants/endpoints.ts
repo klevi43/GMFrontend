@@ -1,3 +1,6 @@
+export const LOGIN_ENDPOINT = "/auth/login";
+export const GET_AUTH_USER_ENDPOINT = "/auth/me";
+export const REGISTER_ENDPOINT = "/register";
 export const USERS_ENDPOINT = "/users";
 export const ADMIN_ENDPOINT = "/admin" + USERS_ENDPOINT;
 export const WORKOUTS_ENDPOINT = "/workouts";

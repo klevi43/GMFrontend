@@ -1,11 +1,26 @@
 import axios from "axios";
-import { API_URL, LOGIN_ENDPOINT } from "../constants/constants";
-import { NOT_FOUND_ENDPOINT } from "../constants/endpoints";
-import { useNavigate } from "react-router";
 
+import Cookies from "js-cookie";
 const axiosInstance = axios.create({
-  baseURL: API_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
 });
+
+// // Add a request interceptor
+// axiosInstance.interceptors.request.use(
+//   (config) => {
+//     // Read the XSRF-TOKEN cookie
+//     const csrfToken = Cookies.get("XSRF-TOKEN");
+//     console.log(csrfToken);
+//     // If the CSRF token exists and it's a non-GET request, add the header
+//     if (csrfToken && config.method !== "get" && config.method !== "GET") {
+//       config.headers["X-XSRF-TOKEN"] = csrfToken;
+//     }
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
 
 export default axiosInstance;

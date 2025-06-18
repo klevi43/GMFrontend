@@ -1,4 +1,4 @@
-import { GET_AUTH_USER_ENDPOINT, LOGIN_ENDPOINT } from "../constants/constants";
+import { GET_AUTH_USER_ENDPOINT, LOGIN_ENDPOINT } from "../constants/endpoints";
 import axiosInstance from "./axiosInstance";
 import type AuthUserDto from "../dtos/authUserDto";
 import type { LoginInput } from "../types/inputTypes";
