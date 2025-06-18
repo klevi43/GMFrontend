@@ -11,7 +11,6 @@ import { useGetCurrentWorkouts } from "../hooks/workoutHooks/useGetCurrentWorkou
 const WorkoutDashboard = () => {
   const { openModal } = useMod();
   const { data: workoutDtos, error, isLoading } = useGetCurrentWorkouts();
-  console.log(workoutDtos);
   return (
     <>
       <Nav />

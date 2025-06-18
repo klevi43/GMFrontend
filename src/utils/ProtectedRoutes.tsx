@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoadAuthUser } from "../hooks/useLoadAuthUser";
 import { Navigate, Outlet } from "react-router";
-import { LOGIN_ENDPOINT } from "../constants/constants";
+import { LOGIN_ENDPOINT } from "../constants/endpoints";
 import axios from "axios";
 
 const ProtectedRoutes = () => {
