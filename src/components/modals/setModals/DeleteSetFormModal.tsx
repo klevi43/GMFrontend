@@ -1,15 +1,14 @@
-import React from "react";
+import type SetDto from "../../../dtos/setDto";
+import { useDeleteSet } from "../../../hooks/setHooks/useDeleteSet";
+import { useMod } from "../../../hooks/useMod";
+import { useQueryParams } from "../../../hooks/useQueryParams";
+import DeleteButton from "../../buttons/DeleteButton";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
-import ModalCloseButton from "../ModalCloseButton";
-import { useMod } from "../../../hooks/useMod";
-import type SetDto from "../../../dtos/setDto";
-import { useDeleteSet } from "../../../hooks/setHooks/useDeleteSet";
-import { useQueryParams } from "../../../hooks/useQueryParams";
 import ErrorMessage from "../../messages/ErrorMessage";
-import DeleteButton from "../../buttons/DeleteButton";
 import SuccessMessage from "../../messages/SuccessMessage";
+import ModalCloseButton from "../ModalCloseButton";
 
 interface Props {
   initialData: SetDto;

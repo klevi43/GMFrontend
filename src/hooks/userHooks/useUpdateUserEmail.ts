@@ -4,12 +4,12 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type { EmailInput } from "../../types/inputTypes";
-import { useNavigate } from "react-router";
-import userService from "../../services/userService";
 import axios from "axios";
+import { useNavigate } from "react-router";
+import { LOGIN_ENDPOINT } from "../../constants/endpoints";
+import userService from "../../services/userService";
+import type { EmailInput } from "../../types/inputTypes";
 import { formatApiError } from "../../utils/formatApiError";
-import { LOGIN_ENDPOINT } from "../../constants/constants";
 
 export const useUpdateUserEmail = (
   options?: UseMutationOptions<void, unknown, EmailInput, unknown>

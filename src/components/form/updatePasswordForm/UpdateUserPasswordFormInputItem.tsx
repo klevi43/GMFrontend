@@ -1,6 +1,5 @@
 import type { UseFormRegister } from "react-hook-form";
 import type { UpdateUserPasswordFormSchema } from "../../../schemas/updateUserPasswordFormSchema";
-import type { UpdateUserPasswordFormFieldsType } from "../../../types/formFieldsType";
 
 interface Props {
   name: "currentPassword" | "newPassword" | "confirmNewPassword";

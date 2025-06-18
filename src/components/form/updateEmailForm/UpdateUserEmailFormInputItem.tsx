@@ -1,6 +1,5 @@
 import type { UseFormRegister } from "react-hook-form";
 import type { UpdateUserEmailFormSchema } from "../../../schemas/updateUserEmailFormSchema";
-import type UserDto from "../../../dtos/userDto";
 
 interface Props {
   name: "currentEmail" | "newEmail" | "password";

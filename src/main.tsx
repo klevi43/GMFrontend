@@ -1,12 +1,9 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
 import App from "./App.tsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useLoadAuthUser } from "./hooks/useLoadAuthUser.ts";
+import "./index.css";
 
-import { persistQueryClient } from "@tanstack/react-query-persist-client";
-import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

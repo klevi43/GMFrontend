@@ -1,5 +1,3 @@
-import React from "react";
-import ScrollFadeIn from "../animations/ScrollFadeIn";
 import Logo from "../../assets/pictures/GM-Logo.png";
 const Footer = () => {
   return (

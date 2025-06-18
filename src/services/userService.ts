@@ -1,17 +1,17 @@
-import axiosInstance from "./axiosInstance";
-import { REGISTER_ENDPOINT } from "../constants/endpoints";
+import {
+  DELETE,
+  EMAIL,
+  PASSWORD,
+  REGISTER_ENDPOINT,
+  UPDATE,
+  USERS_ENDPOINT,
+} from "../constants/endpoints";
 import type {
   EmailInput,
   PasswordInput,
   UserCredentialsInput,
 } from "../types/inputTypes";
-import {
-  DELETE,
-  EMAIL,
-  PASSWORD,
-  UPDATE,
-  USERS_ENDPOINT,
-} from "../constants/endpoints";
+import axiosInstance from "./axiosInstance";
 export class UserService {
   register = async (registerInput: UserCredentialsInput) => {
     const response = await axiosInstance.post(

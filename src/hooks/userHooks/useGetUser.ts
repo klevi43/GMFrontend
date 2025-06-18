@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import userService from "../../services/userService";
 import type UserDto from "../../dtos/userDto";
+import userService from "../../services/userService";
 
 export const useGetUser = () => {
   return useQuery<UserDto>({

@@ -5,17 +5,17 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 
+import axios from "axios";
+import type SetDto from "../../dtos/setDto";
+import setService from "../../services/setService";
 import type { SetInput } from "../../types/inputTypes";
+import { formatApiError } from "../../utils/formatApiError";
 import {
   getExerciseId,
   getSetId,
   getWorkoutId,
 } from "../../utils/QueryParamHelpers";
 import { useMod } from "../useMod";
-import setService from "../../services/setService";
-import axios from "axios";
-import type SetDto from "../../dtos/setDto";
-import { formatApiError } from "../../utils/formatApiError";
 
 export const useUpdateSet = (
   options?: UseMutationOptions<SetDto, unknown, SetInput, unknown>

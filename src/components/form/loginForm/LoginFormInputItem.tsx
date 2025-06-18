@@ -1,8 +1,5 @@
-import { input } from "motion/react-client";
-import React from "react";
-import type { FieldErrors, UseFormRegister } from "react-hook-form";
+import type { UseFormRegister } from "react-hook-form";
 import type { LoginFormSchema } from "../../../schemas/loginFormSchema";
-import type { ZodSchema } from "zod";
 interface Props {
   name: "email" | "password";
   type: string;

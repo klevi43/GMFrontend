@@ -1,4 +1,3 @@
-import React from "react";
 import type UserDto from "../../dtos/userDto";
 interface Props {
   userDto: UserDto;

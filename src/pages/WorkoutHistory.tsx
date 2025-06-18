@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import ShowElementButton from "../components/buttons/ShowElementButton";
+import { useState } from "react";
 import Footer from "../components/footer/Footer";
 import Title from "../components/form/Title";
 import Nav from "../components/navbar/Nav";
 import WorkoutList from "../components/workoutList/WorkoutList";
 
-import { useGetWorkoutHistory } from "../hooks/workoutHooks/useGetWorkoutHistory";
-import { p } from "motion/react-client";
-import PageSelector from "../components/pageSelector/PageSelector";
-import InfoMessage from "../components/messages/InfoMessage";
 import ErrorMessage from "../components/messages/ErrorMessage";
+import InfoMessage from "../components/messages/InfoMessage";
+import PageSelector from "../components/pageSelector/PageSelector";
+import { useGetWorkoutHistory } from "../hooks/workoutHooks/useGetWorkoutHistory";
 
 const WorkoutHistory = () => {
   const [pageNo, setPageNo] = useState(1);

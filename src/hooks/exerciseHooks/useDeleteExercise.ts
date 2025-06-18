@@ -7,9 +7,9 @@ import {
 import type { AxiosResponse } from "axios";
 import axios from "axios";
 import exerciseService from "../../services/exerciseService";
+import { formatApiError } from "../../utils/formatApiError";
 import { getWorkoutId } from "../../utils/QueryParamHelpers";
 import { useMod } from "../useMod";
-import { formatApiError } from "../../utils/formatApiError";
 
 export const useDeleteExercise = (
   options?: UseMutationOptions<

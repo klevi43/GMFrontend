@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
-import type { AuthContextType } from "../types/AuthContextType";
 import type AuthUserDto from "../dtos/authUserDto";
+import type { AuthContextType } from "../types/AuthContextType";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

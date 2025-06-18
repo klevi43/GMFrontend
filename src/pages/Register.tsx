@@ -1,11 +1,11 @@
-import UserCredentialsForm from "../components/form/userCredentialsForm/UserCredentialsForm";
 import type { SubmitHandler } from "react-hook-form";
 import FormContainer from "../components/containers/FormContainer";
-import { useRegister } from "../hooks/useRegister";
-import type { UserCredentialsInput } from "../types/inputTypes";
 import Footer from "../components/footer/Footer";
-import type { UserCredentialsFormSchema } from "../schemas/userCredentialsSchema";
+import UserCredentialsForm from "../components/form/userCredentialsForm/UserCredentialsForm";
 import Nav from "../components/navbar/Nav";
+import { useRegister } from "../hooks/useRegister";
+import type { UserCredentialsFormSchema } from "../schemas/userCredentialsSchema";
+import type { UserCredentialsInput } from "../types/inputTypes";
 const Register = () => {
   const mutation = useRegister();
   const onSubmit: SubmitHandler<UserCredentialsFormSchema> = (

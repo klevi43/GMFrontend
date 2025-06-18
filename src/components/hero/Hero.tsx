@@ -1,5 +1,4 @@
 import HeroText from "./HeroText";
-import FadeIn from "../animations/FadeIn";
 
 import HeroPicture from "./HeroPicture";
 const Hero = () => {

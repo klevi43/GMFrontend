@@ -4,13 +4,12 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type { PasswordInput } from "../../types/inputTypes";
-import userService from "../../services/userService";
 import axios from "axios";
-import { formatApiError } from "../../utils/formatApiError";
-import type UserDto from "../../dtos/userDto";
 import { useNavigate } from "react-router";
-import { LOGIN_ENDPOINT } from "../../constants/constants";
+import { LOGIN_ENDPOINT } from "../../constants/endpoints";
+import userService from "../../services/userService";
+import type { PasswordInput } from "../../types/inputTypes";
+import { formatApiError } from "../../utils/formatApiError";
 
 export const useUpdateUserPassword = (
   options?: UseMutationOptions<void, unknown, PasswordInput, unknown>

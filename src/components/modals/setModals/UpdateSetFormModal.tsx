@@ -1,12 +1,12 @@
-import type SetDto from "../../../dtos/setDto";
 import type { SubmitHandler } from "react-hook-form";
+import type SetDto from "../../../dtos/setDto";
+import { useUpdateSet } from "../../../hooks/setHooks/useUpdateSet";
+import { useQueryParams } from "../../../hooks/useQueryParams";
 import type { SetFormSchema } from "../../../schemas/setFormSchema";
 import type { SetInput } from "../../../types/inputTypes";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import SetForm from "../../form/setForm/SetForm";
-import { useUpdateSet } from "../../../hooks/setHooks/useUpdateSet";
-import { useQueryParams } from "../../../hooks/useQueryParams";
 
 interface Props {
   initialData: SetDto;

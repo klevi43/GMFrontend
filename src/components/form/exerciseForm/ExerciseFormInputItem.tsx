@@ -1,6 +1,5 @@
-import React from "react";
-import type { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
 import type { UseFormRegister } from "react-hook-form";
+import type { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
 import ErrorMessage from "../../messages/ErrorMessage";
 interface Props {
   name: keyof ExerciseFormSchema;

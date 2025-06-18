@@ -1,15 +1,14 @@
-import React from "react";
-import type { ExerciseFormFieldsType } from "../../../types/formFieldsType";
-import { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
-import type { ExerciseInput } from "../../../types/inputTypes";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import FormSubmitButton from "../FormSubmitButton";
-import ExerciseFormInputItem from "./ExerciseFormInputItem";
-import FormInputLabel from "../FormInputLabel";
+import { useForm } from "react-hook-form";
+import { ExerciseFormSchema } from "../../../schemas/exerciseFormSchema";
+import type { ExerciseFormFieldsType } from "../../../types/formFieldsType";
+import type { ExerciseInput } from "../../../types/inputTypes";
 import ErrorMessage from "../../messages/ErrorMessage";
 import ModalCloseButton from "../../modals/ModalCloseButton";
+import FormInputLabel from "../FormInputLabel";
+import FormSubmitButton from "../FormSubmitButton";
 import Title from "../Title";
+import ExerciseFormInputItem from "./ExerciseFormInputItem";
 
 import { useMod } from "../../../hooks/useMod";
 import SuccessMessage from "../../messages/SuccessMessage";

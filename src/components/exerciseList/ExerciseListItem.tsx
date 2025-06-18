@@ -1,15 +1,13 @@
-import React, { useCallback } from "react";
 import type ExerciseDto from "../../dtos/exerciseDto";
 
-import SetList from "../setList/SetList";
 import { useMod } from "../../hooks/useMod";
 import { useQueryParams } from "../../hooks/useQueryParams";
+import SetList from "../setList/SetList";
 
+import { useMenu } from "../../hooks/useMenu";
+import ShowElementButton from "../buttons/ShowElementButton";
 import ListItemMenuModal from "../ListItemMenuModal";
 import ListItemOptionsButton from "../ListItemOptionsButton";
-import { useMenu } from "../../hooks/useMenu";
-import { p } from "motion/react-client";
-import ShowElementButton from "../buttons/ShowElementButton";
 interface Props {
   exerciseDto: ExerciseDto;
 }

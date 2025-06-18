@@ -1,7 +1,5 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import type AuthUserDto from "../dtos/authUserDto";
+import { useQuery } from "@tanstack/react-query";
 import authService from "../services/authService";
-import axios from "axios";
 
 export const useLoadAuthUser = () => {
   return useQuery({

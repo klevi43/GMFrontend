@@ -6,7 +6,6 @@ interface Props {
   handleOpenDeleteModalClick: () => void;
 }
 const ListItemMenuModal = ({
-  styles,
   updateOptionText,
   deleteOptionText,
   handleOpenUpdateModalClick,

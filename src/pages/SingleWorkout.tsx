@@ -1,21 +1,17 @@
-import React, { useEffect, useMemo } from "react";
-import Nav from "../components/navbar/Nav";
+import { useEffect } from "react";
 import Title from "../components/form/Title";
+import Nav from "../components/navbar/Nav";
 
-import ShowElementButton from "../components/buttons/ShowElementButton";
-import { useGetWorkout } from "../hooks/workoutHooks/useGetWorkout";
 import { useSearchParams } from "react-router";
+import ShowElementButton from "../components/buttons/ShowElementButton";
 import ExerciseList from "../components/exerciseList/ExerciseList";
 import ErrorMessage from "../components/messages/ErrorMessage";
+import { useGetWorkout } from "../hooks/workoutHooks/useGetWorkout";
 
-import { ADD_TYPE } from "../constants/modalConstants";
-import type { ExerciseInput } from "../types/inputTypes";
-import { Query } from "@tanstack/react-query";
-import { useMod } from "../hooks/useMod";
-import { useQueryParams } from "../hooks/useQueryParams";
-import { getWorkoutId } from "../utils/QueryParamHelpers";
 import Footer from "../components/footer/Footer";
 import InfoMessage from "../components/messages/InfoMessage";
+import { useMod } from "../hooks/useMod";
+import { useQueryParams } from "../hooks/useQueryParams";
 
 const SingleWorkout = () => {
   const { queryParams, setQueryParams } = useQueryParams();

@@ -1,7 +1,5 @@
-import React from "react";
-import FadeIn from "../animations/FadeIn";
 import heroImg from "../../assets/pictures/pexels-marcuschanmedia-18060023.jpg";
-import { div } from "motion/react-client";
+import FadeIn from "../animations/FadeIn";
 const HeroPicture = () => {
   return (
     <div className="my-auto">

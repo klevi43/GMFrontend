@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useMod } from "../../../hooks/useMod";
+import { UpdateUserEmailFormSchema } from "../../../schemas/updateUserEmailFormSchema";
 import type { UpdateUserEmailFormFieldsType } from "../../../types/formFieldsType";
 import type { EmailInput } from "../../../types/inputTypes";
 import SuccessMessage from "../../messages/SuccessMessage";
@@ -8,10 +9,7 @@ import ModalCloseButton from "../../modals/ModalCloseButton";
 import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
 import Title from "../Title";
-import UpdateUserPasswordFormInputItem from "./UpdateUserEmailFormInputItem";
-import { UpdateUserEmailFormSchema } from "../../../schemas/updateUserEmailFormSchema";
 import UpdateUserEmailFormInputItem from "./UpdateUserEmailFormInputItem";
-import type UserDto from "../../../dtos/userDto";
 
 type Props = {
   // zod schema

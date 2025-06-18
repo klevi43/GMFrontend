@@ -1,6 +1,5 @@
-import React from "react";
-import type { SetFormSchema } from "../../../schemas/setFormSchema";
 import type { UseFormRegister } from "react-hook-form";
+import type { SetFormSchema } from "../../../schemas/setFormSchema";
 import ErrorMessage from "../../messages/ErrorMessage";
 interface Props {
   name: keyof SetFormSchema;

@@ -1,12 +1,11 @@
-import React from "react";
-import ModalContainer from "../../containers/ModalContainer";
-import FormContainer from "../../containers/FormContainer";
-import { useUpdateUserEmail } from "../../../hooks/userHooks/useUpdateUserEmail";
 import type { SubmitHandler } from "react-hook-form";
+import type UserDto from "../../../dtos/userDto";
+import { useUpdateUserEmail } from "../../../hooks/userHooks/useUpdateUserEmail";
 import type { UpdateUserEmailFormSchema } from "../../../schemas/updateUserEmailFormSchema";
 import type { EmailInput } from "../../../types/inputTypes";
+import FormContainer from "../../containers/FormContainer";
+import ModalContainer from "../../containers/ModalContainer";
 import UpdateUserEmailForm from "../../form/updateEmailForm/UpdateUserEmailForm";
-import type UserDto from "../../../dtos/userDto";
 
 interface Props {
   initialData: UserDto;

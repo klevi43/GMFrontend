@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState } from "react";
+import { createContext, useState } from "react";
 import type { MenuContextType } from "../types/menuContextType";
 interface Props {
   children: React.ReactNode;

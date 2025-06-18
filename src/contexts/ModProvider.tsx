@@ -1,11 +1,11 @@
 import React, { createContext, useState } from "react";
 import ModalRenderer from "../components/modals/ModalRenderer";
+import { useMenu } from "../hooks/useMenu";
 import {
   type DtoTypes,
   type ModContextType,
   type ModType,
 } from "../types/modContextType";
-import { useMenu } from "../hooks/useMenu";
 
 const ModContext = createContext<ModContextType | undefined>(undefined);
 interface Props {

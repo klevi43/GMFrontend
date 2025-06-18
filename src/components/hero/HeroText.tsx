@@ -1,9 +1,6 @@
-import React from "react";
-import { motion } from "motion/react";
-
-import FadeIn from "../animations/FadeIn";
 import { Link } from "react-router";
-import { REGISTER_ENDPOINT } from "../../constants/constants";
+import { REGISTER_ENDPOINT } from "../../constants/endpoints";
+import FadeIn from "../animations/FadeIn";
 const HeroText = () => {
   return (
     <>

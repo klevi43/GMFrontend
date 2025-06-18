@@ -1,13 +1,12 @@
+import type UserDto from "../../../dtos/userDto";
+import { useAdminDemoteToUser } from "../../../hooks/adminHooks/useAdminDemoteToUser";
+import { useMod } from "../../../hooks/useMod";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
 import ErrorMessage from "../../messages/ErrorMessage";
-import ModalCloseButton from "../ModalCloseButton";
-import { useMod } from "../../../hooks/useMod";
-import type UserDto from "../../../dtos/userDto";
-import { useAdminDemoteToUser } from "../../../hooks/adminHooks/useAdminDemoteToUser";
 import SuccessMessage from "../../messages/SuccessMessage";
-import DeleteButton from "../../buttons/DeleteButton";
+import ModalCloseButton from "../ModalCloseButton";
 interface Props {
   initialData: UserDto;
 }

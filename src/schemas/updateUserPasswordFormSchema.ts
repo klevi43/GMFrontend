@@ -1,9 +1,9 @@
 import * as z from "zod";
 import {
+  CURRENT_PASSWORD_MUST_NOT_MATCH_NEW_PASSWORD,
   FIELD_NOT_EMPTY_MSG,
   MIN_LEN_8_MSG,
   PASSWORD_MUST_MATCH_MSG,
-  CURRENT_PASSWORD_MUST_NOT_MATCH_NEW_PASSWORD,
 } from "../constants/errorMsgs";
 export const UpdateUserPasswordFormSchema = z
   .object({

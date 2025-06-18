@@ -4,11 +4,11 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import type { UserCredentialsInput } from "../types/inputTypes";
-import userService from "../services/userService";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import { LOGIN_ENDPOINT } from "../constants/constants";
+import { LOGIN_ENDPOINT } from "../constants/endpoints";
+import userService from "../services/userService";
+import type { UserCredentialsInput } from "../types/inputTypes";
 
 export const useRegister = (
   options?: UseMutationOptions<

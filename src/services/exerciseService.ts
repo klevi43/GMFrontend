@@ -1,13 +1,13 @@
-import axiosInstance from "./axiosInstance";
-import type { ExerciseInput } from "../types/inputTypes";
-import type { Axios, AxiosResponse } from "axios";
-import type ExerciseDto from "../dtos/exerciseDto";
+import type { AxiosResponse } from "axios";
 import {
   CREATE,
   DELETE,
   EXERCISES_ENDPOINT,
   UPDATE,
 } from "../constants/endpoints";
+import type ExerciseDto from "../dtos/exerciseDto";
+import type { ExerciseInput } from "../types/inputTypes";
+import axiosInstance from "./axiosInstance";
 class ExerciseService {
   addExercise = async (
     exerciseInput: ExerciseInput,

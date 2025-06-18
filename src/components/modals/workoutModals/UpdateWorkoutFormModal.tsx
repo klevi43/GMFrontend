@@ -1,13 +1,11 @@
-import React from "react";
+import type { SubmitHandler } from "react-hook-form";
+import type WorkoutDto from "../../../dtos/workoutDto";
+import { useUpdateWorkout } from "../../../hooks/workoutHooks/useUpdateWorkout";
+import type { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
+import type { WorkoutInput } from "../../../types/inputTypes";
 import FormContainer from "../../containers/FormContainer";
 import ModalContainer from "../../containers/ModalContainer";
 import WorkoutForm from "../../form/workoutForm/WorkoutForm";
-import type { SubmitHandler } from "react-hook-form";
-import type { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
-import type { WorkoutInput } from "../../../types/inputTypes";
-import { useUpdateWorkout } from "../../../hooks/workoutHooks/useUpdateWorkout";
-import type WorkoutDto from "../../../dtos/workoutDto";
-import { useQueryParams } from "../../../hooks/useQueryParams";
 interface Props {
   initialData: WorkoutDto;
 }

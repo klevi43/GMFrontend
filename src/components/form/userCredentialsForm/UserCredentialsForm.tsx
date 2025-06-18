@@ -1,15 +1,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import FormInputLabel from "../FormInputLabel";
-import FormSubmitButton from "../FormSubmitButton";
-import UserCredentialsFormInputItem from "./UserCredentialsFormInputItem";
-import Title from "../Title";
+import { useMod } from "../../../hooks/useMod";
+import { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
 import type { UserCredentialsFormFieldsType } from "../../../types/formFieldsType";
 import type { UserCredentialsInput } from "../../../types/inputTypes";
-import ModalCloseButton from "../../modals/ModalCloseButton";
-import { useMod } from "../../../hooks/useMod";
 import SuccessMessage from "../../messages/SuccessMessage";
-import { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
+import ModalCloseButton from "../../modals/ModalCloseButton";
+import FormInputLabel from "../FormInputLabel";
+import FormSubmitButton from "../FormSubmitButton";
+import Title from "../Title";
+import UserCredentialsFormInputItem from "./UserCredentialsFormInputItem";
 
 type Props = {
   // zod schema

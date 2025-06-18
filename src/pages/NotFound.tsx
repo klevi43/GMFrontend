@@ -1,8 +1,7 @@
-import React from "react";
 import FormContainer from "../components/containers/FormContainer";
 import Footer from "../components/footer/Footer";
-import Nav from "../components/navbar/Nav";
 import Title from "../components/form/Title";
+import Nav from "../components/navbar/Nav";
 
 const NotFound = () => {
   return (

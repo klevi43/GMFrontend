@@ -1,9 +1,9 @@
 import * as z from "zod";
 import {
   FIELD_NOT_EMPTY_MSG,
-  VALID_EMAIL_MSG,
   MIN_LEN_8_MSG,
   PASSWORD_MUST_MATCH_MSG,
+  VALID_EMAIL_MSG,
 } from "../constants/errorMsgs";
 export const UserCredentialsFormSchema = z
   .object({

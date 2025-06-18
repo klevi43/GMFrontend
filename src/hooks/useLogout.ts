@@ -1,14 +1,12 @@
 import {
-  QueryClient,
-  queryOptions,
   useMutation,
   useQueryClient,
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
+import axios, { type AxiosResponse } from "axios";
 import { useNavigate } from "react-router";
 import authService from "../services/authService";
-import axios, { type AxiosResponse } from "axios";
 
 export const useLogout = (
   options?: UseMutationOptions<

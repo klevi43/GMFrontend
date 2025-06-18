@@ -5,10 +5,10 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import { useMod } from "../useMod";
-import adminService from "../../services/adminService";
 import axios from "axios";
+import adminService from "../../services/adminService";
 import { formatApiError } from "../../utils/formatApiError";
+import { useMod } from "../useMod";
 
 export const useAdminDeleteUser = (
   options?: UseMutationOptions<

@@ -1,7 +1,6 @@
-import React from "react";
-import { NOT_FOUND_ENDPOINT } from "../constants/endpoints";
-import { Navigate, Outlet } from "react-router";
 import axios from "axios";
+import { Navigate, Outlet } from "react-router";
+import { NOT_FOUND_ENDPOINT } from "../constants/endpoints";
 import { useLoadAuthUser } from "../hooks/useLoadAuthUser";
 
 const AdminRoutes = () => {

@@ -1,8 +1,8 @@
 import * as z from "zod";
 import {
   FIELD_NOT_EMPTY_MSG,
-  VALID_EMAIL_MSG,
   MIN_LEN_8_MSG,
+  VALID_EMAIL_MSG,
 } from "../constants/errorMsgs";
 export const LoginFormSchema = z.object({
   email: z.string().nonempty(FIELD_NOT_EMPTY_MSG).email(VALID_EMAIL_MSG),

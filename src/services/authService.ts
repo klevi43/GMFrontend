@@ -1,8 +1,8 @@
+import type { AxiosResponse } from "axios";
 import { GET_AUTH_USER_ENDPOINT, LOGIN_ENDPOINT } from "../constants/endpoints";
-import axiosInstance from "./axiosInstance";
 import type AuthUserDto from "../dtos/authUserDto";
 import type { LoginInput } from "../types/inputTypes";
-import type { AxiosResponse } from "axios";
+import axiosInstance from "./axiosInstance";
 
 class AuthService {
   constructor() {}

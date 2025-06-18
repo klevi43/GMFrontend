@@ -1,8 +1,5 @@
-import React, { useRef } from "react";
-import { motion, useInView } from "motion/react";
-import ScrollFadeIn from "../animations/ScrollFadeIn";
 import aboutImg1 from "../../assets/pictures/pexels-518880552-16300776.jpg";
-import aboutImg2 from "../../assets/pictures/pexels-leonardho-1552249.jpg";
+import ScrollFadeIn from "../animations/ScrollFadeIn";
 const About = () => {
   return (
     <>

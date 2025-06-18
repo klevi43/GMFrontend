@@ -4,12 +4,12 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import { getExerciseId, getWorkoutId } from "../../utils/QueryParamHelpers";
 import type { AxiosResponse } from "axios";
-import { useMod } from "../useMod";
-import setService from "../../services/setService";
 import axios from "axios";
+import setService from "../../services/setService";
 import { formatApiError } from "../../utils/formatApiError";
+import { getExerciseId, getWorkoutId } from "../../utils/QueryParamHelpers";
+import { useMod } from "../useMod";
 
 export const useDeleteSet = (
   options?: UseMutationOptions<

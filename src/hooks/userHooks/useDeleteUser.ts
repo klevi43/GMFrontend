@@ -5,10 +5,9 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import { useMod } from "../useMod";
-import userService from "../../services/userService";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import userService from "../../services/userService";
 import { formatApiError } from "../../utils/formatApiError";
 
 export const useDeleteUser = (

@@ -1,5 +1,4 @@
 import type { UseFormRegister } from "react-hook-form";
-
 import { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
 import ErrorMessage from "../../messages/ErrorMessage";
 interface Props {

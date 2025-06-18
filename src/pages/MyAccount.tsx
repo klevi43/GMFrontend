@@ -1,15 +1,12 @@
-import React from "react";
-import Nav from "../components/navbar/Nav";
-import Title from "../components/form/Title";
-import FormContainer from "../components/containers/FormContainer";
 import ShowElementButton from "../components/buttons/ShowElementButton";
-import { useLoadAuthUser } from "../hooks/useLoadAuthUser";
+import FormContainer from "../components/containers/FormContainer";
 import Footer from "../components/footer/Footer";
-import UpdateUserPasswordModal from "../components/modals/userModals/UpdateUserPasswordModal";
+import Title from "../components/form/Title";
+import ErrorMessage from "../components/messages/ErrorMessage";
+import InfoMessage from "../components/messages/InfoMessage";
+import Nav from "../components/navbar/Nav";
 import { useMod } from "../hooks/useMod";
 import { useGetUser } from "../hooks/userHooks/useGetUser";
-import InfoMessage from "../components/messages/InfoMessage";
-import ErrorMessage from "../components/messages/ErrorMessage";
 import { formatApiError } from "../utils/formatApiError";
 
 const MyAccount = () => {

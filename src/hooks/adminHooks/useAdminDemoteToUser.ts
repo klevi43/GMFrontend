@@ -4,13 +4,13 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
+import axios from "axios";
+import { useNavigate } from "react-router";
 import type UserDto from "../../dtos/userDto";
-import { useMod } from "../useMod";
 import adminService from "../../services/adminService";
 import { formatApiError } from "../../utils/formatApiError";
-import axios from "axios";
 import { useLoadAuthUser } from "../useLoadAuthUser";
-import { Navigate, useNavigate } from "react-router";
+import { useMod } from "../useMod";
 
 export const useAdminDemoteToUser = (
   options?: UseMutationOptions<UserDto, unknown, number, unknown>

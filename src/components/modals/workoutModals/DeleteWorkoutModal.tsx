@@ -1,14 +1,14 @@
 import FormContainer from "../../containers/FormContainer";
 
+import type WorkoutDto from "../../../dtos/workoutDto";
+import { useMod } from "../../../hooks/useMod";
+import { useDeleteWorkout } from "../../../hooks/workoutHooks/useDeleteWorkout";
+import DeleteButton from "../../buttons/DeleteButton";
 import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
-import ModalCloseButton from "../ModalCloseButton";
-import { useMod } from "../../../hooks/useMod";
-import type WorkoutDto from "../../../dtos/workoutDto";
-import { useDeleteWorkout } from "../../../hooks/workoutHooks/useDeleteWorkout";
 import ErrorMessage from "../../messages/ErrorMessage";
-import DeleteButton from "../../buttons/DeleteButton";
 import SuccessMessage from "../../messages/SuccessMessage";
+import ModalCloseButton from "../ModalCloseButton";
 
 interface Props {
   initialData: WorkoutDto;

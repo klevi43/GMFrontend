@@ -1,17 +1,16 @@
-import React from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useMod } from "../../../hooks/useMod";
 import { SetFormSchema } from "../../../schemas/setFormSchema";
 import type { SetFormFieldsType } from "../../../types/formFieldsType";
 import type { SetInput } from "../../../types/inputTypes";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import ModalCloseButton from "../../modals/ModalCloseButton";
-import Title from "../Title";
 import ErrorMessage from "../../messages/ErrorMessage";
-import FormInputLabel from "../FormInputLabel";
-import SetFormInputItem from "./SetFormInputItem";
-import FormSubmitButton from "../FormSubmitButton";
-import { useMod } from "../../../hooks/useMod";
 import SuccessMessage from "../../messages/SuccessMessage";
+import ModalCloseButton from "../../modals/ModalCloseButton";
+import FormInputLabel from "../FormInputLabel";
+import FormSubmitButton from "../FormSubmitButton";
+import Title from "../Title";
+import SetFormInputItem from "./SetFormInputItem";
 interface Props {
   onSubmit: (data: SetFormSchema) => void;
   fields: SetFormFieldsType[];

@@ -1,12 +1,10 @@
-import React from "react";
-
-import UserListItemDetails from "./UserListItemDetails";
+import type UserDto from "../../dtos/userDto";
+import { useLoadAuthUser } from "../../hooks/useLoadAuthUser";
+import { useMenu } from "../../hooks/useMenu";
+import { useMod } from "../../hooks/useMod";
 import ListItemMenuModal from "../ListItemMenuModal";
 import ListItemOptionsButton from "../ListItemOptionsButton";
-import { useMenu } from "../../hooks/useMenu";
-import type UserDto from "../../dtos/userDto";
-import { useMod } from "../../hooks/useMod";
-import { useLoadAuthUser } from "../../hooks/useLoadAuthUser";
+import UserListItemDetails from "./UserListItemDetails";
 interface Props {
   userDto: UserDto;
 }

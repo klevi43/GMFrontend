@@ -1,13 +1,12 @@
-import React from "react";
-import ModalContainer from "../../containers/ModalContainer";
+import { useMod } from "../../../hooks/useMod";
+import { useDeleteUser } from "../../../hooks/userHooks/useDeleteUser";
+import DeleteButton from "../../buttons/DeleteButton";
 import FormContainer from "../../containers/FormContainer";
+import ModalContainer from "../../containers/ModalContainer";
 import Title from "../../form/Title";
 import ErrorMessage from "../../messages/ErrorMessage";
-import ModalCloseButton from "../ModalCloseButton";
-import { useDeleteUser } from "../../../hooks/userHooks/useDeleteUser";
-import { useMod } from "../../../hooks/useMod";
 import SuccessMessage from "../../messages/SuccessMessage";
-import DeleteButton from "../../buttons/DeleteButton";
+import ModalCloseButton from "../ModalCloseButton";
 
 const DeleteUserModal = () => {
   const mutation = useDeleteUser();

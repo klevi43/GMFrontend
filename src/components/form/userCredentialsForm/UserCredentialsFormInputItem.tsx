@@ -1,5 +1,5 @@
 import type { UseFormRegister } from "react-hook-form";
-import type { UpdatePasswordFormSchema } from "../../../schemas/userCredentialsSchema";
+import type { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
 
 interface Props {
   name: "email" | "password" | "confirmPassword";

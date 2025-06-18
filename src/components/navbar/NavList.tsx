@@ -1,14 +1,13 @@
-import { useState } from "react";
-import { useLogout } from "../../hooks/useLogout";
-import NavListItem from "./NavListItem";
-import { LOGIN_ENDPOINT } from "../../constants/constants";
 import {
   ADMIN_ENDPOINT,
   HISTORY,
+  LOGIN_ENDPOINT,
   USERS_ENDPOINT,
   WORKOUTS_ENDPOINT,
 } from "../../constants/endpoints";
 import { useLoadAuthUser } from "../../hooks/useLoadAuthUser";
+import { useLogout } from "../../hooks/useLogout";
+import NavListItem from "./NavListItem";
 const NavList = () => {
   const mutation = useLogout();
   const { data: authUser } = useLoadAuthUser();

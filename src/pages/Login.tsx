@@ -1,11 +1,11 @@
 import type { SubmitHandler } from "react-hook-form";
+import { Link } from "react-router";
+import FormContainer from "../components/containers/FormContainer";
 import Footer from "../components/footer/Footer";
+import LoginForm from "../components/form/loginForm/LoginForm";
 import Nav from "../components/navbar/Nav";
 import { useLogin } from "../hooks/useLogin";
 import { LoginFormSchema } from "../schemas/loginFormSchema";
-import { Link } from "react-router";
-import FormContainer from "../components/containers/FormContainer";
-import LoginForm from "../components/form/loginForm/LoginForm";
 import type { LoginInput } from "../types/inputTypes";
 
 const Login = () => {

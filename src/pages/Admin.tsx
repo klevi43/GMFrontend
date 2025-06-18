@@ -6,8 +6,8 @@ import InfoMessage from "../components/messages/InfoMessage";
 import Nav from "../components/navbar/Nav";
 import { useGetAllUsers } from "../hooks/adminHooks/useGetAllUsers";
 
-import UserList from "../components/userList/UserList";
 import PageSelector from "../components/pageSelector/PageSelector";
+import UserList from "../components/userList/UserList";
 
 const Admin = () => {
   const [pageNo, setPageNo] = useState(1);

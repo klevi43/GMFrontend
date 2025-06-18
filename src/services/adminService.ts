@@ -1,6 +1,6 @@
-import axiosInstance from "./axiosInstance";
-import { ADMIN_ENDPOINT, DELETE, USERS_ENDPOINT } from "../constants/endpoints";
+import { ADMIN_ENDPOINT, DELETE } from "../constants/endpoints";
 import type UserDto from "../dtos/userDto";
+import axiosInstance from "./axiosInstance";
 
 export class AdminService {
   getAllUsers = async (pageNo: number) => {

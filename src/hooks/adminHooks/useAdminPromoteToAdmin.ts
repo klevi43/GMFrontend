@@ -4,9 +4,9 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
+import axios from "axios";
 import type UserDto from "../../dtos/userDto";
 import adminService from "../../services/adminService";
-import axios from "axios";
 import { formatApiError } from "../../utils/formatApiError";
 import { useMod } from "../useMod";
 

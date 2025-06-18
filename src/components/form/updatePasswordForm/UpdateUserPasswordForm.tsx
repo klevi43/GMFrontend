@@ -1,22 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useMod } from "../../../hooks/useMod";
+import { UpdateUserPasswordFormSchema } from "../../../schemas/updateUserPasswordFormSchema";
+import type { UpdateUserPasswordFormFieldsType } from "../../../types/formFieldsType";
+import type { PasswordInput } from "../../../types/inputTypes";
+import SuccessMessage from "../../messages/SuccessMessage";
+import ModalCloseButton from "../../modals/ModalCloseButton";
 import FormInputLabel from "../FormInputLabel";
 import FormSubmitButton from "../FormSubmitButton";
-import UserCredentialsFormInputItem from "./UpdateUserPasswordFormInputItem";
 import Title from "../Title";
-import type {
-  UserCredentialsFormFieldsType,
-  UpdateUserPasswordFormFieldsType,
-} from "../../../types/formFieldsType";
-import type {
-  PasswordInput,
-  UserCredentialsInput,
-} from "../../../types/inputTypes";
-import ModalCloseButton from "../../modals/ModalCloseButton";
-import { useMod } from "../../../hooks/useMod";
-import SuccessMessage from "../../messages/SuccessMessage";
-import { UserCredentialsFormSchema } from "../../../schemas/userCredentialsSchema";
-import { UpdateUserPasswordFormSchema } from "../../../schemas/updateUserPasswordFormSchema";
 import UpdateUserPasswordFormInputItem from "./UpdateUserPasswordFormInputItem";
 
 type Props = {
