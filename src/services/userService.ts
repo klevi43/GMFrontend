@@ -1,6 +1,5 @@
 import axiosInstance from "./axiosInstance";
 import { REGISTER_ENDPOINT } from "../constants/endpoints";
-import type RegisterUser from "../types/registerUserType";
 import type {
   EmailInput,
   PasswordInput,

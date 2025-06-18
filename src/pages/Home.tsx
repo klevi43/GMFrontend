@@ -1,8 +1,7 @@
-import React from "react";
-import Nav from "../components/navbar/Nav";
-import Hero from "../components/hero/Hero";
 import About from "../components/about/About";
 import Footer from "../components/footer/Footer";
+import Hero from "../components/hero/Hero";
+import Nav from "../components/navbar/Nav";
 
 const Home = () => {
   return (
