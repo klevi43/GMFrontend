@@ -8,12 +8,10 @@ import axios from "axios";
 import type UserDto from "../../dtos/userDto";
 import adminService from "../../services/adminService";
 import { formatApiError } from "../../utils/formatApiError";
-import { useMod } from "../useMod";
 
 export const useAdminPromoteToAdmin = (
   options?: UseMutationOptions<UserDto, unknown, number, unknown>
 ): UseBaseMutationResult<UserDto, unknown, number, unknown> => {
-  const { closeModal } = useMod();
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (userId: number) => {

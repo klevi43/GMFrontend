@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import workoutService from "../../services/workoutService";
 
 export const useGetWorkoutHistory = (pageNo: number) => {

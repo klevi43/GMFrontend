@@ -9,7 +9,6 @@ import axios from "axios";
 import setService from "../../services/setService";
 import { formatApiError } from "../../utils/formatApiError";
 import { getExerciseId, getWorkoutId } from "../../utils/QueryParamHelpers";
-import { useMod } from "../useMod";
 
 export const useDeleteSet = (
   options?: UseMutationOptions<
@@ -22,7 +21,7 @@ export const useDeleteSet = (
   const queryClient = useQueryClient();
   const workoutId = getWorkoutId();
   const exerciseId = getExerciseId();
-  const { closeModal } = useMod();
+
   return useMutation({
     mutationFn: async (setId: number) => {
       try {

@@ -5,9 +5,8 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
-import workoutService from "../../services/workoutService";
 import axios from "axios";
-import { useMod } from "../useMod";
+import workoutService from "../../services/workoutService";
 import { formatApiError } from "../../utils/formatApiError";
 
 export const useDeleteWorkout = (
@@ -34,9 +33,6 @@ export const useDeleteWorkout = (
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["workouts"] });
       queryClient.invalidateQueries({ queryKey: ["workoutHistory"] });
-      // queryClient.removeQueries({
-      //   queryKey: ["workoutHistory"],
-      // });
       options?.onSuccess?.(data, variables, context);
     },
     onError: (error, variables, context) => {

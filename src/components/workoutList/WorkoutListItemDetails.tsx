@@ -1,4 +1,3 @@
-import React from "react";
 import type WorkoutDto from "../../dtos/workoutDto";
 interface Props {
   workoutDto: WorkoutDto;

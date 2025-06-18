@@ -10,12 +10,10 @@ import exerciseService from "../../services/exerciseService";
 import type { ExerciseInput } from "../../types/inputTypes";
 import { formatApiError } from "../../utils/formatApiError";
 import { getWorkoutId } from "../../utils/QueryParamHelpers";
-import { useMod } from "../useMod";
 
 export const useAddExercise = (
   options?: UseMutationOptions<ExerciseDto, unknown, ExerciseInput, unknown>
 ): UseBaseMutationResult<ExerciseDto, unknown, ExerciseInput, unknown> => {
-  const { closeModal } = useMod();
   const workoutId = getWorkoutId();
   const queryClient = useQueryClient();
   return useMutation({

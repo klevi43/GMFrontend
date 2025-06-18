@@ -8,7 +8,6 @@ import type { AxiosResponse } from "axios";
 import axios from "axios";
 import adminService from "../../services/adminService";
 import { formatApiError } from "../../utils/formatApiError";
-import { useMod } from "../useMod";
 
 export const useAdminDeleteUser = (
   options?: UseMutationOptions<
@@ -19,7 +18,6 @@ export const useAdminDeleteUser = (
   >
 ): UseBaseMutationResult<AxiosResponse<any, any>, unknown, number, unknown> => {
   const queryClient = useQueryClient();
-  const { closeModal } = useMod();
   return useMutation({
     mutationFn: async (userId: number) => {
       try {

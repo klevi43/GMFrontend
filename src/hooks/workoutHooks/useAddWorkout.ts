@@ -5,11 +5,10 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 
-import type WorkoutDto from "../../dtos/workoutDto";
-import type { WorkoutInput } from "../../types/inputTypes";
-import workoutService from "../../services/workoutService";
 import axios from "axios";
-import { useMod } from "../useMod";
+import type WorkoutDto from "../../dtos/workoutDto";
+import workoutService from "../../services/workoutService";
+import type { WorkoutInput } from "../../types/inputTypes";
 import { formatApiError } from "../../utils/formatApiError";
 // AxiosResponse<Workout, any> = the expected response from the server.
 // unknown = the error type (you can specify a custom one).
@@ -23,7 +22,6 @@ export const useAddWorkout = (
     unknown // Type of context (for rollback, rarely used)
   >
 ): UseBaseMutationResult<WorkoutDto, unknown, WorkoutInput, unknown> => {
-  const { closeModal } = useMod();
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (

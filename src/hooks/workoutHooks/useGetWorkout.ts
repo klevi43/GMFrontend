@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate } from "react-router";
 import workoutService from "../../services/workoutService";
 
 export const useGetWorkout = (workoutId: number) => {
-  const nav = useNavigate();
   return useQuery({
     queryKey: ["workout", workoutId],
     queryFn: async ({ queryKey }) => {

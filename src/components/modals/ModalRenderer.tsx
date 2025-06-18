@@ -45,10 +45,7 @@ const ModalRenderer = ({ type, initialData }: Props) => {
       }
       return <AdminDemoteAdminModal initialData={initialData} />;
     case "UPDATE_USER_EMAIL":
-      if (!initialData || !isUserResponseDto(initialData)) {
-        throw new Error(INITIAL_DATA_NOT_SET_MSG);
-      }
-      return <UpdateUserEmailFormModal initialData={initialData} />;
+      return <UpdateUserEmailFormModal />;
     case "UPDATE_USER_PASSWORD":
       return <UpdateUserPasswordModal />;
     case "DELETE_USER_INFO":

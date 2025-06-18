@@ -4,17 +4,15 @@ import {
   type UseBaseMutationResult,
   type UseMutationOptions,
 } from "@tanstack/react-query";
-import type { WorkoutInput } from "../../types/inputTypes";
-import workoutService from "../../services/workoutService";
-import type WorkoutDto from "../../dtos/workoutDto";
 import axios from "axios";
-import { useMod } from "../useMod";
+import type WorkoutDto from "../../dtos/workoutDto";
+import workoutService from "../../services/workoutService";
+import type { WorkoutInput } from "../../types/inputTypes";
 import { getWorkoutId } from "../../utils/QueryParamHelpers";
 import { formatApiError } from "../../utils/formatApiError";
 export const useUpdateWorkout = (
   options?: UseMutationOptions<WorkoutDto, unknown, WorkoutInput, unknown>
 ): UseBaseMutationResult<WorkoutDto, unknown, WorkoutInput, unknown> => {
-  const { closeModal } = useMod();
   const workoutId = getWorkoutId();
   const queryClient = useQueryClient();
   return useMutation({

@@ -9,9 +9,8 @@ interface Props {
   col2?: string;
   col3?: string;
   setDto?: SetDto;
-  styles?: string;
 }
-const SetListItem = ({ col1, col2, col3, setDto, styles }: Props) => {
+const SetListItem = ({ col1, col2, col3, setDto }: Props) => {
   const { openMenuId, showOpenMenuById } = useMenu();
   const { setQueryParams } = useQueryParams();
   const { openModal } = useMod();

@@ -10,7 +10,6 @@ import setService from "../../services/setService";
 import type { SetInput } from "../../types/inputTypes";
 import { formatApiError } from "../../utils/formatApiError";
 import { getExerciseId, getWorkoutId } from "../../utils/QueryParamHelpers";
-import { useMod } from "../useMod";
 
 export const useAddSet = (
   options?: UseMutationOptions<
@@ -20,7 +19,6 @@ export const useAddSet = (
     unknown // Type of context (for rollback, rarely used)
   >
 ): UseBaseMutationResult<SetDto, unknown, SetInput, unknown> => {
-  const { closeModal } = useMod();
   const workoutId = getWorkoutId();
   const exerciseId = getExerciseId();
   const queryClient = useQueryClient();

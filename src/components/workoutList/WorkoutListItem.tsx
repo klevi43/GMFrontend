@@ -1,13 +1,13 @@
-import React, { useCallback } from "react";
-import type WorkoutDto from "../../dtos/workoutDto";
-import ListItemOptionsButton from "../ListItemOptionsButton";
-import WorkoutListItemDetails from "./WorkoutListItemDetails";
-import ListItemMenuModal from "../ListItemMenuModal";
+import { useCallback } from "react";
 import { useNavigate } from "react-router";
 import { WORKOUT, WORKOUTS_ENDPOINT } from "../../constants/endpoints";
+import type WorkoutDto from "../../dtos/workoutDto";
 import { useMenu } from "../../hooks/useMenu";
 import { useMod } from "../../hooks/useMod";
 import { useQueryParams } from "../../hooks/useQueryParams";
+import ListItemMenuModal from "../ListItemMenuModal";
+import ListItemOptionsButton from "../ListItemOptionsButton";
+import WorkoutListItemDetails from "./WorkoutListItemDetails";
 
 interface Props {
   workoutDto: WorkoutDto;

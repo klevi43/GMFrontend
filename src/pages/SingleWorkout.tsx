@@ -14,7 +14,7 @@ import { useMod } from "../hooks/useMod";
 import { useQueryParams } from "../hooks/useQueryParams";
 
 const SingleWorkout = () => {
-  const { queryParams, setQueryParams } = useQueryParams();
+  const { setQueryParams } = useQueryParams();
   const [searchParams] = useSearchParams();
   const workoutId = Number(searchParams.get("workoutId"));
   const { data: workoutDto, error, isLoading } = useGetWorkout(workoutId);

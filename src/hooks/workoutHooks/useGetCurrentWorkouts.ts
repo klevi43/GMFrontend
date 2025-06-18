@@ -1,4 +1,4 @@
-import { useQuery, type QueryObserverResult } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import type WorkoutDto from "../../dtos/workoutDto";
 import workoutService from "../../services/workoutService";
 export const useGetCurrentWorkouts = () => {

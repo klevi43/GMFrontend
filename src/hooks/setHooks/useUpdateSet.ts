@@ -15,7 +15,6 @@ import {
   getSetId,
   getWorkoutId,
 } from "../../utils/QueryParamHelpers";
-import { useMod } from "../useMod";
 
 export const useUpdateSet = (
   options?: UseMutationOptions<SetDto, unknown, SetInput, unknown>
@@ -24,7 +23,6 @@ export const useUpdateSet = (
   const workoutId = getWorkoutId();
   const exerciseId = getExerciseId();
   const setId = getSetId();
-  const { closeModal } = useMod();
 
   return useMutation({
     mutationFn: async (setInput: SetInput) => {

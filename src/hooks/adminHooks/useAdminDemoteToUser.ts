@@ -5,20 +5,14 @@ import {
   type UseMutationOptions,
 } from "@tanstack/react-query";
 import axios from "axios";
-import { useNavigate } from "react-router";
 import type UserDto from "../../dtos/userDto";
 import adminService from "../../services/adminService";
 import { formatApiError } from "../../utils/formatApiError";
-import { useLoadAuthUser } from "../useLoadAuthUser";
-import { useMod } from "../useMod";
 
 export const useAdminDemoteToUser = (
   options?: UseMutationOptions<UserDto, unknown, number, unknown>
 ): UseBaseMutationResult<UserDto, unknown, number, unknown> => {
-  const { closeModal } = useMod();
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
-  const userDto = useLoadAuthUser();
   return useMutation({
     mutationFn: async (userId: number) => {
       try {
