@@ -1,21 +1,18 @@
-# Sets up base image
-FROM node:alpine
+FROM node:18-alpine AS builder
 
-# Sets working directory inside the container to the app dir
-#  where all of our project files reside
 WORKDIR /app
 
-# Copies package.json files from project into the containers working dir
 COPY package*.json ./
 
-# Install the dependencies inside the container
-RUN npm install
+RUN npm install 
 
-# Copies the rest of the project files into the container
-COPY . .
+COPY . . 
 
-# Exposes port 5173
-EXPOSE 5173
+RUN npm run build
 
-# Specifies the default command when the container starts
-CMD ["npm", "run", "dev"]
+FROM nginx:stable-alpine
+
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
