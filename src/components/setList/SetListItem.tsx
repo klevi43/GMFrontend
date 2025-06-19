@@ -11,7 +11,7 @@ interface Props {
   setDto?: SetDto;
 }
 const SetListItem = ({ col1, col2, col3, setDto }: Props) => {
-  const { openMenuId, showOpenMenu } = useMenu();
+  const { type, openMenuId, showOpenMenu } = useMenu();
   const { setQueryParams } = useQueryParams();
   const { openModal } = useMod();
 
@@ -36,7 +36,7 @@ const SetListItem = ({ col1, col2, col3, setDto }: Props) => {
         {setDto ? (
           <div className="flex justify-center">
             <div className="relative inline-block text-[1rem]">
-              {setDto && openMenuId === setDto?.id && (
+              {setDto && openMenuId === setDto?.id && type === "SET" && (
                 <ListItemMenuModal
                   handleOpenUpdateModalClick={handleOpenUpdateModalClick}
                   handleOpenDeleteModalClick={handleOpenDeleteModalClick}

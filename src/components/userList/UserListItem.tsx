@@ -9,7 +9,7 @@ interface Props {
   userDto: UserDto;
 }
 const UserListItem = ({ userDto }: Props) => {
-  const { openMenuId, showOpenMenu } = useMenu();
+  const { type, openMenuId, showOpenMenu } = useMenu();
   const { openModal } = useMod();
   const { data } = useLoadAuthUser();
 
@@ -52,7 +52,7 @@ const UserListItem = ({ userDto }: Props) => {
                   handleOpenDeleteModalClick={handleOpenDeleteModalClick}
                 />
               )}
-              {userDto.email !== data?.userEmail && (
+              {userDto.email !== data?.userEmail && type === "USER" && (
                 <ListItemOptionsButton
                   showMenu={showOpenMenu}
                   id={userDto.id}

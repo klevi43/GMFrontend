@@ -1,7 +1,6 @@
 import React from "react";
 import { useMenu } from "../../hooks/useMenu";
 import ListItemMenuModal from "../ListItemMenuModal";
-import ListItemOptionsButton from "../ListItemOptionsButton";
 
 import { useMod } from "../../hooks/useMod";
 import type { DtoTypes, ModType } from "../../types/modContextType";
@@ -11,16 +10,16 @@ interface Props {
   initialData: DtoTypes;
 }
 const MenuWrapper = React.memo(({ modalType, initialData }: Props) => {
-  const { openMenuId, showOpenMenu: showOpenMenuById } = useMenu();
+  const { openMenuId, showOpenMenu } = useMenu();
   const { openModal } = useMod();
 
   const handleOpenUpdateModalClick = () => {
-    showOpenMenuById(-1);
+    showOpenMenu(-1, undefined);
     openModal(modalType, initialData);
   };
 
   const handleOpenDeleteModalClick = () => {
-    showOpenMenuById(-1);
+    showOpenMenu(-1, undefined);
     openModal(modalType, initialData);
   };
   return (
@@ -31,7 +30,7 @@ const MenuWrapper = React.memo(({ modalType, initialData }: Props) => {
           handleOpenDeleteModalClick={handleOpenDeleteModalClick}
         />
       )}
-      <ListItemOptionsButton showMenu={showOpenMenuById} id={initialData.id} />
+      {/* <ListItemOptionsButton showMenu={showOpenMenuById} id={initialData.id} /> */}
     </>
   );
 });

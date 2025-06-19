@@ -14,7 +14,7 @@ interface Props {
 }
 
 const WorkoutListItem = ({ workoutDto }: Props) => {
-  const { openMenuId, showOpenMenu } = useMenu();
+  const { type, openMenuId, showOpenMenu } = useMenu();
 
   const navigate = useNavigate();
   const { openModal } = useMod();
@@ -49,7 +49,7 @@ const WorkoutListItem = ({ workoutDto }: Props) => {
             </button>
 
             <div className="relative">
-              {openMenuId === workoutDto.id && (
+              {openMenuId === workoutDto.id && type === "WORKOUT" && (
                 <ListItemMenuModal
                   handleOpenUpdateModalClick={handleOpenUpdateModalClick}
                   handleOpenDeleteModalClick={handleOpenDeleteModalClick}
