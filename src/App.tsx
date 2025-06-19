@@ -23,10 +23,10 @@ import Register from "./pages/Register";
 import SingleWorkout from "./pages/SingleWorkout";
 import WorkoutDashboard from "./pages/WorkoutDashboard";
 import WorkoutHistory from "./pages/WorkoutHistory";
+import csrfService from "./services/csrfService";
 import AdminRoutes from "./utils/AdminRoutes";
 import NotLoggedInRoute from "./utils/NotLoggedInRoute";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
-import csrfService from "./services/csrfService";
 
 function App() {
   csrfService.getCsrfToken();

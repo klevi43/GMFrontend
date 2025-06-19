@@ -1,11 +1,9 @@
-import axiosInstance from "./axiosInstance"
+import axiosInstance from "./axiosInstance";
 
 class CsrfService {
-    getCsrfToken = () => {    
-            axiosInstance.get("/csrf-cookie").then(() => {
-                setTimeout(() => console.log(document.cookie), 1000)});
-            
-    }
+  getCsrfToken = () => {
+    axiosInstance.get("/csrf-cookie");
+  };
 }
 const csrfService = new CsrfService();
 export default csrfService;
