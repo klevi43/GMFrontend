@@ -17,13 +17,13 @@ const SetListItem = ({ col1, col2, col3, setDto }: Props) => {
 
   const handleOpenUpdateModalClick = () => {
     if (!setDto) throw new Error("No set data");
-    showOpenMenu(-1, "SET");
+    showOpenMenu(-1, undefined);
     setQueryParams({ exerciseId: setDto.exerciseId, setId: setDto.id });
     openModal("UPDATE_SET", setDto);
   };
   const handleOpenDeleteModalClick = () => {
     if (!setDto) throw new Error("No set data");
-    showOpenMenu(-1, "SET");
+    showOpenMenu(-1, undefined);
     setQueryParams({ exerciseId: setDto.exerciseId, setId: setDto.id });
     openModal("DELETE_SET", setDto);
   };

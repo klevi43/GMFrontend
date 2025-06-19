@@ -9,21 +9,21 @@ interface Props {
   userDto: UserDto;
 }
 const UserListItem = ({ userDto }: Props) => {
-  const { openMenuId, showOpenMenu: showOpenMenuById } = useMenu();
+  const { openMenuId, showOpenMenu } = useMenu();
   const { openModal } = useMod();
   const { data } = useLoadAuthUser();
 
   const handleOpenPromoteToAdminModalClick = () => {
-    showOpenMenuById(-1);
+    showOpenMenu(-1, undefined);
     openModal("ADMIN_PROMOTE_USER", userDto);
   };
 
   const handleOpenDemoteToUserModalClick = () => {
-    showOpenMenuById(-1);
+    showOpenMenu(-1, undefined);
     openModal("ADMIN_DEMOTE_ADMIN", userDto);
   };
   const handleOpenDeleteModalClick = () => {
-    showOpenMenuById(-1);
+    showOpenMenu(-1, undefined);
     openModal("ADMIN_DELETE_USER", userDto);
   };
 
@@ -54,8 +54,9 @@ const UserListItem = ({ userDto }: Props) => {
               )}
               {userDto.email !== data?.userEmail && (
                 <ListItemOptionsButton
-                  showMenu={showOpenMenuById}
+                  showMenu={showOpenMenu}
                   id={userDto.id}
+                  type="USER"
                 />
               )}
             </div>

@@ -18,18 +18,19 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
   const { setQueryParams } = useQueryParams();
 
   const handleOpenDeleteModalClick = () => {
-    showOpenMenu(-1, "EXERCISE");
+    showOpenMenu(-1, undefined);
     setQueryParams({ exerciseId: exerciseDto.id });
     openModal("DELETE_EXERCISE", exerciseDto);
   };
 
   const handleOpenUpdateModalClick = () => {
-    showOpenMenu(-1, "EXERCISE");
+    showOpenMenu(-1, undefined);
     setQueryParams({ exerciseId: exerciseDto.id });
     openModal("UPDATE_EXERCISE", exerciseDto);
   };
 
   const handleAddSetButtonClick = () => {
+    showOpenMenu(-1, undefined);
     setQueryParams({ exerciseId: exerciseDto.id });
     openModal("ADD_SET");
   };
@@ -45,6 +46,7 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
               handleOpenDeleteModalClick={handleOpenDeleteModalClick}
             />
           )}
+
           <ListItemOptionsButton
             showMenu={showOpenMenu}
             id={exerciseDto.id}

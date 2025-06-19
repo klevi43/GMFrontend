@@ -4,4 +4,4 @@ export interface MenuContextType {
   showOpenMenu: (id: number, type: ItemType) => void;
 }
 
-export type ItemType = "WORKOUT" | "EXERCISE" | "SET" | undefined;
+export type ItemType = "USER" | "WORKOUT" | "EXERCISE" | "SET" | undefined;

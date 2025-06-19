@@ -20,17 +20,18 @@ const WorkoutListItem = ({ workoutDto }: Props) => {
   const { openModal } = useMod();
   const { setQueryParams } = useQueryParams();
   const handleOpenDeleteModalClick = useCallback(() => {
-    showOpenMenu(-1, "WORKOUT");
+    showOpenMenu(-1, undefined);
     setQueryParams({ workoutId: workoutDto.id });
     openModal("DELETE_WORKOUT", workoutDto);
   }, [showOpenMenu, setQueryParams, openModal, workoutDto]);
 
   const handleOpenUpdateModalClick = useCallback(() => {
-    showOpenMenu(-1, "WORKOUT");
+    showOpenMenu(-1, undefined);
     setQueryParams({ workoutId: workoutDto.id });
     openModal("UPDATE_WORKOUT", workoutDto);
   }, [showOpenMenu, setQueryParams, openModal, workoutDto]);
   const handleWorkoutItemClick = (workoutId: number) => {
+    showOpenMenu(-1, undefined);
     setQueryParams({ workoutId: workoutDto.id });
     navigate(WORKOUTS_ENDPOINT + WORKOUT + `?workoutId=${workoutId}`);
   };
