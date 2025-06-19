@@ -11,7 +11,7 @@ interface Props {
   initialData: DtoTypes;
 }
 const MenuWrapper = React.memo(({ modalType, initialData }: Props) => {
-  const { openMenuId, showOpenMenuById } = useMenu();
+  const { openMenuId, showOpenMenu: showOpenMenuById } = useMenu();
   const { openModal } = useMod();
 
   const handleOpenUpdateModalClick = () => {

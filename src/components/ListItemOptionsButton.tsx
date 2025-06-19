@@ -1,12 +1,15 @@
+import type { ItemType } from "../types/menuContextType";
+
 interface Props {
-  showMenu: (id: number) => void;
+  showMenu: (id: number, type: ItemType) => void;
   id: number;
+  type: ItemType;
 }
-const ListItemOptionsButton = ({ showMenu, id }: Props) => {
+const ListItemOptionsButton = ({ showMenu, id, type }: Props) => {
   return (
     <button
       className=" text-text hover:text-white transition duration-300 cursor-pointer active:scale-95 active:text-white"
-      onClick={() => showMenu(id)}
+      onClick={() => showMenu(id, type)}
     >
       <svg
         className="inline-block"

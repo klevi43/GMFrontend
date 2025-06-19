@@ -13,18 +13,18 @@ interface Props {
 }
 const ExerciseListItem = ({ exerciseDto }: Props) => {
   console.log("ExerciseListItem rerendered: " + exerciseDto.name);
-  const { openMenuId, showOpenMenuById } = useMenu();
+  const { type, openMenuId, showOpenMenu } = useMenu();
   const { openModal } = useMod();
   const { setQueryParams } = useQueryParams();
 
   const handleOpenDeleteModalClick = () => {
-    showOpenMenuById(-1);
+    showOpenMenu(-1, "EXERCISE");
     setQueryParams({ exerciseId: exerciseDto.id });
     openModal("DELETE_EXERCISE", exerciseDto);
   };
 
   const handleOpenUpdateModalClick = () => {
-    showOpenMenuById(-1);
+    showOpenMenu(-1, "EXERCISE");
     setQueryParams({ exerciseId: exerciseDto.id });
     openModal("UPDATE_EXERCISE", exerciseDto);
   };
@@ -39,15 +39,16 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
       <div className="flex justify-between items-center">
         <div className="text-[1.7rem]">{exerciseDto.name}</div>
         <div className="relative inline-block">
-          {openMenuId === exerciseDto.id && (
+          {openMenuId === exerciseDto.id && type === "EXERCISE" && (
             <ListItemMenuModal
               handleOpenUpdateModalClick={handleOpenUpdateModalClick}
               handleOpenDeleteModalClick={handleOpenDeleteModalClick}
             />
           )}
           <ListItemOptionsButton
-            showMenu={showOpenMenuById}
+            showMenu={showOpenMenu}
             id={exerciseDto.id}
+            type="EXERCISE"
           />
         </div>
       </div>

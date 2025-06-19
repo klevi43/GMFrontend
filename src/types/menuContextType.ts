@@ -1,4 +1,7 @@
 export interface MenuContextType {
+  type: ItemType;
   openMenuId: number;
-  showOpenMenuById: (id: number) => void;
+  showOpenMenu: (id: number, type: ItemType) => void;
 }
+
+export type ItemType = "WORKOUT" | "EXERCISE" | "SET" | undefined;

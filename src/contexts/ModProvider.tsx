@@ -15,9 +15,9 @@ export const ModProvider = ({ children }: Props) => {
   const [modType, setModType] = useState<ModType | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [initialData, setInitialData] = useState<DtoTypes | null>(null);
-  const { showOpenMenuById } = useMenu();
+  const { showOpenMenu: showOpenMenuById } = useMenu();
   const openModal = (type: ModType, initialData?: DtoTypes) => {
-    showOpenMenuById(-1);
+    showOpenMenuById(-1, undefined);
     setModType(type);
     setIsOpen(true);
     setInitialData(initialData ?? null);

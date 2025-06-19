@@ -14,22 +14,22 @@ interface Props {
 }
 
 const WorkoutListItem = ({ workoutDto }: Props) => {
-  const { openMenuId, showOpenMenuById } = useMenu();
+  const { openMenuId, showOpenMenu } = useMenu();
 
   const navigate = useNavigate();
   const { openModal } = useMod();
   const { setQueryParams } = useQueryParams();
   const handleOpenDeleteModalClick = useCallback(() => {
-    showOpenMenuById(-1);
+    showOpenMenu(-1, "WORKOUT");
     setQueryParams({ workoutId: workoutDto.id });
     openModal("DELETE_WORKOUT", workoutDto);
-  }, [showOpenMenuById, setQueryParams, openModal, workoutDto]);
+  }, [showOpenMenu, setQueryParams, openModal, workoutDto]);
 
   const handleOpenUpdateModalClick = useCallback(() => {
-    showOpenMenuById(-1);
+    showOpenMenu(-1, "WORKOUT");
     setQueryParams({ workoutId: workoutDto.id });
     openModal("UPDATE_WORKOUT", workoutDto);
-  }, [showOpenMenuById, setQueryParams, openModal, workoutDto]);
+  }, [showOpenMenu, setQueryParams, openModal, workoutDto]);
   const handleWorkoutItemClick = (workoutId: number) => {
     setQueryParams({ workoutId: workoutDto.id });
     navigate(WORKOUTS_ENDPOINT + WORKOUT + `?workoutId=${workoutId}`);
@@ -55,8 +55,9 @@ const WorkoutListItem = ({ workoutDto }: Props) => {
                 />
               )}
               <ListItemOptionsButton
-                showMenu={showOpenMenuById}
+                showMenu={showOpenMenu}
                 id={workoutDto.id}
+                type="WORKOUT"
               />
             </div>
           </div>

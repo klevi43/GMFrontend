@@ -11,19 +11,19 @@ interface Props {
   setDto?: SetDto;
 }
 const SetListItem = ({ col1, col2, col3, setDto }: Props) => {
-  const { openMenuId, showOpenMenuById } = useMenu();
+  const { openMenuId, showOpenMenu } = useMenu();
   const { setQueryParams } = useQueryParams();
   const { openModal } = useMod();
 
   const handleOpenUpdateModalClick = () => {
     if (!setDto) throw new Error("No set data");
-    showOpenMenuById(-1);
+    showOpenMenu(-1, "SET");
     setQueryParams({ exerciseId: setDto.exerciseId, setId: setDto.id });
     openModal("UPDATE_SET", setDto);
   };
   const handleOpenDeleteModalClick = () => {
     if (!setDto) throw new Error("No set data");
-    showOpenMenuById(-1);
+    showOpenMenu(-1, "SET");
     setQueryParams({ exerciseId: setDto.exerciseId, setId: setDto.id });
     openModal("DELETE_SET", setDto);
   };
@@ -44,7 +44,8 @@ const SetListItem = ({ col1, col2, col3, setDto }: Props) => {
               )}
               <ListItemOptionsButton
                 id={setDto.id}
-                showMenu={showOpenMenuById}
+                showMenu={showOpenMenu}
+                type="SET"
               />
             </div>
           </div>

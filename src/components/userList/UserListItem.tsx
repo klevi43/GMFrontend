@@ -9,7 +9,7 @@ interface Props {
   userDto: UserDto;
 }
 const UserListItem = ({ userDto }: Props) => {
-  const { openMenuId, showOpenMenuById } = useMenu();
+  const { openMenuId, showOpenMenu: showOpenMenuById } = useMenu();
   const { openModal } = useMod();
   const { data } = useLoadAuthUser();
 

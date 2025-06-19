@@ -1,22 +1,26 @@
 import { createContext, useState } from "react";
-import type { MenuContextType } from "../types/menuContextType";
+import type { ItemType, MenuContextType } from "../types/menuContextType";
 interface Props {
   children: React.ReactNode;
 }
 
 const MenuContext = createContext<MenuContextType>({
+  type: undefined,
   openMenuId: -1,
-  showOpenMenuById: () => {},
+  showOpenMenu: () => {},
 });
 
 export const MenuProvider = ({ children }: Props) => {
   const [openMenuId, setOpenMenuId] = useState<number>(-1);
-
-  const showOpenMenuById = (id: number) => {
+  const [type, setType] = useState<ItemType | undefined>(undefined);
+  const showOpenMenu = (id: number, type: ItemType) => {
     setOpenMenuId((prevId) => (prevId === id ? -1 : id));
+    setType((prevType) => (prevType === type ? undefined : type));
   };
   return (
-    <MenuContext.Provider value={{ openMenuId, showOpenMenuById }}>
+    <MenuContext.Provider
+      value={{ type, openMenuId, showOpenMenu: showOpenMenu }}
+    >
       {children}
     </MenuContext.Provider>
   );
