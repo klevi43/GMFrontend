@@ -26,8 +26,10 @@ import WorkoutHistory from "./pages/WorkoutHistory";
 import AdminRoutes from "./utils/AdminRoutes";
 import NotLoggedInRoute from "./utils/NotLoggedInRoute";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
+import axiosInstance from "./services/axiosInstance";
 
 function App() {
+  console.log(axiosInstance.get("/csrf-cookie"));
   return (
     <>
       <BrowserRouter>
