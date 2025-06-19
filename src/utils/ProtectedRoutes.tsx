@@ -11,7 +11,6 @@ const ProtectedRoutes = () => {
     isLoading,
     isFetching,
   } = useLoadAuthUser();
-  console.log(authUser);
   const isStillLoading = isLoading || isFetching;
   const isUnauthorized =
     isError && axios.isAxiosError(error) && error.response?.status === 401;

@@ -12,7 +12,6 @@ interface Props {
   exerciseDto: ExerciseDto;
 }
 const ExerciseListItem = ({ exerciseDto }: Props) => {
-  console.log("ExerciseListItem rerendered: " + exerciseDto.name);
   const { type, openMenuId, showOpenMenu } = useMenu();
   const { openModal } = useMod();
   const { setQueryParams } = useQueryParams();
