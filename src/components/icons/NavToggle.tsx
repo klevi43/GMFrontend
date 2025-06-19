@@ -5,7 +5,10 @@ const NavToggle = ({ toggleNavMenu }: Props) => {
   return (
     <>
       <div>
-        <button className="hover:cursor-pointer" onClick={toggleNavMenu}>
+        <button
+          className="hover:cursor-pointer active:text-white"
+          onClick={toggleNavMenu}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
