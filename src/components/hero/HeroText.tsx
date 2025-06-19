@@ -20,7 +20,7 @@ const HeroText = () => {
           <div className="flex justify-end ">
             <Link
               to={REGISTER_ENDPOINT}
-              className="bg-primary rounded-full text-background mr-[1rem] py-2 px-2 text-[1.8rem] font-semibold hover:scale-104 hover:cursor-pointer transition-all duration-300"
+              className="bg-primary rounded-full text-background mr-[1rem] py-2 px-2 text-[1.8rem] font-semibold hover:scale-104 hover:cursor-pointer active:scale-95 transition-all duration-300"
             >
               Get Started
             </Link>
