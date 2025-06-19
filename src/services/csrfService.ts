@@ -1,13 +1,9 @@
 import axiosInstance from "./axiosInstance"
 
 class CsrfService {
-    getCsrfToken = async () => {
-        try {
-            await axiosInstance.get("/csrf-cookie");
-            console.log(document.cookie);
-        } catch (error) {
-            console.log(error);
-        }
+    getCsrfToken = () => {    
+            axiosInstance.get("/csrf-cookie").then(() => console.log(document.cookie));
+
     }
 }
 const csrfService = new CsrfService();
