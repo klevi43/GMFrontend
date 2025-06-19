@@ -6,7 +6,7 @@ const NavToggle = ({ toggleNavMenu }: Props) => {
     <>
       <div>
         <button
-          className="hover:cursor-pointer active:fill-white"
+          className="hover:cursor-pointer active:fill-white active:scale-95"
           onClick={toggleNavMenu}
         >
           <svg
