@@ -1,9 +1,14 @@
 import * as z from "zod";
 import { FIELD_NOT_EMPTY_MSG } from "../constants/errorMsgs";
 import type { WorkoutInput } from "../types/inputTypes";
+import { capitalizeEachFirstLetter } from "../utils/capitalizeFirstLetterHelper";
 
 export const WorkoutFormSchema = z.object({
-  name: z.string().nonempty(FIELD_NOT_EMPTY_MSG),
+  name: z
+    .string()
+    .nonempty(FIELD_NOT_EMPTY_MSG)
+    .max(50)
+    .transform((name) => capitalizeEachFirstLetter(name)),
   date: z
     .string()
     .refine((input) => !isNaN(Date.parse(input)), {

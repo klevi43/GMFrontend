@@ -10,7 +10,7 @@ const SetList = ({ setDtos }: Props) => {
   return (
     <>
       <ul className="">
-        <SetListItem col1="No" col2="Weight (lbs)" col3="Reps" />
+        <SetListItem col1="No" col2="lbs" col3="Reps" />
         {setDtos.map((setDto) => (
           <SetListItem key={setDto.id} col1={index++} setDto={setDto} />
         ))}
