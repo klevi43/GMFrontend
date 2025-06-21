@@ -38,30 +38,30 @@ const WorkoutListItem = ({ workoutDto }: Props) => {
 
   return (
     <>
-      <li className="w-[100%] pb-2 hover:pl-4 transition-all duration-300 active:pl-5">
-        <div className="border-l-8 border-primary text-text  bg-background  transition-all duration-300  hover:text-primary active:text-primary">
-          <div className="flex justify-between items-center">
+      <li className="w-[100%] flex justify-between items-baseline pb-2  text-text hover:pl-4 hover:text-primary transition-all duration-180">
+        <div className="active:pl-5 transition-all duration-200">
+          <div className="border-l-8 border-primary  bg-background  transition-all duration-180  active:text-primary">
             <button
               className="cursor-pointer"
               onClick={() => handleWorkoutItemClick(workoutDto.id)}
             >
               <WorkoutListItemDetails workoutDto={workoutDto} />
             </button>
-
-            <div className="relative">
-              {openMenuId === workoutDto.id && type === "WORKOUT" && (
-                <ListItemMenuModal
-                  handleOpenUpdateModalClick={handleOpenUpdateModalClick}
-                  handleOpenDeleteModalClick={handleOpenDeleteModalClick}
-                />
-              )}
-              <ListItemOptionsButton
-                showMenu={showOpenMenu}
-                id={workoutDto.id}
-                type="WORKOUT"
-              />
-            </div>
           </div>
+        </div>
+
+        <div className="relative">
+          {openMenuId === workoutDto.id && type === "WORKOUT" && (
+            <ListItemMenuModal
+              handleOpenUpdateModalClick={handleOpenUpdateModalClick}
+              handleOpenDeleteModalClick={handleOpenDeleteModalClick}
+            />
+          )}
+          <ListItemOptionsButton
+            showMenu={showOpenMenu}
+            id={workoutDto.id}
+            type="WORKOUT"
+          />
         </div>
       </li>
     </>
