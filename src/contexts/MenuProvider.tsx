@@ -13,11 +13,11 @@ const MenuContext = createContext<MenuContextType>({
 export const MenuProvider = ({ children }: Props) => {
   const [openMenuId, setOpenMenuId] = useState<number>(-1);
   const [type, setType] = useState<ItemType | undefined>(undefined);
-  const showOpenMenu = (id: number, type: ItemType) => {
+  const showOpenMenu = (newId: number, newType: ItemType) => {
     setOpenMenuId((prevId) => {
-      return prevId === id ? -1 : id;
+      return prevId === newId && newType === type ? -1 : newId;
     });
-    setType(type);
+    setType(newType);
   };
   return (
     <MenuContext.Provider
