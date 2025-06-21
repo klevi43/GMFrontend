@@ -14,8 +14,10 @@ export const MenuProvider = ({ children }: Props) => {
   const [openMenuId, setOpenMenuId] = useState<number>(-1);
   const [type, setType] = useState<ItemType | undefined>(undefined);
   const showOpenMenu = (id: number, type: ItemType) => {
-    setOpenMenuId((prevId) => (prevId === id ? -1 : id));
-    setType((prevType) => (prevType === type ? undefined : type));
+    setOpenMenuId((prevId) => {
+      return prevId === id ? -1 : id;
+    });
+    setType(type);
   };
   return (
     <MenuContext.Provider
