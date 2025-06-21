@@ -1,3 +1,4 @@
+import { defaultButtonStyles } from "../../../constants/styles";
 import type SetDto from "../../../dtos/setDto";
 import { useDeleteSet } from "../../../hooks/setHooks/useDeleteSet";
 import { useMod } from "../../../hooks/useMod";
@@ -55,11 +56,20 @@ const DeleteSetFormModal = ({ initialData }: Props) => {
                 </h4>
 
                 <div className="w-full">
-                  <DeleteButton
-                    isSuccess={mutation.isSuccess}
-                    isPending={mutation.isPending}
-                    handleDeleteButtonClick={handleDeleteButtonClick}
-                  />
+                  {!mutation.isSuccess && (
+                    <DeleteButton
+                      isPending={mutation.isPending}
+                      handleDeleteButtonClick={handleDeleteButtonClick}
+                    />
+                  )}
+
+                  {mutation.isSuccess && (
+                    <ModalCloseButton
+                      closeModal={closeModal}
+                      styles={defaultButtonStyles}
+                      content="Close"
+                    />
+                  )}
                 </div>
               </div>
             </div>

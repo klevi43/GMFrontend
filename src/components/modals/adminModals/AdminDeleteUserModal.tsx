@@ -1,3 +1,4 @@
+import { defaultButtonStyles } from "../../../constants/styles";
 import type UserDto from "../../../dtos/userDto";
 import { useAdminDeleteUser } from "../../../hooks/adminHooks/useAdminDeleteUser";
 import { useMod } from "../../../hooks/useMod";
@@ -47,11 +48,20 @@ const AdminDeleteUserModal = ({ initialData }: Props) => {
                 </p>
 
                 <div className="w-full">
-                  <DeleteButton
-                    isSuccess={mutation.isSuccess}
-                    isPending={mutation.isPending}
-                    handleDeleteButtonClick={handleDeleteButtonClick}
-                  />
+                  {!mutation.isSuccess && (
+                    <DeleteButton
+                      isPending={mutation.isPending}
+                      handleDeleteButtonClick={handleDeleteButtonClick}
+                    />
+                  )}
+
+                  {mutation.isSuccess && (
+                    <ModalCloseButton
+                      closeModal={closeModal}
+                      styles={defaultButtonStyles}
+                      content="Close"
+                    />
+                  )}
                 </div>
               </div>
             </div>

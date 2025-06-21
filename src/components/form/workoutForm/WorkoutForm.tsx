@@ -1,15 +1,16 @@
-import FormInputLabel from "../FormInputLabel";
-import FormSubmitButton from "../FormSubmitButton";
-import WorkoutFormInputItem from "./WorkoutFormInputItem";
-import Title from "../Title";
-import { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
-import type { WorkoutFormFieldsType } from "../../../types/formFieldsType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import ModalCloseButton from "../../modals/ModalCloseButton";
-import ErrorMessage from "../../messages/ErrorMessage";
+import { defaultButtonStyles } from "../../../constants/styles";
 import { useMod } from "../../../hooks/useMod";
+import { WorkoutFormSchema } from "../../../schemas/workoutFormSchema";
+import type { WorkoutFormFieldsType } from "../../../types/formFieldsType";
+import ErrorMessage from "../../messages/ErrorMessage";
 import SuccessMessage from "../../messages/SuccessMessage";
+import ModalCloseButton from "../../modals/ModalCloseButton";
+import FormInputLabel from "../FormInputLabel";
+import FormSubmitButton from "../FormSubmitButton";
+import Title from "../Title";
+import WorkoutFormInputItem from "./WorkoutFormInputItem";
 type Props = {
   onSubmit: (data: WorkoutFormSchema) => void;
   fields: WorkoutFormFieldsType[];
@@ -68,7 +69,7 @@ const WorkoutForm = ({
         {isSuccess && (
           <ModalCloseButton
             closeModal={closeModal}
-            styles="mt-3 bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300 active:bg-modal active:text-primary active:border-2 active:border:primary"
+            styles={defaultButtonStyles}
             content="Close"
           />
         )}

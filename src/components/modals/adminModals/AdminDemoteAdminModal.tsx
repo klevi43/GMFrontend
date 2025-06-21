@@ -1,3 +1,4 @@
+import { defaultButtonStyles } from "../../../constants/styles";
 import type UserDto from "../../../dtos/userDto";
 import { useAdminDemoteToUser } from "../../../hooks/adminHooks/useAdminDemoteToUser";
 import { useMod } from "../../../hooks/useMod";
@@ -49,7 +50,7 @@ const AdminDemoteAdminModal = ({ initialData }: Props) => {
                     <button
                       disabled={mutation.isPending}
                       onClick={handleUpdateButtonClick}
-                      className="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102  hover:cursor-pointer active:bg-modal active:text-primary active:border-2 active:border-primary transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className={`${defaultButtonStyles} disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {mutation.isPending ? "Submitting..." : "Submit"}
                     </button>
@@ -57,7 +58,7 @@ const AdminDemoteAdminModal = ({ initialData }: Props) => {
                   {mutation.isSuccess && (
                     <ModalCloseButton
                       closeModal={closeModal}
-                      styles="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300 active:bg-modal active:text-primary active:border-2 active:border:primary"
+                      styles={defaultButtonStyles}
                       content="Close"
                     />
                   )}

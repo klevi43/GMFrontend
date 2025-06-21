@@ -62,7 +62,7 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
         </p>
       )}
       <ShowElementButton
-        styles="text-primary text-[1.5rem] bg-modal border-2 border-primary mt-[0.5rem] mb-[1.5rem] py-2 w-full rounded-full hover:bg-background hover:scale-102 active:bg-primary active:text-black active:scale-95"
+        styles="text-primary text-[1.5rem] bg-modal border-2 border-primary mt-[0.5rem] mb-[1.5rem] py-2 w-full rounded-full hover:bg-background hover:scale-102 transform-gpu will-change-transform active:bg-primary active:text-black active:scale-95"
         content="Add Set"
         showElement={handleAddSetButtonClick}
       />

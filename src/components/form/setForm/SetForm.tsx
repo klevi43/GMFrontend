@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { defaultButtonStyles } from "../../../constants/styles";
 import { useMod } from "../../../hooks/useMod";
 import { SetFormSchema } from "../../../schemas/setFormSchema";
 import type { SetFormFieldsType } from "../../../types/formFieldsType";
@@ -61,7 +62,7 @@ const SetForm = ({
         {isSuccess && (
           <ModalCloseButton
             closeModal={closeModal}
-            styles="bg-primary text-[1.5rem] rounded-lg w-full py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300 active:bg-modal active:text-primary active:border-2 active:border:primary"
+            styles={defaultButtonStyles}
             content="Close"
           />
         )}

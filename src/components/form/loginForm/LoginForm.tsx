@@ -32,7 +32,6 @@ const LoginForm = ({
     resolver: zodResolver(LoginFormSchema), // automatically validates input data according to given schema
     defaultValues,
   });
-  console.log(error);
 
   return (
     // handleSubmit is from Zod and validates form onSumbit is my function

@@ -58,7 +58,7 @@ const SingleWorkout = () => {
               </p>
             )}
             <ShowElementButton
-              styles="text-[2rem] py-2 bg-primary w-full rounded-full hover:scale-102 active:bg-modal active:border-2 active:border-primary active:text-primary active:scale-95"
+              styles="text-[2rem] py-2 border-2 border-primary bg-primary w-full rounded-full hover:scale-102  transform-gpu will-change-transform active:bg-modal active:text-primary active:scale-95"
               content="Add Exercise"
               showElement={() => openModal("ADD_EXERCISE")}
             />

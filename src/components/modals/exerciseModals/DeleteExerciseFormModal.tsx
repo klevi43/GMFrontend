@@ -52,7 +52,6 @@ const DeleteExerciseFormModal = ({ initialData }: Props) => {
 
                 <div className="w-full">
                   <DeleteButton
-                    isSuccess={mutation.isSuccess}
                     isPending={mutation.isPending}
                     handleDeleteButtonClick={handleDeleteButtonClick}
                   />

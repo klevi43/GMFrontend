@@ -11,7 +11,7 @@ const ModalCloseButton = ({ closeModal, styles, content }: Props) => {
         className={
           styles
             ? styles
-            : "text-[1.4rem]  text-end  text-text hover:text-white transition-all duration-300 cursor-pointer active:text-white active:scale-95"
+            : "text-[1.4rem]  text-end  text-text hover:text-white transition-all duration-150 cursor-pointer transform-gpu will-change-transform active:text-white active:scale-95"
         }
       >
         {content}

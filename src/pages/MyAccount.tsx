@@ -50,14 +50,14 @@ const MyAccount = () => {
             </div>
             <ShowElementButton
               content="Update Email"
-              styles="text-[1.5rem] mb-2 py-2 bg-primary w-full rounded-lg hover:scale-102 active:bg-modal active:border-2 active:border-primary active:text-primary active:scale-95"
+              styles="text-[1.5rem] mb-2 py-2 bg-primary w-full rounded-lg hover:scale-102  transform-gpu will-change-transform active:bg-modal active:border-2 active:border-primary active:text-primary active:scale-95"
               showElement={() =>
                 openModal("UPDATE_USER_EMAIL", userResponseDto)
               }
             />
             <ShowElementButton
               content="Update Password"
-              styles="text-[1.5rem] py-2 bg-primary w-full rounded-lg hover:scale-102 active:bg-modal active:border-2 active:border-primary active:text-primary active:scale-95"
+              styles="text-[1.5rem] py-2 bg-primary w-full rounded-lg hover:scale-102 transform-gpu will-change-transform active:bg-modal active:border-2 active:border-primary active:text-primary active:scale-95"
               showElement={() =>
                 openModal("UPDATE_USER_PASSWORD", userResponseDto)
               }
@@ -65,7 +65,7 @@ const MyAccount = () => {
             <div className="flex justify-center">
               <ShowElementButton
                 content="Delete Account"
-                styles="text-[1.5rem] pt-4 w-fit bg-modal text-text  hover:text-red-500 active:text-red-500 active:scale-95"
+                styles="text-[1.5rem] mt-4 w-fit bg-modal text-text  hover:text-red-500  transform-gpu will-change-transform active:text-red-500 active:scale-95"
                 showElement={() => openModal("DELETE_USER_INFO")}
               />
             </div>

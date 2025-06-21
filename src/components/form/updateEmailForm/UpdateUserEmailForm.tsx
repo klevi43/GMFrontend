@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { defaultButtonStyles } from "../../../constants/styles";
 import { useMod } from "../../../hooks/useMod";
 import { UpdateUserEmailFormSchema } from "../../../schemas/updateUserEmailFormSchema";
 import type { UpdateUserEmailFormFieldsType } from "../../../types/formFieldsType";
@@ -75,7 +76,7 @@ const UpdateUserEmailForm = ({
         {isSuccess && (
           <ModalCloseButton
             closeModal={closeModal}
-            styles="bg-primary text-[1.5rem] rounded-lg w-full mt-4 py-2 hover:scale-102 hover:cursor-pointer transition-all duration-300 active:bg-modal active:text-primary active:border-2 active:border:primary"
+            styles={defaultButtonStyles}
             content="Close"
           />
         )}

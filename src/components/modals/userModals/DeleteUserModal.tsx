@@ -1,3 +1,4 @@
+import { defaultButtonStyles } from "../../../constants/styles";
 import { useMod } from "../../../hooks/useMod";
 import { useDeleteUser } from "../../../hooks/userHooks/useDeleteUser";
 import DeleteButton from "../../buttons/DeleteButton";
@@ -44,11 +45,20 @@ const DeleteUserModal = () => {
                 </p>
 
                 <div className="w-full">
-                  <DeleteButton
-                    isSuccess={mutation.isSuccess}
-                    isPending={mutation.isPending}
-                    handleDeleteButtonClick={handleDeleteButtonClick}
-                  />
+                  {!mutation.isSuccess && (
+                    <DeleteButton
+                      isPending={mutation.isPending}
+                      handleDeleteButtonClick={handleDeleteButtonClick}
+                    />
+                  )}
+
+                  {mutation.isSuccess && (
+                    <ModalCloseButton
+                      closeModal={closeModal}
+                      styles={defaultButtonStyles}
+                      content="Close"
+                    />
+                  )}
                 </div>
               </div>
             </div>

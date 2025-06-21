@@ -7,7 +7,9 @@ export const WorkoutFormSchema = z.object({
   name: z
     .string()
     .nonempty(FIELD_NOT_EMPTY_MSG)
-    .max(50)
+    .max(50, {
+      message: "A workout's name can only be up to 50 characters long.",
+    })
     .transform((name) => capitalizeEachFirstLetter(name)),
   date: z
     .string()
