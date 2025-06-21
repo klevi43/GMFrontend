@@ -7,5 +7,5 @@ export const mapToExerciseInput = (data: ExerciseDto): ExerciseInput => {
 };
 
 export const mapToWorkoutInput = (data: WorkoutDto): WorkoutInput => {
-  return { name: data.name, date: data.date };
+  return { name: data.name, date: new Date(data.date) };
 };

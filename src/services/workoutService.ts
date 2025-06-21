@@ -9,6 +9,7 @@ import {
 } from "../constants/endpoints";
 import type WorkoutDto from "../dtos/workoutDto";
 import type { WorkoutInput } from "../types/inputTypes";
+import { mapToJavaCompatibleDateString } from "../utils/mapToJavaCompatibleDateString";
 import axiosInstance from "./axiosInstance";
 class WorkoutService {
   getMostRecentWorkouts = async (): Promise<WorkoutDto[]> => {
@@ -43,23 +44,37 @@ class WorkoutService {
   };
 
   addWorkout = async (workoutInput: WorkoutInput): Promise<WorkoutDto> => {
-    return await axiosInstance.post(WORKOUTS_ENDPOINT + CREATE, workoutInput, {
-      headers: {
-        "Content-Type": "application/json",
+    return await axiosInstance.post(
+      WORKOUTS_ENDPOINT + CREATE,
+      {
+        name: workoutInput.name,
+        date: mapToJavaCompatibleDateString(workoutInput.date),
       },
-    });
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
   };
 
   updateWorkout = async (
     workoutInput: WorkoutInput,
     workoutId: number
   ): Promise<WorkoutDto> => {
-    return await axiosInstance.put(WORKOUTS_ENDPOINT + UPDATE, workoutInput, {
-      params: { workoutId },
-      headers: {
-        "Content-Type": "application/json",
+    return await axiosInstance.put(
+      WORKOUTS_ENDPOINT + UPDATE,
+      {
+        name: workoutInput.name,
+        date: mapToJavaCompatibleDateString(workoutInput.date),
       },
-    });
+      {
+        params: { workoutId },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
   };
   deleteWorkout = async (
     workoutId: number
