@@ -13,8 +13,6 @@ const About = () => {
           Mindset gives you the tools to take control of your training. Log
           workouts with ease, monitor your progress over time, and stay
           consistent with a clean, intuitive interface built for real results.
-          No fluff. Just a sleek, streamlined experience for people serious
-          about self-improvement.
         </p>
         <div className="px-[1rem] mx-auto">
           <img className="w-fit" src={aboutImg1} alt="" />
