@@ -34,7 +34,10 @@ const SetForm = ({
     formState: { errors, isSubmitting },
   } = useForm<SetFormSchema>({
     resolver: zodResolver(SetFormSchema),
-    defaultValues,
+    defaultValues: {
+      weight: undefined,
+      reps: undefined,
+    },
   });
   const { closeModal } = useMod();
   return (

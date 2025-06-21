@@ -11,10 +11,11 @@ const SetFormInputItem = ({ name, register, errorMsg }: Props) => {
     <>
       <div className="w-full mb-8">
         <input
-          className=" p-2.5 w-full bg-input rounded-lg"
+          className="p-2.5 w-full bg-input rounded-lg"
           type="number"
           inputMode="numeric" // hint to the kind of keyboard the browser needs to show on mobile
           step="1"
+          placeholder="0"
           {...register(name)}
         />
         {errorMsg && <ErrorMessage fontSize="1rem" message={errorMsg} />}
