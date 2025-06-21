@@ -71,7 +71,7 @@ const UpdateUserEmailForm = ({
             />
           </div>
         ))}
-        {note && <p className="text-text">{note}</p>}
+        {note && <p className="text-text mb-2">{note}</p>}
         {!isSuccess && <FormSubmitButton isSubmitting={isSubmitting} />}
         {isSuccess && (
           <ModalCloseButton

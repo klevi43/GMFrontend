@@ -23,7 +23,7 @@ export type EmailInput = {
 
 export type WorkoutInput = {
   name: string;
-  date: string;
+  date: Date;
 };
 
 export type ExerciseInput = {

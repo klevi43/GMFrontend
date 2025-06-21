@@ -17,7 +17,7 @@ type Props = {
   title: string;
   note?: string;
   updateAllPrevious?: boolean;
-  defaultValues: { name: string; date: string };
+  defaultValues: { name: string; date: Date };
   error: unknown;
   isSuccess: boolean;
 };
@@ -32,6 +32,7 @@ const WorkoutForm = ({
   isSuccess,
 }: Props) => {
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -57,6 +58,7 @@ const WorkoutForm = ({
           <div key={field.name}>
             <FormInputLabel name={field.label} />
             <WorkoutFormInputItem
+              control={control}
               type={field.type}
               register={register}
               name={field.name}
@@ -64,7 +66,7 @@ const WorkoutForm = ({
             />
           </div>
         ))}
-        {note && <p className="text-text">{note}</p>}
+        {note && <p className="text-text mb-2">{note}</p>}
         {!isSuccess && <FormSubmitButton isSubmitting={isSubmitting} />}
         {isSuccess && (
           <ModalCloseButton

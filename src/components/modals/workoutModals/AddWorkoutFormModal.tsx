@@ -24,7 +24,7 @@ const AddWorkoutFormModal = () => {
           <WorkoutForm
             onSubmit={onSubmit}
             title="Log New Workout"
-            defaultValues={{ name: "", date: "" }}
+            defaultValues={{ name: "", date: new Date() }}
             fields={[
               { name: "name", label: "Workout Name", type: "text" },
               { name: "date", label: "Date completed", type: "date" },

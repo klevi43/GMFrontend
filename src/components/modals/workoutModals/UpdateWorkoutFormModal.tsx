@@ -29,7 +29,7 @@ const UpdateWorkoutFormModal = ({ initialData }: Props) => {
             title="Edit Workout"
             defaultValues={{
               name: initialData.name,
-              date: initialData.date,
+              date: new Date(initialData.date),
             }}
             fields={[
               { name: "name", label: "Workout Name", type: "text" },
