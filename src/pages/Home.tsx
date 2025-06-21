@@ -11,7 +11,7 @@ const Home = () => {
         <div className="place-items-center mx-auto max-w-[1150px]">
           <Hero />
         </div>
-        <div className="py-[1rem] mx-auto max-w-[750px]">
+        <div className="mx-auto max-w-[750px]">
           <About />
         </div>
         <div className="place-items-center">

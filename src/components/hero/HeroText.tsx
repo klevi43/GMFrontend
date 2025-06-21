@@ -17,12 +17,27 @@ const HeroText = () => {
           </h3>
         </FadeIn>
         <FadeIn duration={0.4} delay={0.3} from={75}>
-          <div className="flex justify-end ">
+          <div className="flex justify-start pl-[1rem]">
             <Link
               to={REGISTER_ENDPOINT}
-              className="bg-primary rounded-full text-background mr-[1rem] py-2 px-2 text-[1.8rem] font-semibold hover:scale-104 hover:cursor-pointer active:scale-95 transition-all duration-300"
+              className=" flex items-center group bg-primary py-2 px-4 border-2 border-primary rounded-full hover:pr-[1rem] text-background text-[1.7rem] font-semibold hover:cursor-pointer active:bg-background active:text-primary transition-all duration-180"
             >
-              Get Started
+              <div>Get Started</div>
+              <svg
+                className="mt-[4px] h-[2rem] w-[2rem] fill-background group-hover:ml-[1rem] group-active:ml-[1rem] transition-all duration-150"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+              >
+                <path
+                  d="M6 12H18M18 12L13 7M18 12L13 17"
+                  stroke="#currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
             </Link>
           </div>
         </FadeIn>

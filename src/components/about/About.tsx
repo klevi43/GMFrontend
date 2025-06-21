@@ -4,7 +4,7 @@ const About = () => {
   return (
     <>
       <ScrollFadeIn>
-        <h2 className="text-white text-[3rem] font-bold mt-[5rem] pl-[1rem] md:text-center md:mt-[10rem}">
+        <h2 className="text-white text-[3rem] font-bold mt-[2rem] md:mt-[5rem] pl-[1rem] md:text-center md:mt-[10rem}">
           About
         </h2>
 
