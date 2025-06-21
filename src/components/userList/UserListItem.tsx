@@ -30,7 +30,7 @@ const UserListItem = ({ userDto }: Props) => {
   return (
     <>
       <li className="w-[100%] mb-2 flex justify-between items-baseline">
-        <div className=" border-l-8 border-primary text-text bg-background  ">
+        <div className=" border-l-8 border-primary text-text bg-background max-w-[100%] overflow-hidden truncate ">
           <UserListItemDetails userDto={userDto} />
         </div>
         <div className="relative">

@@ -38,11 +38,11 @@ const WorkoutListItem = ({ workoutDto }: Props) => {
 
   return (
     <>
-      <li className="w-[100%] flex justify-between items-baseline pb-2  text-text hover:pl-4 hover:text-primary transition-all duration-180">
-        <div className="active:pl-5 transition-all duration-200">
-          <div className="border-l-8 border-primary  bg-background  transition-all duration-180  active:text-primary">
+      <li className="flex justify-between items-baseline pb-2  text-text hover:pl-4 hover:text-primary transition-all duration-180">
+        <div className=" transition-all duration-200 w-[95%] active:pl-5">
+          <div className="border-l-8 border-primary  w-full overflow-hidden truncate bg-background  transition-all duration-180  active:text-primary">
             <button
-              className="cursor-pointer"
+              className="cursor-pointer max-w-[100%]"
               onClick={() => handleWorkoutItemClick(workoutDto.id)}
             >
               <WorkoutListItemDetails workoutDto={workoutDto} />
