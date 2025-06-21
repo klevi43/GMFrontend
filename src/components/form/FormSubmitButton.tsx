@@ -6,7 +6,7 @@ const FormSubmitButton = ({ isSubmitting }: Props) => {
     <>
       <button
         disabled={isSubmitting}
-        className="mt-3 p-2.5 w-full text-[1.5rem] bg-primary border-2 rounded-2xl transition-all duration-300 hover:scale-103 active:bg-modal active:text-primary active:border-primary active:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        className="mt-3 p-2.5 w-full text-[1.5rem] hover:scale-102 transform-gpu will-change-transform bg-primary border-2 rounded-2xl transition-all duration-150 active:bg-modal active:text-primary active:border-primary active:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         type="submit"
       >
         {isSubmitting ? "Submitting..." : "Submit"}
