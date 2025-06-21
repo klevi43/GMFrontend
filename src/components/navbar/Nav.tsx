@@ -11,7 +11,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav>
+      <nav className="pt-3">
         <div
           className={`${
             !isNavMenuOpen ? "border-b-0 border-modal-outline" : "border-0"
@@ -19,7 +19,7 @@ const Nav = () => {
         >
           <div className="">
             <Link to="/">
-              <div className="flex items-center text-text hover:text-white transition duration-300">
+              <div className="flex items-center text-text hover:text-white transition duration-150">
                 <img
                   className="h-[4rem] mb-[1rem] pl-[0.5rem]"
                   src="/leaf-svgrepo-com.svg"
