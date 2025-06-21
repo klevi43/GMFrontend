@@ -38,11 +38,11 @@ const SingleWorkout = () => {
           </div>
         )}
 
-        <div className="w-[100%]  mx-auto max-w-[1050px]  pl-[1rem]">
+        <div className="w-[100%] mx-auto max-w-[1050px]  pl-[1rem]">
           {workoutDto && (
             <Title
               title={workoutDto.name}
-              styles="text-start mb-4 text-[3rem]"
+              styles="text-start mb-4 text-[3rem] overflow-hidden truncate max-w-[95%]"
             />
           )}
         </div>
