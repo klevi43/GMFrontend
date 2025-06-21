@@ -43,7 +43,7 @@ const DeleteExerciseFormModal = ({ initialData }: Props) => {
                 <p className="text-text text-[1.2rem] mb-2 text-center">
                   Are you sure you want to delete this exercise?
                 </p>
-                <h4 className="text-white text-[2rem] font-bold mb-5 ">
+                <h4 className="text-white text-[2rem] font-bold mb-5 overflow-hidden truncate max-w-[90%]">
                   {initialData.name}
                 </h4>
 

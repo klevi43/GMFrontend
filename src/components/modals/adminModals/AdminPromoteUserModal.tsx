@@ -39,7 +39,7 @@ const AdminPromoteUserModal = ({ initialData }: Props) => {
                   Are you sure you want to promote this account to an
                   administrator?
                 </p>
-                <h4 className="text-white text-[2rem] font-bold mb-5 ">
+                <h4 className="text-white text-[2rem] font-bold mb-5 overflow-hidden truncate max-w-[90%]">
                   {initialData.email}
                 </h4>
                 <p className="text-red-500 mb-4 text-center">

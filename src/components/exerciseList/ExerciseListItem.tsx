@@ -37,7 +37,9 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
   return (
     <li className="text-white  w-full px-[0.5rem]">
       <div className="flex justify-between items-center">
-        <div className="text-[1.7rem]">{exerciseDto.name}</div>
+        <div className="text-[1.7rem] overflow-hidden truncate max-w-[90%]">
+          {exerciseDto.name}
+        </div>
         <div className="relative inline-block">
           {openMenuId === exerciseDto.id && type === "EXERCISE" && (
             <ListItemMenuModal
