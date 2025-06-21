@@ -32,7 +32,7 @@ export type ExerciseInput = {
 };
 
 export type SetInput = {
-  weight: number;
-  reps: number;
+  weight?: number;
+  reps?: number;
   exerciseId: number;
 };

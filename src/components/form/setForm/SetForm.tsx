@@ -16,7 +16,7 @@ interface Props {
   onSubmit: (data: SetFormSchema) => void;
   fields: SetFormFieldsType[];
   title: string;
-  defaultValues: SetInput;
+  defaultValues?: SetInput;
   error: unknown;
   isSuccess: boolean;
 }
@@ -34,10 +34,7 @@ const SetForm = ({
     formState: { errors, isSubmitting },
   } = useForm<SetFormSchema>({
     resolver: zodResolver(SetFormSchema),
-    defaultValues: {
-      weight: undefined,
-      reps: undefined,
-    },
+    defaultValues,
   });
   const { closeModal } = useMod();
   return (
