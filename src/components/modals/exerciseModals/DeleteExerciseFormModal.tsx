@@ -1,3 +1,4 @@
+import { defaultButtonStyles } from "../../../constants/styles";
 import type ExerciseDto from "../../../dtos/exerciseDto";
 import useDeleteExercise from "../../../hooks/exerciseHooks/useDeleteExercise";
 import { useMod } from "../../../hooks/useMod";
@@ -51,10 +52,20 @@ const DeleteExerciseFormModal = ({ initialData }: Props) => {
                 </p>
 
                 <div className="w-full">
-                  <DeleteButton
-                    isPending={mutation.isPending}
-                    handleDeleteButtonClick={handleDeleteButtonClick}
-                  />
+                  {!mutation.isSuccess && (
+                    <DeleteButton
+                      isPending={mutation.isPending}
+                      handleDeleteButtonClick={handleDeleteButtonClick}
+                    />
+                  )}
+
+                  {mutation.isSuccess && (
+                    <ModalCloseButton
+                      closeModal={closeModal}
+                      styles={defaultButtonStyles}
+                      content="Close"
+                    />
+                  )}
                 </div>
               </div>
             </div>
