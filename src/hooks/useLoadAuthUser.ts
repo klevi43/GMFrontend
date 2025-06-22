@@ -10,6 +10,6 @@ export const useLoadAuthUser = () => {
     },
 
     retry: false,
-    staleTime: 1000 * 60 * 60 * 3, // 3 hours
+    staleTime: 1000 * 60 * 60, // 1 hour
   });
 };
