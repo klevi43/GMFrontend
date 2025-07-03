@@ -5,7 +5,7 @@ You can visit the site here at [growthmindsetproject.com](https://growthmindsetp
 
 ### Features
 
-- User authentication (login/register)
+- User authentication via HTTP-only cookie JWTs and CSRF tokens(login/register)
 - Protected routes and role-based access (Admin vs. User)
 - User Profile Management (Update email/password, Delete account, ADMIN: Promote user to admin/Demote admin to user)
 - Workout dashboard with history tracking
