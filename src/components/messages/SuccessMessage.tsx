@@ -7,7 +7,7 @@ const SuccessMessage = ({ fontSize, message }: Props) => {
   return (
     <>
       <p className={`text-primary text-${fontSize} text-center`}>
-        {message ? message : "Success! Please click close to exit"}
+        {message ? message : "Success! Please click close to exit."}
       </p>
     </>
   );
