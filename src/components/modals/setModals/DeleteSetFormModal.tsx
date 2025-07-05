@@ -30,52 +30,54 @@ const DeleteSetFormModal = ({ initialData }: Props) => {
   };
   return (
     <>
-      <ModalContainer>
-        <FormContainer>
-          <div className="relative max-w-[400px]">
-            <div className="absolute -top-5 right-0">
-              <ModalCloseButton content="X" closeModal={closeModal} />
-            </div>
-            <div className="w-full">
-              <div className="flex flex-col justify-center items-center mx-auto">
-                <Title title={`Delete Set`} />
-                {mutation.error instanceof Error && (
-                  <ErrorMessage
-                    fontSize="1rem"
-                    message={mutation.error.message}
-                  />
-                )}
-                {mutation.isSuccess && <SuccessMessage fontSize="[1rem]" />}
-
-                <p className="text-text text-[1.2rem] mb-2 text-center">
-                  Are you sure you want to delete this set?
-                </p>
-                <h4 className="flex justify-evenly w-[95%] text-white text-[2rem] font-bold mb-5 ">
-                  <div>{`lbs: ${initialData.weight}`}</div>
-                  <div>{`Reps: ${initialData.reps}`}</div>
-                </h4>
-
-                <div className="w-full">
-                  {!mutation.isSuccess && (
-                    <DeleteButton
-                      isPending={mutation.isPending}
-                      handleDeleteButtonClick={handleDeleteButtonClick}
+      <div className="max-w-[400px]">
+        <ModalContainer>
+          <FormContainer>
+            <div className="relative">
+              <div className="absolute -top-5 right-0">
+                <ModalCloseButton content="X" closeModal={closeModal} />
+              </div>
+              <div className="w-full">
+                <div className="flex flex-col justify-center items-center mx-auto">
+                  <Title title={`Delete Set`} />
+                  {mutation.error instanceof Error && (
+                    <ErrorMessage
+                      fontSize="1rem"
+                      message={mutation.error.message}
                     />
                   )}
+                  {mutation.isSuccess && <SuccessMessage fontSize="[1rem]" />}
 
-                  {mutation.isSuccess && (
-                    <ModalCloseButton
-                      closeModal={closeModal}
-                      styles={defaultButtonStyles}
-                      content="Close"
-                    />
-                  )}
+                  <p className="text-text text-[1.2rem] mb-2 text-center">
+                    Are you sure you want to delete this set?
+                  </p>
+                  <h4 className="flex justify-evenly w-[95%] text-white text-[2rem] font-bold mb-5 ">
+                    <div>{`lbs: ${initialData.weight}`}</div>
+                    <div>{`Reps: ${initialData.reps}`}</div>
+                  </h4>
+
+                  <div className="w-full">
+                    {!mutation.isSuccess && (
+                      <DeleteButton
+                        isPending={mutation.isPending}
+                        handleDeleteButtonClick={handleDeleteButtonClick}
+                      />
+                    )}
+
+                    {mutation.isSuccess && (
+                      <ModalCloseButton
+                        closeModal={closeModal}
+                        styles={defaultButtonStyles}
+                        content="Close"
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </FormContainer>
-      </ModalContainer>
+          </FormContainer>
+        </ModalContainer>
+      </div>
     </>
   );
 };
