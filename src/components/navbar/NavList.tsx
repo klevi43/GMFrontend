@@ -31,9 +31,9 @@ const NavList = () => {
           <NavListItem urlPath={LOGIN_ENDPOINT} text="Login" />
         )}
         {authUser && authUser.isAuthenticated && (
-          <li className="text-center">
+          <li className="flex justify-center">
             <button
-              className="text-[1.5rem] md:text-[1.1rem] px-2 block  text-text hover:text-white transition hover:cursor-pointer"
+              className="text-[1.5rem] md:text-[1.1rem] text-center px-2 block  text-text hover:text-white transition hover:cursor-pointer"
               onClick={handleLogout}
             >
               Logout

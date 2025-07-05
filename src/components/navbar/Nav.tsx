@@ -13,9 +13,7 @@ const Nav = () => {
     <>
       <nav className="pt-3">
         <div
-          className={`${
-            !isNavMenuOpen ? "border-b-0 border-modal-outline" : "border-0"
-          } flex justify-between items-center flex-wrap mx-auto max-w-[1150px] sticky z-50 `}
+          className={`flex justify-between items-center flex-wrap mx-auto max-w-[1150px] sticky z-50 `}
         >
           <div className="">
             <Link to="/">
@@ -37,9 +35,7 @@ const Nav = () => {
 
           <div
             className={`${
-              !isNavMenuOpen
-                ? "h-0 opacity-0"
-                : "h-auto opacity-100 border-b-1 border-modal-outline"
+              !isNavMenuOpen ? "h-0 opacity-0" : "h-auto opacity-100"
             }  absolute top-full overflow-hidden bg-background w-full pb-6 md:relative md:flex  md:justify-between md:p-0 md:w-auto md:mt-[6px] md:h-auto md:opacity-100`}
           >
             <NavList />
