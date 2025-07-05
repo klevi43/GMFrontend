@@ -46,7 +46,7 @@ const DeleteWorkoutModal = ({ initialData }: Props) => {
                 </p>
                 <p className="text-text text-[1rem] mb-2 text-center">
                   Any previous entries of this workout in your workout history
-                  <span className="font-bold">will not be deleted.</span>
+                  <span className="font-bold"> will not be deleted.</span>
                 </p>
                 <h4 className="text-white text-[2rem] font-bold mb-5 overflow-hidden truncate max-w-[90%]">
                   {initialData.name}
