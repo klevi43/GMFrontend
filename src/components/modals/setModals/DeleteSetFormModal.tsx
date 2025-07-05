@@ -32,7 +32,7 @@ const DeleteSetFormModal = ({ initialData }: Props) => {
     <>
       <ModalContainer>
         <FormContainer>
-          <div className="relative">
+          <div className="relative max-w-[400px]">
             <div className="absolute -top-5 right-0">
               <ModalCloseButton content="X" closeModal={closeModal} />
             </div>
