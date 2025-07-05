@@ -31,8 +31,13 @@ const NavList = () => {
           <NavListItem urlPath={LOGIN_ENDPOINT} text="Login" />
         )}
         {authUser && authUser.isAuthenticated && (
-          <li className="text-[1.5rem] md:text-[1.1rem] px-2 block text-center text-text hover:text-white transition hover:cursor-pointer">
-            <button onClick={handleLogout}>Logout</button>
+          <li>
+            <button
+              className="text-[1.5rem] md:text-[1.1rem] px-2 block text-center text-text hover:text-white transition hover:cursor-pointer"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
           </li>
         )}
       </ul>
