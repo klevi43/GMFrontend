@@ -1,8 +1,8 @@
 # Welcome to GMFrontend
 
-## 📌 [한국어 README 바로가기](#한국어-readme)
+## 📌 [GMFrontend 한국어 README 바로가기](#GMFrontend-한국어-readme)
 
-GMFrontEnd is the React-based frontend for **Growth Mindset**, a fitness tracking web app that allows users to manage their workouts, exercises, and sets. Built with TypeScript, React Query, and Axios.
+GMFrontend is the React-based frontend for **Growth Mindset**, a fitness tracking web app that allows users to manage their workouts, exercises, and sets. Built with TypeScript, React Query, and Axios.
 You can visit the site here at [growthmindsetproject.com](https://growthmindsetproject.com/).
 
 ### Features
@@ -70,7 +70,7 @@ https://nodejs.org/
 - Logging out removes the token from cookies subsequent requests; however, the token is not invalidated by the backend. This is not a security concern because the jwt is stored in an HTTP-only cookie and has a short lifespan (1 hour). A refresh token functionality is planned for a future update.
 - Thank you for your patience and understanding.
 
-# 한국어 README
+# GMFrontend 한국어 README
 
 ## GMFrontend에 오신 것을 환영합니다
 
