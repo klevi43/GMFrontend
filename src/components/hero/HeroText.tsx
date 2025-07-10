@@ -6,7 +6,7 @@ const HeroText = () => {
     <>
       <div className=" h-auto">
         <FadeIn duration={0.4} delay={0.1} from={75}>
-          <h2 className="text-white text-[3.5rem] leading-[1.25] font-bold px-[1rem]">
+          <h2 className="text-white text-[3.5rem] lg:text-[4rem] leading-[1.25] font-bold px-[1rem]">
             Track your progress. <br /> See results.
           </h2>
         </FadeIn>
