@@ -8,6 +8,7 @@ import ExerciseList from "../components/exerciseList/ExerciseList";
 import ErrorMessage from "../components/messages/ErrorMessage";
 import { useGetWorkout } from "../hooks/workoutHooks/useGetWorkout";
 
+import ExerciseStatChart from "../components/charts/ExerciseStatChart";
 import Footer from "../components/footer/Footer";
 import InfoMessage from "../components/messages/InfoMessage";
 import { useMod } from "../hooks/useMod";
@@ -22,7 +23,6 @@ const SingleWorkout = () => {
     setQueryParams({ workoutId: workoutId });
   }, []);
   const { openModal } = useMod();
-
   return (
     <div className="max-w-[1050px] mx-auto">
       <Nav />
@@ -64,6 +64,9 @@ const SingleWorkout = () => {
             />
           </div>
         )}
+      </div>
+      <div className="w-[300px] h-[300px]">
+        <ExerciseStatChart />
       </div>
       <Footer />
     </div>
