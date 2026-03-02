@@ -29,7 +29,7 @@ const SetListItem = ({ col1, col2, col3, setDto }: Props) => {
   };
   return (
     <li className="  w-full text-text ">
-      <div className="grid grid-cols-4 items-center w-full text-[1.5rem] min-h-[3.5rem]">
+      <div className="grid grid-cols-4 items-center w-full text-[1.5rem]">
         <div className="text-center">{col1}</div>
         <div className="text-center">{col2 ? col2 : setDto?.weight}</div>
         <div className="text-center">{col3 ? col3 : setDto?.reps}</div>

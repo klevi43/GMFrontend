@@ -1,11 +1,11 @@
 import { useGetExerciseStat } from "../../../hooks/exerciseStatHooks/useGetExerciseStat";
-import { useMod } from "../../../hooks/useMod";
 import ExerciseStatChart from "../../charts/ExerciseStatChart";
 import ModalContainer from "../../containers/ModalContainer";
-
-const ExerciseStatModal = () => {
-  const { data } = useGetExerciseStat("Bench Press");
-  const { closeModal } = useMod();
+interface Props {
+  exerciseName: string;
+}
+const ExerciseStatModal = ({ exerciseName }: Props) => {
+  const { data } = useGetExerciseStat(exerciseName);
   return (
     <>
       <ModalContainer>

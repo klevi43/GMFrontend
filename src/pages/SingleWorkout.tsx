@@ -41,7 +41,7 @@ const SingleWorkout = () => {
           {workoutDto && (
             <Title
               title={workoutDto.name}
-              styles="text-start mb-4 text-[3rem] overflow-hidden truncate max-w-[95%]"
+              styles="text-start text-[3rem] overflow-hidden truncate max-w-[95%]"
             />
           )}
         </div>

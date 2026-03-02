@@ -37,7 +37,7 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
 
   const handleGetExerciseStatsButtonClick = () => {
     showOpenMenu(-1, undefined);
-    openModal("GET_EXERCISE_STATS");
+    openModal("GET_EXERCISE_STATS", exerciseDto);
   };
   return (
     <li className="text-white  w-full px-[0.5rem]">
