@@ -6,6 +6,7 @@ import SetList from "../setList/SetList";
 
 import { useMenu } from "../../hooks/useMenu";
 import ShowElementButton from "../buttons/ShowElementButton";
+import ChartSvg from "../icons/ChartSvg";
 import ListItemMenuModal from "../ListItemMenuModal";
 import ListItemOptionsButton from "../ListItemOptionsButton";
 interface Props {
@@ -34,11 +35,22 @@ const ExerciseListItem = ({ exerciseDto }: Props) => {
     openModal("ADD_SET");
   };
 
+  const handleGetExerciseStatsButtonClick = () => {
+    showOpenMenu(-1, undefined);
+    openModal("GET_EXERCISE_STATS");
+  };
   return (
     <li className="text-white  w-full px-[0.5rem]">
       <div className="flex justify-between items-center">
-        <div className="text-[1.7rem] overflow-hidden truncate max-w-[90%]">
-          {exerciseDto.name}
+        <div className="flex">
+          <div className="text-[1.7rem] overflow-hidden truncate max-w-[90%]">
+            {exerciseDto.name}
+          </div>
+          <ShowElementButton
+            styles="inline-block mt-2 pl-1"
+            content={<ChartSvg />}
+            showElement={handleGetExerciseStatsButtonClick}
+          />
         </div>
         <div className="relative inline-block">
           {openMenuId === exerciseDto.id && type === "EXERCISE" && (

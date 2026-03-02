@@ -3,6 +3,7 @@ import type SetDto from "../dtos/setDto";
 import type UserDto from "../dtos/userDto";
 
 import type WorkoutDto from "../dtos/workoutDto";
+import type { ExerciseDataDto } from "./chartTypes";
 
 export interface ModContextType {
   modType: ModType | null;
@@ -17,7 +18,9 @@ export type ModType =
   | UserTypes
   | WorkoutTypes
   | ExerciseTypes
-  | SetTypes;
+  | SetTypes
+  | ChartTypes;
+
 type WorkoutTypes = "ADD_WORKOUT" | "UPDATE_WORKOUT" | "DELETE_WORKOUT";
 type ExerciseTypes = "ADD_EXERCISE" | "UPDATE_EXERCISE" | "DELETE_EXERCISE";
 type SetTypes = "ADD_SET" | "UPDATE_SET" | "DELETE_SET";
@@ -25,8 +28,15 @@ type UserTypes =
   | "UPDATE_USER_EMAIL"
   | "UPDATE_USER_PASSWORD"
   | "DELETE_USER_INFO";
+type ChartTypes = "GET_EXERCISE_STATS";
 type AdminTypes =
   | "ADMIN_DELETE_USER"
   | "ADMIN_PROMOTE_USER"
   | "ADMIN_DEMOTE_ADMIN";
-export type DtoTypes = UserDto | WorkoutDto | ExerciseDto | SetDto;
+
+export type DtoTypes =
+  | UserDto
+  | WorkoutDto
+  | ExerciseDto
+  | SetDto
+  | ExerciseDataDto;

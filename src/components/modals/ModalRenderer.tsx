@@ -15,6 +15,7 @@ import AdminPromoteUserModal from "./adminModals/AdminPromoteUserModal";
 import AddExerciseFormModal from "./exerciseModals/AddExerciseFormModal";
 import DeleteExerciseFormModal from "./exerciseModals/DeleteExerciseFormModal";
 import UpdateExerciseFormModal from "./exerciseModals/UpdateExerciseFormModal";
+import ExerciseStatModal from "./exerciseStatModals/exerciseStatModal";
 import AddSetFormModal from "./setModals/AddSetFormModal";
 import DeleteSetFormModal from "./setModals/DeleteSetFormModal";
 import UpdateSetFormModal from "./setModals/UpdateSetFormModal";
@@ -89,6 +90,9 @@ const ModalRenderer = ({ type, initialData }: Props) => {
         throw new Error(INITIAL_DATA_NOT_SET_MSG);
       }
       return <DeleteSetFormModal initialData={initialData} />;
+
+    case "GET_EXERCISE_STATS":
+      return <ExerciseStatModal />;
     default:
       return <></>;
   }

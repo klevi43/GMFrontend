@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 interface Props {
   styles?: string;
-  content: string;
+  content: ReactNode;
   showElement: () => void;
 }
 
