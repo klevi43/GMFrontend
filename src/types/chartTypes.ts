@@ -6,3 +6,8 @@ export interface ExerciseDataDto {
   reps: number;
   date: Date;
 }
+
+export interface ChartSettings {
+  exerciseName: string;
+  dateRange: string;
+}

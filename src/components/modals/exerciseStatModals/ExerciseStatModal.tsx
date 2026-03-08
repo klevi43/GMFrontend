@@ -1,11 +1,23 @@
+import { useState } from "react";
 import { useGetExerciseStat } from "../../../hooks/exerciseStatHooks/useGetExerciseStat";
+import type { ChartSettings } from "../../../types/chartTypes";
 import ExerciseStatChart from "../../charts/ExerciseStatChart";
 import ModalContainer from "../../containers/ModalContainer";
 interface Props {
   exerciseName: string;
 }
 const ExerciseStatModal = ({ exerciseName }: Props) => {
-  const { data } = useGetExerciseStat(exerciseName);
+  const d = new Date();
+  const [dateRange, setDateRange] = useState<string>("1_MONTH");
+  const chartSettings: ChartSettings = {
+    exerciseName: exerciseName,
+    dateRange: dateRange,
+  };
+  const { data } = useGetExerciseStat(chartSettings);
+
+  const handleUpdateDateRange = (dateRange: string) => {
+    setDateRange(dateRange);
+  };
   return (
     <>
       <ModalContainer>
@@ -24,7 +36,13 @@ const ExerciseStatModal = ({ exerciseName }: Props) => {
     flex-col
     justify-center"
         >
-          {data && <ExerciseStatChart data={data} />}
+          {data && (
+            <ExerciseStatChart
+              data={data}
+              dateRange={dateRange}
+              handleUpdateDateRange={handleUpdateDateRange}
+            />
+          )}
         </div>
       </ModalContainer>
     </>

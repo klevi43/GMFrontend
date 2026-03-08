@@ -13,8 +13,14 @@ import ModalCloseButton from "../modals/ModalCloseButton";
 import CustomTooltip from "./CustomTooltip";
 interface Props {
   data?: ExerciseDataDto[];
+  dateRange: string;
+  handleUpdateDateRange: (date: string) => void;
 }
-const ExerciseStatChart = ({ data }: Props) => {
+const ExerciseStatChart = ({
+  data,
+  dateRange,
+  handleUpdateDateRange,
+}: Props) => {
   const { closeModal } = useMod();
   const sortedData = data
     ? [...data]
@@ -25,9 +31,51 @@ const ExerciseStatChart = ({ data }: Props) => {
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     : [];
 
+  const initialEndDate =
+    sortedData.length > 0
+      ? new Date(sortedData[sortedData.length - 1].date)
+      : new Date();
+
+  const initialStartDate =
+    sortedData.length > 0
+      ? new Date(sortedData[sortedData.length - 1].date)
+      : new Date();
+  // initialStartDate.setMonth(initialStartDate.getMonth() - 3);
+
+  // const [endDate, setEndDate] = useState<Date>(initialEndDate);
+  // const [startDate, setStartDate] = useState<Date>(initialStartDate);
+
+  // const handleEndDateChange = (date: Date) => {
+  //   setEndDate(date);
+  // };
+
+  // const handleStartDateChange = (date: Date) => {
+  //   setStartDate(date);
+  // };
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    handleUpdateDateRange(event?.target.value);
+  };
   return (
     <>
-      {data && <Title title={sortedData[0].exerciseName} />}
+      {data && (
+        <Title
+          styles="text-white font-bold text-[2.2rem] text-center"
+          title={sortedData[0].exerciseName}
+        />
+      )}
+      <div className="text-text self-end mb-2">
+        <label>Range:</label>
+        <select
+          className="bg-modal"
+          value={dateRange}
+          onChange={handleSelectChange}
+        >
+          <option value="1_MONTH">1 Month</option>
+          <option value="3_MONTHS">3 Months</option>
+          <option value="6_MONTHS">6 Months</option>
+          <option value="1_YEAR">1 Year</option>
+        </select>
+      </div>
       <div className="absolute top-4 right-6">
         <ModalCloseButton content="X" closeModal={closeModal} />
       </div>
@@ -43,8 +91,9 @@ const ExerciseStatChart = ({ data }: Props) => {
           }}
         >
           <Tooltip content={<CustomTooltip />} />
-          <XAxis dataKey="date" />
+          <XAxis dataKey="date" stroke="var(--color-text)" />
           <YAxis
+            stroke="var(--color-text)"
             dataKey="maxWeight"
             // this tell recharts that the min value for the data should be
             // 5 units below dataMin, but never below 0

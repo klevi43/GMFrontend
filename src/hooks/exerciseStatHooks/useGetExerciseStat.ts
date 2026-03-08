@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { exerciseDataService } from "../../services/exerciseDataService";
+import { exerciseStatService } from "../../services/exerciseStatService";
+import type { ChartSettings } from "../../types/chartTypes";
 
-export const useGetExerciseStat = (exerciseName: string) => {
+export const useGetExerciseStat = (chartSettings: ChartSettings) => {
   return useQuery({
-    queryKey: ["exerciseStat", exerciseName],
+    queryKey: ["chartSettings", chartSettings],
     queryFn: async ({ queryKey }) => {
       const [, id] = queryKey;
-      return await exerciseDataService.getExerciseData(id as string);
+      return await exerciseStatService.getExerciseData(id as ChartSettings);
     },
   });
 };
